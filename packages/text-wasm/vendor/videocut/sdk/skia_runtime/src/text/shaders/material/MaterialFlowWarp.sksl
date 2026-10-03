@@ -1,0 +1,64 @@
+uniform shader inputTexture;
+uniform float2 textSize;
+uniform float progress;
+uniform float frequency;
+uniform float displacement;
+uniform float2 endScale;
+uniform float3 spriteToOutput0;
+uniform float3 spriteToOutput1;
+uniform float3 outputToSprite0;
+uniform float3 outputToSprite1;
+
+// Active flomotion fragment from the bound noface material. The source's
+// simplex, barrel, inhaled and positive-value protrusion paths are inactive.
+float2 gradient(float2 st) {
+    st = float2(dot(st, float2(12.1, 11.7)), dot(st, float2(26.5, 13.3)));
+    return fract(sin(st) * 43.5413) * 2.0 - 1.0;
+}
+
+float noise(float2 st) {
+    float2 cell = floor(st);
+    float2 p = fract(st);
+    float2 weight = smoothstep(float2(0.0), float2(1.0), p);
+    return mix(mix(dot(gradient(cell), p),
+                   dot(gradient(cell + float2(1.0, 0.0)), p - float2(1.0, 0.0)), weight.x),
+               mix(dot(gradient(cell + float2(0.0, 1.0)), p - float2(0.0, 1.0)),
+                   dot(gradient(cell + 1.0), p - 1.0), weight.x), weight.y);
+}
+
+half4 main(float2 position) {
+    float3 point = float3(position, 1.0);
+    float2 sourceUv = float2(dot(outputToSprite0, point), dot(outputToSprite1, point));
+    if (any(lessThan(sourceUv, float2(0.0))) ||
+        any(greaterThan(sourceUv, float2(1.0))) || progress >= 1.0) return half4(0.0);
+    float p = pow(progress, 1.5);
+    float amount1 = mix(8.0, frequency, p);
+    // The source rotate helper converts its degree argument back to radians.
+    float angle = mix(2.0, 0.0, p) * 3.141592653589793;
+    float strength = clamp((progress - 0.375) / 0.625, 0.0, 1.0) * 0.15;
+    float2 scale = mix(float2(1.0), endScale,
+                      clamp((progress - 0.375) / 0.525, 0.0, 1.0));
+    if (progress >= 0.9) scale = mix(endScale, float2(0.0),
+                                    clamp((progress - 0.9) / 0.1, 0.0, 1.0));
+    float2 uv = (sourceUv - 0.5) / scale + 0.5;
+    float2 st = uv * textSize / max(textSize.x, textSize.y);
+    float2 xy = float2(noise(st * amount1), noise((1.0 - st) * amount1));
+    xy = float2(cos(angle) * xy.x + sin(angle) * xy.y,
+                -sin(angle) * xy.x + cos(angle) * xy.y);
+    uv -= displacement * p * xy;
+    for (int index = 0; index < 8; ++index) {
+        uv -= 0.5;
+        float2 q = abs(uv * 2.0) - 0.1;
+        float distanceValue = min(max(q.x, q.y), 0.0) + length(max(q, 0.0));
+        float x = max(distanceValue + 0.1, 0.5);
+        // remap(x, .5, 1, .25, 1) in the source evaluates to x.
+        if (x >= 2.0 && strength > 0.0) return half4(0.0);
+        uv *= pow(2.0 - x, strength);
+        uv += 0.5;
+    }
+    // _MainTex uses clamp-to-edge on its own attachment, before the parent
+    // transform. Fullscreen padding is not part of that texture.
+    float3 samplePoint = float3(clamp(uv, float2(0.0), float2(1.0)), 1.0);
+    return inputTexture.eval(float2(dot(spriteToOutput0, samplePoint),
+                                    dot(spriteToOutput1, samplePoint)));
+}

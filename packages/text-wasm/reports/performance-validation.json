@@ -1,0 +1,763 @@
+{
+  "profile": "wasm-simd-comparison-v1",
+  "timestamp": "2026-09-29T10:47:57.455Z",
+  "width": 640,
+  "height": 360,
+  "baselineSha256": "3cd4cdbd1f91423216f2d250d0d6739db7febf7b04a76f27246ab51576e1f240",
+  "currentSha256": "7033e5d30b6bfdcb757601ea6c9b4c7d4af9573d1b1747265122b3b44f64b7d3",
+  "lanes": [
+    1,
+    4
+  ],
+  "cases": [
+    {
+      "id": "pattern-flower",
+      "coldMs": [
+        199.60000002384186,
+        105.79999995231628
+      ],
+      "before": {
+        "p50": 133.40000009536743,
+        "p95": 156.39999997615814,
+        "max": 159.40000009536743
+      },
+      "after": {
+        "p50": 40.60000002384186,
+        "p95": 47.10000002384186,
+        "max": 47.59999990463257
+      },
+      "samples": [
+        {
+          "timeUs": 250123,
+          "beforeMs": 128.10000002384186,
+          "afterMs": 38.89999997615814,
+          "beforeTextMs": 127,
+          "afterTextMs": 37
+        },
+        {
+          "timeUs": 347900,
+          "beforeMs": 129.5,
+          "afterMs": 38.299999952316284,
+          "beforeTextMs": 128.30000007152557,
+          "afterTextMs": 37.299999952316284
+        },
+        {
+          "timeUs": 445677,
+          "beforeMs": 132.39999997615814,
+          "afterMs": 40.60000002384186,
+          "beforeTextMs": 131.39999997615814,
+          "afterTextMs": 39.10000002384186
+        },
+        {
+          "timeUs": 543454,
+          "beforeMs": 133.40000009536743,
+          "afterMs": 40.59999990463257,
+          "beforeTextMs": 131.70000004768372,
+          "afterTextMs": 39.5
+        },
+        {
+          "timeUs": 641231,
+          "beforeMs": 141.29999995231628,
+          "afterMs": 41.5,
+          "beforeTextMs": 139.39999997615814,
+          "afterTextMs": 40.60000002384186
+        },
+        {
+          "timeUs": 739008,
+          "beforeMs": 141.19999992847443,
+          "afterMs": 42.5,
+          "beforeTextMs": 140.19999992847443,
+          "afterTextMs": 41.5
+        },
+        {
+          "timeUs": 836785,
+          "beforeMs": 145.69999992847443,
+          "afterMs": 43.700000047683716,
+          "beforeTextMs": 144.69999992847443,
+          "afterTextMs": 42.60000002384186
+        },
+        {
+          "timeUs": 934562,
+          "beforeMs": 146.70000004768372,
+          "afterMs": 43,
+          "beforeTextMs": 144.89999997615814,
+          "afterTextMs": 41.89999997615814
+        },
+        {
+          "timeUs": 1032339,
+          "beforeMs": 152.39999997615814,
+          "afterMs": 45.10000002384186,
+          "beforeTextMs": 150.5,
+          "afterTextMs": 43.800000071525574
+        },
+        {
+          "timeUs": 1130116,
+          "beforeMs": 154.29999995231628,
+          "afterMs": 45.60000002384186,
+          "beforeTextMs": 152.69999992847443,
+          "afterTextMs": 44.10000002384186
+        },
+        {
+          "timeUs": 1227893,
+          "beforeMs": 156.39999997615814,
+          "afterMs": 47.10000002384186,
+          "beforeTextMs": 155.29999995231628,
+          "afterTextMs": 45.800000071525574
+        },
+        {
+          "timeUs": 1325670,
+          "beforeMs": 159.40000009536743,
+          "afterMs": 47.59999990463257,
+          "beforeTextMs": 158.10000002384186,
+          "afterTextMs": 46.09999990463257
+        },
+        {
+          "timeUs": 1423447,
+          "beforeMs": 154.69999992847443,
+          "afterMs": 46.39999997615814,
+          "beforeTextMs": 153.39999997615814,
+          "afterTextMs": 44.89999997615814
+        },
+        {
+          "timeUs": 1521224,
+          "beforeMs": 149.5,
+          "afterMs": 44.700000047683716,
+          "beforeTextMs": 148.5,
+          "afterTextMs": 43.39999997615814
+        },
+        {
+          "timeUs": 1619001,
+          "beforeMs": 141,
+          "afterMs": 42.39999997615814,
+          "beforeTextMs": 140.10000002384186,
+          "afterTextMs": 41.10000002384186
+        },
+        {
+          "timeUs": 1716778,
+          "beforeMs": 130.19999992847443,
+          "afterMs": 39.300000071525574,
+          "beforeTextMs": 128.5,
+          "afterTextMs": 38.300000071525574
+        },
+        {
+          "timeUs": 1814555,
+          "beforeMs": 124.5,
+          "afterMs": 37.299999952316284,
+          "beforeTextMs": 123.5,
+          "afterTextMs": 36.199999928474426
+        },
+        {
+          "timeUs": 1912332,
+          "beforeMs": 112.09999990463257,
+          "afterMs": 33.200000047683716,
+          "beforeTextMs": 110.39999997615814,
+          "afterTextMs": 32.299999952316284
+        },
+        {
+          "timeUs": 2010109,
+          "beforeMs": 90.80000007152557,
+          "afterMs": 29.299999952316284,
+          "beforeTextMs": 88.80000007152557,
+          "afterTextMs": 27.600000023841858
+        },
+        {
+          "timeUs": 2107886,
+          "beforeMs": 77,
+          "afterMs": 25.699999928474426,
+          "beforeTextMs": 76,
+          "afterTextMs": 23.799999952316284
+        },
+        {
+          "timeUs": 2205663,
+          "beforeMs": 76.89999997615814,
+          "afterMs": 24.800000071525574,
+          "beforeTextMs": 76,
+          "afterTextMs": 23
+        },
+        {
+          "timeUs": 2303440,
+          "beforeMs": 59.10000002384186,
+          "afterMs": 19.300000071525574,
+          "beforeTextMs": 57.799999952316284,
+          "afterTextMs": 18.300000071525574
+        },
+        {
+          "timeUs": 2401217,
+          "beforeMs": 37.700000047683716,
+          "afterMs": 16,
+          "beforeTextMs": 36.800000071525574,
+          "afterTextMs": 13
+        },
+        {
+          "timeUs": 2498994,
+          "beforeMs": 47.700000047683716,
+          "afterMs": 15,
+          "beforeTextMs": 46.60000002384186,
+          "afterTextMs": 13.899999976158142
+        }
+      ],
+      "comparisons": [
+        {
+          "timeUs": 250123,
+          "mean": 0.0018934461805555556,
+          "max": 2,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "timeUs": 347900,
+          "mean": 0.0023524305555555555,
+          "max": 2,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "timeUs": 445677,
+          "mean": 0.003505859375,
+          "max": 2,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "timeUs": 543454,
+          "mean": 0.003447265625,
+          "max": 2,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "timeUs": 641231,
+          "mean": 0.003386501736111111,
+          "max": 2,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "timeUs": 739008,
+          "mean": 0.0031532118055555554,
+          "max": 3,
+          "fractionOver2": 0.000004340277777777778,
+          "passed": true
+        },
+        {
+          "timeUs": 836785,
+          "mean": 0.0031553819444444446,
+          "max": 2,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "timeUs": 934562,
+          "mean": 0.0033029513888888887,
+          "max": 3,
+          "fractionOver2": 0.000002170138888888889,
+          "passed": true
+        },
+        {
+          "timeUs": 1032339,
+          "mean": 0.003134765625,
+          "max": 3,
+          "fractionOver2": 0.000004340277777777778,
+          "passed": true
+        },
+        {
+          "timeUs": 1130116,
+          "mean": 0.0032486979166666667,
+          "max": 2,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "timeUs": 1227893,
+          "mean": 0.003046875,
+          "max": 3,
+          "fractionOver2": 0.000002170138888888889,
+          "passed": true
+        },
+        {
+          "timeUs": 1325670,
+          "mean": 0.0029481336805555554,
+          "max": 2,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "timeUs": 1423447,
+          "mean": 0.0028038194444444443,
+          "max": 2,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "timeUs": 1521224,
+          "mean": 0.0026085069444444445,
+          "max": 3,
+          "fractionOver2": 0.000004340277777777778,
+          "passed": true
+        },
+        {
+          "timeUs": 1619001,
+          "mean": 0.0026898871527777776,
+          "max": 4,
+          "fractionOver2": 0.000002170138888888889,
+          "passed": true
+        },
+        {
+          "timeUs": 1716778,
+          "mean": 0.0027300347222222222,
+          "max": 2,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "timeUs": 1814555,
+          "mean": 0.0028776041666666668,
+          "max": 3,
+          "fractionOver2": 0.000002170138888888889,
+          "passed": true
+        },
+        {
+          "timeUs": 1912332,
+          "mean": 0.0021820746527777776,
+          "max": 2,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "timeUs": 2010109,
+          "mean": 0.0016970486111111112,
+          "max": 2,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "timeUs": 2107886,
+          "mean": 0.0014463975694444444,
+          "max": 2,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "timeUs": 2205663,
+          "mean": 0.0012662760416666666,
+          "max": 2,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "timeUs": 2303440,
+          "mean": 0.0009450954861111111,
+          "max": 2,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "timeUs": 2401217,
+          "mean": 0.0004958767361111111,
+          "max": 2,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "timeUs": 2498994,
+          "mean": 0.002111545138888889,
+          "max": 4,
+          "fractionOver2": 0.000004340277777777778,
+          "passed": true
+        }
+      ],
+      "edits": [
+        {
+          "text": "你好",
+          "mean": 0.002158203125,
+          "max": 2,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "text": "文字动画",
+          "mean": 0.0033582899305555558,
+          "max": 2,
+          "fractionOver2": 0,
+          "passed": true
+        }
+      ],
+      "pixelsPassed": true
+    },
+    {
+      "id": "cube",
+      "coldMs": [
+        80.39999997615814,
+        36
+      ],
+      "before": {
+        "p50": 58.800000071525574,
+        "p95": 59.799999952316284,
+        "max": 64.80000007152557
+      },
+      "after": {
+        "p50": 15.200000047683716,
+        "p95": 16.300000071525574,
+        "max": 16.799999952316284
+      },
+      "samples": [
+        {
+          "timeUs": 250123,
+          "beforeMs": 58.5,
+          "afterMs": 15.299999952316284,
+          "beforeTextMs": 57.39999997615814,
+          "afterTextMs": 14
+        },
+        {
+          "timeUs": 347900,
+          "beforeMs": 59.60000002384186,
+          "afterMs": 14.899999976158142,
+          "beforeTextMs": 58.700000047683716,
+          "afterTextMs": 14.100000023841858
+        },
+        {
+          "timeUs": 445677,
+          "beforeMs": 57.89999997615814,
+          "afterMs": 15.699999928474426,
+          "beforeTextMs": 56.799999952316284,
+          "afterTextMs": 14
+        },
+        {
+          "timeUs": 543454,
+          "beforeMs": 59.799999952316284,
+          "afterMs": 15.400000095367432,
+          "beforeTextMs": 58.59999990463257,
+          "afterTextMs": 14.5
+        },
+        {
+          "timeUs": 641231,
+          "beforeMs": 59.10000002384186,
+          "afterMs": 15.299999952316284,
+          "beforeTextMs": 58.10000002384186,
+          "afterTextMs": 14.100000023841858
+        },
+        {
+          "timeUs": 739008,
+          "beforeMs": 58.800000071525574,
+          "afterMs": 14.899999976158142,
+          "beforeTextMs": 57.800000071525574,
+          "afterTextMs": 13.899999976158142
+        },
+        {
+          "timeUs": 836785,
+          "beforeMs": 64.80000007152557,
+          "afterMs": 16.799999952316284,
+          "beforeTextMs": 63.700000047683716,
+          "afterTextMs": 14.199999928474426
+        },
+        {
+          "timeUs": 934562,
+          "beforeMs": 58.199999928474426,
+          "afterMs": 14.800000071525574,
+          "beforeTextMs": 57.199999928474426,
+          "afterTextMs": 13.800000071525574
+        },
+        {
+          "timeUs": 1032339,
+          "beforeMs": 58.60000002384186,
+          "afterMs": 15.100000023841858,
+          "beforeTextMs": 57.700000047683716,
+          "afterTextMs": 14.200000047683716
+        },
+        {
+          "timeUs": 1130116,
+          "beforeMs": 59.700000047683716,
+          "afterMs": 14.899999976158142,
+          "beforeTextMs": 58.5,
+          "afterTextMs": 13.899999976158142
+        },
+        {
+          "timeUs": 1227893,
+          "beforeMs": 57.299999952316284,
+          "afterMs": 15.899999976158142,
+          "beforeTextMs": 56.39999997615814,
+          "afterTextMs": 14.100000023841858
+        },
+        {
+          "timeUs": 1325670,
+          "beforeMs": 59.5,
+          "afterMs": 15.200000047683716,
+          "beforeTextMs": 58,
+          "afterTextMs": 14.200000047683716
+        },
+        {
+          "timeUs": 1423447,
+          "beforeMs": 58,
+          "afterMs": 15.600000023841858,
+          "beforeTextMs": 57,
+          "afterTextMs": 14.100000023841858
+        },
+        {
+          "timeUs": 1521224,
+          "beforeMs": 58.90000009536743,
+          "afterMs": 15.099999904632568,
+          "beforeTextMs": 57.800000071525574,
+          "afterTextMs": 14
+        },
+        {
+          "timeUs": 1619001,
+          "beforeMs": 59.5,
+          "afterMs": 15.200000047683716,
+          "beforeTextMs": 58.60000002384186,
+          "afterTextMs": 14.200000047683716
+        },
+        {
+          "timeUs": 1716778,
+          "beforeMs": 58.5,
+          "afterMs": 15.200000047683716,
+          "beforeTextMs": 57.60000002384186,
+          "afterTextMs": 14.300000071525574
+        },
+        {
+          "timeUs": 1814555,
+          "beforeMs": 59.200000047683716,
+          "afterMs": 15.399999976158142,
+          "beforeTextMs": 58.10000002384186,
+          "afterTextMs": 13.799999952316284
+        },
+        {
+          "timeUs": 1912332,
+          "beforeMs": 58,
+          "afterMs": 16.300000071525574,
+          "beforeTextMs": 57.10000002384186,
+          "afterTextMs": 14
+        },
+        {
+          "timeUs": 2010109,
+          "beforeMs": 58.89999997615814,
+          "afterMs": 15.200000047683716,
+          "beforeTextMs": 58,
+          "afterTextMs": 14.200000047683716
+        },
+        {
+          "timeUs": 2107886,
+          "beforeMs": 58.10000002384186,
+          "afterMs": 14.899999976158142,
+          "beforeTextMs": 56.89999997615814,
+          "afterTextMs": 14
+        },
+        {
+          "timeUs": 2205663,
+          "beforeMs": 57.699999928474426,
+          "afterMs": 15,
+          "beforeTextMs": 56.699999928474426,
+          "afterTextMs": 14
+        },
+        {
+          "timeUs": 2303440,
+          "beforeMs": 57.89999997615814,
+          "afterMs": 14.899999976158142,
+          "beforeTextMs": 56.89999997615814,
+          "afterTextMs": 14
+        },
+        {
+          "timeUs": 2401217,
+          "beforeMs": 57.200000047683716,
+          "afterMs": 15.200000047683716,
+          "beforeTextMs": 56.200000047683716,
+          "afterTextMs": 14.200000047683716
+        },
+        {
+          "timeUs": 2498994,
+          "beforeMs": 58.800000071525574,
+          "afterMs": 14.899999976158142,
+          "beforeTextMs": 57.60000002384186,
+          "afterTextMs": 14
+        }
+      ],
+      "comparisons": [
+        {
+          "timeUs": 250123,
+          "mean": 0,
+          "max": 0,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "timeUs": 347900,
+          "mean": 0,
+          "max": 0,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "timeUs": 445677,
+          "mean": 0.000004340277777777778,
+          "max": 1,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "timeUs": 543454,
+          "mean": 0,
+          "max": 0,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "timeUs": 641231,
+          "mean": 0,
+          "max": 0,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "timeUs": 739008,
+          "mean": 0,
+          "max": 0,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "timeUs": 836785,
+          "mean": 0,
+          "max": 0,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "timeUs": 934562,
+          "mean": 0,
+          "max": 0,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "timeUs": 1032339,
+          "mean": 0,
+          "max": 0,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "timeUs": 1130116,
+          "mean": 0,
+          "max": 0,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "timeUs": 1227893,
+          "mean": 0,
+          "max": 0,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "timeUs": 1325670,
+          "mean": 0,
+          "max": 0,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "timeUs": 1423447,
+          "mean": 0,
+          "max": 0,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "timeUs": 1521224,
+          "mean": 0,
+          "max": 0,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "timeUs": 1619001,
+          "mean": 0,
+          "max": 0,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "timeUs": 1716778,
+          "mean": 0,
+          "max": 0,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "timeUs": 1814555,
+          "mean": 0,
+          "max": 0,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "timeUs": 1912332,
+          "mean": 0,
+          "max": 0,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "timeUs": 2010109,
+          "mean": 0,
+          "max": 0,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "timeUs": 2107886,
+          "mean": 0,
+          "max": 0,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "timeUs": 2205663,
+          "mean": 0,
+          "max": 0,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "timeUs": 2303440,
+          "mean": 0,
+          "max": 0,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "timeUs": 2401217,
+          "mean": 0,
+          "max": 0,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "timeUs": 2498994,
+          "mean": 0,
+          "max": 0,
+          "fractionOver2": 0,
+          "passed": true
+        }
+      ],
+      "edits": [
+        {
+          "text": "你好",
+          "mean": 0,
+          "max": 0,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "text": "文字动画",
+          "mean": 0,
+          "max": 0,
+          "fractionOver2": 0,
+          "passed": true
+        }
+      ],
+      "pixelsPassed": true
+    }
+  ],
+  "passed": true
+}

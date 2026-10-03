@@ -1,0 +1,20 @@
+
+    uniform shader inputTexture;
+    uniform float2 inputSize;
+    uniform float2 outputSize;
+    uniform float enableColorKey;
+    uniform float colorTolerance;
+    uniform float4 keyColor;
+
+    float4 main(float2 xy) {
+      float2 sourcePoint = xy * inputSize / outputSize;
+      float4 color = float4(inputTexture.eval(sourcePoint));
+      if (enableColorKey >= 0.5 &&
+          length(abs(color.rgb - keyColor.rgb)) < colorTolerance) {
+        color.a = 0.0;
+      }
+      if (enableColorKey >= 0.5)
+        color.rgb *= max(color.a, 0.001);
+      return color;
+    }
+  

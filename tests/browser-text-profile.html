@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VideoCut Full HD Text Profiling</title>
+  <style>
+    body {
+      margin: 24px;
+      font: 14px system-ui;
+      color: #dce7f3;
+      background: #11151d;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    p {
+      line-height: 1.6;
+      max-width: 1080px;
+    }
+    button {
+      font: inherit;
+      padding: 10px 18px;
+      margin: 0 10px 16px 0;
+    }
+    .frame {
+      margin: 20px 0;
+    }
+    canvas {
+      display: block;
+      width: 960px;
+      max-width: 94vw;
+      height: auto;
+      border: 1px solid #546070;
+      background-color: #171c27;
+      background-image: conic-gradient(
+        #ffffff0b 25%,
+        transparent 0 50%,
+        #ffffff0b 0 75%,
+        transparent 0
+      );
+      background-size: 24px 24px;
+    }
+    pre {
+      white-space: pre-wrap;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+  </style>
+  <h1>1920 × 1080 花字 · WASM 分段耗时</h1>
+  <p>
+    四字真实配方、当前本机系统字体、完整 Full HD 输出。单独测量同步 WASM render、结果读取、RGBA
+    行复制与 Canvas clearRect / putImageData；像素回读与 SHA-256
+    在计时段外。记录每个暖帧、完整几何与 RGBA digest。此页仅测文字 CPU 路径，不代表最终编辑器帧率。
+  </p>
+  <button id="run">运行 Full HD 文字测量</button
+  ><button id="stop">取消</button>
+  <div id="frames"></div>
+  <pre id="status" aria-live="polite">尚未运行</pre>
+  <script type="module" src="./browser-text-profile.ts"></script>
+</html>

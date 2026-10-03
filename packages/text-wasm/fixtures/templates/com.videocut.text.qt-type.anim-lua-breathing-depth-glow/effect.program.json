@@ -1,0 +1,417 @@
+{
+  "format": "videocut.text-effect-program",
+  "programs": [
+    {
+      "program_id": "com.videocut.text.qt-type.anim-lua-breathing-depth-glow.program.controller",
+      "random_seed": 50,
+      "stages": [
+        {
+          "stage_id": "qt-breathing-phase-color",
+          "kind": "per_unit",
+          "register_count": 25,
+          "instructions": [
+            {
+              "opcode": "input",
+              "output_register": 0,
+              "input_registers": [],
+              "immediates": [],
+              "input": "progress"
+            },
+            {
+              "opcode": "input",
+              "output_register": 1,
+              "input_registers": [],
+              "immediates": [],
+              "input": "unit_index"
+            },
+            {
+              "opcode": "input",
+              "output_register": 2,
+              "input_registers": [],
+              "immediates": [],
+              "input": "unit_count"
+            },
+            {
+              "opcode": "constant",
+              "output_register": 3,
+              "input_registers": [],
+              "immediates": [
+                6.283185307179586
+              ],
+              "input": null
+            },
+            {
+              "opcode": "multiply",
+              "output_register": 4,
+              "input_registers": [
+                0,
+                3
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "multiply",
+              "output_register": 5,
+              "input_registers": [
+                1,
+                3
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "divide",
+              "output_register": 6,
+              "input_registers": [
+                5,
+                2
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "add",
+              "output_register": 7,
+              "input_registers": [
+                4,
+                6
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "sine",
+              "output_register": 8,
+              "input_registers": [
+                7
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 9,
+              "input_registers": [],
+              "immediates": [
+                0.5
+              ],
+              "input": null
+            },
+            {
+              "opcode": "multiply",
+              "output_register": 10,
+              "input_registers": [
+                8,
+                9
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "add",
+              "output_register": 11,
+              "input_registers": [
+                10,
+                9
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 12,
+              "input_registers": [],
+              "immediates": [
+                0.7
+              ],
+              "input": null
+            },
+            {
+              "opcode": "multiply",
+              "output_register": 13,
+              "input_registers": [
+                11,
+                12
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 14,
+              "input_registers": [],
+              "immediates": [
+                0.3
+              ],
+              "input": null
+            },
+            {
+              "opcode": "add",
+              "output_register": 15,
+              "input_registers": [
+                14,
+                13
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "multiply",
+              "output_register": 16,
+              "input_registers": [
+                11,
+                14
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "add",
+              "output_register": 17,
+              "input_registers": [
+                12,
+                16
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "multiply",
+              "output_register": 18,
+              "input_registers": [
+                15,
+                17
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 19,
+              "input_registers": [],
+              "immediates": [
+                0.6
+              ],
+              "input": null
+            },
+            {
+              "opcode": "multiply",
+              "output_register": 20,
+              "input_registers": [
+                11,
+                19
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 21,
+              "input_registers": [],
+              "immediates": [
+                0.4
+              ],
+              "input": null
+            },
+            {
+              "opcode": "add",
+              "output_register": 22,
+              "input_registers": [
+                21,
+                20
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "multiply",
+              "output_register": 23,
+              "input_registers": [
+                15,
+                22
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 24,
+              "input_registers": [],
+              "immediates": [
+                1
+              ],
+              "input": null
+            }
+          ],
+          "outputs": [
+            {
+              "output": "opacity",
+              "register_index": 24,
+              "transform_index": 0
+            },
+            {
+              "output": "instance_color_red",
+              "register_index": 15,
+              "transform_index": 0
+            },
+            {
+              "output": "instance_color_green",
+              "register_index": 18,
+              "transform_index": 0
+            },
+            {
+              "output": "instance_color_blue",
+              "register_index": 23,
+              "transform_index": 0
+            },
+            {
+              "output": "instance_color_alpha",
+              "register_index": 24,
+              "transform_index": 0
+            }
+          ],
+          "execution_parameter_bindings": [
+            {
+              "node_id": "depth-weight",
+              "parameter": "material_scalar",
+              "domain": "per_unit",
+              "value_space": "unitless",
+              "slot": 0,
+              "register_indices": [
+                11
+              ]
+            }
+          ]
+        },
+        {
+          "stage_id": "qt-breathing-depth-glow-material",
+          "kind": "per_unit",
+          "register_count": 6,
+          "instructions": [
+            {
+              "opcode": "constant",
+              "output_register": 0,
+              "input_registers": [],
+              "immediates": [
+                0.5
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 1,
+              "input_registers": [],
+              "immediates": [
+                2.2
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 2,
+              "input_registers": [],
+              "immediates": [
+                2
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 3,
+              "input_registers": [],
+              "immediates": [
+                1
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 4,
+              "input_registers": [],
+              "immediates": [
+                0.9
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 5,
+              "input_registers": [],
+              "immediates": [
+                0.35
+              ],
+              "input": null
+            }
+          ],
+          "outputs": [],
+          "execution_parameter_bindings": [
+            {
+              "node_id": "material-program-1",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 0,
+              "register_indices": [
+                0
+              ]
+            },
+            {
+              "node_id": "material-program-1",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 1,
+              "register_indices": [
+                1
+              ]
+            },
+            {
+              "node_id": "material-program-1",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 5,
+              "register_indices": [
+                2
+              ]
+            },
+            {
+              "node_id": "material-program-1",
+              "parameter": "material_vector4",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 6,
+              "register_indices": [
+                3,
+                4,
+                5,
+                3
+              ]
+            },
+            {
+              "node_id": "material-program-1",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 7,
+              "register_indices": [
+                3
+              ]
+            },
+            {
+              "node_id": "material-program-1",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 8,
+              "register_indices": [
+                3
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

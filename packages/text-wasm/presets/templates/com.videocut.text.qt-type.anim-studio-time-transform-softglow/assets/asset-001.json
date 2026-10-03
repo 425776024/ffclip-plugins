@@ -1,0 +1,93 @@
+{
+  "v": "5.12.2",
+  "fr": 24,
+  "ip": 0,
+  "op": 73,
+  "w": 640,
+  "h": 640,
+  "nm": "Text follower",
+  "ddd": 0,
+  "meta": {
+    "videocut_packed_alpha": {
+      "runtime": "packed-alpha-associated-direct-frame-lottie",
+      "byte_length": 164242,
+      "media_type": "video/mp4;profile=videocut-packed-alpha",
+      "packing": "alpha-left-color-right",
+      "packed_width": 1280,
+      "render_size": 640,
+      "fps": 24,
+      "frame_count": 73,
+      "duration_us": 3041667
+    },
+    "videocut_resource_closure": {
+      "format": "videocut.vector-resource-closure",
+      "resources": [
+        {
+          "logical_name": "asset://assets/asset-000.mp4",
+          "asset_id": "asset://assets/asset-000.mp4",
+          "media_type": "video/mp4;profile=videocut-packed-alpha",
+          "byte_length": 164242
+        }
+      ]
+    }
+  },
+  "assets": [
+    {
+      "id": "image_0",
+      "w": 640,
+      "h": 640,
+      "u": "",
+      "p": "asset://assets/asset-000.mp4",
+      "e": 0
+    }
+  ],
+  "layers": [
+    {
+      "ddd": 0,
+      "ind": 1,
+      "ty": 2,
+      "nm": "Packed-alpha MP4",
+      "refId": "image_0",
+      "sr": 1,
+      "ks": {
+        "o": {
+          "a": 0,
+          "k": 100
+        },
+        "r": {
+          "a": 0,
+          "k": 0
+        },
+        "p": {
+          "a": 0,
+          "k": [
+            320,
+            320,
+            0
+          ]
+        },
+        "a": {
+          "a": 0,
+          "k": [
+            320,
+            320,
+            0
+          ]
+        },
+        "s": {
+          "a": 0,
+          "k": [
+            100,
+            100,
+            100
+          ]
+        }
+      },
+      "ao": 0,
+      "ip": 0,
+      "op": 73,
+      "st": 0,
+      "bm": 0
+    }
+  ]
+}

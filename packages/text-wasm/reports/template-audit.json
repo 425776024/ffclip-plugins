@@ -1,0 +1,1222 @@
+{
+  "profile": "wasm-raster-v1",
+  "renderBudgetMs": 3000,
+  "note": "One 640x360 midpoint sample, explicit raster fallback. Coverage only; no native fidelity, animation completeness or browser FPS acceptance. Timeouts are not proof of unsupported templates.",
+  "counts": {
+    "error": 39,
+    "timeout": 15,
+    "rendered": 68
+  },
+  "tested": 122,
+  "total": 122,
+  "records": [
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-ae-motion-blur-forward",
+      "kind": "text_animation",
+      "status": "error",
+      "error": "text_effect.program_evaluation_failed: text effect page parameter depends on a unit value; text.animation.sample_failed: text effect page parameter depends on a unit value"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-ae-position-opacity",
+      "kind": "text_animation",
+      "status": "error",
+      "error": "text_effect.program_evaluation_failed: text effect reverse-shuffle inputs are invalid; text.animation.sample_failed: text effect reverse-shuffle inputs are invalid"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-breathing-depth-glow",
+      "kind": "text_animation",
+      "status": "error",
+      "error": "text.execution_graph.page_gpu_missing: text execution graph Page requires a GPU context"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-caption-burn-particles",
+      "kind": "text_animation",
+      "status": "error",
+      "error": "text.animation.resource_failed: text execution graph resource has no admitted sample: text-template.builtin.text.qt-type.anim-lua-caption-burn-particles.sha256:05ffa0f9edab0f1feba54720c5dfb5b50fd95fd255fe652b524f3e2f685ce0a0.animation.assets/image/001.png"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-clone-blur-xy",
+      "kind": "text_animation",
+      "status": "timeout",
+      "error": "Render exceeded 3000 ms CPU budget"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-cube",
+      "kind": "text_animation",
+      "status": "rendered",
+      "renderMs": 266.9182499999997,
+      "visiblePixels": 17246,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-cylinder-projection",
+      "kind": "text_animation",
+      "status": "timeout",
+      "error": "Render exceeded 3000 ms CPU budget"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-face-noise-shadow",
+      "kind": "text_animation",
+      "status": "timeout",
+      "error": "Render exceeded 3000 ms CPU budget"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-flux-turbulent-blend",
+      "kind": "text_animation",
+      "status": "timeout",
+      "error": "Render exceeded 3000 ms CPU budget"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-glow-cut-wipe",
+      "kind": "text_animation",
+      "status": "error",
+      "error": "text.animation.resource_failed: text execution graph resource has no admitted sample: text-template.builtin.text.qt-type.anim-lua-glow-cut-wipe.sha256:ea1ccddc97e131d3f652e110170b769639fd1a9678632898393147bad1bbaf15.animation.assets/image/noise1.png"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-history-clone-feedback",
+      "kind": "text_animation",
+      "status": "error",
+      "error": "text.execution_graph.page_gpu_missing: text execution graph Page requires a GPU context"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-hollow-subtitle",
+      "kind": "text_animation",
+      "status": "timeout",
+      "error": "Render exceeded 3000 ms CPU budget"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-letter-flyout-spin",
+      "kind": "text_animation",
+      "status": "error",
+      "error": "text.execution_graph.page_gpu_missing: text execution graph Page requires a GPU context"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-letter-transform",
+      "kind": "text_animation",
+      "status": "rendered",
+      "renderMs": 41.014624999999796,
+      "visiblePixels": 12124,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-light-sweep-glow",
+      "kind": "text_animation",
+      "status": "timeout",
+      "error": "Render exceeded 3000 ms CPU budget"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-line-spiral-material",
+      "kind": "text_animation",
+      "status": "error",
+      "error": "text.execution_graph.page_gpu_missing: text execution graph Page requires a GPU context"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-lyric-timing",
+      "kind": "text_animation",
+      "status": "rendered",
+      "renderMs": 44.731292000000394,
+      "visiblePixels": 16357,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-mask-motion-glow",
+      "kind": "text_animation",
+      "status": "timeout",
+      "error": "Render exceeded 3000 ms CPU budget"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-opacity",
+      "kind": "text_animation",
+      "status": "rendered",
+      "renderMs": 38.18220800000199,
+      "visiblePixels": 13855,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-paged-segment-pipeline",
+      "kind": "text_animation",
+      "status": "timeout",
+      "error": "Render exceeded 3000 ms CPU budget"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-path-travel",
+      "kind": "text_animation",
+      "status": "error",
+      "error": "text.execution_graph.page_gpu_missing: text execution graph Page requires a GPU context"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-printer-multistage",
+      "kind": "text_animation",
+      "status": "rendered",
+      "renderMs": 42.08033400000204,
+      "visiblePixels": 12925,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-radial-3d-geometry",
+      "kind": "text_animation",
+      "status": "timeout",
+      "error": "Render exceeded 3000 ms CPU budget"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-rt-directional-bloom",
+      "kind": "text_animation",
+      "status": "error",
+      "error": "text.execution_graph.page_gpu_missing: text execution graph Page requires a GPU context"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-rt-line-column-shader",
+      "kind": "text_animation",
+      "status": "error",
+      "error": "text.animation.resource_failed: text execution graph resource has no admitted sample: text-template.builtin.text.qt-type.anim-lua-rt-line-column-shader.sha256:8e46ed368f6f67bde4809f09f6cbce0e01f9347ebdbef497ae47cd6e0468c96f.animation.assets/image/alpha.png"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-rt-progress-shader",
+      "kind": "text_animation",
+      "status": "timeout",
+      "error": "Render exceeded 3000 ms CPU budget"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-rt-scale-blur-reveal",
+      "kind": "text_animation",
+      "status": "timeout",
+      "error": "Render exceeded 3000 ms CPU budget"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-shader-char-transform",
+      "kind": "text_animation",
+      "status": "timeout",
+      "error": "Render exceeded 3000 ms CPU budget"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-shaped-ramp-glow",
+      "kind": "text_animation",
+      "status": "timeout",
+      "error": "Render exceeded 3000 ms CPU budget"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-six-pass-motion-blur",
+      "kind": "text_animation",
+      "status": "timeout",
+      "error": "Render exceeded 3000 ms CPU budget"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-t622-keyframe-rt",
+      "kind": "text_animation",
+      "status": "error",
+      "error": "text.execution_graph.page_gpu_missing: text execution graph Page requires a GPU context"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-t744-pivot-blur",
+      "kind": "text_animation",
+      "status": "error",
+      "error": "text.execution_graph.page_gpu_missing: text execution graph Page requires a GPU context"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-three-mesh-rt",
+      "kind": "text_animation",
+      "status": "error",
+      "error": "text.animation.resource_failed: text execution graph resource has no admitted sample: text-template.builtin.text.qt-type.anim-lua-three-mesh-rt.sha256:86c044084c60e962c04be298b71d935f3f6403066d2ef07b0e76fa73b19e02b6.animation.assets/imgs/color2.png"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-turbulence-deepglow",
+      "kind": "text_animation",
+      "status": "error",
+      "error": "text.execution_graph.failed: text material turbulence requires an active GPU context"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-vat-rbd-mesh",
+      "kind": "text_animation",
+      "status": "error",
+      "error": "text.animation.resource_failed: text execution graph resource has no admitted sample: text-template.builtin.text.qt-type.anim-lua-vat-rbd-mesh.sha256:54797182535b0d87ac28303392758f0d2ef28210764d35bfbc87781080ada3d9.animation.vat.mesh"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-wave-material",
+      "kind": "text_animation",
+      "status": "timeout",
+      "error": "Render exceeded 3000 ms CPU budget"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-studio-alpha-plugin-soft-wipe",
+      "kind": "text_animation",
+      "status": "error",
+      "error": "Native post-effects are not supported by wasm-raster-v1"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-studio-alpha-plugin-wipe",
+      "kind": "text_animation",
+      "status": "error",
+      "error": "Native post-effects are not supported by wasm-raster-v1"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-studio-bezier-fly-dirblur",
+      "kind": "text_animation",
+      "status": "error",
+      "error": "Native post-effects are not supported by wasm-raster-v1"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-studio-center-collapse-chroma",
+      "kind": "text_animation",
+      "status": "error",
+      "error": "Native post-effects are not supported by wasm-raster-v1"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-studio-center-expand-chroma",
+      "kind": "text_animation",
+      "status": "error",
+      "error": "Native post-effects are not supported by wasm-raster-v1"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-studio-color-scale-rotate-in",
+      "kind": "text_animation",
+      "status": "error",
+      "error": "Native post-effects are not supported by wasm-raster-v1"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-studio-deform-fade-dust",
+      "kind": "text_animation",
+      "status": "error",
+      "error": "Native post-effects are not supported by wasm-raster-v1"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-studio-dual-selector-radial",
+      "kind": "text_animation",
+      "status": "error",
+      "error": "builtin text animation entry is invalid: animation.layers[0].decorations[0] contains unsupported field digest"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-studio-elastic-stagger-radial",
+      "kind": "text_animation",
+      "status": "error",
+      "error": "Native post-effects are not supported by wasm-raster-v1"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-studio-fall-trail-wave-glow",
+      "kind": "text_animation",
+      "status": "error",
+      "error": "Native post-effects are not supported by wasm-raster-v1"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-studio-godray-wipe",
+      "kind": "text_animation",
+      "status": "error",
+      "error": "Native post-effects are not supported by wasm-raster-v1"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-studio-jitter-choker-glow",
+      "kind": "text_animation",
+      "status": "error",
+      "error": "Native post-effects are not supported by wasm-raster-v1"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-studio-lumi-lens-plugin",
+      "kind": "text_animation",
+      "status": "error",
+      "error": "Native post-effects are not supported by wasm-raster-v1"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-studio-lumi-optics",
+      "kind": "text_animation",
+      "status": "error",
+      "error": "Native post-effects are not supported by wasm-raster-v1"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-studio-plugin-ea51",
+      "kind": "text_animation",
+      "status": "error",
+      "error": "Native post-effects are not supported by wasm-raster-v1"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-studio-plugin-f5c3-wipe",
+      "kind": "text_animation",
+      "status": "error",
+      "error": "Native post-effects are not supported by wasm-raster-v1"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-studio-projection-triple-plugin",
+      "kind": "text_animation",
+      "status": "error",
+      "error": "Native post-effects are not supported by wasm-raster-v1"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-studio-scale-deepglow",
+      "kind": "text_animation",
+      "status": "error",
+      "error": "builtin text animation entry is invalid: animation.layers[0].decorations[0] contains unsupported field digest"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-studio-sequential-signal-pulse",
+      "kind": "text_animation",
+      "status": "error",
+      "error": "Native post-effects are not supported by wasm-raster-v1"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-studio-shake-glow",
+      "kind": "text_animation",
+      "status": "error",
+      "error": "builtin text animation entry is invalid: animation.layers[0].decorations[0] contains unsupported field digest"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-studio-spiral-radial",
+      "kind": "text_animation",
+      "status": "error",
+      "error": "Native post-effects are not supported by wasm-raster-v1"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-studio-squeeze-collapse",
+      "kind": "text_animation",
+      "status": "error",
+      "error": "Native post-effects are not supported by wasm-raster-v1"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-studio-time-transform-softglow",
+      "kind": "text_animation",
+      "status": "error",
+      "error": "builtin text animation entry is invalid: animation.layers[0].decorations[0] contains unsupported field digest"
+    },
+    {
+      "id": "com.videocut.text.qt-type.bubble-fixed",
+      "kind": "text_bubble",
+      "status": "rendered",
+      "renderMs": 43.253499999998894,
+      "visiblePixels": 5099,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.bubble-nine-slice",
+      "kind": "text_bubble",
+      "status": "rendered",
+      "renderMs": 47.941624999999476,
+      "visiblePixels": 9589,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.bubble-tile",
+      "kind": "text_bubble",
+      "status": "rendered",
+      "renderMs": 47.90279200000077,
+      "visiblePixels": 9589,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-root-6926825801258208519",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 60.086708000002545,
+      "visiblePixels": 18912,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-root-6927160144425962767",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 86.25166699999681,
+      "visiblePixels": 34366,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-root-7166445713029729568",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 82.16566700000112,
+      "visiblePixels": 110684,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-root-7260286417681599784",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 43.63445900000079,
+      "visiblePixels": 46596,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-root-7430809868333780259",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 142.5644170000014,
+      "visiblePixels": 98968,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-root-7619228487098076441",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 76.47325000000274,
+      "visiblePixels": 160264,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-root-7630081720674700568",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 147.59179199999926,
+      "visiblePixels": 119926,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-scene-01",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 89.59850000000006,
+      "visiblePixels": 62387,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-scene-02",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 55.23150000000169,
+      "visiblePixels": 33706,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-scene-03",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 64.05187500000466,
+      "visiblePixels": 18912,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-scene-04",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 75.44833400000061,
+      "visiblePixels": 24123,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-scene-05",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 105.66162500000064,
+      "visiblePixels": 188544,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-scene-06",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 54.48833400000149,
+      "visiblePixels": 52168,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-scene-07",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 225.54525000000285,
+      "visiblePixels": 124559,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-scene-08",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 87.44458300000406,
+      "visiblePixels": 132213,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-scene-09",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 208.31324999999924,
+      "visiblePixels": 206206,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-scene-10",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 133.31204100000468,
+      "visiblePixels": 118818,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-scene-11",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 518.5920830000032,
+      "visiblePixels": 145851,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-scene-12",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 294.46662500000093,
+      "visiblePixels": 178544,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-scene-13",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 338.5759589999943,
+      "visiblePixels": 104652,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-scene-14",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 144.9247919999907,
+      "visiblePixels": 154681,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-01",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 49.64999999999418,
+      "visiblePixels": 45372,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-02",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 63.54041699999652,
+      "visiblePixels": 108711,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-03",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 92.34900000000198,
+      "visiblePixels": 82922,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-04",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 145.76987499999814,
+      "visiblePixels": 112711,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-05",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 114.48458299999766,
+      "visiblePixels": 140683,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-06",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 41.347750000000815,
+      "visiblePixels": 34703,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-07",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 40.37491700000828,
+      "visiblePixels": 43379,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-08",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 61.68087499999092,
+      "visiblePixels": 187322,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-09",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 36.75770800000464,
+      "visiblePixels": 53028,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-10",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 90.83095800000592,
+      "visiblePixels": 107148,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-11",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 85.92262499999197,
+      "visiblePixels": 92392,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-12",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 89.93204200000037,
+      "visiblePixels": 143493,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-13",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 78.11358399999153,
+      "visiblePixels": 141934,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-14",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 156.76808399999572,
+      "visiblePixels": 62854,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-15",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 106.9623750000028,
+      "visiblePixels": 86049,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-16",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 43.86599999999453,
+      "visiblePixels": 38580,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-17",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 62.2647910000087,
+      "visiblePixels": 103979,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-18",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 72.98775000000023,
+      "visiblePixels": 44104,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-19",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 49.412415999991936,
+      "visiblePixels": 66619,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-20",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 150.04516700000386,
+      "visiblePixels": 86207,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-21",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 86.46008399999118,
+      "visiblePixels": 57431,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-22",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 58.49704200000269,
+      "visiblePixels": 97913,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-23",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 130.56225000000268,
+      "visiblePixels": 76080,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-24",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 98.06841700000223,
+      "visiblePixels": 41461,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-25",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 88.36462500000198,
+      "visiblePixels": 26300,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-26",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 333.78620799999044,
+      "visiblePixels": 198148,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-27",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 72.92979200000991,
+      "visiblePixels": 38682,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-28",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 108.22183300000324,
+      "visiblePixels": 72948,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-29",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 372.43949999999313,
+      "visiblePixels": 219865,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-30",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 86.31729199999245,
+      "visiblePixels": 41557,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-31",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 185.98733399999037,
+      "visiblePixels": 153288,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-32",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 77.76412500000151,
+      "visiblePixels": 43055,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-33",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 134.437208000003,
+      "visiblePixels": 42587,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-34",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 142.48445800000627,
+      "visiblePixels": 141089,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-35",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 106.1368339999899,
+      "visiblePixels": 88196,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-36",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 221.32116599999426,
+      "visiblePixels": 80033,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-37",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 46.07966600000509,
+      "visiblePixels": 115624,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-38",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 155.41199999999662,
+      "visiblePixels": 56259,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-39",
+      "kind": "text_flower",
+      "status": "rendered",
+      "renderMs": 162.59891700001026,
+      "visiblePixels": 67575,
+      "warnings": [
+        {
+          "code": "portable-raster",
+          "message": "Uses the SDK's portable Skia glyph path; native Metal SDF pixels are not reproduced."
+        }
+      ]
+    }
+  ]
+}

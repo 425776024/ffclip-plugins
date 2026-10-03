@@ -1,0 +1,11 @@
+import type { TtsRequest, TtsProgress } from './types';
+export const SAMPLE_RATE: 24000;
+export const MAX_AUDIO_SAMPLES: number;
+export const MODEL_BASE_PATH: string;
+export const MODEL_FILES: Readonly<Record<'fp32', string>>;
+export function validateRequest(request: TtsRequest, origin: string): TtsRequest;
+export function splitText(text: string, limit?: number): string[];
+export function tokenChunks(phonemes: string, tokenizer: unknown, limit?: number): number[][];
+export function styleVector(bytes: ArrayBuffer, tokenCount: number): Float32Array;
+export function encodeWav(chunks: Float32Array[], limit?: number): { wav: ArrayBuffer; sampleRate: 24000; durationSeconds: number };
+export function chooseBackend<T>(requested: TtsRequest['backend'], available: boolean, run: (backend: 'wasm' | 'webgpu') => Promise<T>, progress?: (value: TtsProgress) => void): Promise<T & { backend: 'wasm' | 'webgpu' }>;

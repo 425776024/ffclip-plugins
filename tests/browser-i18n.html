@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>VideoCut i18n verification</title>
+  </head>
+  <body>
+    <div
+      id="i18n-controls"
+      style="
+        position: fixed;
+        right: 8px;
+        bottom: 8px;
+        z-index: 2000;
+        background: #111;
+        padding: 8px;
+        color: white;
+      "
+    >
+      <button id="run-i18n">Run Chinese / English checks</button>
+      <button id="chinese">Simulate Chinese system language</button>
+      <button id="english">Simulate English system language</button>
+      <details>
+        <summary>Verification result</summary>
+        <pre id="i18n-status" style="max-height: 220px; overflow: auto; max-width: 700px">
+Ready</pre>
+      </details>
+    </div>
+    <div id="app"></div>
+    <script type="module" src="./browser-i18n.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,431 @@
+{
+  "format": "videocut.text-animation",
+  "animation": {
+    "layers": [
+      {
+        "id": "reference-animation-25",
+        "time_driver": {
+          "kind": "exit_phase",
+          "duration_us": 3000000,
+          "playback": "once"
+        },
+        "animators": [
+          {
+            "id": "selector-1",
+            "anchor": "glyph_center",
+            "position_mode": "text_bounds_offset",
+            "presentation": "transform",
+            "selectors": [
+              {
+                "kind": "range",
+                "based_on": "grapheme",
+                "range_start": 0,
+                "range_end": 1,
+                "offset": 0.0,
+                "edge_smooth": 0,
+                "constrained": true,
+                "shape": "square",
+                "order": "forward",
+                "random_seed": 50.0,
+                "intensity": 1,
+                "intensity_start": 0,
+                "intensity_end": 1
+              }
+            ],
+            "tracks": [],
+            "effect_program_id": "com.videocut.text.qt-type.anim-studio-center-collapse-chroma.program.01"
+          }
+        ],
+        "render_group": {
+          "mode": "page",
+          "expand_ratio_x": 2.0,
+          "expand_ratio_y": 2.0
+        },
+        "post_effects": [
+          {
+            "id": "effect-1",
+            "node_kind": "distort_chroma",
+            "amount": 0.0,
+            "parameters": [
+              {
+                "name": "amount",
+                "values": [
+                  0.0
+                ]
+              },
+              {
+                "name": "amountRelX",
+                "values": [
+                  1.0
+                ]
+              },
+              {
+                "name": "amountRelY",
+                "values": [
+                  1.0
+                ]
+              },
+              {
+                "name": "blurMap",
+                "values": [
+                  96.0
+                ]
+              },
+              {
+                "name": "color1",
+                "values": [
+                  1.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              },
+              {
+                "name": "color2",
+                "values": [
+                  0.0,
+                  1.0,
+                  0.0,
+                  1.0
+                ]
+              },
+              {
+                "name": "color3",
+                "values": [
+                  0.0,
+                  0.0,
+                  1.0,
+                  1.0
+                ]
+              },
+              {
+                "name": "mix",
+                "values": [
+                  0.0
+                ]
+              },
+              {
+                "name": "quality",
+                "values": [
+                  0.25
+                ]
+              },
+              {
+                "name": "rotateWarpDir",
+                "values": [
+                  0.0
+                ]
+              },
+              {
+                "name": "steps",
+                "values": [
+                  8.0
+                ]
+              },
+              {
+                "name": "stride",
+                "values": [
+                  0.3
+                ]
+              },
+              {
+                "name": "warpBlue",
+                "values": [
+                  1.0
+                ],
+                "keyframes": [
+                  {
+                    "offset": 0.0,
+                    "value": 0.0,
+                    "tangent_in": 0.0,
+                    "tangent_out": -29.999999999999993,
+                    "bezier": true,
+                    "bezier_time_in": 0.0,
+                    "bezier_time_out": 0.055
+                  },
+                  {
+                    "offset": 0.16666666666666666,
+                    "value": -5.0,
+                    "tangent_in": -30.0,
+                    "tangent_out": 10.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.05666666666666667,
+                    "bezier_time_out": 0.165
+                  },
+                  {
+                    "offset": 0.6666666666666666,
+                    "value": 0.0,
+                    "tangent_in": 10.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.17,
+                    "bezier_time_out": 0.11
+                  },
+                  {
+                    "offset": 1.0,
+                    "value": 0.0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.11333333333333334,
+                    "bezier_time_out": 0.0
+                  }
+                ]
+              },
+              {
+                "name": "warpRed",
+                "values": [
+                  0.5
+                ],
+                "keyframes": [
+                  {
+                    "offset": 0.0,
+                    "value": 0.0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 29.999999999999993,
+                    "bezier": true,
+                    "bezier_time_in": 0.0,
+                    "bezier_time_out": 0.055
+                  },
+                  {
+                    "offset": 0.16666666666666666,
+                    "value": 5.0,
+                    "tangent_in": 30.0,
+                    "tangent_out": -10.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.05666666666666667,
+                    "bezier_time_out": 0.165
+                  },
+                  {
+                    "offset": 0.6666666666666666,
+                    "value": 0.0,
+                    "tangent_in": -10.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.17,
+                    "bezier_time_out": 0.11
+                  },
+                  {
+                    "offset": 1.0,
+                    "value": 0.0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.11333333333333334,
+                    "bezier_time_out": 0.0
+                  }
+                ]
+              },
+              {
+                "name": "wrapModeX",
+                "values": [
+                  2.0
+                ]
+              },
+              {
+                "name": "wrapModeY",
+                "values": [
+                  2.0
+                ]
+              }
+            ],
+            "padding_px": 192
+          },
+          {
+            "id": "effect-2",
+            "node_kind": "radial_blur",
+            "amount": 0.0,
+            "parameters": [
+              {
+                "name": "amount",
+                "values": [
+                  60.0
+                ],
+                "keyframes": [
+                  {
+                    "offset": 0.0,
+                    "value": 0.0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 29.999999999999993,
+                    "bezier": true,
+                    "bezier_time_in": 0.0,
+                    "bezier_time_out": 0.055
+                  },
+                  {
+                    "offset": 0.16666666666666666,
+                    "value": 5.0,
+                    "tangent_in": 30.0,
+                    "tangent_out": -29.999999999999993,
+                    "bezier": true,
+                    "bezier_time_in": -0.05666666666666667,
+                    "bezier_time_out": 0.055
+                  },
+                  {
+                    "offset": 0.3333333333333333,
+                    "value": 0.0,
+                    "tangent_in": -29.999999999999993,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.05666666666666667,
+                    "bezier_time_out": 0.22
+                  },
+                  {
+                    "offset": 1.0,
+                    "value": 0.0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.22666666666666668,
+                    "bezier_time_out": 0.0
+                  }
+                ]
+              },
+              {
+                "name": "blurAlpha",
+                "values": [
+                  1.0
+                ]
+              },
+              {
+                "name": "blurType",
+                "values": [
+                  2.0
+                ]
+              },
+              {
+                "name": "borderType",
+                "values": [
+                  0.0
+                ]
+              },
+              {
+                "name": "center_x",
+                "values": [
+                  0.5
+                ]
+              },
+              {
+                "name": "center_y",
+                "values": [
+                  0.5
+                ]
+              },
+              {
+                "name": "dither",
+                "values": [
+                  1.0
+                ]
+              },
+              {
+                "name": "inverseGammaCorrection",
+                "values": [
+                  0.0
+                ]
+              },
+              {
+                "name": "lightIntensity",
+                "values": [
+                  1.0
+                ]
+              },
+              {
+                "name": "lightTransferMode",
+                "values": [
+                  0.0
+                ]
+              },
+              {
+                "name": "quality",
+                "values": [
+                  0.2
+                ]
+              },
+              {
+                "name": "weightDecay",
+                "values": [
+                  0.965
+                ]
+              }
+            ],
+            "padding_px": 192
+          }
+        ]
+      }
+    ],
+    "execution_graph": {
+      "nodes": [
+        {
+          "id": "layout",
+          "node_kind": "layout",
+          "capability": "layout_glyph_run"
+        },
+        {
+          "id": "selector-0",
+          "node_kind": "selector",
+          "capability": "selector_base",
+          "input_ids": [
+            "layout"
+          ]
+        },
+        {
+          "id": "operator-0",
+          "node_kind": "operator",
+          "capability": "operator_program",
+          "input_ids": [
+            "selector-0"
+          ]
+        },
+        {
+          "id": "scene-prefab",
+          "node_kind": "scene",
+          "capability": "scene_prefab",
+          "input_ids": [
+            "operator-0"
+          ]
+        },
+        {
+          "id": "scene-mesh",
+          "node_kind": "scene",
+          "capability": "scene_mesh",
+          "input_ids": [
+            "scene-prefab"
+          ]
+        },
+        {
+          "id": "material-pass",
+          "node_kind": "material_pass",
+          "capability": "material_color_pass",
+          "input_ids": [
+            "scene-mesh"
+          ]
+        },
+        {
+          "id": "render-target",
+          "node_kind": "render_target",
+          "capability": "render_target_expanded",
+          "input_ids": [
+            "material-pass"
+          ]
+        },
+        {
+          "id": "effect-1",
+          "node_kind": "post_effect_pass",
+          "capability": "none",
+          "input_ids": [
+            "render-target"
+          ],
+          "post_effect_kind": "distort_chroma"
+        },
+        {
+          "id": "effect-2",
+          "node_kind": "post_effect_pass",
+          "capability": "none",
+          "input_ids": [
+            "effect-1"
+          ],
+          "post_effect_kind": "radial_blur"
+        }
+      ]
+    }
+  }
+}

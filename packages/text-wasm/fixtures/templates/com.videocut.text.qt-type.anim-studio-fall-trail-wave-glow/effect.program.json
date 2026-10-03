@@ -1,0 +1,716 @@
+{
+  "format": "videocut.text-effect-program",
+  "programs": [
+    {
+      "program_id": "com.videocut.text.qt-type.anim-studio-fall-trail-wave-glow.program.01",
+      "random_seed": 50,
+      "stages": [
+        {
+          "stage_id": "ast-program",
+          "kind": "per_unit",
+          "register_count": 64,
+          "instructions": [
+            {
+              "opcode": "constant",
+              "output_register": 0,
+              "input_registers": [],
+              "immediates": [
+                0.0
+              ],
+              "input": null
+            },
+            {
+              "opcode": "input",
+              "output_register": 1,
+              "input_registers": [],
+              "immediates": [],
+              "input": "progress"
+            },
+            {
+              "opcode": "constant",
+              "output_register": 2,
+              "input_registers": [],
+              "immediates": [
+                1.0
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 3,
+              "input_registers": [],
+              "immediates": [
+                2.0
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 4,
+              "input_registers": [],
+              "immediates": [
+                1.2
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 5,
+              "input_registers": [],
+              "immediates": [
+                0.3
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 6,
+              "input_registers": [],
+              "immediates": [
+                0.2
+              ],
+              "input": null
+            },
+            {
+              "opcode": "input",
+              "output_register": 7,
+              "input_registers": [],
+              "immediates": [],
+              "input": "unit_index"
+            },
+            {
+              "opcode": "input",
+              "output_register": 8,
+              "input_registers": [],
+              "immediates": [],
+              "input": "unit_type"
+            },
+            {
+              "opcode": "input",
+              "output_register": 9,
+              "input_registers": [],
+              "immediates": [],
+              "input": "font_size"
+            },
+            {
+              "opcode": "equal",
+              "output_register": 10,
+              "input_registers": [
+                8,
+                0
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "equal",
+              "output_register": 11,
+              "input_registers": [
+                10,
+                0
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "equal",
+              "output_register": 12,
+              "input_registers": [
+                11,
+                0
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "multiply",
+              "output_register": 13,
+              "input_registers": [
+                1,
+                3
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "less_than",
+              "output_register": 14,
+              "input_registers": [
+                13,
+                5
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "multiply",
+              "output_register": 15,
+              "input_registers": [
+                12,
+                14
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "equal",
+              "output_register": 16,
+              "input_registers": [
+                14,
+                0
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "multiply",
+              "output_register": 17,
+              "input_registers": [
+                12,
+                16
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "select",
+              "output_register": 18,
+              "input_registers": [
+                15,
+                5,
+                2
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "divide",
+              "output_register": 19,
+              "input_registers": [
+                13,
+                18
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "select",
+              "output_register": 20,
+              "input_registers": [
+                17,
+                2,
+                19
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "less_than",
+              "output_register": 21,
+              "input_registers": [
+                13,
+                6
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "multiply",
+              "output_register": 22,
+              "input_registers": [
+                12,
+                21
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "equal",
+              "output_register": 23,
+              "input_registers": [
+                21,
+                0
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "multiply",
+              "output_register": 24,
+              "input_registers": [
+                12,
+                23
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "select",
+              "output_register": 25,
+              "input_registers": [
+                22,
+                6,
+                2
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "divide",
+              "output_register": 26,
+              "input_registers": [
+                13,
+                25
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "multiply",
+              "output_register": 27,
+              "input_registers": [
+                6,
+                26
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "subtract",
+              "output_register": 28,
+              "input_registers": [
+                4,
+                27
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "select",
+              "output_register": 29,
+              "input_registers": [
+                24,
+                2,
+                28
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "less_than",
+              "output_register": 30,
+              "input_registers": [
+                13,
+                4
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "multiply",
+              "output_register": 31,
+              "input_registers": [
+                12,
+                30
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "equal",
+              "output_register": 32,
+              "input_registers": [
+                30,
+                0
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "multiply",
+              "output_register": 33,
+              "input_registers": [
+                12,
+                32
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "select",
+              "output_register": 34,
+              "input_registers": [
+                31,
+                4,
+                2
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "divide",
+              "output_register": 35,
+              "input_registers": [
+                13,
+                34
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "subtract",
+              "output_register": 36,
+              "input_registers": [
+                2,
+                35
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 37,
+              "input_registers": [],
+              "immediates": [
+                3.0
+              ],
+              "input": null
+            },
+            {
+              "opcode": "power",
+              "output_register": 38,
+              "input_registers": [
+                36,
+                37
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "subtract",
+              "output_register": 39,
+              "input_registers": [
+                2,
+                38
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "subtract",
+              "output_register": 40,
+              "input_registers": [
+                2,
+                39
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "negate",
+              "output_register": 41,
+              "input_registers": [
+                40
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "select",
+              "output_register": 42,
+              "input_registers": [
+                33,
+                0,
+                41
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "input",
+              "output_register": 43,
+              "input_registers": [],
+              "immediates": [],
+              "input": "text_rect_width"
+            },
+            {
+              "opcode": "multiply",
+              "output_register": 44,
+              "input_registers": [
+                43,
+                0
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "input",
+              "output_register": 45,
+              "input_registers": [],
+              "immediates": [],
+              "input": "text_rect_height"
+            },
+            {
+              "opcode": "multiply",
+              "output_register": 46,
+              "input_registers": [
+                45,
+                42
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "multiply",
+              "output_register": 47,
+              "input_registers": [
+                45,
+                0
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "add",
+              "output_register": 48,
+              "input_registers": [
+                7,
+                2
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "select",
+              "output_register": 49,
+              "input_registers": [
+                12,
+                20,
+                2
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "float32",
+              "output_register": 50,
+              "input_registers": [
+                49
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "select",
+              "output_register": 51,
+              "input_registers": [
+                12,
+                29,
+                2
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "float32",
+              "output_register": 52,
+              "input_registers": [
+                51
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "multiply",
+              "output_register": 53,
+              "input_registers": [
+                9,
+                52
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "select",
+              "output_register": 54,
+              "input_registers": [
+                12,
+                44,
+                0
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "select",
+              "output_register": 55,
+              "input_registers": [
+                12,
+                46,
+                0
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "select",
+              "output_register": 56,
+              "input_registers": [
+                12,
+                47,
+                0
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "float32",
+              "output_register": 57,
+              "input_registers": [
+                54
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "float32",
+              "output_register": 58,
+              "input_registers": [
+                55
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "float32",
+              "output_register": 59,
+              "input_registers": [
+                56
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "float32",
+              "output_register": 60,
+              "input_registers": [
+                0
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "float32",
+              "output_register": 61,
+              "input_registers": [
+                2
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "float32",
+              "output_register": 62,
+              "input_registers": [
+                7
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "float32",
+              "output_register": 63,
+              "input_registers": [
+                48
+              ],
+              "immediates": [],
+              "input": null
+            }
+          ],
+          "outputs": [
+            {
+              "output": "opacity",
+              "register_index": 50,
+              "transform_index": 0
+            },
+            {
+              "output": "absolute_font_size",
+              "register_index": 53,
+              "transform_index": 0
+            },
+            {
+              "output": "offset_x",
+              "register_index": 57,
+              "transform_index": 0
+            },
+            {
+              "output": "offset_y",
+              "register_index": 58,
+              "transform_index": 0
+            },
+            {
+              "output": "offset_z",
+              "register_index": 59,
+              "transform_index": 0
+            },
+            {
+              "output": "rotation_x",
+              "register_index": 60,
+              "transform_index": 0
+            },
+            {
+              "output": "rotation_y",
+              "register_index": 60,
+              "transform_index": 0
+            },
+            {
+              "output": "rotation_z",
+              "register_index": 60,
+              "transform_index": 0
+            },
+            {
+              "output": "scale_x",
+              "register_index": 61,
+              "transform_index": 0
+            },
+            {
+              "output": "scale_y",
+              "register_index": 61,
+              "transform_index": 0
+            },
+            {
+              "output": "scale_z",
+              "register_index": 61,
+              "transform_index": 0
+            },
+            {
+              "output": "anchor_x",
+              "register_index": 60,
+              "transform_index": 0
+            },
+            {
+              "output": "anchor_y",
+              "register_index": 60,
+              "transform_index": 0
+            },
+            {
+              "output": "anchor_z",
+              "register_index": 60,
+              "transform_index": 0
+            },
+            {
+              "output": "anchor_range_begin",
+              "register_index": 62,
+              "transform_index": 0
+            },
+            {
+              "output": "anchor_range_end",
+              "register_index": 63,
+              "transform_index": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

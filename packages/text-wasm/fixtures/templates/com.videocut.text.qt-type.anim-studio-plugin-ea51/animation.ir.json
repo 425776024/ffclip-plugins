@@ -1,0 +1,173 @@
+{
+  "format": "videocut.text-animation",
+  "animation": {
+    "layers": [
+      {
+        "id": "studio.layer.0",
+        "enabled": true,
+        "combine_mode": "replace",
+        "requires_timed_text": false,
+        "time_driver": {
+          "kind": "clip_local",
+          "start_offset_us": 0,
+          "duration_us": 3000000,
+          "playback": "hold"
+        },
+        "animators": [],
+        "post_effects": [
+          {
+            "id": "studio.post.0.0",
+            "node_kind": "center_split_displacement",
+            "amount": 0.0,
+            "padding_px": 0.0,
+            "input_ids": [],
+            "parameters": [
+              {
+                "name": "intensity",
+                "values": [
+                  1
+                ]
+              },
+              {
+                "name": "pointA",
+                "values": [
+                  -100
+                ],
+                "keyframes": [
+                  {
+                    "offset": 0,
+                    "value": -100,
+                    "tangent_in": 0.0,
+                    "tangent_out": 344.73,
+                    "bezier": true,
+                    "bezier_time_in": 0,
+                    "bezier_time_out": 0.16666666666666666
+                  },
+                  {
+                    "offset": 0.502,
+                    "value": 100,
+                    "tangent_in": 486.3949044585988,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.157,
+                    "bezier_time_out": 0.16433333333333333
+                  },
+                  {
+                    "offset": 1,
+                    "value": 100,
+                    "tangent_in": -0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.16933333333333334,
+                    "bezier_time_out": 0
+                  }
+                ]
+              },
+              {
+                "name": "pointB",
+                "values": [
+                  -100
+                ],
+                "keyframes": [
+                  {
+                    "offset": 0,
+                    "value": -100,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": 0,
+                    "bezier_time_out": 0.16633333333333333
+                  },
+                  {
+                    "offset": 0.5036666666666666,
+                    "value": -100,
+                    "tangent_in": -0,
+                    "tangent_out": 408.3636363636363,
+                    "bezier": true,
+                    "bezier_time_in": -0.16633333333333333,
+                    "bezier_time_out": 0.18700000000000003
+                  },
+                  {
+                    "offset": 1,
+                    "value": 100,
+                    "tangent_in": 465.6341463414634,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.164,
+                    "bezier_time_out": 0
+                  }
+                ]
+              },
+              {
+                "name": "split",
+                "values": [
+                  57.13999938964844
+                ]
+              }
+            ]
+          }
+        ],
+        "render_group": {
+          "expand_ratio_x": 1.0499999523162842,
+          "expand_ratio_y": 1.0499999523162842,
+          "mode": "per_line",
+          "offset": 0.0,
+          "priority": 0,
+          "random_seed": 50,
+          "random_sort": false,
+          "shape": "square"
+        }
+      }
+    ],
+    "execution_graph": {
+      "nodes": [
+        {
+          "id": "layout",
+          "node_kind": "layout",
+          "capability": "layout_glyph_run"
+        },
+        {
+          "id": "scene-prefab",
+          "node_kind": "scene",
+          "capability": "scene_prefab",
+          "input_ids": [
+            "layout"
+          ]
+        },
+        {
+          "id": "scene-mesh",
+          "node_kind": "scene",
+          "capability": "scene_mesh",
+          "input_ids": [
+            "scene-prefab"
+          ]
+        },
+        {
+          "id": "material-pass",
+          "node_kind": "material_pass",
+          "capability": "material_color_pass",
+          "input_ids": [
+            "scene-mesh"
+          ]
+        },
+        {
+          "id": "render-target",
+          "node_kind": "render_target",
+          "capability": "render_target_expanded",
+          "input_ids": [
+            "material-pass"
+          ]
+        },
+        {
+          "id": "studio.post.0.0",
+          "node_kind": "post_effect_pass",
+          "capability": "none",
+          "input_ids": [
+            "render-target"
+          ],
+          "post_effect_kind": "center_split_displacement"
+        }
+      ]
+    }
+  }
+}

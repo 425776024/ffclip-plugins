@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN" data-suite="long-play">
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Media 120 second playback acceptance</title>
+  <style>
+    body {
+      font: 14px system-ui;
+      background: #10151b;
+      color: #dae5f2;
+      padding: 20px;
+    }
+    #clip {
+      height: 78px;
+      width: 720px;
+    }
+    #timeline {
+      height: 320px;
+      width: 900px;
+      overflow: hidden;
+      border: 1px solid #526477;
+    }
+    .timeline-scroll {
+      height: 320px;
+      overflow: auto;
+    }
+    .timeline-body {
+      position: relative;
+    }
+    pre {
+      white-space: pre-wrap;
+    }
+    button {
+      padding: 10px;
+    }
+  </style>
+  <h1>媒体尺寸、缓存与可见调度验收</h1>
+  <button id="run">运行</button>
+  <div id="clip"></div>
+  <div id="timeline"></div>
+  <pre id="status">idle</pre>
+  <script type="module" src="./browser-media-cache.ts"></script>
+</html>

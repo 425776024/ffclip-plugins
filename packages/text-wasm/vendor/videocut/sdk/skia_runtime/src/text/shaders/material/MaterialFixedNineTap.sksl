@@ -1,0 +1,36 @@
+
+    uniform shader inputTexture;
+    uniform float blurSize;
+    uniform float2 axis;
+
+    float tapWeight(int index) {
+      if (index == 0) return 0.20;
+      if (index == 1) return 0.19;
+      if (index == 2) return 0.17;
+      if (index == 3) return 0.15;
+      if (index == 4) return 0.13;
+      if (index == 5) return 0.11;
+      if (index == 6) return 0.08;
+      if (index == 7) return 0.05;
+      return 0.02;
+    }
+
+    half4 main(float2 position) {
+      float2 direction = length(axis) > 0.0 ? normalize(axis)
+                                             : float2(1.0, 0.0);
+      float2 stepPixels = direction * blurSize * 1.25;
+      float4 result = float4(inputTexture.eval(position)) * tapWeight(0);
+      float weightSum = tapWeight(0);
+      float2 positive = position;
+      float2 negative = position;
+      for (int index = 1; index < 9; ++index) {
+        positive += stepPixels;
+        negative -= stepPixels;
+        float weight = tapWeight(index);
+        result += float4(inputTexture.eval(positive)) * weight;
+        result += float4(inputTexture.eval(negative)) * weight;
+        weightSum += weight * 2.0;
+      }
+      return half4(result / weightSum);
+    }
+  

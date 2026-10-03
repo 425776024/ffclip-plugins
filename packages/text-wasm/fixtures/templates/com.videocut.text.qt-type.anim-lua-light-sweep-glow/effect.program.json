@@ -1,0 +1,1402 @@
+{
+  "format": "videocut.text-effect-program",
+  "programs": [
+    {
+      "program_id": "com.videocut.text.qt-type.anim-lua-light-sweep-glow.program.controller",
+      "random_seed": 50,
+      "stages": [
+        {
+          "stage_id": "qt-light-sweep-glow-glyph-source",
+          "kind": "per_unit",
+          "register_count": 74,
+          "instructions": [
+            {
+              "opcode": "input",
+              "output_register": 0,
+              "input_registers": [],
+              "immediates": [],
+              "input": "progress"
+            },
+            {
+              "opcode": "input",
+              "output_register": 68,
+              "input_registers": [],
+              "immediates": [],
+              "input": "first_unit_font_size"
+            },
+            {
+              "opcode": "constant",
+              "output_register": 69,
+              "input_registers": [],
+              "immediates": [
+                0.24
+              ],
+              "input": null
+            },
+            {
+              "opcode": "multiply",
+              "output_register": 1,
+              "input_registers": [
+                68,
+                69
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 2,
+              "input_registers": [],
+              "immediates": [
+                44
+              ],
+              "input": null
+            },
+            {
+              "opcode": "divide",
+              "output_register": 3,
+              "input_registers": [
+                1,
+                2
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "input",
+              "output_register": 4,
+              "input_registers": [],
+              "immediates": [],
+              "input": "text_rect_width"
+            },
+            {
+              "opcode": "constant",
+              "output_register": 5,
+              "input_registers": [],
+              "immediates": [
+                810.883
+              ],
+              "input": null
+            },
+            {
+              "opcode": "multiply",
+              "output_register": 6,
+              "input_registers": [
+                5,
+                3
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "divide",
+              "output_register": 7,
+              "input_registers": [
+                4,
+                6
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 8,
+              "input_registers": [],
+              "immediates": [
+                6
+              ],
+              "input": null
+            },
+            {
+              "opcode": "multiply",
+              "output_register": 9,
+              "input_registers": [
+                0,
+                8
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 10,
+              "input_registers": [],
+              "immediates": [
+                3
+              ],
+              "input": null
+            },
+            {
+              "opcode": "subtract",
+              "output_register": 11,
+              "input_registers": [
+                9,
+                10
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 12,
+              "input_registers": [],
+              "immediates": [
+                0.8
+              ],
+              "input": null
+            },
+            {
+              "opcode": "power",
+              "output_register": 13,
+              "input_registers": [
+                7,
+                12
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "multiply",
+              "output_register": 14,
+              "input_registers": [
+                11,
+                13
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 15,
+              "input_registers": [],
+              "immediates": [
+                1
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 16,
+              "input_registers": [],
+              "immediates": [
+                0.7
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 17,
+              "input_registers": [],
+              "immediates": [
+                -2.5
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 18,
+              "input_registers": [],
+              "immediates": [
+                0
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 19,
+              "input_registers": [],
+              "immediates": [
+                8
+              ],
+              "input": null
+            },
+            {
+              "opcode": "multiply",
+              "output_register": 20,
+              "input_registers": [
+                3,
+                19
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "floor",
+              "output_register": 21,
+              "input_registers": [
+                20
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 22,
+              "input_registers": [],
+              "immediates": [
+                16
+              ],
+              "input": null
+            },
+            {
+              "opcode": "multiply",
+              "output_register": 23,
+              "input_registers": [
+                3,
+                22
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "floor",
+              "output_register": 24,
+              "input_registers": [
+                23
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "minimum",
+              "output_register": 25,
+              "input_registers": [
+                24,
+                22
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 26,
+              "input_registers": [],
+              "immediates": [
+                90
+              ],
+              "input": null
+            },
+            {
+              "opcode": "multiply",
+              "output_register": 27,
+              "input_registers": [
+                3,
+                26
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "floor",
+              "output_register": 28,
+              "input_registers": [
+                27
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "minimum",
+              "output_register": 29,
+              "input_registers": [
+                28,
+                26
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 30,
+              "input_registers": [],
+              "immediates": [
+                -30
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 31,
+              "input_registers": [],
+              "immediates": [
+                9.75
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 32,
+              "input_registers": [],
+              "immediates": [
+                4
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 33,
+              "input_registers": [],
+              "immediates": [
+                0
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 34,
+              "input_registers": [],
+              "immediates": [
+                4
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 35,
+              "input_registers": [],
+              "immediates": [
+                0.45454545454545453
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 36,
+              "input_registers": [],
+              "immediates": [
+                1
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 37,
+              "input_registers": [],
+              "immediates": [
+                2.4
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 38,
+              "input_registers": [],
+              "immediates": [
+                0.125
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 39,
+              "input_registers": [],
+              "immediates": [
+                5
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 40,
+              "input_registers": [],
+              "immediates": [
+                2
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 41,
+              "input_registers": [],
+              "immediates": [
+                0.4666666666666667
+              ],
+              "input": null
+            },
+            {
+              "opcode": "divide",
+              "output_register": 42,
+              "input_registers": [
+                0,
+                41
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "cubic_bezier_timing",
+              "output_register": 43,
+              "input_registers": [
+                42
+              ],
+              "immediates": [
+                0.115740740834382,
+                0.336711419260027,
+                0.265432123951146,
+                0.845552772099208
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 44,
+              "input_registers": [],
+              "immediates": [
+                514
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 45,
+              "input_registers": [],
+              "immediates": [
+                390.775573730469
+              ],
+              "input": null
+            },
+            {
+              "opcode": "multiply",
+              "output_register": 46,
+              "input_registers": [
+                43,
+                45
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "add",
+              "output_register": 47,
+              "input_registers": [
+                44,
+                46
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "subtract",
+              "output_register": 48,
+              "input_registers": [
+                0,
+                41
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 49,
+              "input_registers": [],
+              "immediates": [
+                0.5333333333333333
+              ],
+              "input": null
+            },
+            {
+              "opcode": "divide",
+              "output_register": 50,
+              "input_registers": [
+                48,
+                49
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "cubic_bezier_timing",
+              "output_register": 51,
+              "input_registers": [
+                50
+              ],
+              "immediates": [
+                0.760288026597765,
+                0.1340931757857,
+                0.999903038457833,
+                0.999880964933673
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 52,
+              "input_registers": [],
+              "immediates": [
+                904.775573730469
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 53,
+              "input_registers": [],
+              "immediates": [
+                448.224426269531
+              ],
+              "input": null
+            },
+            {
+              "opcode": "multiply",
+              "output_register": 54,
+              "input_registers": [
+                51,
+                53
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "add",
+              "output_register": 55,
+              "input_registers": [
+                52,
+                54
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "less_than",
+              "output_register": 56,
+              "input_registers": [
+                0,
+                41
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "select",
+              "output_register": 57,
+              "input_registers": [
+                56,
+                47,
+                55
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "subtract",
+              "output_register": 58,
+              "input_registers": [
+                57,
+                44
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 59,
+              "input_registers": [],
+              "immediates": [
+                839
+              ],
+              "input": null
+            },
+            {
+              "opcode": "divide",
+              "output_register": 60,
+              "input_registers": [
+                58,
+                59
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 61,
+              "input_registers": [],
+              "immediates": [
+                6
+              ],
+              "input": null
+            },
+            {
+              "opcode": "multiply",
+              "output_register": 62,
+              "input_registers": [
+                60,
+                61
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 63,
+              "input_registers": [],
+              "immediates": [
+                3
+              ],
+              "input": null
+            },
+            {
+              "opcode": "subtract",
+              "output_register": 64,
+              "input_registers": [
+                62,
+                63
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "multiply",
+              "output_register": 65,
+              "input_registers": [
+                64,
+                13
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "multiply",
+              "output_register": 66,
+              "input_registers": [
+                65,
+                15
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 67,
+              "input_registers": [],
+              "immediates": [
+                0.4000000059604645
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 70,
+              "input_registers": [],
+              "immediates": [
+                30
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 71,
+              "input_registers": [],
+              "immediates": [
+                -8
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 72,
+              "input_registers": [],
+              "immediates": [
+                4.266666666666667
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 73,
+              "input_registers": [],
+              "immediates": [
+                15
+              ],
+              "input": null
+            }
+          ],
+          "outputs": [
+            {
+              "output": "opacity",
+              "register_index": 15,
+              "transform_index": 0
+            }
+          ],
+          "execution_parameter_bindings": [
+            {
+              "node_id": "material-program-1",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 0,
+              "register_indices": [
+                21
+              ]
+            },
+            {
+              "node_id": "material-program-1",
+              "parameter": "material_vector2",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 1,
+              "register_indices": [
+                15,
+                18
+              ]
+            },
+            {
+              "node_id": "material-program-1",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 2,
+              "register_indices": [
+                34
+              ]
+            },
+            {
+              "node_id": "material-program-1",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 3,
+              "register_indices": [
+                35
+              ]
+            },
+            {
+              "node_id": "material-program-1",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 4,
+              "register_indices": [
+                18
+              ]
+            },
+            {
+              "node_id": "material-program-1",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 5,
+              "register_indices": [
+                15
+              ]
+            },
+            {
+              "node_id": "material-program-2",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 0,
+              "register_indices": [
+                21
+              ]
+            },
+            {
+              "node_id": "material-program-2",
+              "parameter": "material_vector2",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 1,
+              "register_indices": [
+                18,
+                15
+              ]
+            },
+            {
+              "node_id": "material-program-2",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 2,
+              "register_indices": [
+                34
+              ]
+            },
+            {
+              "node_id": "material-program-2",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 3,
+              "register_indices": [
+                35
+              ]
+            },
+            {
+              "node_id": "material-program-2",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 4,
+              "register_indices": [
+                15
+              ]
+            },
+            {
+              "node_id": "material-program-2",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 5,
+              "register_indices": [
+                15
+              ]
+            },
+            {
+              "node_id": "material-program-3",
+              "parameter": "material_vector3",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 0,
+              "register_indices": [
+                66,
+                30,
+                31
+              ]
+            },
+            {
+              "node_id": "material-program-3",
+              "parameter": "material_vector3",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 1,
+              "register_indices": [
+                18,
+                70,
+                71
+              ]
+            },
+            {
+              "node_id": "material-program-3",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 2,
+              "register_indices": [
+                32
+              ]
+            },
+            {
+              "node_id": "material-program-3",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 3,
+              "register_indices": [
+                3
+              ]
+            },
+            {
+              "node_id": "material-program-3",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 4,
+              "register_indices": [
+                67
+              ]
+            },
+            {
+              "node_id": "material-program-3",
+              "parameter": "material_vector2",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 5,
+              "register_indices": [
+                33,
+                33
+              ]
+            },
+            {
+              "node_id": "material-program-3",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 6,
+              "register_indices": [
+                33
+              ]
+            },
+            {
+              "node_id": "material-program-3",
+              "parameter": "material_vector4",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 7,
+              "register_indices": [
+                15,
+                16,
+                17,
+                15
+              ]
+            },
+            {
+              "node_id": "material-program-4",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 0,
+              "register_indices": [
+                25
+              ]
+            },
+            {
+              "node_id": "material-program-4",
+              "parameter": "material_vector2",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 1,
+              "register_indices": [
+                15,
+                18
+              ]
+            },
+            {
+              "node_id": "material-program-4",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 2,
+              "register_indices": [
+                36
+              ]
+            },
+            {
+              "node_id": "material-program-4",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 3,
+              "register_indices": [
+                72
+              ]
+            },
+            {
+              "node_id": "material-program-4",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 4,
+              "register_indices": [
+                37
+              ]
+            },
+            {
+              "node_id": "material-program-4",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 5,
+              "register_indices": [
+                15
+              ]
+            },
+            {
+              "node_id": "material-program-5",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 0,
+              "register_indices": [
+                25
+              ]
+            },
+            {
+              "node_id": "material-program-5",
+              "parameter": "material_vector2",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 1,
+              "register_indices": [
+                18,
+                15
+              ]
+            },
+            {
+              "node_id": "material-program-5",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 2,
+              "register_indices": [
+                36
+              ]
+            },
+            {
+              "node_id": "material-program-5",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 3,
+              "register_indices": [
+                72
+              ]
+            },
+            {
+              "node_id": "material-program-5",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 4,
+              "register_indices": [
+                37
+              ]
+            },
+            {
+              "node_id": "material-program-5",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 5,
+              "register_indices": [
+                18
+              ]
+            },
+            {
+              "node_id": "material-program-6",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 0,
+              "register_indices": [
+                29
+              ]
+            },
+            {
+              "node_id": "material-program-6",
+              "parameter": "material_vector2",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 1,
+              "register_indices": [
+                15,
+                18
+              ]
+            },
+            {
+              "node_id": "material-program-6",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 2,
+              "register_indices": [
+                36
+              ]
+            },
+            {
+              "node_id": "material-program-6",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 3,
+              "register_indices": [
+                72
+              ]
+            },
+            {
+              "node_id": "material-program-6",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 4,
+              "register_indices": [
+                37
+              ]
+            },
+            {
+              "node_id": "material-program-6",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 5,
+              "register_indices": [
+                15
+              ]
+            },
+            {
+              "node_id": "material-program-7",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 0,
+              "register_indices": [
+                29
+              ]
+            },
+            {
+              "node_id": "material-program-7",
+              "parameter": "material_vector2",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 1,
+              "register_indices": [
+                18,
+                15
+              ]
+            },
+            {
+              "node_id": "material-program-7",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 2,
+              "register_indices": [
+                36
+              ]
+            },
+            {
+              "node_id": "material-program-7",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 3,
+              "register_indices": [
+                72
+              ]
+            },
+            {
+              "node_id": "material-program-7",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 4,
+              "register_indices": [
+                37
+              ]
+            },
+            {
+              "node_id": "material-program-7",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 5,
+              "register_indices": [
+                18
+              ]
+            },
+            {
+              "node_id": "material-program-8",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 0,
+              "register_indices": [
+                36
+              ]
+            },
+            {
+              "node_id": "material-program-8",
+              "parameter": "material_vector2",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 1,
+              "register_indices": [
+                15,
+                18
+              ]
+            },
+            {
+              "node_id": "material-program-8",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 2,
+              "register_indices": [
+                34
+              ]
+            },
+            {
+              "node_id": "material-program-9",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 0,
+              "register_indices": [
+                36
+              ]
+            },
+            {
+              "node_id": "material-program-9",
+              "parameter": "material_vector2",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 1,
+              "register_indices": [
+                18,
+                15
+              ]
+            },
+            {
+              "node_id": "material-program-9",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 2,
+              "register_indices": [
+                34
+              ]
+            },
+            {
+              "node_id": "material-program-10",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 0,
+              "register_indices": [
+                39
+              ]
+            },
+            {
+              "node_id": "material-program-10",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 1,
+              "register_indices": [
+                38
+              ]
+            },
+            {
+              "node_id": "material-program-10",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 2,
+              "register_indices": [
+                37
+              ]
+            },
+            {
+              "node_id": "material-program-10",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 3,
+              "register_indices": [
+                40
+              ]
+            },
+            {
+              "node_id": "material-program-4",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 6,
+              "register_indices": [
+                15
+              ]
+            },
+            {
+              "node_id": "material-program-5",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 6,
+              "register_indices": [
+                15
+              ]
+            },
+            {
+              "node_id": "material-program-6",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 6,
+              "register_indices": [
+                15
+              ]
+            },
+            {
+              "node_id": "material-program-7",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 6,
+              "register_indices": [
+                15
+              ]
+            },
+            {
+              "node_id": "material-program-8",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 4,
+              "register_indices": [
+                29
+              ]
+            },
+            {
+              "node_id": "material-program-8",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 9,
+              "register_indices": [
+                37
+              ]
+            },
+            {
+              "node_id": "material-program-8",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 12,
+              "register_indices": [
+                73
+              ]
+            },
+            {
+              "node_id": "material-program-8",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 13,
+              "register_indices": [
+                15
+              ]
+            },
+            {
+              "node_id": "material-program-9",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 4,
+              "register_indices": [
+                29
+              ]
+            },
+            {
+              "node_id": "material-program-9",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 9,
+              "register_indices": [
+                37
+              ]
+            },
+            {
+              "node_id": "material-program-9",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 12,
+              "register_indices": [
+                73
+              ]
+            },
+            {
+              "node_id": "material-program-9",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 13,
+              "register_indices": [
+                15
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

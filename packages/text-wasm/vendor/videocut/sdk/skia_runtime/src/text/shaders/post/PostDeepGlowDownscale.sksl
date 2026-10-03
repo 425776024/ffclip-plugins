@@ -1,0 +1,11 @@
+
+    uniform shader inputTexture;
+    uniform float2 inputSize;
+    uniform float2 outputSize;
+
+    float4 main(float2 xy) {
+      float2 uv = xy / outputSize;
+      return inputTexture.eval(
+          clamp(uv, float2(0.0), float2(1.0)) * inputSize);
+    }
+  

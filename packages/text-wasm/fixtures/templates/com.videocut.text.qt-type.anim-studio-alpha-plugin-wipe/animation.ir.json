@@ -1,0 +1,284 @@
+{
+  "format": "videocut.text-animation",
+  "animation": {
+    "layers": [
+      {
+        "id": "studio.layer.0",
+        "enabled": true,
+        "combine_mode": "replace",
+        "requires_timed_text": false,
+        "time_driver": {
+          "kind": "clip_local",
+          "start_offset_us": 0,
+          "duration_us": 3000000,
+          "playback": "hold"
+        },
+        "animators": [
+          {
+            "id": "studio.selector.0",
+            "paragraph_ids": [],
+            "run_ids": [],
+            "position_mode": "absolute_pixels",
+            "anchor": "glyph_center",
+            "anchor_basis": "letter",
+            "anchor_mode": "fixed",
+            "anchor_offset_x": 0.0,
+            "anchor_offset_y": 0.0,
+            "presentation": "transform",
+            "fade_fraction": 0.0,
+            "selectors": [
+              {
+                "kind": "range",
+                "based_on": "grapheme",
+                "range_start": 0.0,
+                "range_end": 1.0,
+                "offset": 0.0,
+                "stagger": 0.0,
+                "edge_smooth": 0.0,
+                "constrained": true,
+                "shape": "square",
+                "order": "forward",
+                "random_seed": 50.0,
+                "intensity": 1.0,
+                "intensity_start": 0.0,
+                "intensity_end": 1.0,
+                "time_start_1": 0.0,
+                "time_start_2": 0.0,
+                "time_end_1": 1.0,
+                "time_end_2": 1.0,
+                "time_cycle": false
+              }
+            ],
+            "tracks": [
+              {
+                "property": "opacity",
+                "keyframes": [
+                  {
+                    "offset": 0.0,
+                    "value": 1.0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": 0.0,
+                    "bezier_time_out": 0.33
+                  },
+                  {
+                    "offset": 1.0,
+                    "value": 0.0,
+                    "tangent_in": -0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.34,
+                    "bezier_time_out": 0.0
+                  }
+                ]
+              }
+            ],
+            "projection": {
+              "kind": "planar_2d",
+              "field_of_view_degrees": 45.0,
+              "vanishing_point_x": 0.5,
+              "vanishing_point_y": 0.5
+            }
+          }
+        ],
+        "post_effects": [
+          {
+            "id": "studio.post.0.0",
+            "node_kind": "strand_knife_wipe",
+            "amount": 0.0,
+            "padding_px": 0.0,
+            "input_ids": [],
+            "parameters": [
+              {
+                "name": "dropStrand",
+                "values": [
+                  0
+                ],
+                "keyframes": [
+                  {
+                    "offset": 0,
+                    "value": 0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": 0,
+                    "bezier_time_out": 0.33
+                  },
+                  {
+                    "offset": 1,
+                    "value": 100,
+                    "tangent_in": -0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.34,
+                    "bezier_time_out": 0
+                  }
+                ]
+              },
+              {
+                "name": "intensity",
+                "values": [
+                  1
+                ]
+              },
+              {
+                "name": "knifeProgress",
+                "values": [
+                  0
+                ],
+                "keyframes": [
+                  {
+                    "offset": 0,
+                    "value": 0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": 0,
+                    "bezier_time_out": 0.132
+                  },
+                  {
+                    "offset": 0.4003333333333334,
+                    "value": 100,
+                    "tangent_in": -0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.132,
+                    "bezier_time_out": 0.19799999999999998
+                  },
+                  {
+                    "offset": 1,
+                    "value": 100,
+                    "tangent_in": -0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.204,
+                    "bezier_time_out": 0
+                  }
+                ]
+              },
+              {
+                "name": "slant",
+                "values": [
+                  -10
+                ]
+              }
+            ]
+          },
+          {
+            "id": "studio.post.0.1",
+            "node_kind": "linear_wipe",
+            "amount": 0.0,
+            "padding_px": 0.0,
+            "input_ids": [],
+            "parameters": [
+              {
+                "name": "feather",
+                "values": [
+                  0.20000000298023224
+                ]
+              },
+        {
+          "name": "progress",
+          "values": [
+            0.30000001192092896
+                ]
+              },
+              {
+                "name": "rotation",
+                "values": [
+                  0
+                ]
+              }
+            ]
+          }
+        ],
+        "render_group": {
+          "expand_ratio_x": 1.0499999523162842,
+          "expand_ratio_y": 2.0,
+          "mode": "page",
+          "offset": 0.0,
+          "priority": 0,
+          "random_seed": 50,
+          "random_sort": false,
+          "shape": "square"
+        }
+      }
+    ],
+    "execution_graph": {
+      "nodes": [
+        {
+          "id": "layout",
+          "node_kind": "layout",
+          "capability": "layout_glyph_run"
+        },
+        {
+          "id": "selector-0",
+          "node_kind": "selector",
+          "capability": "selector_base",
+          "input_ids": [
+            "layout"
+          ]
+        },
+        {
+          "id": "operator-0",
+          "node_kind": "operator",
+          "capability": "operator_keyframe",
+          "input_ids": [
+            "selector-0"
+          ]
+        },
+        {
+          "id": "scene-prefab",
+          "node_kind": "scene",
+          "capability": "scene_prefab",
+          "input_ids": [
+            "operator-0"
+          ]
+        },
+        {
+          "id": "scene-mesh",
+          "node_kind": "scene",
+          "capability": "scene_mesh",
+          "input_ids": [
+            "scene-prefab"
+          ]
+        },
+        {
+          "id": "material-pass",
+          "node_kind": "material_pass",
+          "capability": "material_color_pass",
+          "input_ids": [
+            "scene-mesh"
+          ]
+        },
+        {
+          "id": "render-target",
+          "node_kind": "render_target",
+          "capability": "render_target_expanded",
+          "input_ids": [
+            "material-pass"
+          ]
+        },
+        {
+          "id": "studio.post.0.0",
+          "node_kind": "post_effect_pass",
+          "capability": "none",
+          "input_ids": [
+            "render-target"
+          ],
+          "post_effect_kind": "strand_knife_wipe"
+        },
+        {
+          "id": "studio.post.0.1",
+          "node_kind": "post_effect_pass",
+          "capability": "none",
+          "input_ids": [
+            "studio.post.0.0"
+          ],
+          "post_effect_kind": "linear_wipe"
+        }
+      ]
+    }
+  }
+}

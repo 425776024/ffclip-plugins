@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "videocut": {
+      "command": "videocut-web",
+      "args": ["--mcp", "--port", "0"]
+    }
+  }
+}

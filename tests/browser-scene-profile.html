@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN">
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VideoCut Full HD Scene Profiling</title>
+  <style>
+    body {
+      margin: 24px;
+      font: 14px system-ui;
+      color: #dce7f3;
+      background: #11151d;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    p {
+      line-height: 1.6;
+      max-width: 1120px;
+    }
+    button {
+      font: inherit;
+      padding: 10px 18px;
+      margin: 0 10px 16px 0;
+    }
+    canvas {
+      display: block;
+      width: 720px;
+      max-width: 90vw;
+      height: auto;
+      margin: 10px 0 24px;
+      border: 1px solid #546070;
+    }
+    pre {
+      white-space: pre-wrap;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+  </style>
+  <h1>1920 × 1080 原始重花字工程 · 场景矩阵与预渲染像素一致性</h1>
+  <p>
+    保留原始四字、排版、视频、动画、变换和画布，只切换原生文字、HTML
+    两种元素是否启用，比较四种组合。 各组合记录一个冷帧、四个 30Hz
+    变化时刻和一个倒退帧，初始化单独记录；此序列不代表实时播放帧率。 像素按钮另行逐字节比较同一 WASM
+    的预渲染关闭/开启：原生文字源 RGBA 与完整 WebGPU 合成画面。 画布仅通过 CSS 缩小显示。
+  </p>
+  <button id="run">运行四组合 Full HD 场景测量</button>
+  <button id="compare">运行预渲染关闭/开启像素 A/B</button>
+  <button id="download">下载 JSON 报告</button>
+  <div id="frames"></div>
+  <pre id="status">准备中…</pre>
+  <script id="raw-report" type="application/json"></script>
+  <script type="module" src="./browser-scene-profile.ts"></script>
+</html>

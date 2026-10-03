@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VideoCut · 文字 WASM</title>
+<link rel="stylesheet" href="./style.css">
+<body>
+<main>
+  <header><div><small>VIDEOCUT / TEXT ENGINE</small><h1>文字，在浏览器中绘制。</h1><p>同一套模板与 C++ 文字引擎，独立的 WebAssembly 模块。</p></div><span id="engine-state" class="badge">正在加载引擎</span></header>
+  <div class="workspace">
+    <aside>
+      <label>模板类型<select id="kind"><option value="text_flower">花字</option><option value="text_animation">文字动画</option><option value="text_bubble">文字气泡</option></select></label>
+      <label>原生模板<select id="template"></select></label>
+      <label>文字内容<textarea id="text" rows="3">你好</textarea></label>
+      <label>预览分辨率<select id="resolution"><option value="640">640 × 360</option><option value="960" selected>960 × 540</option><option value="1920">1920 × 1080</option></select></label>
+      <label class="check"><input id="fallback" type="checkbox" checked>允许使用跨平台栅格绘制</label>
+      <p class="hint">当前为 CPU 栅格版本。Metal SDF 的画面差异会标明，专用后处理效果会报不支持。</p>
+      <p class="hint">灰色模板在抽样中报错或计算超时。可选模板仅代表抽样能出图，尚未与桌面画面对比。</p>
+      <button id="apply" disabled>应用文字</button>
+    </aside>
+    <section>
+      <div class="stage"><canvas id="canvas" width="960" height="540" aria-label="文字模板预览"></canvas><div id="empty">准备文字引擎与字体…</div></div>
+      <div class="transport"><button id="play" disabled>播放</button><input id="time" aria-label="动画时间" type="range" min="0" max="5000" value="1500" step="1"><output id="time-label">1.500 s</output></div>
+      <div class="metrics"><span>绘制 <b id="render-ms">—</b></span><span>播放 <b id="fps">—</b></span><span>后端 <b>WASM / Skia CPU</b></span><button id="benchmark" disabled>测量 60 帧</button></div>
+      <p id="status" role="status">加载中</p>
+      <details><summary>诊断与测量记录</summary><pre id="diagnostics"></pre></details>
+    </section>
+  </div>
+  <footer>字体、模板与渲染均在本页本地运行。预览没有调用 VideoCut 桌面应用。 <a href="./gpu.html">GPU 效果试移植</a> · <a href="./complex.html">复杂图案与动画模板</a></footer>
+</main>
+<script type="module" src="./main.mjs"></script>
+</body>
+</html>

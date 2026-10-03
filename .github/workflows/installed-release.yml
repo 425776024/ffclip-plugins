@@ -1,0 +1,37 @@
+name: Installed release across platforms
+on:
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: Existing release tag containing the verified @ffclip-com/videocut npm tarball
+        required: true
+        type: string
+permissions:
+  contents: read
+jobs:
+  portable-runtime:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        node: [22, 24]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: ${{ matrix.node }}
+          package-manager-cache: false
+      - name: Fetch this repository's already-built release
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ inputs.release_tag }}
+        run: |
+          mkdir -p .local/platform-artifact
+          gh release download "$RELEASE_TAG" --repo "$GITHUB_REPOSITORY" --pattern 'ffclip-com-videocut-*.tgz' --dir .local/platform-artifact
+      - name: Install without build hooks or development dependencies
+        shell: bash
+        run: npm install --prefix .local/platform-consumer --ignore-scripts --omit=dev --no-audit --no-fund .local/platform-artifact/ffclip-com-videocut-*.tgz
+      - name: Verify installed CLI, API, persistence and resource closure
+        run: node scripts/platform-smoke.mjs .local/platform-consumer/node_modules/@ffclip-com/videocut

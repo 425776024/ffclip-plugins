@@ -1,0 +1,21 @@
+uniform shader inputTexture;
+uniform float2 textureSize;
+uniform float2 erodeStep;
+
+// LumiRadianceGlow erode: componentwise minimum of the center and four
+// cardinal samples. Native border samples are opaque black, not transparent.
+float4 sampleErode(float2 uv) {
+  if (uv.x < 0.0 || uv.x > 1.0 || uv.y < 0.0 || uv.y > 1.0) {
+    return float4(0.0, 0.0, 0.0, 1.0);
+  }
+  return float4(inputTexture.eval(uv * textureSize));
+}
+
+float4 main(float2 position) {
+  float2 uv = position / textureSize;
+  float4 result = sampleErode(uv);
+  result = min(result, sampleErode(uv - float2(0.0, erodeStep.y)));
+  result = min(result, sampleErode(uv + float2(0.0, erodeStep.y)));
+  result = min(result, sampleErode(uv - float2(erodeStep.x, 0.0)));
+  return min(result, sampleErode(uv + float2(erodeStep.x, 0.0)));
+}

@@ -1,0 +1,365 @@
+{
+  "scope": "Diagnostic Node stage instrumentation, six distinct times, first frame cold. This is not the browser performance acceptance benchmark. SIMD trace predates the additional blur optimization.",
+  "stages": [
+    {
+      "variant": "scalar",
+      "id": "pattern-flower",
+      "timeUs": 350000,
+      "stagesMs": {
+        "plan": 21.532,
+        "backdrop": 4.866,
+        "glyph_record": 29.156,
+        "decoration": 0.709,
+        "graph": 2.412,
+        "raster": 345.355,
+        "publish": 1.156
+      },
+      "totalMs": 409.99083300000007
+    },
+    {
+      "variant": "scalar",
+      "id": "pattern-flower",
+      "timeUs": 700000,
+      "stagesMs": {
+        "plan": 0.395,
+        "backdrop": 0.203,
+        "glyph_record": 2.06,
+        "decoration": 0.081,
+        "graph": 0.103,
+        "raster": 351.577,
+        "publish": 0.241
+      },
+      "totalMs": 354.91125
+    },
+    {
+      "variant": "scalar",
+      "id": "pattern-flower",
+      "timeUs": 1100000,
+      "stagesMs": {
+        "plan": 0.545,
+        "backdrop": 0.052,
+        "glyph_record": 1.922,
+        "decoration": 0.085,
+        "graph": 0.115,
+        "raster": 375.119,
+        "publish": 0.286
+      },
+      "totalMs": 378.386666
+    },
+    {
+      "variant": "scalar",
+      "id": "pattern-flower",
+      "timeUs": 1400000,
+      "stagesMs": {
+        "plan": 0.436,
+        "backdrop": 0.045,
+        "glyph_record": 1.522,
+        "decoration": 0.03,
+        "graph": 0.08,
+        "raster": 379.003,
+        "publish": 0.288
+      },
+      "totalMs": 383.35745799999995
+    },
+    {
+      "variant": "scalar",
+      "id": "pattern-flower",
+      "timeUs": 1800000,
+      "stagesMs": {
+        "plan": 0.378,
+        "backdrop": 0.058,
+        "glyph_record": 1.326,
+        "decoration": 0.027,
+        "graph": 0.077,
+        "raster": 302.641,
+        "publish": 0.243
+      },
+      "totalMs": 304.986709
+    },
+    {
+      "variant": "scalar",
+      "id": "pattern-flower",
+      "timeUs": 2200000,
+      "stagesMs": {
+        "plan": 0.345,
+        "backdrop": 0.044,
+        "glyph_record": 1.391,
+        "decoration": 0.032,
+        "graph": 0.076,
+        "raster": 171.118,
+        "publish": 0.328
+      },
+      "totalMs": 173.61312499999985
+    },
+    {
+      "variant": "scalar",
+      "id": "cube",
+      "timeUs": 350000,
+      "stagesMs": {
+        "plan": 1.23,
+        "backdrop": 0.096,
+        "glyph_record": 0.318,
+        "decoration": 0.031,
+        "graph": 12.212,
+        "raster": 81.466,
+        "publish": 0.235
+      },
+      "totalMs": 95.84345899999971
+    },
+    {
+      "variant": "scalar",
+      "id": "cube",
+      "timeUs": 700000,
+      "stagesMs": {
+        "plan": 0.351,
+        "backdrop": 0.02,
+        "glyph_record": 0.145,
+        "decoration": 0.017,
+        "graph": 0.689,
+        "raster": 76.277,
+        "publish": 0.234
+      },
+      "totalMs": 77.93770900000027
+    },
+    {
+      "variant": "scalar",
+      "id": "cube",
+      "timeUs": 1100000,
+      "stagesMs": {
+        "plan": 0.462,
+        "backdrop": 0.034,
+        "glyph_record": 0.372,
+        "decoration": 0.025,
+        "graph": 0.852,
+        "raster": 78.217,
+        "publish": 0.27
+      },
+      "totalMs": 80.43779099999983
+    },
+    {
+      "variant": "scalar",
+      "id": "cube",
+      "timeUs": 1400000,
+      "stagesMs": {
+        "plan": 0.437,
+        "backdrop": 0.028,
+        "glyph_record": 0.29,
+        "decoration": 0.046,
+        "graph": 0.819,
+        "raster": 76.104,
+        "publish": 0.224
+      },
+      "totalMs": 78.14312500000005
+    },
+    {
+      "variant": "scalar",
+      "id": "cube",
+      "timeUs": 1800000,
+      "stagesMs": {
+        "plan": 0.389,
+        "backdrop": 0.029,
+        "glyph_record": 0.195,
+        "decoration": 0.02,
+        "graph": 0.892,
+        "raster": 76.27,
+        "publish": 0.203
+      },
+      "totalMs": 78.19558300000017
+    },
+    {
+      "variant": "scalar",
+      "id": "cube",
+      "timeUs": 2200000,
+      "stagesMs": {
+        "plan": 0.316,
+        "backdrop": 0.018,
+        "glyph_record": 0.14,
+        "decoration": 0.016,
+        "graph": 0.697,
+        "raster": 77.171,
+        "publish": 0.239
+      },
+      "totalMs": 78.8397500000001
+    },
+    {
+      "variant": "simd-raster-only",
+      "id": "pattern-flower",
+      "timeUs": 350000,
+      "stagesMs": {
+        "plan": 22.329,
+        "backdrop": 4.81,
+        "glyph_record": 29.235,
+        "decoration": 0.604,
+        "graph": 2.868,
+        "raster": 119.481,
+        "publish": 0.999
+      },
+      "totalMs": 185.00016699999998
+    },
+    {
+      "variant": "simd-raster-only",
+      "id": "pattern-flower",
+      "timeUs": 700000,
+      "stagesMs": {
+        "plan": 0.411,
+        "backdrop": 0.198,
+        "glyph_record": 1.778,
+        "decoration": 0.032,
+        "graph": 0.091,
+        "raster": 121.811,
+        "publish": 0.239
+      },
+      "totalMs": 124.81804199999999
+    },
+    {
+      "variant": "simd-raster-only",
+      "id": "pattern-flower",
+      "timeUs": 1100000,
+      "stagesMs": {
+        "plan": 0.587,
+        "backdrop": 0.073,
+        "glyph_record": 1.835,
+        "decoration": 0.121,
+        "graph": 0.139,
+        "raster": 138.844,
+        "publish": 0.249
+      },
+      "totalMs": 142.08974999999998
+    },
+    {
+      "variant": "simd-raster-only",
+      "id": "pattern-flower",
+      "timeUs": 1400000,
+      "stagesMs": {
+        "plan": 0.387,
+        "backdrop": 0.045,
+        "glyph_record": 1.759,
+        "decoration": 0.052,
+        "graph": 0.097,
+        "raster": 140.94,
+        "publish": 0.291
+      },
+      "totalMs": 145.43129199999998
+    },
+    {
+      "variant": "simd-raster-only",
+      "id": "pattern-flower",
+      "timeUs": 1800000,
+      "stagesMs": {
+        "plan": 0.393,
+        "backdrop": 0.057,
+        "glyph_record": 1.471,
+        "decoration": 0.026,
+        "graph": 0.078,
+        "raster": 109.303,
+        "publish": 0.201
+      },
+      "totalMs": 111.77495799999997
+    },
+    {
+      "variant": "simd-raster-only",
+      "id": "pattern-flower",
+      "timeUs": 2200000,
+      "stagesMs": {
+        "plan": 0.366,
+        "backdrop": 0.045,
+        "glyph_record": 1.413,
+        "decoration": 0.094,
+        "graph": 0.13,
+        "raster": 66.33,
+        "publish": 0.275
+      },
+      "totalMs": 68.92208399999993
+    },
+    {
+      "variant": "simd-raster-only",
+      "id": "cube",
+      "timeUs": 350000,
+      "stagesMs": {
+        "plan": 0.822,
+        "backdrop": 0.043,
+        "glyph_record": 0.215,
+        "decoration": 0.024,
+        "graph": 11.27,
+        "raster": 23.806,
+        "publish": 0.234
+      },
+      "totalMs": 36.63912499999992
+    },
+    {
+      "variant": "simd-raster-only",
+      "id": "cube",
+      "timeUs": 700000,
+      "stagesMs": {
+        "plan": 0.404,
+        "backdrop": 0.028,
+        "glyph_record": 0.192,
+        "decoration": 0.019,
+        "graph": 0.544,
+        "raster": 21.293,
+        "publish": 0.186
+      },
+      "totalMs": 22.851915999999846
+    },
+    {
+      "variant": "simd-raster-only",
+      "id": "cube",
+      "timeUs": 1100000,
+      "stagesMs": {
+        "plan": 0.376,
+        "backdrop": 0.02,
+        "glyph_record": 0.271,
+        "decoration": 0.018,
+        "graph": 0.488,
+        "raster": 21.88,
+        "publish": 0.252
+      },
+      "totalMs": 23.57354199999986
+    },
+    {
+      "variant": "simd-raster-only",
+      "id": "cube",
+      "timeUs": 1400000,
+      "stagesMs": {
+        "plan": 0.405,
+        "backdrop": 0.024,
+        "glyph_record": 0.203,
+        "decoration": 0.02,
+        "graph": 0.518,
+        "raster": 21.356,
+        "publish": 0.247
+      },
+      "totalMs": 22.977416000000176
+    },
+    {
+      "variant": "simd-raster-only",
+      "id": "cube",
+      "timeUs": 1800000,
+      "stagesMs": {
+        "plan": 0.37,
+        "backdrop": 0.025,
+        "glyph_record": 0.17,
+        "decoration": 0.019,
+        "graph": 0.621,
+        "raster": 20.795,
+        "publish": 0.204
+      },
+      "totalMs": 22.39566600000012
+    },
+    {
+      "variant": "simd-raster-only",
+      "id": "cube",
+      "timeUs": 2200000,
+      "stagesMs": {
+        "plan": 0.37,
+        "backdrop": 0.022,
+        "glyph_record": 0.187,
+        "decoration": 0.02,
+        "graph": 0.497,
+        "raster": 21.536,
+        "publish": 0.194
+      },
+      "totalMs": 23.00191700000005
+    }
+  ]
+}

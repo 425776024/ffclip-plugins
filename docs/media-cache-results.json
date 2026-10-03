@@ -1,0 +1,1196 @@
+{
+  "geometryAndContinuousPlayback": {
+    "suite": "long-play",
+    "phase": "complete",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36",
+    "results": [
+      {
+        "name": "portrait_rotation_PAR_Bframes_VFR_DPR1_2_same_pixels",
+        "milliseconds": 1028.3999999761581,
+        "value": [
+          {
+            "fixture": "timecode.mp4",
+            "dpr": 1,
+            "coldMs": 91.30000007152557,
+            "warmMs": 0.19999992847442627,
+            "newDecodeJobs": 5,
+            "metrics": [
+              {
+                "requested": 0.001,
+                "actualPTS": 0,
+                "mae": 0,
+                "width": 80,
+                "height": 40
+              },
+              {
+                "requested": 0.371,
+                "actualPTS": 0.3670333333333333,
+                "mae": 0,
+                "width": 80,
+                "height": 40
+              },
+              {
+                "requested": 1.001,
+                "actualPTS": 1.001,
+                "mae": 0,
+                "width": 80,
+                "height": 40
+              },
+              {
+                "requested": 2.101,
+                "actualPTS": 2.0687333333333333,
+                "mae": 0,
+                "width": 80,
+                "height": 40
+              },
+              {
+                "requested": 3.4,
+                "actualPTS": 3.370033333333333,
+                "mae": 0,
+                "width": 80,
+                "height": 40
+              }
+            ]
+          },
+          {
+            "fixture": "timecode.mp4",
+            "dpr": 2,
+            "coldMs": 65.60000002384186,
+            "warmMs": 0.10000002384185791,
+            "newDecodeJobs": 5,
+            "metrics": [
+              {
+                "requested": 0.001,
+                "actualPTS": 0,
+                "mae": 0,
+                "width": 160,
+                "height": 80
+              },
+              {
+                "requested": 0.371,
+                "actualPTS": 0.3670333333333333,
+                "mae": 0,
+                "width": 160,
+                "height": 80
+              },
+              {
+                "requested": 1.001,
+                "actualPTS": 1.001,
+                "mae": 0,
+                "width": 160,
+                "height": 80
+              },
+              {
+                "requested": 2.101,
+                "actualPTS": 2.0687333333333333,
+                "mae": 0,
+                "width": 160,
+                "height": 80
+              },
+              {
+                "requested": 3.4,
+                "actualPTS": 3.370033333333333,
+                "mae": 0,
+                "width": 160,
+                "height": 80
+              }
+            ]
+          },
+          {
+            "fixture": "vfr.mp4",
+            "dpr": 1,
+            "coldMs": 76.79999995231628,
+            "warmMs": 0.20000004768371582,
+            "newDecodeJobs": 5,
+            "metrics": [
+              {
+                "requested": 0.001,
+                "actualPTS": 0,
+                "mae": 0,
+                "width": 80,
+                "height": 40
+              },
+              {
+                "requested": 0.371,
+                "actualPTS": 0.3670333333333333,
+                "mae": 0,
+                "width": 80,
+                "height": 40
+              },
+              {
+                "requested": 1.001,
+                "actualPTS": 1.001,
+                "mae": 0,
+                "width": 80,
+                "height": 40
+              },
+              {
+                "requested": 2.101,
+                "actualPTS": 2.002,
+                "mae": 0,
+                "width": 80,
+                "height": 40
+              },
+              {
+                "requested": 3.4,
+                "actualPTS": 3.3033,
+                "mae": 0,
+                "width": 80,
+                "height": 40
+              }
+            ]
+          },
+          {
+            "fixture": "vfr.mp4",
+            "dpr": 2,
+            "coldMs": 62.799999952316284,
+            "warmMs": 0.19999992847442627,
+            "newDecodeJobs": 5,
+            "metrics": [
+              {
+                "requested": 0.001,
+                "actualPTS": 0,
+                "mae": 0,
+                "width": 160,
+                "height": 80
+              },
+              {
+                "requested": 0.371,
+                "actualPTS": 0.3670333333333333,
+                "mae": 0,
+                "width": 160,
+                "height": 80
+              },
+              {
+                "requested": 1.001,
+                "actualPTS": 1.001,
+                "mae": 0,
+                "width": 160,
+                "height": 80
+              },
+              {
+                "requested": 2.101,
+                "actualPTS": 2.002,
+                "mae": 0,
+                "width": 160,
+                "height": 80
+              },
+              {
+                "requested": 3.4,
+                "actualPTS": 3.3033,
+                "mae": 0,
+                "width": 160,
+                "height": 80
+              }
+            ]
+          },
+          {
+            "fixture": "portrait.mp4",
+            "dpr": 1,
+            "coldMs": 74.20000004768372,
+            "warmMs": 0.10000002384185791,
+            "newDecodeJobs": 5,
+            "metrics": [
+              {
+                "requested": 0.001,
+                "actualPTS": 0,
+                "mae": 0,
+                "width": 80,
+                "height": 40
+              },
+              {
+                "requested": 0.371,
+                "actualPTS": 0.3670333333333333,
+                "mae": 0,
+                "width": 80,
+                "height": 40
+              },
+              {
+                "requested": 1.001,
+                "actualPTS": 1.001,
+                "mae": 0,
+                "width": 80,
+                "height": 40
+              },
+              {
+                "requested": 2.101,
+                "actualPTS": 2.0687333333333333,
+                "mae": 0,
+                "width": 80,
+                "height": 40
+              },
+              {
+                "requested": 3.4,
+                "actualPTS": 3.370033333333333,
+                "mae": 0,
+                "width": 80,
+                "height": 40
+              }
+            ]
+          },
+          {
+            "fixture": "portrait.mp4",
+            "dpr": 2,
+            "coldMs": 62.09999990463257,
+            "warmMs": 0.10000002384185791,
+            "newDecodeJobs": 5,
+            "metrics": [
+              {
+                "requested": 0.001,
+                "actualPTS": 0,
+                "mae": 0,
+                "width": 160,
+                "height": 80
+              },
+              {
+                "requested": 0.371,
+                "actualPTS": 0.3670333333333333,
+                "mae": 0,
+                "width": 160,
+                "height": 80
+              },
+              {
+                "requested": 1.001,
+                "actualPTS": 1.001,
+                "mae": 0,
+                "width": 160,
+                "height": 80
+              },
+              {
+                "requested": 2.101,
+                "actualPTS": 2.0687333333333333,
+                "mae": 0,
+                "width": 160,
+                "height": 80
+              },
+              {
+                "requested": 3.4,
+                "actualPTS": 3.370033333333333,
+                "mae": 0,
+                "width": 160,
+                "height": 80
+              }
+            ]
+          },
+          {
+            "fixture": "anamorphic.mp4",
+            "dpr": 1,
+            "coldMs": 74.89999997615814,
+            "warmMs": 0.20000004768371582,
+            "newDecodeJobs": 5,
+            "metrics": [
+              {
+                "requested": 0.001,
+                "actualPTS": 0,
+                "mae": 0.104296875,
+                "width": 80,
+                "height": 40
+              },
+              {
+                "requested": 0.371,
+                "actualPTS": 0.3670333333333333,
+                "mae": 0.098671875,
+                "width": 80,
+                "height": 40
+              },
+              {
+                "requested": 1.001,
+                "actualPTS": 1.001,
+                "mae": 0.120546875,
+                "width": 80,
+                "height": 40
+              },
+              {
+                "requested": 2.101,
+                "actualPTS": 2.0687333333333333,
+                "mae": 0.103671875,
+                "width": 80,
+                "height": 40
+              },
+              {
+                "requested": 3.4,
+                "actualPTS": 3.370033333333333,
+                "mae": 0.111953125,
+                "width": 80,
+                "height": 40
+              }
+            ]
+          },
+          {
+            "fixture": "anamorphic.mp4",
+            "dpr": 2,
+            "coldMs": 63.200000047683716,
+            "warmMs": 0,
+            "newDecodeJobs": 5,
+            "metrics": [
+              {
+                "requested": 0.001,
+                "actualPTS": 0,
+                "mae": 0.09935546875,
+                "width": 160,
+                "height": 80
+              },
+              {
+                "requested": 0.371,
+                "actualPTS": 0.3670333333333333,
+                "mae": 0.10115234375,
+                "width": 160,
+                "height": 80
+              },
+              {
+                "requested": 1.001,
+                "actualPTS": 1.001,
+                "mae": 0.10287109375,
+                "width": 160,
+                "height": 80
+              },
+              {
+                "requested": 2.101,
+                "actualPTS": 2.0687333333333333,
+                "mae": 0.1030859375,
+                "width": 160,
+                "height": 80
+              },
+              {
+                "requested": 3.4,
+                "actualPTS": 3.370033333333333,
+                "mae": 0.10455078125,
+                "width": 160,
+                "height": 80
+              }
+            ]
+          },
+          {
+            "fixture": "probe/rotated.mov",
+            "dpr": 1,
+            "coldMs": 73,
+            "warmMs": 0.20000004768371582,
+            "newDecodeJobs": 5,
+            "metrics": [
+              {
+                "requested": 0.001,
+                "actualPTS": 0,
+                "mae": 0,
+                "width": 80,
+                "height": 40
+              },
+              {
+                "requested": 0.371,
+                "actualPTS": 0.3670333333333333,
+                "mae": 0,
+                "width": 80,
+                "height": 40
+              },
+              {
+                "requested": 1.001,
+                "actualPTS": 1.001,
+                "mae": 0,
+                "width": 80,
+                "height": 40
+              },
+              {
+                "requested": 2.101,
+                "actualPTS": 2.0687333333333333,
+                "mae": 0,
+                "width": 80,
+                "height": 40
+              },
+              {
+                "requested": 3.4,
+                "actualPTS": 3.370033333333333,
+                "mae": 0,
+                "width": 80,
+                "height": 40
+              }
+            ]
+          },
+          {
+            "fixture": "probe/rotated.mov",
+            "dpr": 2,
+            "coldMs": 61.699999928474426,
+            "warmMs": 0.20000004768371582,
+            "newDecodeJobs": 5,
+            "metrics": [
+              {
+                "requested": 0.001,
+                "actualPTS": 0,
+                "mae": 0,
+                "width": 160,
+                "height": 80
+              },
+              {
+                "requested": 0.371,
+                "actualPTS": 0.3670333333333333,
+                "mae": 0,
+                "width": 160,
+                "height": 80
+              },
+              {
+                "requested": 1.001,
+                "actualPTS": 1.001,
+                "mae": 0,
+                "width": 160,
+                "height": 80
+              },
+              {
+                "requested": 2.101,
+                "actualPTS": 2.0687333333333333,
+                "mae": 0,
+                "width": 160,
+                "height": 80
+              },
+              {
+                "requested": 3.4,
+                "actualPTS": 3.370033333333333,
+                "mae": 0,
+                "width": 160,
+                "height": 80
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "image_preview_size_and_identity",
+        "milliseconds": 177,
+        "value": {
+          "filmstripMAE": 1.0901432291666666,
+          "original": [
+            320,
+            180
+          ],
+          "low": [
+            160,
+            90
+          ],
+          "high": [
+            320,
+            180
+          ],
+          "warmCacheHits": 1
+        }
+      },
+      {
+        "name": "persistent_thumbnail_index_cross_engine_and_worker",
+        "milliseconds": 95.80000007152557,
+        "value": {
+          "secondEngine": {
+            "ms": 1.8000000715255737,
+            "sources": 0,
+            "frameBytes": 153600,
+            "pcmBytes": 0,
+            "waveformBytes": 0,
+            "frameHits": 0,
+            "frameMisses": 3,
+            "activeJobs": 0,
+            "completed": 1,
+            "cancelled": 0,
+            "persistentThumbnailHits": 3,
+            "thumbnailDecodes": 0,
+            "indexBytes": 283,
+            "indexHits": 2,
+            "persistentHits": 5,
+            "persistentWrites": 0
+          },
+          "worker": {
+            "sources": 0,
+            "frameBytes": 153600,
+            "pcmBytes": 0,
+            "waveformBytes": 0,
+            "frameHits": 0,
+            "frameMisses": 3,
+            "activeJobs": 0,
+            "completed": 1,
+            "cancelled": 0,
+            "persistentThumbnailHits": 3,
+            "thumbnailDecodes": 0,
+            "indexBytes": 283,
+            "indexHits": 2,
+            "persistentHits": 5,
+            "persistentWrites": 0
+          },
+          "afterInvalidation": {
+            "sources": 1,
+            "frameBytes": 153600,
+            "pcmBytes": 0,
+            "waveformBytes": 0,
+            "frameHits": 0,
+            "frameMisses": 6,
+            "activeJobs": 0,
+            "completed": 2,
+            "cancelled": 0,
+            "persistentThumbnailHits": 3,
+            "thumbnailDecodes": 3,
+            "indexBytes": 251,
+            "indexHits": 2,
+            "persistentHits": 5,
+            "persistentWrites": 5
+          },
+          "persistent": {
+            "bytes": 62436032,
+            "thumbnailBytes": 3727237,
+            "waveformBytes": 58670560,
+            "indexBytes": 38235,
+            "entries": 1585,
+            "maximumBytes": 134217728
+          }
+        }
+      },
+      {
+        "name": "IDB_budget_LRU_and_hashed_private_keys",
+        "milliseconds": 12,
+        "value": {
+          "usage": {
+            "bytes": 600000,
+            "thumbnailBytes": 600000,
+            "waveformBytes": 0,
+            "indexBytes": 0,
+            "entries": 2,
+            "maximumBytes": 800000
+          },
+          "keys": [
+            "thumbnail:8ba6b518f8bb1a5ff3021c401876546db439d9fa5a353ec57f2dfe471535c324",
+            "thumbnail:ff83246ab3a928d7a8d116423a2671161624ad535177c247db2e77a181a32570"
+          ],
+          "counters": {
+            "hits": 1,
+            "misses": 1,
+            "writes": 3,
+            "evictions": 1
+          }
+        }
+      },
+      {
+        "name": "trim_split_speed_and_settled_HD_component",
+        "milliseconds": 390.6999999284744,
+        "value": {
+          "source": {
+            "begin": 240000,
+            "end": 420000
+          },
+          "placement": {
+            "begin": 90000,
+            "end": 180000
+          },
+          "retime": {
+            "version": 1,
+            "mode": "constant",
+            "constantRatePpm": 2000000
+          },
+          "sampleTimes": [
+            2.44445,
+            3.3333333333333335
+          ],
+          "firstPTS": 2.435766666666667,
+          "reused": 2,
+          "tileWidth": "160",
+          "tileHeight": "120",
+          "dpr": 2
+        }
+      },
+      {
+        "name": "1000_clips_scroll_with_continuous_cursor",
+        "milliseconds": 120522.60000002384,
+        "value": {
+          "sourceDurationSeconds": 120.0199,
+          "continuousSource": true,
+          "samples": [
+            {
+              "frame": 900,
+              "milliseconds": 29999,
+              "jsHeapBytes": 53810292,
+              "main": {
+                "sources": 6,
+                "frameBytes": 29766400,
+                "pcmBytes": 0,
+                "waveformBytes": 0,
+                "frameHits": 76,
+                "frameMisses": 78,
+                "activeJobs": 0,
+                "completed": 48,
+                "cancelled": 0,
+                "persistentThumbnailHits": 0,
+                "thumbnailDecodes": 50,
+                "indexBytes": 1645,
+                "indexHits": 80,
+                "persistentHits": 0,
+                "persistentWrites": 66
+              },
+              "worker": {
+                "sources": 2,
+                "frameBytes": 1241524,
+                "pcmBytes": 0,
+                "waveformBytes": 0,
+                "frameHits": 0,
+                "frameMisses": 1976,
+                "activeJobs": 1,
+                "completed": 10,
+                "cancelled": 8014,
+                "persistentThumbnailHits": 0,
+                "thumbnailDecodes": 24,
+                "indexBytes": 665,
+                "indexHits": 292,
+                "persistentHits": 2,
+                "persistentWrites": 21
+              }
+            },
+            {
+              "frame": 1800,
+              "milliseconds": 60029.700000047684,
+              "jsHeapBytes": 53330311,
+              "main": {
+                "sources": 6,
+                "frameBytes": 29766400,
+                "pcmBytes": 0,
+                "waveformBytes": 0,
+                "frameHits": 76,
+                "frameMisses": 78,
+                "activeJobs": 0,
+                "completed": 48,
+                "cancelled": 0,
+                "persistentThumbnailHits": 0,
+                "thumbnailDecodes": 50,
+                "indexBytes": 1645,
+                "indexHits": 80,
+                "persistentHits": 0,
+                "persistentWrites": 66
+              },
+              "worker": {
+                "sources": 2,
+                "frameBytes": 1241524,
+                "pcmBytes": 0,
+                "waveformBytes": 0,
+                "frameHits": 0,
+                "frameMisses": 4028,
+                "activeJobs": 1,
+                "completed": 10,
+                "cancelled": 16101,
+                "persistentThumbnailHits": 0,
+                "thumbnailDecodes": 24,
+                "indexBytes": 665,
+                "indexHits": 530,
+                "persistentHits": 2,
+                "persistentWrites": 21
+              }
+            },
+            {
+              "frame": 2700,
+              "milliseconds": 90059.40000009537,
+              "jsHeapBytes": 46801232,
+              "main": {
+                "sources": 6,
+                "frameBytes": 29766400,
+                "pcmBytes": 0,
+                "waveformBytes": 0,
+                "frameHits": 76,
+                "frameMisses": 78,
+                "activeJobs": 0,
+                "completed": 48,
+                "cancelled": 0,
+                "persistentThumbnailHits": 0,
+                "thumbnailDecodes": 50,
+                "indexBytes": 1645,
+                "indexHits": 80,
+                "persistentHits": 0,
+                "persistentWrites": 66
+              },
+              "worker": {
+                "sources": 2,
+                "frameBytes": 1241524,
+                "pcmBytes": 0,
+                "waveformBytes": 0,
+                "frameHits": 0,
+                "frameMisses": 6068,
+                "activeJobs": 1,
+                "completed": 10,
+                "cancelled": 24197,
+                "persistentThumbnailHits": 0,
+                "thumbnailDecodes": 24,
+                "indexBytes": 665,
+                "indexHits": 777,
+                "persistentHits": 2,
+                "persistentWrites": 21
+              }
+            }
+          ],
+          "authoredClips": 1000,
+          "frames": 3596,
+          "wallMs": 120204.30000007153,
+          "decodeLatency": {
+            "n": 3596,
+            "median": 0.2999999523162842,
+            "p95": 0.40000009536743164,
+            "max": 5
+          },
+          "maximumClipDOM": 80,
+          "settledVisibleClipCount": 1,
+          "settledMs": 215.39999997615814,
+          "maximumJSHeapBytes": 64949797,
+          "engine": {
+            "sources": 6,
+            "frameBytes": 29766400,
+            "pcmBytes": 0,
+            "waveformBytes": 0,
+            "frameHits": 76,
+            "frameMisses": 78,
+            "activeJobs": 0,
+            "completed": 48,
+            "cancelled": 0,
+            "persistentThumbnailHits": 0,
+            "thumbnailDecodes": 50,
+            "indexBytes": 1645,
+            "indexHits": 80,
+            "persistentHits": 0,
+            "persistentWrites": 66
+          },
+          "backgroundWorkerMaximum": {
+            "activeJobs": 1,
+            "frameBytes": 1241524,
+            "pcmBytes": 0,
+            "waveformBytes": 0,
+            "sources": 2
+          },
+          "backgroundWorkerBefore": {
+            "sources": 2,
+            "frameBytes": 1241524,
+            "pcmBytes": 0,
+            "waveformBytes": 0,
+            "frameHits": 0,
+            "frameMisses": 27,
+            "activeJobs": 1,
+            "completed": 9,
+            "cancelled": 12,
+            "persistentThumbnailHits": 0,
+            "thumbnailDecodes": 24,
+            "indexBytes": 665,
+            "indexHits": 28,
+            "persistentHits": 2,
+            "persistentWrites": 21
+          },
+          "backgroundWorkerAfter": {
+            "sources": 2,
+            "frameBytes": 1460404,
+            "pcmBytes": 0,
+            "waveformBytes": 0,
+            "frameHits": 0,
+            "frameMisses": 8069,
+            "activeJobs": 1,
+            "completed": 11,
+            "cancelled": 32268,
+            "persistentThumbnailHits": 0,
+            "thumbnailDecodes": 27,
+            "indexBytes": 713,
+            "indexHits": 1029,
+            "persistentHits": 2,
+            "persistentWrites": 25
+          },
+          "uiTiles": {
+            "bytes": 1423924,
+            "hits": 264,
+            "maximumBytes": 16777216
+          }
+        }
+      }
+    ],
+    "started": "2026-09-29T15:47:20.137Z",
+    "freshThumbnailIdentity": true,
+    "longPlaybackFrames": 2700,
+    "completed": "2026-09-29T15:49:22.427Z"
+  },
+  "fullWaveformRegression": {
+    "phase": "complete",
+    "started": "2026-09-29T15:45:58.254Z",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36",
+    "longAudioFreshCache": true,
+    "results": [
+      {
+        "name": "ntsc_2997_pts",
+        "milliseconds": 176.5,
+        "value": {
+          "cold": {
+            "n": 16,
+            "min": 2.799999952316284,
+            "median": 14,
+            "p95": 22.899999976158142,
+            "max": 22.899999976158142
+          },
+          "warm": {
+            "n": 16,
+            "min": 0,
+            "median": 0,
+            "p95": 0.10000002384185791,
+            "max": 0.10000002384185791
+          },
+          "cacheHits": 16,
+          "actual": [
+            {
+              "requested": 0,
+              "expected": 0,
+              "actual": 0
+            },
+            {
+              "requested": 0.001,
+              "expected": 0,
+              "actual": 0
+            },
+            {
+              "requested": 0.033366,
+              "expected": 0,
+              "actual": 0
+            },
+            {
+              "requested": 0.033367,
+              "expected": 0.03336666666666667,
+              "actual": 0.03336666666666667
+            },
+            {
+              "requested": 0.1,
+              "expected": 0.06673333333333334,
+              "actual": 0.06673333333333334
+            },
+            {
+              "requested": 0.333333,
+              "expected": 0.3003,
+              "actual": 0.3003
+            },
+            {
+              "requested": 0.999,
+              "expected": 0.9676333333333333,
+              "actual": 0.9676333333333333
+            },
+            {
+              "requested": 1.001,
+              "expected": 1.001,
+              "actual": 1.001
+            },
+            {
+              "requested": 1.999,
+              "expected": 1.9686333333333332,
+              "actual": 1.9686333333333332
+            },
+            {
+              "requested": 2,
+              "expected": 1.9686333333333332,
+              "actual": 1.9686333333333332
+            },
+            {
+              "requested": 2.001,
+              "expected": 1.9686333333333332,
+              "actual": 1.9686333333333332
+            },
+            {
+              "requested": 2.067,
+              "expected": 2.0353666666666665,
+              "actual": 2.0353666666666665
+            },
+            {
+              "requested": 2.101,
+              "expected": 2.0687333333333333,
+              "actual": 2.0687333333333333
+            },
+            {
+              "requested": 2.8,
+              "expected": 2.769433333333333,
+              "actual": 2.769433333333333
+            },
+            {
+              "requested": 3.4,
+              "expected": 3.370033333333333,
+              "actual": 3.370033333333333
+            },
+            {
+              "requested": 3.99,
+              "expected": 3.9706333333333332,
+              "actual": 3.9706333333333332
+            }
+          ]
+        }
+      },
+      {
+        "name": "vfr_pts",
+        "milliseconds": 156.39999997615814,
+        "value": {
+          "cold": {
+            "n": 16,
+            "min": 2.899999976158142,
+            "median": 12.899999976158142,
+            "p95": 16.59999990463257,
+            "max": 16.59999990463257
+          },
+          "warm": {
+            "n": 16,
+            "min": 0,
+            "median": 0,
+            "p95": 0.10000002384185791,
+            "max": 0.10000002384185791
+          },
+          "cacheHits": 16,
+          "actual": [
+            {
+              "requested": 0,
+              "expected": 0,
+              "actual": 0
+            },
+            {
+              "requested": 0.001,
+              "expected": 0,
+              "actual": 0
+            },
+            {
+              "requested": 0.033366,
+              "expected": 0,
+              "actual": 0
+            },
+            {
+              "requested": 0.033367,
+              "expected": 0.03336666666666667,
+              "actual": 0.03336666666666667
+            },
+            {
+              "requested": 0.1,
+              "expected": 0.06673333333333334,
+              "actual": 0.06673333333333334
+            },
+            {
+              "requested": 0.333333,
+              "expected": 0.3003,
+              "actual": 0.3003
+            },
+            {
+              "requested": 0.999,
+              "expected": 0.9676333333333333,
+              "actual": 0.9676333333333333
+            },
+            {
+              "requested": 1.001,
+              "expected": 1.001,
+              "actual": 1.001
+            },
+            {
+              "requested": 1.999,
+              "expected": 1.9686333333333332,
+              "actual": 1.9686333333333332
+            },
+            {
+              "requested": 2,
+              "expected": 1.9686333333333332,
+              "actual": 1.9686333333333332
+            },
+            {
+              "requested": 2.001,
+              "expected": 1.9686333333333332,
+              "actual": 1.9686333333333332
+            },
+            {
+              "requested": 2.067,
+              "expected": 2.002,
+              "actual": 2.002
+            },
+            {
+              "requested": 2.101,
+              "expected": 2.002,
+              "actual": 2.002
+            },
+            {
+              "requested": 2.8,
+              "expected": 2.7027,
+              "actual": 2.7027
+            },
+            {
+              "requested": 3.4,
+              "expected": 3.3033,
+              "actual": 3.3033
+            },
+            {
+              "requested": 3.99,
+              "expected": 3.9039,
+              "actual": 3.9039
+            }
+          ]
+        }
+      },
+      {
+        "name": "cache_identity_across_sessions",
+        "milliseconds": 3.8000000715255737,
+        "value": {
+          "cacheHits": 1,
+          "newDecodeJobs": 0
+        }
+      },
+      {
+        "name": "sequential_vfr_cursor",
+        "milliseconds": 66.89999997615814,
+        "value": {
+          "samples": 123,
+          "latency": {
+            "n": 120,
+            "min": 0,
+            "median": 0.10000002384185791,
+            "p95": 0.6000000238418579,
+            "max": 3.600000023841858
+          }
+        }
+      },
+      {
+        "name": "bounded_parallel_decoders",
+        "milliseconds": 77.70000004768372,
+        "value": {
+          "requests": 8,
+          "observedActiveJobs": 2,
+          "configuredConcurrency": 2
+        }
+      },
+      {
+        "name": "shared_decode_and_cancellation",
+        "milliseconds": 10.300000071525574,
+        "value": {
+          "consumers": 12,
+          "decodeJobs": 1,
+          "cancelResponseMs": 1.2000000476837158
+        }
+      },
+      {
+        "name": "stereo_numeric_waveform",
+        "milliseconds": 15.299999952316284,
+        "value": {
+          "channels": [
+            {
+              "min": -0.29998779296875,
+              "max": 0.29998779296875
+            },
+            {
+              "min": -0.29998779296875,
+              "max": 0.29998779296875
+            }
+          ],
+          "columns": 1600
+        }
+      },
+      {
+        "name": "clip_visual_worker_dpr",
+        "milliseconds": 166.30000007152557,
+        "value": {
+          "dpr": 2,
+          "canvasWidth": 1442,
+          "cssWidth": 720.71875,
+          "firstPTS": "0.2002",
+          "lastPTS": "3.9706333333333332",
+          "worker": {
+            "sources": 1,
+            "frameBytes": 170240,
+            "pcmBytes": 0,
+            "waveformBytes": 12032,
+            "frameHits": 0,
+            "frameMisses": 20,
+            "activeJobs": 1,
+            "completed": 2,
+            "cancelled": 0,
+            "persistentThumbnailHits": 0,
+            "thumbnailDecodes": 11,
+            "indexBytes": 367,
+            "indexHits": 10,
+            "persistentHits": 0,
+            "persistentWrites": 3
+          }
+        }
+      },
+      {
+        "name": "complete_one_hour_stereo_waveform",
+        "milliseconds": 6309.700000047684,
+        "value": {
+          "duration": 3600,
+          "columns": 7200,
+          "leftPulses": 360,
+          "rightPulses": 360,
+          "lastLeftPeak": 0.8999999761581421,
+          "lastRightPeak": -0.8000000715255737,
+          "cache": {
+            "sources": 4,
+            "frameBytes": 8241952,
+            "pcmBytes": 0,
+            "waveformBytes": 16757856,
+            "frameHits": 33,
+            "frameMisses": 56,
+            "activeJobs": 0,
+            "completed": 402,
+            "cancelled": 1,
+            "persistentThumbnailHits": 0,
+            "thumbnailDecodes": 0,
+            "indexBytes": 761,
+            "indexHits": 0,
+            "persistentHits": 1,
+            "persistentWrites": 363
+          }
+        }
+      },
+      {
+        "name": "one_hour_waveform_warm_cache",
+        "milliseconds": 83.70000004768372,
+        "value": {
+          "before": {
+            "sources": 4,
+            "frameBytes": 8241952,
+            "pcmBytes": 0,
+            "waveformBytes": 16757856,
+            "frameHits": 33,
+            "frameMisses": 56,
+            "activeJobs": 0,
+            "completed": 402,
+            "cancelled": 1,
+            "persistentThumbnailHits": 0,
+            "thumbnailDecodes": 0,
+            "indexBytes": 761,
+            "indexHits": 0,
+            "persistentHits": 1,
+            "persistentWrites": 364
+          },
+          "after": {
+            "sources": 4,
+            "frameBytes": 8241952,
+            "pcmBytes": 0,
+            "waveformBytes": 16757856,
+            "frameHits": 33,
+            "frameMisses": 56,
+            "activeJobs": 0,
+            "completed": 762,
+            "cancelled": 1,
+            "persistentThumbnailHits": 0,
+            "thumbnailDecodes": 0,
+            "indexBytes": 761,
+            "indexHits": 0,
+            "persistentHits": 361,
+            "persistentWrites": 364
+          }
+        }
+      }
+    ],
+    "logs": [],
+    "longAudioAnalyzedSeconds": 3600,
+    "completed": "2026-09-29T15:46:05.464Z",
+    "maximum": {
+      "frameBytes": 8241952,
+      "pcmBytes": 0,
+      "waveformBytes": 16757856,
+      "activeJobs": 2,
+      "sources": 4,
+      "jsHeapBytes": 180011165
+    },
+    "final": {
+      "sources": 4,
+      "frameBytes": 8241952,
+      "pcmBytes": 0,
+      "waveformBytes": 16757856,
+      "frameHits": 33,
+      "frameMisses": 56,
+      "activeJobs": 0,
+      "completed": 762,
+      "cancelled": 1,
+      "persistentThumbnailHits": 0,
+      "thumbnailDecodes": 0,
+      "indexBytes": 761,
+      "indexHits": 0,
+      "persistentHits": 361,
+      "persistentWrites": 364
+    }
+  }
+}

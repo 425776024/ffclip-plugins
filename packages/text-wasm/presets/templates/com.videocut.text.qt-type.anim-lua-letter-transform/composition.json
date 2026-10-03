@@ -1,0 +1,234 @@
+{
+  "format": "videocut.text-template",
+  "id": "builtin.text.qt-type.anim-lua-letter-transform",
+  "display": {
+    "name_key": "layered-flower",
+    "fallback_name": "蜜桃灯牌",
+    "category": "animation_preset",
+    "tags": [
+      "animation",
+      "qt-lua",
+      "letter-transform"
+    ]
+  },
+  "placement": {
+    "default_duration_ticks": 600000,
+    "reference_width": 1920,
+    "reference_height": 1080
+  },
+  "bindings": [
+    {
+      "id": "content",
+      "kind": "plain_text",
+      "default": "心动",
+      "target": {
+        "paragraph_id": "paragraph-main",
+        "run_id": "run-main"
+      },
+      "content_slot_id": "content"
+    }
+  ],
+  "rules": [
+    {
+      "channel": "animations",
+      "mode": "replace",
+      "content_slot_id": "content",
+      "target_layer_id": "",
+      "semantic_role": ""
+    },
+    {
+      "channel": "decorations",
+      "mode": "replace",
+      "content_slot_id": "content",
+      "target_layer_id": "",
+      "semantic_role": ""
+    }
+  ],
+  "document": {
+    "layout_box": {
+      "x": 260,
+      "y": 229.66267,
+      "width": 1400,
+      "height": 420,
+      "vertical_alignment": "center",
+      "clip_overflow": false,
+      "sizing_mode": "auto_height",
+      "minimum_width": 0,
+      "minimum_height": 0,
+      "minimum_fit_font_size": 1,
+      "maximum_fit_font_size": 4096,
+      "padding": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "pixel_snap": false
+    },
+    "writing_mode": "horizontal",
+    "content_slots": [
+      {
+        "slot_id": "content",
+        "semantic_role": "primary",
+        "paragraph_ids": [
+          "paragraph-main"
+        ],
+        "run_ids": [
+          "run-main"
+        ]
+      }
+    ],
+    "paragraphs": [
+      {
+        "id": "paragraph-main",
+        "style": {
+          "alignment": "center",
+          "direction": "auto",
+          "locale": "und",
+          "line_height": 1,
+          "max_lines": 2,
+          "overflow": "visible",
+          "wrap": "word"
+        },
+        "runs": [
+          {
+            "id": "run-main",
+            "text_binding": "content",
+            "locale": "und",
+            "style": {
+              "font": {
+                "primary": {
+                  "kind": "builtin",
+                  "family": "Inter",
+                  "postscript_name": "Inter-Regular",
+                  "weight": 400,
+                  "width": 5,
+                  "slant": "upright",
+                  "face_index": 0,
+                  "variation_axes": [],
+                  "asset_id": "builtin.font.inter.variable.v1",
+                  "platform": "",
+                  "face_fingerprint": "",
+                  "allow_system_glyph_fallback": false
+                },
+                "fallbacks": [
+                  {
+                    "kind": "builtin",
+                    "family": "Source Han Sans SC Medium",
+                    "postscript_name": "SourceHanSansSC-Medium",
+                    "weight": 500,
+                    "width": 5,
+                    "slant": "upright",
+                    "face_index": 0,
+                    "variation_axes": [],
+                    "asset_id": "builtin.font.reference-cjk.source-han-sans-sc-medium.v1",
+                    "platform": "",
+                    "face_fingerprint": "",
+                    "allow_system_glyph_fallback": false
+                  }
+                ],
+                "family": "Inter",
+                "postscript_name": "Inter-Regular",
+                "weight": 400,
+                "width": 5,
+                "slant": "upright",
+                "face_index": 0,
+                "variation_axes": [],
+                "features": [],
+                "allow_system_glyph_fallback": false
+              },
+              "font_size": 411.1111,
+              "letter_spacing": 0,
+              "word_spacing": 0,
+              "baseline_shift": 0,
+              "materials": {
+                "layers": [
+                  {
+                    "type": "fill",
+                    "layer_id": "glyph.primaryFill",
+                    "z_order": 0,
+                    "blend": "source_over",
+                    "material": {
+                      "kind": "editable_slot",
+                      "semantic_role": "glyph.primaryFill",
+                      "fallback": {
+                        "kind": "solid",
+                        "color": [
+                          1,
+                          0.9490196078431372,
+                          0.7764705882352941,
+                          1
+                        ]
+                      }
+                    }
+                  }
+                ]
+              },
+              "background": {
+                "enabled": false,
+                "color": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "padding": {
+                  "left": 0,
+                  "top": 0,
+                  "right": 0,
+                  "bottom": 0
+                },
+                "corner_radius": 0
+              },
+              "decoration": {
+                "underline": {
+                  "enabled": false
+                },
+                "strike_through": {
+                  "enabled": false
+                }
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "appearance": {
+    "backdrops": {
+      "layers": []
+    },
+    "sdf_material": {
+      "enabled": true,
+      "source_creation_component": "sdf_text",
+      "source_design_width": 720,
+      "source_design_height": 1280,
+      "distance_range": 172,
+      "raster_distance_range": 30,
+      "smoothing_scale": 0.6
+    },
+    "bend": {
+      "enabled": false,
+      "amount": 0
+    },
+    "path": {
+      "enabled": false,
+      "geometry_id": "",
+      "commands": [],
+      "start_offset": 0,
+      "baseline_offset": 0,
+      "overflow": "clip",
+      "loop": false,
+      "rotate_to_tangent": true,
+      "keep_upright": true
+    },
+    "visual_extent": {
+      "allow_control_overflow": true,
+      "maximum_extent_width": 1920,
+      "maximum_extent_height": 1080
+    },
+    "global_alpha": 1
+  },
+  "decorations": [],
+  "resources": []
+}

@@ -1,0 +1,608 @@
+{
+  "format": "videocut.text-animation",
+  "animation": {
+    "layers": [
+      {
+        "id": "reference-animation-51",
+        "time_driver": {
+          "kind": "clip_local",
+          "duration_us": 3000000,
+          "playback": "loop"
+        },
+        "animators": [
+          {
+            "id": "selector-1",
+            "anchor": "glyph_center",
+            "position_mode": "text_bounds_offset",
+            "presentation": "transform",
+            "selectors": [
+              {
+                "kind": "range",
+                "based_on": "grapheme",
+                "range_start": 0,
+                "range_end": 1,
+                "offset": 0.0,
+                "edge_smooth": 0,
+                "constrained": true,
+                "shape": "square",
+                "order": "forward",
+                "random_seed": 50.0,
+                "intensity": 1,
+                "intensity_start": 0,
+                "intensity_end": 1
+              }
+            ],
+            "tracks": [],
+            "effect_program_id": "com.videocut.text.qt-type.anim-studio-spiral-radial.program.01"
+          }
+        ],
+        "render_group": {
+          "mode": "page",
+          "expand_ratio_x": 2.72,
+          "expand_ratio_y": 4.51
+        },
+        "post_effects": [
+          {
+            "id": "effect-1",
+            "node_kind": "deep_glow",
+            "amount": 0.0,
+            "parameters": [
+              {
+                "name": "blendMode",
+                "values": [
+                  0.0
+                ]
+              },
+              {
+                "name": "blueOffset",
+                "values": [
+                  0.0
+                ]
+              },
+              {
+                "name": "ca",
+                "values": [
+                  0.0
+                ]
+              },
+              {
+                "name": "downSample",
+                "values": [
+                  0.6
+                ]
+              },
+              {
+                "name": "exposure",
+                "values": [
+                  1.05
+                ],
+                "keyframes": [
+                  {
+                    "offset": 0.0,
+                    "value": 0.0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": 0.0,
+                    "bezier_time_out": 0.0
+                  },
+                  {
+                    "offset": 0.09999999999999999,
+                    "value": 0.6,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.042,
+                    "bezier_time_out": 0.09899999999999999
+                  },
+                  {
+                    "offset": 0.39999999999999997,
+                    "value": 0.6,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.102,
+                    "bezier_time_out": 0.13999999999999999
+                  },
+                  {
+                    "offset": 0.7333333333333334,
+                    "value": 0.2,
+                    "tangent_in": 0.0,
+                    "tangent_out": -1.1363636363636367,
+                    "bezier": true,
+                    "bezier_time_in": -0.13999999999999999,
+                    "bezier_time_out": 0.044000000000000004
+                  },
+                  {
+                    "offset": 0.8666666666666667,
+                    "value": 0.05,
+                    "tangent_in": -1.125,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.04533333333333334,
+                    "bezier_time_out": 0.06266666666666666
+                  },
+                  {
+                    "offset": 1.0,
+                    "value": 0.0,
+                    "tangent_in": -0.411764705882353,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.033999999999999996,
+                    "bezier_time_out": 0.0
+                  }
+                ]
+              },
+              {
+                "name": "gammaCorrect",
+                "values": [
+                  1.0
+                ]
+              },
+              {
+                "name": "gammaValue",
+                "values": [
+                  3.0
+                ]
+              },
+              {
+                "name": "glowFromAlpha",
+                "values": [
+                  0.5
+                ]
+              },
+              {
+                "name": "glowIter",
+                "values": [
+                  4.0
+                ]
+              },
+              {
+                "name": "greenOffset",
+                "values": [
+                  0.0
+                ]
+              },
+              {
+                "name": "quality",
+                "values": [
+                  0.75
+                ]
+              },
+              {
+                "name": "radius",
+                "values": [
+                  800.0
+                ],
+                "keyframes": [
+                  {
+                    "offset": 0.0,
+                    "value": 400.0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": 0.0,
+                    "bezier_time_out": 0.0
+                  },
+                  {
+                    "offset": 0.09999999999999999,
+                    "value": 424.0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.042,
+                    "bezier_time_out": 0.09899999999999999
+                  },
+                  {
+                    "offset": 0.39999999999999997,
+                    "value": 424.0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.102,
+                    "bezier_time_out": 0.252
+                  },
+                  {
+                    "offset": 1.0,
+                    "value": 400.0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.252,
+                    "bezier_time_out": 0.0
+                  }
+                ]
+              },
+              {
+                "name": "ratio",
+                "values": [
+                  1.0
+                ]
+              },
+              {
+                "name": "redOffset",
+                "values": [
+                  0.0
+                ]
+              },
+              {
+                "name": "rotate",
+                "values": [
+                  0.0
+                ]
+              },
+              {
+                "name": "sourceOpacity",
+                "values": [
+                  1.0
+                ]
+              },
+              {
+                "name": "stepsMult",
+                "values": [
+                  1.0
+                ]
+              },
+              {
+                "name": "tint",
+                "values": [
+                  0.0
+                ]
+              },
+              {
+                "name": "tintColor",
+                "values": [
+                  0.6235294117647059,
+                  0.8470588235294118,
+                  1.0,
+                  1.0
+                ]
+              },
+              {
+                "name": "tintMix",
+                "values": [
+                  1.0
+                ]
+              },
+              {
+                "name": "tintMode",
+                "values": [
+                  0.0
+                ]
+              },
+              {
+                "name": "kernelStrideBase",
+                "values": [
+                  0.001
+                ]
+              },
+              {
+                "name": "kernelStrideAspectPower",
+                "values": [
+                  0.0
+                ]
+              }
+            ],
+            "padding_px": 192
+          },
+          {
+            "id": "effect-2",
+            "node_kind": "chromatic_aberration",
+            "amount": 0.0,
+            "parameters": [
+              {
+                "name": "offsetX",
+                "values": [
+                  0.5
+                ],
+                "keyframes": [
+                  {
+                    "offset": 0.0,
+                    "value": 0.0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": 0.0,
+                    "bezier_time_out": 0.0
+                  },
+                  {
+                    "offset": 0.13333333333333333,
+                    "value": 0.06,
+                    "tangent_in": 0.0,
+                    "tangent_out": -0.027272727272727233,
+                    "bezier": true,
+                    "bezier_time_in": -0.056,
+                    "bezier_time_out": 0.11
+                  },
+                  {
+                    "offset": 0.3333333333333333,
+                    "value": 0.005,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.129,
+                    "bezier_time_out": 0.20766666666666667
+                  },
+                  {
+                    "offset": 0.7999999999999999,
+                    "value": 0.0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.21,
+                    "bezier_time_out": 0.066
+                  },
+                  {
+                    "offset": 1.0,
+                    "value": 0.0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.06799999999999999,
+                    "bezier_time_out": 0.0
+                  }
+                ]
+              },
+              {
+                "name": "offsetY",
+                "values": [
+                  0.5
+                ],
+                "keyframes": [
+                  {
+                    "offset": 0.0,
+                    "value": 0.0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": 0.0,
+                    "bezier_time_out": 0.0
+                  },
+                  {
+                    "offset": 0.13333333333333333,
+                    "value": -0.06,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.027272727272727233,
+                    "bezier": true,
+                    "bezier_time_in": -0.056,
+                    "bezier_time_out": 0.11
+                  },
+                  {
+                    "offset": 0.3333333333333333,
+                    "value": -0.005,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.129,
+                    "bezier_time_out": 0.20766666666666667
+                  },
+                  {
+                    "offset": 0.7999999999999999,
+                    "value": 0.0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.21,
+                    "bezier_time_out": 0.066
+                  },
+                  {
+                    "offset": 1.0,
+                    "value": 0.0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.06799999999999999,
+                    "bezier_time_out": 0.0
+                  }
+                ]
+              }
+            ],
+            "padding_px": 192
+          },
+          {
+            "id": "effect-3",
+            "node_kind": "radial_blur",
+            "amount": 0.0,
+            "parameters": [
+              {
+                "name": "amount",
+                "values": [
+                  60.0
+                ],
+                "keyframes": [
+                  {
+                    "offset": 0.0,
+                    "value": 20.0,
+                    "tangent_in": 0.0,
+                    "tangent_out": -40.00000000000001,
+                    "bezier": true,
+                    "bezier_time_in": 0.0,
+                    "bezier_time_out": 0.066
+                  },
+                  {
+                    "offset": 0.19999999999999998,
+                    "value": 12.0,
+                    "tangent_in": -40.000000000000014,
+                    "tangent_out": -35.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.06799999999999999,
+                    "bezier_time_out": 0.066
+                  },
+                  {
+                    "offset": 0.39999999999999997,
+                    "value": 5.0,
+                    "tangent_in": -35.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.06799999999999999,
+                    "bezier_time_out": 0.252
+                  },
+                  {
+                    "offset": 1.0,
+                    "value": 0.0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.252,
+                    "bezier_time_out": 0.0
+                  }
+                ]
+              },
+              {
+                "name": "blurAlpha",
+                "values": [
+                  1.0
+                ]
+              },
+              {
+                "name": "blurType",
+                "values": [
+                  1.0
+                ]
+              },
+              {
+                "name": "borderType",
+                "values": [
+                  0.0
+                ]
+              },
+              {
+                "name": "center_x",
+                "values": [
+                  0.05
+                ]
+              },
+              {
+                "name": "center_y",
+                "values": [
+                  0.2
+                ]
+              },
+              {
+                "name": "dither",
+                "values": [
+                  1.0
+                ]
+              },
+              {
+                "name": "inverseGammaCorrection",
+                "values": [
+                  0.0
+                ]
+              },
+              {
+                "name": "lightIntensity",
+                "values": [
+                  1.4
+                ]
+              },
+              {
+                "name": "lightTransferMode",
+                "values": [
+                  1.0
+                ]
+              },
+              {
+                "name": "quality",
+                "values": [
+                  0.35
+                ]
+              },
+              {
+                "name": "weightDecay",
+                "values": [
+                  0.92
+                ]
+              }
+            ],
+            "padding_px": 192
+          }
+        ]
+      }
+    ],
+    "execution_graph": {
+      "nodes": [
+        {
+          "id": "layout",
+          "node_kind": "layout",
+          "capability": "layout_glyph_run"
+        },
+        {
+          "id": "selector-0",
+          "node_kind": "selector",
+          "capability": "selector_base",
+          "input_ids": [
+            "layout"
+          ]
+        },
+        {
+          "id": "operator-0",
+          "node_kind": "operator",
+          "capability": "operator_program",
+          "input_ids": [
+            "selector-0"
+          ]
+        },
+        {
+          "id": "scene-prefab",
+          "node_kind": "scene",
+          "capability": "scene_prefab",
+          "input_ids": [
+            "operator-0"
+          ]
+        },
+        {
+          "id": "scene-mesh",
+          "node_kind": "scene",
+          "capability": "scene_mesh",
+          "input_ids": [
+            "scene-prefab"
+          ]
+        },
+        {
+          "id": "material-pass",
+          "node_kind": "material_pass",
+          "capability": "material_color_pass",
+          "input_ids": [
+            "scene-mesh"
+          ]
+        },
+        {
+          "id": "render-target",
+          "node_kind": "render_target",
+          "capability": "render_target_expanded",
+          "input_ids": [
+            "material-pass"
+          ]
+        },
+        {
+          "id": "effect-1",
+          "node_kind": "post_effect_pass",
+          "capability": "none",
+          "input_ids": [
+            "render-target"
+          ],
+          "post_effect_kind": "deep_glow"
+        },
+        {
+          "id": "effect-2",
+          "node_kind": "post_effect_pass",
+          "capability": "none",
+          "input_ids": [
+            "effect-1"
+          ],
+          "post_effect_kind": "chromatic_aberration"
+        },
+        {
+          "id": "effect-3",
+          "node_kind": "post_effect_pass",
+          "capability": "none",
+          "input_ids": [
+            "effect-2"
+          ],
+          "post_effect_kind": "radial_blur"
+        }
+      ]
+    }
+  }
+}

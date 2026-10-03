@@ -1,0 +1,53 @@
+
+    uniform shader inputTexture;
+    uniform float2 textureSize;
+    uniform float sampleCount;
+    uniform float sigma;
+    uniform float2 sampleStep;
+
+    float gaussian(float distanceValue) {
+      return exp(((-0.5 * distanceValue) * distanceValue) /
+                 (sigma * sigma));
+    }
+
+    float4 sampleQt(float2 qtUv) {
+      return float4(inputTexture.eval(
+          float2(qtUv.x, 1.0 - qtUv.y) * textureSize));
+    }
+
+    float validQt(float2 qtUv) {
+      return step(0.0, qtUv.x) * step(qtUv.x, 1.0) *
+             step(0.0, qtUv.y) * step(qtUv.y, 1.0);
+    }
+
+    float4 main(float2 xy) {
+      float2 skUv = xy / textureSize;
+      float2 qtUv = float2(skUv.x, 1.0 - skUv.y);
+      if (sampleCount <
+          0.001000000047497451305389404296875) {
+        return sampleQt(qtUv);
+      }
+      float centerWeight = gaussian(0.0);
+      float normalization = centerWeight;
+      float4 accumulated = sampleQt(qtUv) * centerWeight;
+      for (int index = 1; index <= 1024; ++index) {
+        float sampleIndex = float(index);
+        if (sampleIndex > sampleCount) {
+          break;
+        }
+        float2 delta = sampleStep * sampleIndex;
+        float weight = gaussian(length(delta));
+        float2 minusUv = qtUv - delta;
+        if (validQt(minusUv) >= 0.5) {
+          accumulated += sampleQt(minusUv) * weight;
+          normalization += weight;
+        }
+        float2 plusUv = qtUv + delta;
+        if (validQt(plusUv) >= 0.5) {
+          accumulated += sampleQt(plusUv) * weight;
+          normalization += weight;
+        }
+      }
+      return accumulated / float4(normalization);
+    }
+  

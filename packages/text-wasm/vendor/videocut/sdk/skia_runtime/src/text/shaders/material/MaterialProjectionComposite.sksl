@@ -1,0 +1,93 @@
+uniform shader inputTexture;
+uniform shader auxiliaryTexture;
+uniform shader packedTexture;
+uniform shader colorTexture;
+uniform float2 textureSize;
+uniform float2 viewportSize;
+uniform float2 textSize;
+uniform float passIndex;
+uniform float progress;
+uniform float alpha;
+uniform float glowIntensity;
+uniform float colorExponent;
+uniform float4 textColor;
+
+float3 randomGradient(float3 point) {
+    float j = 4096.0 * sin(dot(point, float3(17.0, 59.4, 15.0)));
+    float z = fract(512.0 * j);
+    j *= 0.125;
+    float x = fract(512.0 * j);
+    j *= 0.125;
+    return float3(x, fract(512.0 * j), z) - 0.5;
+}
+
+float simplex(float3 point) {
+    float3 cell = floor(point + dot(point, float3(0.3333333)));
+    float3 x = point - cell + dot(cell, float3(0.1666667));
+    float3 e = step(float3(0.0), x - x.yzx);
+    float3 i1 = e * (1.0 - e.zxy);
+    float3 i2 = 1.0 - e.zxy * (1.0 - e);
+    float3 x1 = x - i1 + 0.1666667;
+    float3 x2 = x - i2 + 2.0 * 0.1666667;
+    float3 x3 = x - 1.0 + 3.0 * 0.1666667;
+    float4 weight = max(0.6 - float4(dot(x, x), dot(x1, x1),
+                                    dot(x2, x2), dot(x3, x3)), 0.0);
+    float4 gradient = float4(dot(randomGradient(cell), x),
+        dot(randomGradient(cell + i1), x1), dot(randomGradient(cell + i2), x2),
+        dot(randomGradient(cell + 1.0), x3));
+    weight *= weight;
+    weight *= weight;
+    return dot(gradient * weight, float4(52.0));
+}
+
+float fractal(float3 point) {
+    const float3x3 rotation1 = float3x3(-0.37, 0.36, 0.85, -0.14, -0.93, 0.34, 0.92, 0.01, 0.4);
+    const float3x3 rotation2 = float3x3(-0.55, -0.39, 0.74, 0.33, -0.91, -0.24, 0.77, 0.12, 0.63);
+    const float3x3 rotation3 = float3x3(-0.71, 0.52, -0.47, -0.08, -0.72, -0.68, -0.7, -0.45, 0.56);
+    return 0.5333333 * simplex(point * rotation1) +
+           0.2666667 * simplex(2.0 * point * rotation2) +
+           0.1333333 * simplex(4.0 * point * rotation3) +
+           0.0666667 * simplex(8.0 * point);
+}
+
+float4 screenLayer(float4 accumulated, float level, float4 gain) {
+    return 1.0 - (1.0 - accumulated) * (1.0 - clamp(level * gain, 0.0, 1.0));
+}
+
+half4 main(float2 position) {
+    float4 original = float4(inputTexture.eval(position));
+    if (passIndex < 1.5) {
+        float2 uv = float2(position.x / textureSize.x, 1.0 - position.y / textureSize.y);
+        uv.x *= textSize.x / textSize.y;
+        float frequency = passIndex < 0.5 ? 2.5 : 1.2;
+        float n = smoothstep(0.0, 1.0, fractal(float3(uv * frequency, progress)) * 0.5 + 0.5);
+        if (passIndex < 0.5) {
+            float3 rgb = mix(float3(original.a), original.rgb, n);
+            return half4(mix(rgb, original.rgb, alpha), original.a);
+        }
+        return half4(original * float4(2.0, 2.0, 2.0, 1.0) * pow(n, 2.5));
+    }
+    if (passIndex < 2.5) {
+        float2 delta = float2(-8.0, -8.0) / viewportSize * progress * textureSize;
+        float shadow = float(auxiliaryTexture.eval(position + delta).r);
+        return half4(original + float4(0.0, 0.0, 0.0, shadow * (1.0 - original.a)));
+    }
+    if (passIndex < 3.5) {
+        float4 packed0 = float4(auxiliaryTexture.eval(position));
+        float4 packed1 = float4(packedTexture.eval(position));
+        float4 blurredColor = float4(colorTexture.eval(position));
+        blurredColor.rgb /= blurredColor.a + 0.01;
+        float4 gain = pow(glowIntensity * 0.5, 1.0 / colorExponent) * textColor;
+        float4 glow = clamp(packed0.r * gain, 0.0, 1.0);
+        glow = screenLayer(glow, packed0.g, gain);
+        glow = screenLayer(glow, packed0.b, gain);
+        glow = screenLayer(glow, packed0.a, gain);
+        glow = screenLayer(glow, packed1.r, gain);
+        glow = screenLayer(glow, packed1.g, gain);
+        glow = screenLayer(glow, packed1.b, gain);
+        glow = screenLayer(glow, packed1.a, gain);
+        glow = clamp(glow * max(gain, 1.0) * blurredColor, 0.0, 1.0);
+        return half4(mix(glow * textColor, original, progress));
+    }
+    return half4(original + float4(auxiliaryTexture.eval(position)) * progress);
+}

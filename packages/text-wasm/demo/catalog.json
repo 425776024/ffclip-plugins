@@ -1,0 +1,994 @@
+{
+  "fonts": [
+    {
+      "id": "builtin.font.inter.variable.v1",
+      "url": "../fixtures/fonts/Inter.ttf",
+      "mediaType": "font/ttf",
+      "sha256": "0be2399ea925f1f83ff974764761da9860ec50742ed29a5d4c1ffd0c5c7ac3a8"
+    },
+    {
+      "id": "builtin.font.reference-cjk.source-han-sans-sc-medium.v1",
+      "url": "../fixtures/fonts/SourceHanSansSC-Medium.otf",
+      "mediaType": "font/otf",
+      "sha256": "d0124d3b7dbdb2b97a003b0999a217ddbdc408517c1edb76872d958ebfb08f1a"
+    }
+  ],
+  "templates": [
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-ae-motion-blur-forward",
+      "kind": "text_animation",
+      "name": "ANIM-LUA-AE-MOTION-BLUR-FORWARD",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-lua-ae-motion-blur-forward/manifest.json",
+      "sampleStatus": "error",
+      "sampleError": "text_effect.program_evaluation_failed: text effect page parameter depends on a unit value; text.animation.sample_failed: text effect page parameter depends on a unit value"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-ae-position-opacity",
+      "kind": "text_animation",
+      "name": "ANIM-LUA-AE-POSITION-OPACITY",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-lua-ae-position-opacity/manifest.json",
+      "sampleStatus": "error",
+      "sampleError": "text_effect.program_evaluation_failed: text effect reverse-shuffle inputs are invalid; text.animation.sample_failed: text effect reverse-shuffle inputs are invalid"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-breathing-depth-glow",
+      "kind": "text_animation",
+      "name": "ANIM-LUA-BREATHING-DEPTH-GLOW",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-lua-breathing-depth-glow/manifest.json",
+      "sampleStatus": "error",
+      "sampleError": "text.execution_graph.page_gpu_missing: text execution graph Page requires a GPU context"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-caption-burn-particles",
+      "kind": "text_animation",
+      "name": "ANIM-LUA-CAPTION-BURN-PARTICLES",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-lua-caption-burn-particles/manifest.json",
+      "sampleStatus": "error",
+      "sampleError": "text.animation.resource_failed: text execution graph resource has no admitted sample: text-template.builtin.text.qt-type.anim-lua-caption-burn-particles.sha256:05ffa0f9edab0f1feba54720c5dfb5b50fd95fd255fe652b524f3e2f685ce0a0.animation.assets/image/001.png"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-clone-blur-xy",
+      "kind": "text_animation",
+      "name": "ANIM-LUA-CLONE-BLUR-XY",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-lua-clone-blur-xy/manifest.json",
+      "sampleStatus": "timeout",
+      "sampleError": "Render exceeded 3000 ms CPU budget"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-cube",
+      "kind": "text_animation",
+      "name": "ANIM-LUA-CUBE",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-lua-cube/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-cylinder-projection",
+      "kind": "text_animation",
+      "name": "ANIM-LUA-CYLINDER-PROJECTION",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-lua-cylinder-projection/manifest.json",
+      "sampleStatus": "timeout",
+      "sampleError": "Render exceeded 3000 ms CPU budget"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-face-noise-shadow",
+      "kind": "text_animation",
+      "name": "ANIM-LUA-FACE-NOISE-SHADOW",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-lua-face-noise-shadow/manifest.json",
+      "sampleStatus": "timeout",
+      "sampleError": "Render exceeded 3000 ms CPU budget"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-flux-turbulent-blend",
+      "kind": "text_animation",
+      "name": "ANIM-LUA-FLUX-TURBULENT-BLEND",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-lua-flux-turbulent-blend/manifest.json",
+      "sampleStatus": "timeout",
+      "sampleError": "Render exceeded 3000 ms CPU budget"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-glow-cut-wipe",
+      "kind": "text_animation",
+      "name": "ANIM-LUA-GLOW-CUT-WIPE",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-lua-glow-cut-wipe/manifest.json",
+      "sampleStatus": "error",
+      "sampleError": "text.animation.resource_failed: text execution graph resource has no admitted sample: text-template.builtin.text.qt-type.anim-lua-glow-cut-wipe.sha256:ea1ccddc97e131d3f652e110170b769639fd1a9678632898393147bad1bbaf15.animation.assets/image/noise1.png"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-history-clone-feedback",
+      "kind": "text_animation",
+      "name": "ANIM-LUA-HISTORY-CLONE-FEEDBACK",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-lua-history-clone-feedback/manifest.json",
+      "sampleStatus": "error",
+      "sampleError": "text.execution_graph.page_gpu_missing: text execution graph Page requires a GPU context"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-hollow-subtitle",
+      "kind": "text_animation",
+      "name": "ANIM-LUA-HOLLOW-SUBTITLE",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-lua-hollow-subtitle/manifest.json",
+      "sampleStatus": "timeout",
+      "sampleError": "Render exceeded 3000 ms CPU budget"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-letter-flyout-spin",
+      "kind": "text_animation",
+      "name": "ANIM-LUA-LETTER-FLYOUT-SPIN",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-lua-letter-flyout-spin/manifest.json",
+      "sampleStatus": "error",
+      "sampleError": "text.execution_graph.page_gpu_missing: text execution graph Page requires a GPU context"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-letter-transform",
+      "kind": "text_animation",
+      "name": "ANIM-LUA-LETTER-TRANSFORM",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-lua-letter-transform/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-light-sweep-glow",
+      "kind": "text_animation",
+      "name": "ANIM-LUA-LIGHT-SWEEP-GLOW",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-lua-light-sweep-glow/manifest.json",
+      "sampleStatus": "timeout",
+      "sampleError": "Render exceeded 3000 ms CPU budget"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-line-spiral-material",
+      "kind": "text_animation",
+      "name": "ANIM-LUA-LINE-SPIRAL-MATERIAL",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-lua-line-spiral-material/manifest.json",
+      "sampleStatus": "error",
+      "sampleError": "text.execution_graph.page_gpu_missing: text execution graph Page requires a GPU context"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-lyric-timing",
+      "kind": "text_animation",
+      "name": "ANIM-LUA-LYRIC-TIMING",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-lua-lyric-timing/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-mask-motion-glow",
+      "kind": "text_animation",
+      "name": "ANIM-LUA-MASK-MOTION-GLOW",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-lua-mask-motion-glow/manifest.json",
+      "sampleStatus": "timeout",
+      "sampleError": "Render exceeded 3000 ms CPU budget"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-opacity",
+      "kind": "text_animation",
+      "name": "ANIM-LUA-OPACITY",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-lua-opacity/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-paged-segment-pipeline",
+      "kind": "text_animation",
+      "name": "ANIM-LUA-PAGED-SEGMENT-PIPELINE",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-lua-paged-segment-pipeline/manifest.json",
+      "sampleStatus": "timeout",
+      "sampleError": "Render exceeded 3000 ms CPU budget"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-path-travel",
+      "kind": "text_animation",
+      "name": "ANIM-LUA-PATH-TRAVEL",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-lua-path-travel/manifest.json",
+      "sampleStatus": "error",
+      "sampleError": "text.execution_graph.page_gpu_missing: text execution graph Page requires a GPU context"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-printer-multistage",
+      "kind": "text_animation",
+      "name": "ANIM-LUA-PRINTER-MULTISTAGE",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-lua-printer-multistage/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-radial-3d-geometry",
+      "kind": "text_animation",
+      "name": "ANIM-LUA-RADIAL-3D-GEOMETRY",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-lua-radial-3d-geometry/manifest.json",
+      "sampleStatus": "timeout",
+      "sampleError": "Render exceeded 3000 ms CPU budget"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-rt-directional-bloom",
+      "kind": "text_animation",
+      "name": "ANIM-LUA-RT-DIRECTIONAL-BLOOM",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-lua-rt-directional-bloom/manifest.json",
+      "sampleStatus": "error",
+      "sampleError": "text.execution_graph.page_gpu_missing: text execution graph Page requires a GPU context"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-rt-line-column-shader",
+      "kind": "text_animation",
+      "name": "ANIM-LUA-RT-LINE-COLUMN-SHADER",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-lua-rt-line-column-shader/manifest.json",
+      "sampleStatus": "error",
+      "sampleError": "text.animation.resource_failed: text execution graph resource has no admitted sample: text-template.builtin.text.qt-type.anim-lua-rt-line-column-shader.sha256:8e46ed368f6f67bde4809f09f6cbce0e01f9347ebdbef497ae47cd6e0468c96f.animation.assets/image/alpha.png"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-rt-progress-shader",
+      "kind": "text_animation",
+      "name": "ANIM-LUA-RT-PROGRESS-SHADER",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-lua-rt-progress-shader/manifest.json",
+      "sampleStatus": "timeout",
+      "sampleError": "Render exceeded 3000 ms CPU budget"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-rt-scale-blur-reveal",
+      "kind": "text_animation",
+      "name": "ANIM-LUA-RT-SCALE-BLUR-REVEAL",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-lua-rt-scale-blur-reveal/manifest.json",
+      "sampleStatus": "timeout",
+      "sampleError": "Render exceeded 3000 ms CPU budget"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-shader-char-transform",
+      "kind": "text_animation",
+      "name": "ANIM-LUA-SHADER-CHAR-TRANSFORM",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-lua-shader-char-transform/manifest.json",
+      "sampleStatus": "timeout",
+      "sampleError": "Render exceeded 3000 ms CPU budget"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-shaped-ramp-glow",
+      "kind": "text_animation",
+      "name": "ANIM-LUA-SHAPED-RAMP-GLOW",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-lua-shaped-ramp-glow/manifest.json",
+      "sampleStatus": "timeout",
+      "sampleError": "Render exceeded 3000 ms CPU budget"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-six-pass-motion-blur",
+      "kind": "text_animation",
+      "name": "ANIM-LUA-SIX-PASS-MOTION-BLUR",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-lua-six-pass-motion-blur/manifest.json",
+      "sampleStatus": "timeout",
+      "sampleError": "Render exceeded 3000 ms CPU budget"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-t622-keyframe-rt",
+      "kind": "text_animation",
+      "name": "ANIM-LUA-T622-KEYFRAME-RT",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-lua-t622-keyframe-rt/manifest.json",
+      "sampleStatus": "error",
+      "sampleError": "text.execution_graph.page_gpu_missing: text execution graph Page requires a GPU context"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-t744-pivot-blur",
+      "kind": "text_animation",
+      "name": "ANIM-LUA-T744-PIVOT-BLUR",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-lua-t744-pivot-blur/manifest.json",
+      "sampleStatus": "error",
+      "sampleError": "text.execution_graph.page_gpu_missing: text execution graph Page requires a GPU context"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-three-mesh-rt",
+      "kind": "text_animation",
+      "name": "ANIM-LUA-THREE-MESH-RT",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-lua-three-mesh-rt/manifest.json",
+      "sampleStatus": "error",
+      "sampleError": "text.animation.resource_failed: text execution graph resource has no admitted sample: text-template.builtin.text.qt-type.anim-lua-three-mesh-rt.sha256:86c044084c60e962c04be298b71d935f3f6403066d2ef07b0e76fa73b19e02b6.animation.assets/imgs/color2.png"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-turbulence-deepglow",
+      "kind": "text_animation",
+      "name": "ANIM-LUA-TURBULENCE-DEEPGLOW",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-lua-turbulence-deepglow/manifest.json",
+      "sampleStatus": "error",
+      "sampleError": "text.execution_graph.failed: text material turbulence requires an active GPU context"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-vat-rbd-mesh",
+      "kind": "text_animation",
+      "name": "ANIM-LUA-VAT-RBD-MESH",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-lua-vat-rbd-mesh/manifest.json",
+      "sampleStatus": "error",
+      "sampleError": "text.animation.resource_failed: text execution graph resource has no admitted sample: text-template.builtin.text.qt-type.anim-lua-vat-rbd-mesh.sha256:54797182535b0d87ac28303392758f0d2ef28210764d35bfbc87781080ada3d9.animation.vat.mesh"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-lua-wave-material",
+      "kind": "text_animation",
+      "name": "ANIM-LUA-WAVE-MATERIAL",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-lua-wave-material/manifest.json",
+      "sampleStatus": "timeout",
+      "sampleError": "Render exceeded 3000 ms CPU budget"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-studio-alpha-plugin-soft-wipe",
+      "kind": "text_animation",
+      "name": "Enter · Fade 01",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-studio-alpha-plugin-soft-wipe/manifest.json",
+      "sampleStatus": "error",
+      "sampleError": "Native post-effects are not supported by wasm-raster-v1"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-studio-alpha-plugin-wipe",
+      "kind": "text_animation",
+      "name": "Enter · Fade 01",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-studio-alpha-plugin-wipe/manifest.json",
+      "sampleStatus": "error",
+      "sampleError": "Native post-effects are not supported by wasm-raster-v1"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-studio-bezier-fly-dirblur",
+      "kind": "text_animation",
+      "name": "Loop · Breathe 09",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-studio-bezier-fly-dirblur/manifest.json",
+      "sampleStatus": "error",
+      "sampleError": "Native post-effects are not supported by wasm-raster-v1"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-studio-center-collapse-chroma",
+      "kind": "text_animation",
+      "name": "Exit · Shrink 09",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-studio-center-collapse-chroma/manifest.json",
+      "sampleStatus": "error",
+      "sampleError": "Native post-effects are not supported by wasm-raster-v1"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-studio-center-expand-chroma",
+      "kind": "text_animation",
+      "name": "Enter · Fade 01",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-studio-center-expand-chroma/manifest.json",
+      "sampleStatus": "error",
+      "sampleError": "Native post-effects are not supported by wasm-raster-v1"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-studio-color-scale-rotate-in",
+      "kind": "text_animation",
+      "name": "Exit · Fade 04",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-studio-color-scale-rotate-in/manifest.json",
+      "sampleStatus": "error",
+      "sampleError": "Native post-effects are not supported by wasm-raster-v1"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-studio-deform-fade-dust",
+      "kind": "text_animation",
+      "name": "Exit · Slide down 11",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-studio-deform-fade-dust/manifest.json",
+      "sampleStatus": "error",
+      "sampleError": "Native post-effects are not supported by wasm-raster-v1"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-studio-dual-selector-radial",
+      "kind": "text_animation",
+      "name": "Enter · Slide up 11",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-studio-dual-selector-radial/manifest.json",
+      "sampleStatus": "error",
+      "sampleError": "builtin text animation entry is invalid: animation.layers[0].decorations[0] contains unsupported field digest"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-studio-elastic-stagger-radial",
+      "kind": "text_animation",
+      "name": "Exit · Shrink 12",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-studio-elastic-stagger-radial/manifest.json",
+      "sampleStatus": "error",
+      "sampleError": "Native post-effects are not supported by wasm-raster-v1"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-studio-fall-trail-wave-glow",
+      "kind": "text_animation",
+      "name": "Exit · Fade 01",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-studio-fall-trail-wave-glow/manifest.json",
+      "sampleStatus": "error",
+      "sampleError": "Native post-effects are not supported by wasm-raster-v1"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-studio-godray-wipe",
+      "kind": "text_animation",
+      "name": "Enter · Fade 04",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-studio-godray-wipe/manifest.json",
+      "sampleStatus": "error",
+      "sampleError": "Native post-effects are not supported by wasm-raster-v1"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-studio-jitter-choker-glow",
+      "kind": "text_animation",
+      "name": "Enter · Fade 01",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-studio-jitter-choker-glow/manifest.json",
+      "sampleStatus": "error",
+      "sampleError": "Native post-effects are not supported by wasm-raster-v1"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-studio-lumi-lens-plugin",
+      "kind": "text_animation",
+      "name": "Enter · Fade 01",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-studio-lumi-lens-plugin/manifest.json",
+      "sampleStatus": "error",
+      "sampleError": "Native post-effects are not supported by wasm-raster-v1"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-studio-lumi-optics",
+      "kind": "text_animation",
+      "name": "Enter · Fade 01",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-studio-lumi-optics/manifest.json",
+      "sampleStatus": "error",
+      "sampleError": "Native post-effects are not supported by wasm-raster-v1"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-studio-plugin-ea51",
+      "kind": "text_animation",
+      "name": "Enter · Fade 01",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-studio-plugin-ea51/manifest.json",
+      "sampleStatus": "error",
+      "sampleError": "Native post-effects are not supported by wasm-raster-v1"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-studio-plugin-f5c3-wipe",
+      "kind": "text_animation",
+      "name": "Enter · Fade 01",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-studio-plugin-f5c3-wipe/manifest.json",
+      "sampleStatus": "error",
+      "sampleError": "Native post-effects are not supported by wasm-raster-v1"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-studio-projection-triple-plugin",
+      "kind": "text_animation",
+      "name": "Enter · Fade 01",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-studio-projection-triple-plugin/manifest.json",
+      "sampleStatus": "error",
+      "sampleError": "Native post-effects are not supported by wasm-raster-v1"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-studio-scale-deepglow",
+      "kind": "text_animation",
+      "name": "Enter · Pop 06",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-studio-scale-deepglow/manifest.json",
+      "sampleStatus": "error",
+      "sampleError": "builtin text animation entry is invalid: animation.layers[0].decorations[0] contains unsupported field digest"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-studio-sequential-signal-pulse",
+      "kind": "text_animation",
+      "name": "Enter · Fade 01",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-studio-sequential-signal-pulse/manifest.json",
+      "sampleStatus": "error",
+      "sampleError": "Native post-effects are not supported by wasm-raster-v1"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-studio-shake-glow",
+      "kind": "text_animation",
+      "name": "Enter · Slide up 14",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-studio-shake-glow/manifest.json",
+      "sampleStatus": "error",
+      "sampleError": "builtin text animation entry is invalid: animation.layers[0].decorations[0] contains unsupported field digest"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-studio-spiral-radial",
+      "kind": "text_animation",
+      "name": "Decoration · Celebration 05",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-studio-spiral-radial/manifest.json",
+      "sampleStatus": "error",
+      "sampleError": "Native post-effects are not supported by wasm-raster-v1"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-studio-squeeze-collapse",
+      "kind": "text_animation",
+      "name": "Timed · Word sweep 04",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-studio-squeeze-collapse/manifest.json",
+      "sampleStatus": "error",
+      "sampleError": "Native post-effects are not supported by wasm-raster-v1"
+    },
+    {
+      "id": "com.videocut.text.qt-type.anim-studio-time-transform-softglow",
+      "kind": "text_animation",
+      "name": "Enter · Fade 10",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.anim-studio-time-transform-softglow/manifest.json",
+      "sampleStatus": "error",
+      "sampleError": "builtin text animation entry is invalid: animation.layers[0].decorations[0] contains unsupported field digest"
+    },
+    {
+      "id": "com.videocut.text.qt-type.bubble-fixed",
+      "kind": "text_bubble",
+      "name": "Qt Bubble Fixed",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.bubble-fixed/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.bubble-nine-slice",
+      "kind": "text_bubble",
+      "name": "Qt Bubble Nine Slice",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.bubble-nine-slice/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.bubble-tile",
+      "kind": "text_bubble",
+      "name": "Qt Bubble Tile",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.bubble-tile/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-root-6926825801258208519",
+      "kind": "text_flower",
+      "name": "Qt Flower ROOT-6926825801258208519",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-root-6926825801258208519/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-root-6927160144425962767",
+      "kind": "text_flower",
+      "name": "Qt Flower ROOT-6927160144425962767",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-root-6927160144425962767/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-root-7166445713029729568",
+      "kind": "text_flower",
+      "name": "Qt Flower ROOT-7166445713029729568",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-root-7166445713029729568/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-root-7260286417681599784",
+      "kind": "text_flower",
+      "name": "Qt Flower ROOT-7260286417681599784",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-root-7260286417681599784/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-root-7430809868333780259",
+      "kind": "text_flower",
+      "name": "Qt Flower ROOT-7430809868333780259",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-root-7430809868333780259/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-root-7619228487098076441",
+      "kind": "text_flower",
+      "name": "Qt Flower ROOT-7619228487098076441",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-root-7619228487098076441/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-root-7630081720674700568",
+      "kind": "text_flower",
+      "name": "Qt Flower ROOT-7630081720674700568",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-root-7630081720674700568/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-scene-01",
+      "kind": "text_flower",
+      "name": "Qt Flower Scene 01",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-scene-01/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-scene-02",
+      "kind": "text_flower",
+      "name": "Qt Flower Scene 02",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-scene-02/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-scene-03",
+      "kind": "text_flower",
+      "name": "Qt Flower Scene 03",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-scene-03/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-scene-04",
+      "kind": "text_flower",
+      "name": "Qt Flower Scene 04",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-scene-04/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-scene-05",
+      "kind": "text_flower",
+      "name": "Qt Flower Scene 05",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-scene-05/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-scene-06",
+      "kind": "text_flower",
+      "name": "Qt Flower Scene 06",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-scene-06/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-scene-07",
+      "kind": "text_flower",
+      "name": "Qt Flower Scene 07",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-scene-07/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-scene-08",
+      "kind": "text_flower",
+      "name": "Qt Flower Scene 08",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-scene-08/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-scene-09",
+      "kind": "text_flower",
+      "name": "Qt Flower Scene 09",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-scene-09/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-scene-10",
+      "kind": "text_flower",
+      "name": "Qt Flower Scene 10",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-scene-10/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-scene-11",
+      "kind": "text_flower",
+      "name": "Qt Flower Scene 11",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-scene-11/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-scene-12",
+      "kind": "text_flower",
+      "name": "Qt Flower Scene 12",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-scene-12/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-scene-13",
+      "kind": "text_flower",
+      "name": "Qt Flower Scene 13",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-scene-13/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-scene-14",
+      "kind": "text_flower",
+      "name": "Qt Flower Scene 14",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-scene-14/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-01",
+      "kind": "text_flower",
+      "name": "Qt Flower Style 01",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-style-01/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-02",
+      "kind": "text_flower",
+      "name": "Qt Flower Style 02",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-style-02/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-03",
+      "kind": "text_flower",
+      "name": "Qt Flower Style 03",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-style-03/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-04",
+      "kind": "text_flower",
+      "name": "Qt Flower Style 04",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-style-04/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-05",
+      "kind": "text_flower",
+      "name": "Qt Flower Style 05",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-style-05/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-06",
+      "kind": "text_flower",
+      "name": "Qt Flower Style 06",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-style-06/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-07",
+      "kind": "text_flower",
+      "name": "Qt Flower Style 07",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-style-07/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-08",
+      "kind": "text_flower",
+      "name": "Qt Flower Style 08",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-style-08/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-09",
+      "kind": "text_flower",
+      "name": "Qt Flower Style 09",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-style-09/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-10",
+      "kind": "text_flower",
+      "name": "Qt Flower Style 10",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-style-10/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-11",
+      "kind": "text_flower",
+      "name": "Qt Flower Style 11",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-style-11/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-12",
+      "kind": "text_flower",
+      "name": "Qt Flower Style 12",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-style-12/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-13",
+      "kind": "text_flower",
+      "name": "Qt Flower Style 13",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-style-13/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-14",
+      "kind": "text_flower",
+      "name": "Qt Flower Style 14",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-style-14/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-15",
+      "kind": "text_flower",
+      "name": "Qt Flower Style 15",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-style-15/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-16",
+      "kind": "text_flower",
+      "name": "Qt Flower Style 16",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-style-16/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-17",
+      "kind": "text_flower",
+      "name": "Qt Flower Style 17",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-style-17/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-18",
+      "kind": "text_flower",
+      "name": "Qt Flower Style 18",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-style-18/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-19",
+      "kind": "text_flower",
+      "name": "Qt Flower Style 19",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-style-19/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-20",
+      "kind": "text_flower",
+      "name": "Qt Flower Style 20",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-style-20/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-21",
+      "kind": "text_flower",
+      "name": "Qt Flower Style 21",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-style-21/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-22",
+      "kind": "text_flower",
+      "name": "Qt Flower Style 22",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-style-22/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-23",
+      "kind": "text_flower",
+      "name": "Qt Flower Style 23",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-style-23/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-24",
+      "kind": "text_flower",
+      "name": "Qt Flower Style 24",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-style-24/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-25",
+      "kind": "text_flower",
+      "name": "Qt Flower Style 25",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-style-25/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-26",
+      "kind": "text_flower",
+      "name": "Qt Flower Style 26",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-style-26/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-27",
+      "kind": "text_flower",
+      "name": "Qt Flower Style 27",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-style-27/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-28",
+      "kind": "text_flower",
+      "name": "Qt Flower Style 28",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-style-28/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-29",
+      "kind": "text_flower",
+      "name": "Qt Flower Style 29",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-style-29/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-30",
+      "kind": "text_flower",
+      "name": "Qt Flower Style 30",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-style-30/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-31",
+      "kind": "text_flower",
+      "name": "Qt Flower Style 31",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-style-31/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-32",
+      "kind": "text_flower",
+      "name": "Qt Flower Style 32",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-style-32/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-33",
+      "kind": "text_flower",
+      "name": "Qt Flower Style 33",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-style-33/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-34",
+      "kind": "text_flower",
+      "name": "Qt Flower Style 34",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-style-34/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-35",
+      "kind": "text_flower",
+      "name": "Qt Flower Style 35",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-style-35/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-36",
+      "kind": "text_flower",
+      "name": "Qt Flower Style 36",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-style-36/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-37",
+      "kind": "text_flower",
+      "name": "Qt Flower Style 37",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-style-37/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-38",
+      "kind": "text_flower",
+      "name": "Qt Flower Style 38",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-style-38/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    },
+    {
+      "id": "com.videocut.text.qt-type.flower-style-39",
+      "kind": "text_flower",
+      "name": "Qt Flower Style 39",
+      "url": "../fixtures/templates/com.videocut.text.qt-type.flower-style-39/manifest.json",
+      "sampleStatus": "rendered",
+      "sampleError": null
+    }
+  ]
+}

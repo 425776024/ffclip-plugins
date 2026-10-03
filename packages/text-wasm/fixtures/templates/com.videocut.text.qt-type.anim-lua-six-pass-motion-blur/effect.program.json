@@ -1,0 +1,1078 @@
+{
+  "format": "videocut.text-effect-program",
+  "programs": [
+    {
+      "program_id": "com.videocut.text.qt-type.anim-lua-six-pass-motion-blur.program.controller",
+      "random_seed": 50,
+      "stages": [
+        {
+          "stage_id": "qt-weighted-blur-fan-exit",
+          "kind": "per_unit",
+          "register_count": 88,
+          "instructions": [
+            {
+              "input_registers": [],
+              "immediates": [],
+              "input": "progress",
+              "opcode": "input",
+              "output_register": 0
+            },
+            {
+              "input_registers": [],
+              "immediates": [
+                1
+              ],
+              "input": null,
+              "opcode": "constant",
+              "output_register": 1
+            },
+            {
+              "input_registers": [],
+              "immediates": [
+                0
+              ],
+              "input": null,
+              "opcode": "constant",
+              "output_register": 2
+            },
+            {
+              "input_registers": [],
+              "immediates": [
+                2
+              ],
+              "input": null,
+              "opcode": "constant",
+              "output_register": 3
+            },
+            {
+              "input_registers": [
+                1,
+                0
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "subtract",
+              "output_register": 4
+            },
+            {
+              "input_registers": [],
+              "immediates": [],
+              "input": "row_unit_count",
+              "opcode": "input",
+              "output_register": 5
+            },
+            {
+              "input_registers": [],
+              "immediates": [],
+              "input": "index_in_row",
+              "opcode": "input",
+              "output_register": 6
+            },
+            {
+              "input_registers": [],
+              "immediates": [],
+              "input": "unit_index",
+              "opcode": "input",
+              "output_register": 7
+            },
+            {
+              "input_registers": [],
+              "immediates": [],
+              "input": "is_vertical_writing",
+              "opcode": "input",
+              "output_register": 8
+            },
+            {
+              "input_registers": [],
+              "immediates": [],
+              "input": "output_width",
+              "opcode": "input",
+              "output_register": 9
+            },
+            {
+              "input_registers": [],
+              "immediates": [],
+              "input": "output_height",
+              "opcode": "input",
+              "output_register": 10
+            },
+            {
+              "input_registers": [],
+              "immediates": [],
+              "input": "canvas_rect_width",
+              "opcode": "input",
+              "output_register": 11
+            },
+            {
+              "input_registers": [],
+              "immediates": [],
+              "input": "canvas_rect_height",
+              "opcode": "input",
+              "output_register": 12
+            },
+            {
+              "input_registers": [],
+              "immediates": [],
+              "input": "text_rect_width",
+              "opcode": "input",
+              "output_register": 13
+            },
+            {
+              "input_registers": [],
+              "immediates": [],
+              "input": "text_rect_height",
+              "opcode": "input",
+              "output_register": 14
+            },
+            {
+              "input_registers": [],
+              "immediates": [
+                0.4
+              ],
+              "input": null,
+              "opcode": "constant",
+              "output_register": 15
+            },
+            {
+              "input_registers": [],
+              "immediates": [
+                0.6
+              ],
+              "input": null,
+              "opcode": "constant",
+              "output_register": 16
+            },
+            {
+              "input_registers": [],
+              "immediates": [
+                0.8
+              ],
+              "input": null,
+              "opcode": "constant",
+              "output_register": 17
+            },
+            {
+              "input_registers": [],
+              "immediates": [
+                6
+              ],
+              "input": null,
+              "opcode": "constant",
+              "output_register": 18
+            },
+            {
+              "input_registers": [],
+              "immediates": [
+                4
+              ],
+              "input": null,
+              "opcode": "constant",
+              "output_register": 19
+            },
+            {
+              "input_registers": [
+                5,
+                3
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "less_than_or_equal",
+              "output_register": 20
+            },
+            {
+              "input_registers": [
+                5,
+                19
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "less_than_or_equal",
+              "output_register": 21
+            },
+            {
+              "input_registers": [
+                5,
+                18
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "less_than_or_equal",
+              "output_register": 22
+            },
+            {
+              "input_registers": [
+                22,
+                16,
+                15
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "select",
+              "output_register": 23
+            },
+            {
+              "input_registers": [
+                21,
+                17,
+                23
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "select",
+              "output_register": 24
+            },
+            {
+              "input_registers": [
+                20,
+                1,
+                24
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "select",
+              "output_register": 25
+            },
+            {
+              "input_registers": [
+                1,
+                25
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "subtract",
+              "output_register": 26
+            },
+            {
+              "input_registers": [
+                5,
+                1
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "subtract",
+              "output_register": 27
+            },
+            {
+              "input_registers": [
+                27,
+                1
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "maximum",
+              "output_register": 28
+            },
+            {
+              "input_registers": [],
+              "immediates": [
+                0.2222222222222222
+              ],
+              "input": null,
+              "opcode": "constant",
+              "output_register": 29
+            },
+            {
+              "input_registers": [],
+              "immediates": [
+                0.3888888888888889
+              ],
+              "input": null,
+              "opcode": "constant",
+              "output_register": 30
+            },
+            {
+              "input_registers": [
+                6,
+                28
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "divide",
+              "output_register": 31
+            },
+            {
+              "input_registers": [
+                31,
+                29
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "multiply",
+              "output_register": 32
+            },
+            {
+              "input_registers": [
+                32,
+                30
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "add",
+              "output_register": 33
+            },
+            {
+              "input_registers": [],
+              "immediates": [
+                3.1415926
+              ],
+              "input": null,
+              "opcode": "constant",
+              "output_register": 34
+            },
+            {
+              "input_registers": [
+                1,
+                33
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "subtract",
+              "output_register": 35
+            },
+            {
+              "input_registers": [
+                35,
+                34
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "multiply",
+              "output_register": 36
+            },
+            {
+              "input_registers": [],
+              "immediates": [
+                0.5
+              ],
+              "input": null,
+              "opcode": "constant",
+              "output_register": 37
+            },
+            {
+              "input_registers": [
+                34,
+                37
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "multiply",
+              "output_register": 38
+            },
+            {
+              "input_registers": [
+                5,
+                1
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "equal",
+              "output_register": 39
+            },
+            {
+              "input_registers": [
+                39,
+                38,
+                36
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "select",
+              "output_register": 40
+            },
+            {
+              "input_registers": [
+                40
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "sine",
+              "output_register": 41
+            },
+            {
+              "input_registers": [
+                40
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "cosine",
+              "output_register": 42
+            },
+            {
+              "input_registers": [
+                42,
+                41
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "divide",
+              "output_register": 43
+            },
+            {
+              "input_registers": [
+                5,
+                1
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "add",
+              "output_register": 44
+            },
+            {
+              "input_registers": [
+                44,
+                3
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "divide",
+              "output_register": 45
+            },
+            {
+              "input_registers": [
+                45
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "floor",
+              "output_register": 46
+            },
+            {
+              "input_registers": [
+                44,
+                46
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "subtract",
+              "output_register": 47
+            },
+            {
+              "input_registers": [
+                6,
+                1
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "add",
+              "output_register": 48
+            },
+            {
+              "input_registers": [
+                48,
+                46
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "subtract",
+              "output_register": 49
+            },
+            {
+              "input_registers": [
+                49
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "absolute",
+              "output_register": 50
+            },
+            {
+              "input_registers": [
+                48,
+                47
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "subtract",
+              "output_register": 51
+            },
+            {
+              "input_registers": [
+                51
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "absolute",
+              "output_register": 52
+            },
+            {
+              "input_registers": [
+                50,
+                52
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "minimum",
+              "output_register": 53
+            },
+            {
+              "input_registers": [
+                27,
+                3
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "divide",
+              "output_register": 54
+            },
+            {
+              "input_registers": [
+                54
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "floor",
+              "output_register": 55
+            },
+            {
+              "input_registers": [
+                55,
+                1
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "maximum",
+              "output_register": 56
+            },
+            {
+              "input_registers": [
+                26,
+                53
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "multiply",
+              "output_register": 57
+            },
+            {
+              "input_registers": [
+                57,
+                56
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "divide",
+              "output_register": 58
+            },
+            {
+              "input_registers": [
+                20,
+                2,
+                58
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "select",
+              "output_register": 59
+            },
+            {
+              "input_registers": [
+                7
+              ],
+              "immediates": [
+                1234567
+              ],
+              "input": null,
+              "opcode": "seeded_random",
+              "output_register": 60
+            },
+            {
+              "input_registers": [
+                60,
+                3
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "multiply",
+              "output_register": 61
+            },
+            {
+              "input_registers": [
+                61,
+                1
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "subtract",
+              "output_register": 62
+            },
+            {
+              "input_registers": [],
+              "immediates": [
+                0.05
+              ],
+              "input": null,
+              "opcode": "constant",
+              "output_register": 63
+            },
+            {
+              "input_registers": [
+                62,
+                63
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "multiply",
+              "output_register": 64
+            },
+            {
+              "input_registers": [
+                64,
+                26
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "multiply",
+              "output_register": 65
+            },
+            {
+              "input_registers": [
+                59,
+                65
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "add",
+              "output_register": 66
+            },
+            {
+              "input_registers": [
+                66,
+                26
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "minimum",
+              "output_register": 67
+            },
+            {
+              "input_registers": [
+                67,
+                2
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "maximum",
+              "output_register": 68
+            },
+            {
+              "input_registers": [
+                4,
+                68
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "subtract",
+              "output_register": 69
+            },
+            {
+              "input_registers": [
+                69,
+                25
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "divide",
+              "output_register": 70
+            },
+            {
+              "input_registers": [
+                70,
+                2,
+                1
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "clamp",
+              "output_register": 71
+            },
+            {
+              "input_registers": [
+                71
+              ],
+              "immediates": [
+                0,
+                0.78,
+                0.2,
+                0.99,
+                1
+              ],
+              "input": null,
+              "opcode": "cubic_bezier_timing",
+              "output_register": 72
+            },
+            {
+              "input_registers": [
+                1,
+                72
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "subtract",
+              "output_register": 73
+            },
+            {
+              "input_registers": [
+                10,
+                73
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "multiply",
+              "output_register": 74
+            },
+            {
+              "input_registers": [
+                74,
+                43
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "multiply",
+              "output_register": 75
+            },
+            {
+              "input_registers": [
+                9,
+                73
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "multiply",
+              "output_register": 76
+            },
+            {
+              "input_registers": [
+                76,
+                43
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "multiply",
+              "output_register": 77
+            },
+            {
+              "input_registers": [
+                8,
+                76,
+                75
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "select",
+              "output_register": 78
+            },
+            {
+              "input_registers": [
+                8,
+                77,
+                74
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "select",
+              "output_register": 79
+            },
+            {
+              "input_registers": [
+                71
+              ],
+              "immediates": [
+                0,
+                1,
+                0,
+                1,
+                1
+              ],
+              "input": null,
+              "opcode": "cubic_bezier_timing",
+              "output_register": 80
+            },
+            {
+              "input_registers": [],
+              "immediates": [
+                3
+              ],
+              "input": null,
+              "opcode": "constant",
+              "output_register": 81
+            },
+            {
+              "input_registers": [
+                9,
+                3
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "multiply",
+              "output_register": 82
+            },
+            {
+              "input_registers": [
+                10,
+                3
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "multiply",
+              "output_register": 83
+            },
+            {
+              "input_registers": [
+                78
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "float32",
+              "output_register": 84
+            },
+            {
+              "input_registers": [
+                79
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "float32",
+              "output_register": 85
+            },
+            {
+              "input_registers": [
+                80
+              ],
+              "immediates": [],
+              "input": null,
+              "opcode": "float32",
+              "output_register": 86
+            },
+            {
+              "input_registers": [],
+              "immediates": [
+                10
+              ],
+              "input": null,
+              "opcode": "constant",
+              "output_register": 87
+            }
+          ],
+          "outputs": [
+            {
+              "output": "offset_x",
+              "register_index": 84,
+              "transform_index": 0
+            },
+            {
+              "output": "offset_y",
+              "register_index": 85,
+              "transform_index": 0
+            },
+            {
+              "output": "instance_color_alpha",
+              "register_index": 86,
+              "transform_index": 0
+            }
+          ],
+          "execution_parameter_bindings": [
+            {
+              "node_id": "material-program-1",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "reference_pixels",
+              "slot": 0,
+              "register_indices": [
+                81
+              ]
+            },
+            {
+              "node_id": "material-program-1",
+              "parameter": "material_vector2",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 1,
+              "register_indices": [
+                1,
+                2
+              ]
+            },
+            {
+              "node_id": "material-program-1",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 2,
+              "register_indices": [
+                1
+              ]
+            },
+            {
+              "node_id": "material-program-1",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 3,
+              "register_indices": [
+                1
+              ]
+            },
+            {
+              "node_id": "material-program-1",
+              "parameter": "material_vector2",
+              "domain": "page",
+              "value_space": "reference_pixels",
+              "slot": 4,
+              "register_indices": [
+                9,
+                10
+              ]
+            },
+            {
+              "node_id": "material-program-1",
+              "parameter": "material_vector2",
+              "domain": "page",
+              "value_space": "reference_pixels",
+              "slot": 5,
+              "register_indices": [
+                13,
+                14
+              ]
+            },
+            {
+              "node_id": "material-program-1",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 6,
+              "register_indices": [
+                8
+              ]
+            },
+            {
+              "node_id": "material-program-1",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 7,
+              "register_indices": [
+                2
+              ]
+            },
+            {
+              "node_id": "material-program-1",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 8,
+              "register_indices": [
+                87
+              ]
+            },
+            {
+              "node_id": "material-program-1",
+              "parameter": "material_vector4",
+              "domain": "page",
+              "value_space": "source_pixels",
+              "slot": 31,
+              "register_indices": [
+                11,
+                12,
+                82,
+                83
+              ]
+            },
+            {
+              "node_id": "material-program-2",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "reference_pixels",
+              "slot": 0,
+              "register_indices": [
+                81
+              ]
+            },
+            {
+              "node_id": "material-program-2",
+              "parameter": "material_vector2",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 1,
+              "register_indices": [
+                2,
+                1
+              ]
+            },
+            {
+              "node_id": "material-program-2",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 2,
+              "register_indices": [
+                3
+              ]
+            },
+            {
+              "node_id": "material-program-2",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 3,
+              "register_indices": [
+                1
+              ]
+            },
+            {
+              "node_id": "material-program-2",
+              "parameter": "material_vector2",
+              "domain": "page",
+              "value_space": "reference_pixels",
+              "slot": 4,
+              "register_indices": [
+                9,
+                10
+              ]
+            },
+            {
+              "node_id": "material-program-2",
+              "parameter": "material_vector2",
+              "domain": "page",
+              "value_space": "reference_pixels",
+              "slot": 5,
+              "register_indices": [
+                13,
+                14
+              ]
+            },
+            {
+              "node_id": "material-program-2",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 6,
+              "register_indices": [
+                8
+              ]
+            },
+            {
+              "node_id": "material-program-2",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 7,
+              "register_indices": [
+                1
+              ]
+            },
+            {
+              "node_id": "material-program-2",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 8,
+              "register_indices": [
+                87
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+<!doctype html><meta charset="utf-8" /><title>VideoCut fixed-quality performance</title>
+<style>
+  body {
+    background: #16181d;
+    color: #eee;
+    font: 14px system-ui;
+    margin: 20px;
+  }
+  canvas {
+    width: 480px;
+    height: 270px;
+  }
+  pre {
+    white-space: pre-wrap;
+  }
+  button {
+    padding: 10px;
+  }
+</style>
+<h1>效果逐节点差异诊断</h1>
+<p>固定 1280×720。上一版安装包与当前渲染器，同素材、同参数、交错轮次；不启用自适应降分辨率。</p>
+<button id="run">运行固定画质对照</button>
+<div id="canvases"></div>
+<pre id="status">尚未运行</pre>
+<script type="module" src="./browser-render-parity.ts"></script>

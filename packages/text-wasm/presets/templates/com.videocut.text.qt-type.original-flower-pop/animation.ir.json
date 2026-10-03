@@ -1,0 +1,49 @@
+{
+  "format": "videocut.text-animation",
+  "animation": {
+    "layers": [],
+    "execution_graph": {
+      "nodes": [
+        {
+          "id": "layout",
+          "node_kind": "layout",
+          "capability": "layout_glyph_run"
+        },
+        {
+          "id": "material-fill",
+          "node_kind": "material_pass",
+          "capability": "material_program_pass",
+          "input_ids": [
+            "layout"
+          ]
+        },
+        {
+          "id": "material-outer-stroke-1",
+          "node_kind": "material_pass",
+          "capability": "material_program_pass",
+          "input_ids": [
+            "layout"
+          ]
+        },
+        {
+          "id": "material-outer-stroke-2",
+          "node_kind": "material_pass",
+          "capability": "material_program_pass",
+          "input_ids": [
+            "layout"
+          ]
+        },
+        {
+          "id": "composite",
+          "node_kind": "composite",
+          "capability": "composite_source_over",
+          "input_ids": [
+            "material-fill",
+            "material-outer-stroke-1",
+            "material-outer-stroke-2"
+          ]
+        }
+      ]
+    }
+  }
+}

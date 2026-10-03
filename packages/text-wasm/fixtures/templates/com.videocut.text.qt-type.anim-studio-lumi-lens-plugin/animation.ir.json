@@ -1,0 +1,551 @@
+{
+  "format": "videocut.text-animation",
+  "animation": {
+    "layers": [
+      {
+        "id": "studio.layer.0",
+        "enabled": true,
+        "combine_mode": "replace",
+        "requires_timed_text": false,
+        "time_driver": {
+          "kind": "enter_phase",
+          "start_offset_us": 0,
+          "duration_us": 3000000,
+          "playback": "once"
+        },
+        "animators": [
+          {
+            "id": "studio.selector.0",
+            "paragraph_ids": [],
+            "run_ids": [],
+            "position_mode": "absolute_pixels",
+            "anchor": "glyph_center",
+            "anchor_basis": "letter",
+            "anchor_mode": "fixed",
+            "anchor_offset_x": 0.0,
+            "anchor_offset_y": 0.0,
+            "presentation": "transform",
+            "fade_fraction": 0.0,
+            "selectors": [
+              {
+                "kind": "range",
+                "based_on": "grapheme",
+                "range_start": 0.0,
+                "range_end": 1.0,
+                "offset": 0.0,
+                "stagger": 0.0,
+                "edge_smooth": 0.0,
+                "constrained": true,
+                "shape": "square",
+                "order": "forward",
+                "random_seed": 50.0,
+                "intensity": 1.0,
+                "intensity_start": 0.0,
+                "intensity_end": 1.0,
+                "time_start_1": 0.0,
+                "time_start_2": 0.0,
+                "time_end_1": 1.0,
+                "time_end_2": 1.0,
+                "time_cycle": false
+              }
+            ],
+            "tracks": [],
+            "projection": {
+              "kind": "planar_2d",
+              "field_of_view_degrees": 45.0,
+              "vanishing_point_x": 0.5,
+              "vanishing_point_y": 0.5
+            },
+            "effect_program_id": "com.videocut.text.qt-type.anim-studio-lumi-lens-plugin.program.custom-selector"
+          },
+          {
+            "id": "studio.selector.1",
+            "paragraph_ids": [],
+            "run_ids": [],
+            "position_mode": "absolute_pixels",
+            "anchor": "glyph_center",
+            "anchor_basis": "letter",
+            "anchor_mode": "fixed",
+            "anchor_offset_x": 0.0,
+            "anchor_offset_y": 0.0,
+            "presentation": "transform",
+            "fade_fraction": 0.0,
+            "selectors": [
+              {
+                "kind": "range",
+                "based_on": "grapheme",
+                "range_start": 0.0,
+                "range_end": 1.0,
+                "offset": 0.0,
+                "stagger": 0.0,
+                "edge_smooth": 0.0,
+                "constrained": true,
+                "shape": "square",
+                "order": "forward",
+                "random_seed": 50.0,
+                "intensity": 1.0,
+                "intensity_start": 0.0,
+                "intensity_end": 1.0,
+                "time_start_1": 0.0,
+                "time_start_2": 0.0,
+                "time_end_1": 1.0,
+                "time_end_2": 1.0,
+                "time_cycle": false
+              }
+            ],
+            "tracks": [
+              {
+                "property": "scale_x",
+                "keyframes": [
+                  {
+                    "offset": 0.0,
+                    "value": 1.0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": 0.0,
+                    "bezier_time_out": 0.13733333333333334
+                  },
+                  {
+                    "offset": 0.4163333333333334,
+                    "value": 1.549,
+                    "tangent_in": -0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.13733333333333334,
+                    "bezier_time_out": 0.19266666666666665
+                  },
+                  {
+                    "offset": 1.0,
+                    "value": 1.0,
+                    "tangent_in": -0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.19833333333333333,
+                    "bezier_time_out": 0.0
+                  }
+                ]
+              },
+          {
+            "property": "scale_y",
+            "keyframes": [
+              {
+                "offset": 0.0,
+                "value": 1.0,
+                "tangent_in": 0.0,
+                "tangent_out": 0.0,
+                "bezier": true,
+                "bezier_time_in": 0.0,
+                "bezier_time_out": 0.13733333333333334
+              },
+              {
+                "offset": 0.4163333333333334,
+                "value": 1.549,
+                "tangent_in": -0.0,
+                "tangent_out": 0.0,
+                "bezier": true,
+                "bezier_time_in": -0.13733333333333334,
+                "bezier_time_out": 0.19266666666666665
+              },
+              {
+                "offset": 1.0,
+                "value": 1.0,
+                "tangent_in": -0.0,
+                "tangent_out": 0.0,
+                "bezier": true,
+                "bezier_time_in": -0.19833333333333333,
+                "bezier_time_out": 0.0
+              }
+            ]
+          }
+            ],
+            "projection": {
+              "kind": "planar_2d",
+              "field_of_view_degrees": 45.0,
+              "vanishing_point_x": 0.5,
+              "vanishing_point_y": 0.5
+            }
+          }
+        ],
+        "post_effects": [
+          {
+            "id": "studio.post.0.0",
+            "node_kind": "cc_lens",
+            "amount": 0.0,
+            "padding_px": 0.0,
+            "input_ids": [],
+            "parameters": [
+              {
+                "name": "center",
+                "values": [
+                  0.5,
+                  0.5
+                ]
+              },
+              {
+                "name": "convergence",
+                "values": [
+                  -60.5
+                ],
+                "keyframes": [
+                  {
+                    "offset": 0,
+                    "value": 0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": 0,
+                    "bezier_time_out": 0.165
+                  },
+                  {
+                    "offset": 0.4996666666666667,
+                    "value": -60,
+                    "tangent_in": -0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.165,
+                    "bezier_time_out": 0.165
+                  },
+                  {
+                    "offset": 1,
+                    "value": 0,
+                    "tangent_in": -0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.17,
+                    "bezier_time_out": 0
+                  }
+                ]
+              },
+              {
+                "name": "radius",
+                "values": [
+                  60
+                ]
+              }
+            ]
+          },
+          {
+            "id": "studio.post.0.1",
+            "node_kind": "alpha_outline",
+            "amount": 0.0,
+            "padding_px": 0.0,
+            "input_ids": [],
+            "parameters": [
+              {
+                "name": "intensity",
+                "values": [
+                  1
+                ]
+              },
+              {
+                "name": "offsetX",
+                "values": [
+                  0
+                ],
+                "keyframes": [
+                  {
+                    "offset": 0,
+                    "value": 0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": 0,
+                    "bezier_time_out": 0.09566666666666666
+                  },
+                  {
+                    "offset": 0.29033333333333333,
+                    "value": -0.02,
+                    "tangent_in": -0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.09566666666666666,
+                    "bezier_time_out": 0.09599999999999999
+                  },
+                  {
+                    "offset": 0.5813333333333334,
+                    "value": 0.029,
+                    "tangent_in": -0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.09599999999999999,
+                    "bezier_time_out": 0.13833333333333334
+                  },
+                  {
+                    "offset": 1,
+                    "value": 0,
+                    "tangent_in": -0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.14233333333333334,
+                    "bezier_time_out": 0
+                  }
+                ]
+              },
+              {
+                "name": "offsetY",
+                "values": [
+                  0
+                ]
+              },
+              {
+                "name": "outlineColor",
+                "values": [
+                  0.400869756937027,
+                  1,
+                  0.21741054952144623,
+                  1
+                ]
+              },
+              {
+                "name": "scaleX",
+                "values": [
+                  5.800000190734863
+                ],
+                "keyframes": [
+                  {
+                    "offset": 0,
+                    "value": 0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": 0,
+                    "bezier_time_out": 0.08800000000000001
+                  },
+                  {
+                    "offset": 0.26633333333333337,
+                    "value": 10,
+                    "tangent_in": -0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.08800000000000001,
+                    "bezier_time_out": 0.09533333333333333
+                  },
+                  {
+                    "offset": 0.555,
+                    "value": 7.364,
+                    "tangent_in": -0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.09533333333333333,
+                    "bezier_time_out": 0.14666666666666667
+                  },
+                  {
+                    "offset": 1,
+                    "value": 0,
+                    "tangent_in": -0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.15133333333333335,
+                    "bezier_time_out": 0
+                  }
+                ]
+              },
+              {
+                "name": "scaleY",
+                "values": [
+                  8.420000076293945
+                ],
+                "keyframes": [
+                  {
+                    "offset": 0,
+                    "value": 0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": 0,
+                    "bezier_time_out": 0.08566666666666667
+                  },
+                  {
+                    "offset": 0.25933333333333336,
+                    "value": 5,
+                    "tangent_in": -0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.08566666666666667,
+                    "bezier_time_out": 0.11166666666666668
+                  },
+                  {
+                    "offset": 0.598,
+                    "value": 8,
+                    "tangent_in": -0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.11166666666666668,
+                    "bezier_time_out": 0.13266666666666668
+                  },
+                  {
+                    "offset": 1,
+                    "value": 0,
+                    "tangent_in": -0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.13666666666666666,
+                    "bezier_time_out": 0
+                  }
+                ]
+              },
+              {
+                "name": "size",
+                "values": [
+                  1
+                ],
+                "keyframes": [
+                  {
+                    "offset": 0,
+                    "value": 0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": 0,
+                    "bezier_time_out": 0.08900000000000001
+                  },
+                  {
+                    "offset": 0.26966666666666667,
+                    "value": 1,
+                    "tangent_in": -0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.08900000000000001,
+                    "bezier_time_out": 0.15033333333333335
+                  },
+                  {
+                    "offset": 0.7246666666666667,
+                    "value": 1,
+                    "tangent_in": -0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.15033333333333335,
+                    "bezier_time_out": 0.09066666666666667
+                  },
+                  {
+                    "offset": 1,
+                    "value": 0,
+                    "tangent_in": -0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.09366666666666668,
+                    "bezier_time_out": 0
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "render_group": {
+          "expand_ratio_x": 1.600000023841858,
+          "expand_ratio_y": 2.5,
+          "mode": "page",
+          "offset": 0.0,
+          "priority": 0,
+          "random_seed": 50,
+          "random_sort": false,
+          "shape": "square"
+        }
+      }
+    ],
+    "execution_graph": {
+      "nodes": [
+        {
+          "id": "layout",
+          "node_kind": "layout",
+          "capability": "layout_glyph_run"
+        },
+        {
+          "id": "selector-0",
+          "node_kind": "selector",
+          "capability": "selector_base",
+          "input_ids": [
+            "layout"
+          ]
+        },
+        {
+          "id": "operator-0",
+          "node_kind": "operator",
+          "capability": "operator_program",
+          "input_ids": [
+            "selector-0"
+          ]
+        },
+        {
+          "id": "selector-1",
+          "node_kind": "selector",
+          "capability": "selector_base",
+          "input_ids": [
+            "operator-0"
+          ]
+        },
+        {
+          "id": "operator-1",
+          "node_kind": "operator",
+          "capability": "operator_keyframe",
+          "input_ids": [
+            "selector-1"
+          ]
+        },
+        {
+          "id": "scene-prefab",
+          "node_kind": "scene",
+          "capability": "scene_prefab",
+          "input_ids": [
+            "operator-1"
+          ]
+        },
+        {
+          "id": "scene-mesh",
+          "node_kind": "scene",
+          "capability": "scene_mesh",
+          "input_ids": [
+            "scene-prefab"
+          ]
+        },
+        {
+          "id": "material-pass",
+          "node_kind": "material_pass",
+          "capability": "material_color_pass",
+          "input_ids": [
+            "scene-mesh"
+          ]
+        },
+        {
+          "id": "render-target",
+          "node_kind": "render_target",
+          "capability": "render_target_expanded",
+          "input_ids": [
+            "material-pass"
+          ]
+        },
+        {
+          "id": "studio.post.0.0",
+          "node_kind": "post_effect_pass",
+          "capability": "none",
+          "input_ids": [
+            "render-target"
+          ],
+          "post_effect_kind": "cc_lens",
+          "time_driver": {
+            "kind": "clip_local",
+            "start_offset_us": 0,
+            "duration_us": 3000000,
+            "playback": "hold"
+          }
+        },
+        {
+          "id": "studio.post.0.1",
+          "node_kind": "post_effect_pass",
+          "capability": "none",
+          "input_ids": [
+            "studio.post.0.0"
+          ],
+          "post_effect_kind": "alpha_outline",
+          "time_driver": {
+            "kind": "clip_local",
+            "start_offset_us": 0,
+            "duration_us": 3000000,
+            "playback": "hold"
+          }
+        }
+      ]
+    }
+  }
+}

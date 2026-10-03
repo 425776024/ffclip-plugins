@@ -1,0 +1,22 @@
+
+    uniform shader inputTexture;
+    uniform shader noiseTexture;
+    uniform float2 textureSize;
+    uniform float2 noiseScale;
+    uniform float burnAmount;
+    uniform float feather;
+    float2 mirrorRepeat(float2 value) {
+      return abs(mod(value - 1.0, 2.0) - 1.0);
+    }
+    half4 main(float2 position) {
+      float2 uv = position / textureSize;
+      // The source quad flips texcoord0.y before sampling the static noise.
+      // The Page input has already been published in top-left coordinates.
+      float2 sourceUv = float2(uv.x, 1.0 - uv.y);
+      float2 noiseUv = mirrorRepeat((sourceUv - 0.5) * noiseScale + 0.5);
+      float noise = float(noiseTexture.eval(noiseUv * textureSize).r);
+      float reveal = smoothstep(burnAmount - feather,
+                                burnAmount + feather, noise);
+      return half4(float4(inputTexture.eval(position)) * reveal);
+    }
+  

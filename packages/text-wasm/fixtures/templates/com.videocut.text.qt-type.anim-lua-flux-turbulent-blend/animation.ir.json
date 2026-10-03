@@ -1,0 +1,170 @@
+{
+  "format": "videocut.text-animation",
+  "animation": {
+    "layers": [
+      {
+        "id": "lua-controller-layer",
+        "enabled": true,
+        "combine_mode": "replace",
+        "requires_timed_text": false,
+        "time_driver": {
+          "kind": "loop_phase",
+          "duration_us": 3000000,
+          "playback": "loop"
+        },
+        "animators": [
+          {
+            "id": "lua-controller-selector",
+            "paragraph_ids": [],
+            "run_ids": [],
+            "position_mode": "absolute_pixels",
+            "anchor": "glyph_center",
+            "anchor_basis": "letter",
+            "anchor_mode": "fixed",
+            "anchor_offset_x": 0.0,
+            "anchor_offset_y": 0.0,
+            "presentation": "transform",
+            "fade_fraction": 0.0,
+            "selectors": [
+              {
+                "kind": "range",
+                "based_on": "grapheme",
+                "range_start": 0.0,
+                "range_end": 1.0,
+                "offset": 0.0,
+                "stagger": 0.0,
+                "edge_smooth": 0.0,
+                "constrained": true,
+                "shape": "square",
+                "order": "forward",
+                "random_seed": 50.0,
+                "intensity": 1.0,
+                "intensity_start": 0.0,
+                "intensity_end": 1.0,
+                "time_start_1": 0.0,
+                "time_start_2": 0.0,
+                "time_end_1": 1.0,
+                "time_end_2": 1.0,
+                "time_cycle": true
+              }
+            ],
+            "tracks": [],
+            "projection": {
+              "kind": "planar_2d",
+              "field_of_view_degrees": 45.0,
+              "vanishing_point_x": 0.5,
+              "vanishing_point_y": 0.5
+            },
+            "effect_program_id": "com.videocut.text.qt-type.anim-lua-flux-turbulent-blend.program.controller"
+          }
+        ],
+        "render_group": {
+          "mode": "page",
+          "expand_ratio_x": 1,
+          "expand_ratio_y": 1
+        },
+        "post_effects": []
+      }
+    ],
+    "execution_graph": {
+      "nodes": [
+        {
+          "id": "layout",
+          "node_kind": "layout",
+          "capability": "layout_glyph_run",
+          "input_ids": []
+        },
+        {
+          "id": "selector",
+          "node_kind": "selector",
+          "capability": "selector_base",
+          "input_ids": [
+            "layout"
+          ]
+        },
+        {
+          "id": "operator-program",
+          "node_kind": "operator",
+          "capability": "operator_program",
+          "input_ids": [
+            "selector"
+          ]
+        },
+        {
+          "id": "text-entity",
+          "node_kind": "scene",
+          "capability": "scene_entity",
+          "input_ids": [
+            "operator-program"
+          ]
+        },
+        {
+          "id": "color",
+          "node_kind": "material_pass",
+          "capability": "material_flux_turbulent_blend",
+          "input_ids": [
+            "text-entity"
+          ]
+        },
+        {
+          "id": "displace",
+          "node_kind": "material_pass",
+          "capability": "material_flux_turbulent_blend",
+          "input_ids": [
+            "color"
+          ]
+        },
+        {
+          "id": "blur-x1",
+          "node_kind": "material_pass",
+          "capability": "material_separable_gaussian_blur",
+          "input_ids": [
+            "displace"
+          ]
+        },
+        {
+          "id": "blur-y1",
+          "node_kind": "material_pass",
+          "capability": "material_separable_gaussian_blur",
+          "input_ids": [
+            "blur-x1"
+          ]
+        },
+        {
+          "id": "blur-x2",
+          "node_kind": "material_pass",
+          "capability": "material_separable_gaussian_blur",
+          "input_ids": [
+            "blur-y1"
+          ]
+        },
+        {
+          "id": "blur-y2",
+          "node_kind": "material_pass",
+          "capability": "material_separable_gaussian_blur",
+          "input_ids": [
+            "blur-x2"
+          ]
+        },
+        {
+          "id": "screen",
+          "node_kind": "material_pass",
+          "capability": "material_flux_turbulent_blend",
+          "input_ids": [
+            "displace",
+            "blur-y1",
+            "blur-y2"
+          ]
+        },
+        {
+          "id": "composite",
+          "node_kind": "composite",
+          "capability": "composite_source_over",
+          "input_ids": [
+            "screen"
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "format": "videocut.text-animation",
+  "animation": {
+    "layers": [],
+    "execution_graph": {
+      "nodes": [
+        {
+          "id": "layout",
+          "node_kind": "layout",
+          "capability": "layout_glyph_run"
+        },
+        {
+          "id": "material-fill",
+          "node_kind": "material_pass",
+          "capability": "material_program_pass",
+          "input_ids": [
+            "layout"
+          ]
+        },
+        {
+          "id": "material-outer-stroke-1",
+          "node_kind": "material_pass",
+          "capability": "material_program_pass",
+          "input_ids": [
+            "layout"
+          ]
+        },
+        {
+          "id": "material-shadow-1",
+          "node_kind": "material_pass",
+          "capability": "material_program_pass",
+          "input_ids": [
+            "layout"
+          ],
+          "children": [
+            {
+              "id": "material-shadow-1-stroke-1",
+              "node_kind": "material_pass",
+              "capability": "material_program_pass",
+              "input_ids": [
+                "material-shadow-1"
+              ]
+            },
+            {
+              "id": "material-shadow-1-stroke-2",
+              "node_kind": "material_pass",
+              "capability": "material_program_pass",
+              "input_ids": [
+                "material-shadow-1"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "material-shadow-2",
+          "node_kind": "material_pass",
+          "capability": "material_program_pass",
+          "input_ids": [
+            "layout"
+          ],
+          "children": [
+            {
+              "id": "material-shadow-2-stroke-1",
+              "node_kind": "material_pass",
+              "capability": "material_program_pass",
+              "input_ids": [
+                "material-shadow-2"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "material-shadow-3",
+          "node_kind": "material_pass",
+          "capability": "material_program_pass",
+          "input_ids": [
+            "layout"
+          ],
+          "children": [
+            {
+              "id": "material-shadow-3-stroke-1",
+              "node_kind": "material_pass",
+              "capability": "material_program_pass",
+              "input_ids": [
+                "material-shadow-3"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "material-shadow-4",
+          "node_kind": "material_pass",
+          "capability": "material_program_pass",
+          "input_ids": [
+            "layout"
+          ],
+          "children": [
+            {
+              "id": "material-shadow-4-stroke-1",
+              "node_kind": "material_pass",
+              "capability": "material_program_pass",
+              "input_ids": [
+                "material-shadow-4"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "composite",
+          "node_kind": "composite",
+          "capability": "composite_source_over",
+          "input_ids": [
+            "material-fill",
+            "material-outer-stroke-1",
+            "material-shadow-1",
+            "material-shadow-1-stroke-1",
+            "material-shadow-1-stroke-2",
+            "material-shadow-2",
+            "material-shadow-2-stroke-1",
+            "material-shadow-3",
+            "material-shadow-3-stroke-1",
+            "material-shadow-4",
+            "material-shadow-4-stroke-1"
+          ]
+        }
+      ]
+    }
+  }
+}

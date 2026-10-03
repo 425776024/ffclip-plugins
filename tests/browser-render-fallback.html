@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN">
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>VideoCut Canvas2D fallback QA</title>
+  <style>
+    body {
+      font: 14px system-ui;
+      background: #10151b;
+      color: #dce7f3;
+      margin: 24px;
+    }
+    button {
+      font: inherit;
+      padding: 10px 20px;
+    }
+    canvas {
+      width: 45vw;
+      max-width: 640px;
+      border: 1px solid #546070;
+    }
+    pre {
+      white-space: pre-wrap;
+    }
+  </style>
+  <h1>无 WebGPU · 基础画布兼容验收</h1>
+  <p>
+    在独立页面临时隐藏 WebGPU 能力；同一 SceneRenderer
+    基础媒体、系统文字、变换与混合经浏览器编码再解码比较。
+  </p>
+  <button id="run">运行 Canvas2D 矩阵</button>
+  <p>
+    <canvas id="preview" width="640" height="360"></canvas>
+    <canvas id="decoded" width="640" height="360"></canvas>
+  </p>
+  <pre id="status">尚未运行</pre>
+  <script type="module" src="./browser-render-fallback.ts"></script>
+</html>

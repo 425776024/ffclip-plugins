@@ -1,0 +1,52 @@
+
+    uniform shader inputTexture;
+    uniform float2 textureSize;
+    uniform float strength;
+    uniform float2 center;
+
+    float3 rgbToHsv(float3 color) {
+      float4 K = float4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);
+      float4 p = mix(float4(color.bg, K.wz), float4(color.gb, K.xy),
+                     step(color.b, color.g));
+      float4 q = mix(float4(p.xyw, color.r), float4(color.r, p.yzx),
+                     step(p.x, color.r));
+      float d = q.x - min(q.w, q.y);
+      return float3(abs(q.z + (q.w - q.y) / (6.0 * d + 1.0e-10)),
+                    d / (q.x + 1.0e-10), q.x);
+    }
+
+    float3 hsvToRgb(float3 color) {
+      float4 K = float4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
+      float3 p = abs(fract(color.xxx + K.xyz) * 6.0 - K.www);
+      return color.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), color.y);
+    }
+
+    half4 main(float2 position) {
+      float2 uv = position / textureSize;
+      float density = strength * 0.75;
+      float2 delta = (uv - center) * (density / 64.0);
+      float jitter = fract(sin(dot(uv + float2(fract(0.174)),
+                                  float2(12.9898, 78.233))) *
+                           43758.5453);
+      float2 sampleUv = uv + delta * jitter;
+      float illuminationDecay = 1.0;
+      float sumWeight = 0.0;
+      float4 radial = float4(0.0);
+      for (int index = 0; index < 64; ++index) {
+        sampleUv -= delta;
+        float weighted = illuminationDecay * 0.58767 * 0.1;
+        radial += float4(inputTexture.eval(sampleUv * textureSize)) *
+                  weighted;
+        sumWeight += weighted;
+        illuminationDecay *= 0.9;
+      }
+      float4 original = float4(inputTexture.eval(position)) * 0.7;
+      float3 hsv = rgbToHsv(original.rgb);
+      hsv.y *= 0.75;
+      hsv.z *= 1.4;
+      original.rgb = hsvToRgb(hsv);
+      return half4(original +
+                   radial / max(sumWeight, 0.000001) *
+                       (1.0 - clamp(original.a, 0.0, 1.0)) * density);
+    }
+  

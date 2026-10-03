@@ -1,0 +1,21 @@
+
+    uniform shader inputTexture;
+    uniform shader glowTexture;
+    uniform float threshold;
+    uniform float intensity;
+    uniform float4 tint;
+    uniform float composite;
+    half4 main(float2 position) {
+      float4 source = float4(inputTexture.eval(position));
+      if (composite < 0.5) {
+        float retained = max(source.a - threshold, 0.0) /
+                         max(1.0 - threshold, 0.000001);
+        return half4(source * retained / max(source.a, 0.000001));
+      }
+      float4 glow = float4(glowTexture.eval(position)) * intensity;
+      glow.rgb *= mix(float3(1.0), tint.rgb, clamp(tint.a, 0.0, 1.0));
+      glow.a = clamp(glow.a, 0.0, 1.0);
+      glow.rgb = clamp(glow.rgb, float3(0.0), float3(glow.a));
+      return half4(source + glow * (1.0 - source.a));
+    }
+  

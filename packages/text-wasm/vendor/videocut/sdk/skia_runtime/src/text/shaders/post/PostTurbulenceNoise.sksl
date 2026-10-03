@@ -1,0 +1,176 @@
+
+    uniform float2 screenSize;
+    uniform float cycle;
+    uniform float2 authoredOffset;
+    uniform float authoredRotate;
+    uniform float2 authoredScale;
+    uniform float turbulenceType;
+    uniform float complexity;
+    uniform float evolution;
+    uniform float subImpact;
+    uniform float subScale;
+    uniform float subRotate;
+    uniform float2 subOffset;
+
+    float hashValue(float2 value) {
+      float2 q = fract(value * 1324.5179443359375);
+      q += float2(dot(q, q.yx + float2(22.5410003662109375)));
+      return fract((q.x + q.y) * q.y);
+    }
+
+    float2 rotateAspect(float2 value, float radiansValue) {
+      value.y *= screenSize.y / screenSize.x;
+      float sine = sin(radiansValue);
+      float cosine = cos(radiansValue);
+      value -= float2(0.5);
+      value = float2(cosine * value.x - sine * value.y,
+                     sine * value.x + cosine * value.y);
+      value += float2(0.5);
+      value.y *= screenSize.x / screenSize.y;
+      return value;
+    }
+
+    float2 gradientValue(float2 cell, float2 timeSeed) {
+      float hashed = hashValue(cell);
+      float quarter = timeSeed.x * 0.25 + hashed;
+      float quarter0 = floor(quarter);
+      float quarter1 = quarter0 + 1.0;
+      if (cycle >= 2.0) {
+        quarter0 = floor(mod(quarter, cycle));
+        quarter1 = floor(mod(quarter + 1.0, cycle));
+      }
+      float2 a = fract(cell *
+          (34.532001495361328125 + quarter0 * 2.0 +
+           timeSeed.y * 0.80309998989105224609375));
+      a += float2(dot(a, a.yx + float2(15.4340000152587890625)));
+      float2 first = fract(((a + a.yx +
+          float2(0.5230000019073486328125)) * a.yx) + float2(hashed));
+      float2 b = fract(cell *
+          (34.532001495361328125 + quarter1 * 2.0 +
+           timeSeed.y * 0.80309998989105224609375));
+      b += float2(dot(b, b.yx + float2(15.4340000152587890625)));
+      float2 second = fract(((b + b.yx +
+          float2(0.5230000019073486328125)) * b.yx) + float2(hashed));
+      second.y += 1.0;
+      float angle = mix(first.y, second.y, fract(quarter)) *
+                    3.141590118408203125 * 2.0;
+
+      float doubled = timeSeed.x * 2.0 + hashed;
+      float doubled0 = floor(doubled);
+      float doubled1 = doubled0 + 1.0;
+      if (cycle >= 2.0) {
+        doubled0 = floor(mod(doubled, cycle));
+        doubled1 = floor(mod(doubled + 1.0, cycle));
+      }
+      float2 c = fract(cell *
+          (34.532001495361328125 + doubled0 * 2.0 +
+           timeSeed.y * 0.80309998989105224609375));
+      c += float2(dot(c, c.yx + float2(15.4340000152587890625)));
+      float2 third = fract(((c + c.yx +
+          float2(0.5230000019073486328125)) * c.yx) + float2(hashed));
+      float2 d = fract(cell *
+          (34.532001495361328125 + doubled1 * 2.0 +
+           timeSeed.y * 0.80309998989105224609375));
+      d += float2(dot(d, d.yx + float2(15.4340000152587890625)));
+      float2 fourth = fract(((d + d.yx +
+          float2(0.5230000019073486328125)) * d.yx) + float2(hashed));
+      float magnitude = mix(0.75, 1.0,
+                            mix(third.x, fourth.x, fract(doubled)));
+      return float2(cos(angle), sin(angle)) * magnitude;
+    }
+
+    float baseNoise(float2 position, float2 timeSeed) {
+      float2 grid = (float2(720.0) * screenSize) /
+                    float2(min(screenSize.x, screenSize.y));
+      float2 cell = floor((position * grid) / float2(100.0));
+      float2 local = fract((position * grid) / float2(100.0));
+      float2 blendValue = smoothstep(float2(0.0), float2(1.0), local);
+      float lower = mix(dot(gradientValue(cell, timeSeed), local),
+                        dot(gradientValue(cell + float2(1.0, 0.0), timeSeed),
+                            local - float2(1.0, 0.0)),
+                        blendValue.x);
+      float upper = mix(dot(gradientValue(cell + float2(0.0, 1.0), timeSeed),
+                            local - float2(0.0, 1.0)),
+                        dot(gradientValue(cell + float2(1.0), timeSeed),
+                            local - float2(1.0)),
+                        blendValue.x);
+      return mix(lower, upper, blendValue.y) * 0.5 + 0.5;
+    }
+
+    float fractalNoise(float2 position, float complexityValue,
+                       float evolutionValue, float impact, float octaveScale,
+                       float octaveRotate, float seed,
+                       float2 octaveOffset) {
+      float2 grid = (float2(720.0) * screenSize) /
+                    float2(min(screenSize.x, screenSize.y));
+      float whole = floor(complexityValue);
+      float fractional = fract(complexityValue);
+      float weightSum = 1.0;
+      float amplitude = impact;
+      float result = baseNoise(position,
+                               float2(evolutionValue, 1.0 + seed));
+      for (int octave = 2; octave <= 10; ++octave) {
+        if (float(octave) > whole) {
+          break;
+        }
+        position -= octaveOffset / grid;
+        position = rotateAspect(
+            position, octaveRotate *
+                          3.141592502593994140625 / 180.0);
+        position *= octaveScale;
+        float octaveAmplitude = amplitude;
+        weightSum += octaveAmplitude;
+        amplitude = octaveAmplitude * impact;
+        result += baseNoise(position,
+                            float2(evolutionValue, 1.0 + seed)) *
+                  octaveAmplitude;
+      }
+      position -= octaveOffset / grid;
+      position = rotateAspect(
+          position,
+          octaveRotate * 3.141592502593994140625 / 180.0);
+      position *= octaveScale;
+      weightSum += amplitude * fractional;
+      result = (result +
+                baseNoise(position, float2(evolutionValue, 1.0 + seed)) *
+                    amplitude * fractional) /
+               weightSum;
+      return clamp(result, 0.0, 1.0);
+    }
+
+    float4 packNoise(float2 value) {
+      return float4(floor(value.x * 255.0) / 255.0,
+                    fract(value.x * 255.0),
+                    floor(value.y * 255.0) / 255.0,
+                    fract(value.y * 255.0));
+    }
+
+    float4 main(float2 xy) {
+      float2 skUv = xy / screenSize;
+      float2 qtUv = float2(skUv.x, 1.0 - skUv.y);
+      float2 position = rotateAspect(
+          qtUv - authoredOffset,
+          authoredRotate * 3.141592502593994140625 / 180.0);
+      position = position / authoredScale - float2(10.0);
+      float boundedComplexity = clamp(complexity, 1.0, 10.0);
+      float octaveScale = 100.0 / subScale;
+      float first;
+      float second;
+      if (turbulenceType < 0.5) {
+        first = fractalNoise(position, boundedComplexity, evolution,
+                             subImpact, octaveScale, subRotate,
+                             2.1099998950958251953125, subOffset);
+        second = fractalNoise(position, boundedComplexity, evolution,
+                              subImpact, octaveScale, subRotate,
+                              9.71000003814697265625, subOffset);
+      } else {
+        first = fractalNoise(float2(0.5, position.y), boundedComplexity,
+                             evolution, subImpact, octaveScale, subRotate,
+                             2.1099998950958251953125, subOffset);
+        second = fractalNoise(float2(position.x, 0.5), boundedComplexity,
+                              evolution, subImpact, octaveScale, subRotate,
+                              9.71000003814697265625, subOffset);
+      }
+      return packNoise(float2(first, second));
+    }
+  

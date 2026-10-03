@@ -1,0 +1,13 @@
+
+      uniform shader gradientLut;
+      uniform float2 gradientCenter;
+      uniform float inverseRadius;
+
+      half4 main(float2 paintCoord) {
+        float t = clamp(length(paintCoord - gradientCenter) *
+                            inverseRadius,
+                        0.0, 1.0);
+        float2 lutCoord = float2(0.5 + 255.0 * t, 0.5);
+        return half4(gradientLut.eval(lutCoord));
+      }
+    

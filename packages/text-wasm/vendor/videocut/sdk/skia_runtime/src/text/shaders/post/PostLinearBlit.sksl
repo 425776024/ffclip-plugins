@@ -1,0 +1,12 @@
+
+    uniform shader inputTexture;
+    uniform float2 inputSize;
+    uniform float2 outputSize;
+
+    float4 main(float2 xy) {
+      float2 skUv = xy / outputSize;
+      float2 qtUv = float2(skUv.x, 1.0 - skUv.y);
+      return inputTexture.eval(
+          float2(qtUv.x, 1.0 - qtUv.y) * inputSize);
+    }
+  

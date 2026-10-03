@@ -1,0 +1,57 @@
+
+    uniform shader inputTexture;
+    uniform shader packedGlow0Texture;
+    uniform shader packedGlow1Texture;
+    uniform shader cutTexture;
+    uniform float glowIntensity;
+    uniform float4 textColor;
+    uniform float3 letterColor;
+    uniform float gamma;
+    uniform float4 whiteTint;
+    uniform float screenIterations;
+
+    float4 screen(float4 first, float4 second) {
+      return 1.0 - (1.0 - first) * (1.0 - second);
+    }
+
+    half4 main(float2 position) {
+      float isWhite = step(0.9,
+          letterColor.r * letterColor.g * letterColor.b);
+      float4 tint = mix(float4(1.0), whiteTint, isWhite);
+      float4 letterTint = float4(letterColor, 1.0) * tint;
+      float4 highlighted = float4(inputTexture.eval(position));
+      float4 packed0 = float4(packedGlow0Texture.eval(position));
+      float4 packed1 = float4(packedGlow1Texture.eval(position));
+      float intensity = pow(max(glowIntensity * 0.5, 0.0),
+                            1.0 / max(gamma, 0.0001));
+      float4 first = clamp(float4(packed0.r) * intensity *
+                           textColor * letterTint, 0.0, 1.0);
+      float4 levels[7];
+      levels[0] = clamp(float4(packed0.g) * intensity *
+                        textColor * letterTint, 0.0, 1.0);
+      levels[1] = clamp(float4(packed0.b) * intensity *
+                        textColor * letterTint, 0.0, 1.0);
+      levels[2] = clamp(float4(packed0.a) * intensity *
+                        textColor * letterTint, 0.0, 1.0);
+      levels[3] = clamp(float4(packed1.r) * intensity *
+                        textColor * letterTint, 0.0, 1.0);
+      levels[4] = clamp(float4(packed1.g) * intensity *
+                        textColor * letterTint, 0.0, 1.0);
+      levels[5] = clamp(float4(packed1.b) * intensity *
+                        textColor * letterTint, 0.0, 1.0);
+      levels[6] = clamp(float4(packed1.a) * intensity *
+                        textColor * letterTint, 0.0, 1.0);
+      for (int level = 0; level < 7; ++level)
+        first = screen(first, levels[level]);
+      float4 glow = clamp(first * max(intensity, 1.0), 0.0, 1.0);
+      glow = screen(glow, highlighted);
+      for (int iteration = 1; iteration < 8; ++iteration) {
+        if (float(iteration) >= screenIterations) break;
+        glow = screen(glow, glow);
+      }
+      float4 cut = float4(cutTexture.eval(position));
+      float4 result = clamp(cut + glow, 0.0, 1.0);
+      result.a = clamp(glow.a + cut.a, 0.0, 1.0);
+      return half4(result);
+    }
+  

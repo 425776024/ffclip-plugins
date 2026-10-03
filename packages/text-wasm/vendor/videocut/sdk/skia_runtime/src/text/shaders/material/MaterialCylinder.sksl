@@ -1,0 +1,71 @@
+uniform shader inputTexture;
+uniform float2 textureSize;
+uniform float canvasHeight;
+uniform float3 modelScale;
+uniform float3 rotationDegrees;
+uniform float fieldOfView;
+uniform float cameraOffset;
+uniform float facetCount;
+uniform float uvScale;
+uniform float uvOffset;
+uniform float opacity;
+
+float3 inverseRotation(float3 p) {
+    float3 a = rotationDegrees * 0.017453292519943295;
+    p.xy = float2(cos(a.z) * p.x + sin(a.z) * p.y,
+                  -sin(a.z) * p.x + cos(a.z) * p.y);
+    p.yz = float2(cos(a.x) * p.y + sin(a.x) * p.z,
+                  -sin(a.x) * p.y + cos(a.x) * p.z);
+    p.xz = float2(cos(a.y) * p.x - sin(a.y) * p.z,
+                  sin(a.y) * p.x + cos(a.y) * p.z);
+    return p;
+}
+
+float4 surfaceColor(float3 point, float face) {
+    // The source side mesh has unit radius and y in [-1, 1]. Interpolate
+    // UVs along its planar facets, rather than mapping the hit to a circle.
+    if (abs(point.y) > 1.0) return float4(0.0);
+    float angle = -3.141592653589793 + face * 6.283185307179586 / facetCount;
+    float nextAngle = angle + 6.283185307179586 / facetCount;
+    float2 start = float2(sin(angle), cos(angle));
+    float2 edge = float2(sin(nextAngle), cos(nextAngle)) - start;
+    float fraction = clamp(dot(point.xz - start, edge) / dot(edge, edge), 0.0, 1.0);
+    float u = ((face + fraction) / facetCount - 0.5) * uvScale + 0.5 + uvOffset;
+    return float4(inputTexture.eval(float2(u, 0.5 - point.y * 0.5) * textureSize));
+}
+
+half4 main(float2 position) {
+    float cotangent = 1.0 / tan(fieldOfView * 0.008726646259971648);
+    float2 delta = (position - textureSize * 0.5) * 2.0 / (canvasHeight * cotangent);
+    float3 origin = inverseRotation(float3(0.0, 0.0, cameraOffset + modelScale.z)) / modelScale;
+    float3 direction = inverseRotation(float3(delta.x, -delta.y, -1.0)) / modelScale;
+    float nearDistance = -1.0e20;
+    float farDistance = 1.0e20;
+    float nearFace = 0.0;
+    float farFace = 0.0;
+    float apothem = cos(3.141592653589793 / facetCount);
+    for (int index = 0; index < 512; ++index) {
+        if (float(index) >= facetCount) break;
+        float angle = -3.141592653589793 + (float(index) + 0.5) * 6.283185307179586 / facetCount;
+        float2 normal = float2(sin(angle), cos(angle));
+        float denominator = dot(normal, direction.xz);
+        float distance = apothem - dot(normal, origin.xz);
+        if (abs(denominator) < 0.0000001) {
+            if (distance < 0.0) return half4(0.0);
+        } else {
+            float intersection = distance / denominator;
+            if (denominator < 0.0 && intersection > nearDistance) {
+                nearDistance = intersection;
+                nearFace = float(index);
+            }
+            if (denominator > 0.0 && intersection < farDistance) {
+                farDistance = intersection;
+                farFace = float(index);
+            }
+        }
+        if (nearDistance > farDistance) return half4(0.0);
+    }
+    float4 front = nearDistance > 0.0 ? surfaceColor(origin + direction * nearDistance, nearFace) : float4(0.0);
+    float4 back = farDistance > 0.0 ? surfaceColor(origin + direction * farDistance, farFace) : float4(0.0);
+    return half4(mix(back, front, front.a) * opacity);
+}

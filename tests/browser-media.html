@@ -1,0 +1,9 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VideoCut Media QA</title>
+<style>body{font:14px system-ui;background:#10151b;color:#dce7f3;margin:24px}button{font:inherit;padding:10px 20px;margin:0 12px 12px 0}pre{white-space:pre-wrap}#clip{width:720px;height:72px;border:1px solid #617c87}canvas#frame{width:480px}section{margin:20px 0}</style>
+<h1>浏览器媒体管线验收</h1>
+<p>真实 Range 读取、WebCodecs 精确 PTS、连续解码、分声道波形、完整一小时 FLAC、worker 缩略图组件。内存数字仅为已计量缓存与浏览器可用的 JS heap。</p>
+<button id="run">运行（含一小时音频）</button><button id="stop">取消</button>
+<section id="clip"></section><canvas id="frame" width="320" height="180"></canvas><pre id="status">尚未运行</pre>
+<script type="module" src="./browser-media.ts"></script></html>

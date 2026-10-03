@@ -1,0 +1,687 @@
+{
+  "format": "videocut.text-effect-program",
+  "programs": [
+    {
+      "program_id": "com.videocut.text.qt-type.anim-lua-clone-blur-xy.program.controller",
+      "random_seed": 50,
+      "stages": [
+        {
+          "stage_id": "source-flow-blur-radial",
+          "kind": "per_unit",
+          "register_count": 45,
+          "instructions": [
+            {
+              "opcode": "constant",
+              "output_register": 0,
+              "input_registers": [],
+              "immediates": [
+                0
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 1,
+              "input_registers": [],
+              "immediates": [
+                1
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 2,
+              "input_registers": [],
+              "immediates": [
+                2
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 3,
+              "input_registers": [],
+              "immediates": [
+                0.5
+              ],
+              "input": null
+            },
+            {
+              "opcode": "input",
+              "output_register": 4,
+              "input_registers": [],
+              "immediates": [],
+              "input": "progress"
+            },
+            {
+              "opcode": "multiply",
+              "output_register": 5,
+              "input_registers": [
+                4,
+                4
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 6,
+              "input_registers": [],
+              "immediates": [
+                0.375
+              ],
+              "input": null
+            },
+            {
+              "opcode": "subtract",
+              "output_register": 7,
+              "input_registers": [
+                5,
+                6
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 8,
+              "input_registers": [],
+              "immediates": [
+                0.625
+              ],
+              "input": null
+            },
+            {
+              "opcode": "divide",
+              "output_register": 9,
+              "input_registers": [
+                7,
+                8
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "clamp",
+              "output_register": 10,
+              "input_registers": [
+                9,
+                0,
+                1
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "input",
+              "output_register": 11,
+              "input_registers": [],
+              "immediates": [],
+              "input": "canvas_rect_width"
+            },
+            {
+              "opcode": "input",
+              "output_register": 12,
+              "input_registers": [],
+              "immediates": [],
+              "input": "canvas_rect_height"
+            },
+            {
+              "opcode": "constant",
+              "output_register": 13,
+              "input_registers": [],
+              "immediates": [
+                6
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 14,
+              "input_registers": [],
+              "immediates": [
+                0.15000000596046448
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 15,
+              "input_registers": [],
+              "immediates": [
+                0.800000011920929
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 16,
+              "input_registers": [],
+              "immediates": [
+                0.5839999914169312
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 17,
+              "input_registers": [],
+              "immediates": [
+                1.25
+              ],
+              "input": null
+            },
+            {
+              "opcode": "multiply",
+              "output_register": 18,
+              "input_registers": [
+                10,
+                17
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 19,
+              "input_registers": [],
+              "immediates": [
+                0.19
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 20,
+              "input_registers": [],
+              "immediates": [
+                0.17
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 21,
+              "input_registers": [],
+              "immediates": [
+                0.15
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 22,
+              "input_registers": [],
+              "immediates": [
+                0.13
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 23,
+              "input_registers": [],
+              "immediates": [
+                0.11
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 24,
+              "input_registers": [],
+              "immediates": [
+                0.08
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 25,
+              "input_registers": [],
+              "immediates": [
+                0.05
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 26,
+              "input_registers": [],
+              "immediates": [
+                0.02
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 27,
+              "input_registers": [],
+              "immediates": [
+                0.2
+              ],
+              "input": null
+            },
+            {
+              "opcode": "input",
+              "output_register": 28,
+              "input_registers": [],
+              "immediates": [],
+              "input": "output_width"
+            },
+            {
+              "opcode": "input",
+              "output_register": 29,
+              "input_registers": [],
+              "immediates": [],
+              "input": "output_height"
+            },
+            {
+              "opcode": "input",
+              "output_register": 30,
+              "input_registers": [],
+              "immediates": [],
+              "input": "source_origin_output_x"
+            },
+            {
+              "opcode": "input",
+              "output_register": 31,
+              "input_registers": [],
+              "immediates": [],
+              "input": "source_origin_output_y"
+            },
+            {
+              "opcode": "multiply",
+              "output_register": 32,
+              "input_registers": [
+                28,
+                3
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "subtract",
+              "output_register": 33,
+              "input_registers": [
+                30,
+                32
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "multiply",
+              "output_register": 34,
+              "input_registers": [
+                33,
+                2
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "divide",
+              "output_register": 35,
+              "input_registers": [
+                34,
+                29
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "multiply",
+              "output_register": 36,
+              "input_registers": [
+                29,
+                3
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "subtract",
+              "output_register": 37,
+              "input_registers": [
+                36,
+                31
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "multiply",
+              "output_register": 38,
+              "input_registers": [
+                37,
+                2
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "divide",
+              "output_register": 39,
+              "input_registers": [
+                38,
+                29
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 40,
+              "input_registers": [],
+              "immediates": [
+                0.47999998927116394
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 41,
+              "input_registers": [],
+              "immediates": [
+                10
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 42,
+              "input_registers": [],
+              "immediates": [
+                8
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 43,
+              "input_registers": [],
+              "immediates": [
+                0.5199999809265137
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 44,
+              "input_registers": [],
+              "immediates": [
+                12
+              ],
+              "input": null
+            }
+          ],
+          "outputs": [
+            {
+              "output": "opacity",
+              "register_index": 1,
+              "transform_index": 0
+            }
+          ],
+          "execution_parameter_bindings": [
+            {
+              "node_id": "flow",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 13,
+              "register_indices": [
+                2
+              ]
+            },
+            {
+              "node_id": "flow",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 0,
+              "register_indices": [
+                5
+              ]
+            },
+            {
+              "node_id": "flow",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 1,
+              "register_indices": [
+                13
+              ]
+            },
+            {
+              "node_id": "flow",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 2,
+              "register_indices": [
+                14
+              ]
+            },
+            {
+              "node_id": "flow",
+              "parameter": "material_vector2",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 3,
+              "register_indices": [
+                15,
+                16
+              ]
+            },
+            {
+              "node_id": "flow",
+              "parameter": "material_vector4",
+              "domain": "page",
+              "value_space": "source_pixels",
+              "slot": 31,
+              "register_indices": [
+                11,
+                12,
+                0,
+                0
+              ]
+            },
+            {
+              "node_id": "blur-x",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 0,
+              "register_indices": [
+                18
+              ]
+            },
+            {
+              "node_id": "blur-x",
+              "parameter": "material_vector2",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 1,
+              "register_indices": [
+                1,
+                0
+              ]
+            },
+            {
+              "node_id": "blur-x",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 13,
+              "register_indices": [
+                1
+              ]
+            },
+            {
+              "node_id": "blur-x",
+              "parameter": "material_vector4",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 6,
+              "register_indices": [
+                19,
+                20,
+                21,
+                22
+              ]
+            },
+            {
+              "node_id": "blur-x",
+              "parameter": "material_vector4",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 7,
+              "register_indices": [
+                23,
+                24,
+                25,
+                26
+              ]
+            },
+            {
+              "node_id": "blur-x",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 8,
+              "register_indices": [
+                27
+              ]
+            },
+            {
+              "node_id": "radial-1",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 0,
+              "register_indices": [
+                10
+              ]
+            },
+            {
+              "node_id": "radial-1",
+              "parameter": "material_vector2",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 1,
+              "register_indices": [
+                3,
+                40
+              ]
+            },
+            {
+              "node_id": "radial-1",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 2,
+              "register_indices": [
+                41
+              ]
+            },
+            {
+              "node_id": "radial-1",
+              "parameter": "material_vector2",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 3,
+              "register_indices": [
+                35,
+                39
+              ]
+            },
+            {
+              "node_id": "radial-1",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 4,
+              "register_indices": [
+                1
+              ]
+            },
+            {
+              "node_id": "radial-1",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 5,
+              "register_indices": [
+                42
+              ]
+            },
+            {
+              "node_id": "radial-2",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 0,
+              "register_indices": [
+                10
+              ]
+            },
+            {
+              "node_id": "radial-2",
+              "parameter": "material_vector2",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 1,
+              "register_indices": [
+                3,
+                43
+              ]
+            },
+            {
+              "node_id": "radial-2",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 2,
+              "register_indices": [
+                42
+              ]
+            },
+            {
+              "node_id": "radial-2",
+              "parameter": "material_vector2",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 3,
+              "register_indices": [
+                35,
+                39
+              ]
+            },
+            {
+              "node_id": "radial-2",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 4,
+              "register_indices": [
+                1
+              ]
+            },
+            {
+              "node_id": "radial-2",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 5,
+              "register_indices": [
+                44
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

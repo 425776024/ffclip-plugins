@@ -1,0 +1,38 @@
+
+    uniform shader inputTexture;
+    uniform float2 sourceSize;
+    uniform float glowFromAlpha;
+    uniform float chromaticAberration;
+    uniform float redOffset;
+    uniform float greenOffset;
+    uniform float blueOffset;
+    uniform float gammaCorrect;
+    uniform float gammaValue;
+
+    float4 sampleUv(float2 uv) {
+      return float4(inputTexture.eval(
+          clamp(uv, float2(0.0), float2(1.0)) * sourceSize));
+    }
+
+    float4 main(float2 xy) {
+      float2 uv = xy / sourceSize;
+      float4 source = sampleUv(uv);
+      float4 color = mix(source, float4(source.a), glowFromAlpha);
+      if (chromaticAberration >= 0.5) {
+        float4 redSample = sampleUv(
+            uv + float2(-redOffset, redOffset)).yzwx;
+        float red = redSample.x * redSample.w;
+        float4 greenSample = sampleUv(
+            uv + float2(-greenOffset, greenOffset)).yzwx;
+        float green = greenSample.y * greenSample.w;
+        float4 blueSample = sampleUv(
+            uv + float2(-blueOffset, blueOffset)).yzwx;
+        float blue = blueSample.z * blueSample.w;
+        color = float4(red, green, blue, 1.0);
+      }
+      if (gammaCorrect >= 0.5) {
+        color = pow(color, float4(gammaValue));
+      }
+      return color;
+    }
+  

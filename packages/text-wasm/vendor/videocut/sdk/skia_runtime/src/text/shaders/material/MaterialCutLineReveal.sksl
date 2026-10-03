@@ -1,0 +1,31 @@
+
+    uniform shader inputTexture;
+    uniform float2 textureSize;
+    uniform float2 textOrigin;
+    uniform float2 textExtent;
+    uniform float cutPosition;
+    uniform float angleRadians;
+    uniform float lineWidth;
+    uniform float tail;
+    uniform float falloffPower;
+
+    float2 rotatePoint(float2 point, float radians) {
+      float sine = sin(radians);
+      float cosine = cos(radians);
+      return float2(cosine * point.x + sine * point.y,
+                    -sine * point.x + cosine * point.y);
+    }
+
+    half4 main(float2 position) {
+      float2 uv = (position - textOrigin) / textExtent;
+      if (any(lessThan(uv, float2(0.0))) ||
+          any(greaterThan(uv, float2(1.0)))) return half4(0.0);
+      float2 rotated = rotatePoint(
+          uv - float2(0.5), angleRadians) +
+          float2(0.5);
+      float line = smoothstep(lineWidth, tail,
+                              rotated.x - cutPosition);
+      line = pow(max(line, 0.0), max(falloffPower, 0.0001));
+      return half4(inputTexture.eval(uv * textureSize) * line);
+    }
+  

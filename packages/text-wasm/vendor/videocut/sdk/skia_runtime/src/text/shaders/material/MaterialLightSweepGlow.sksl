@@ -1,0 +1,43 @@
+
+    uniform shader inputTexture;
+    uniform shader packedGlow0Texture;
+    uniform shader packedGlow1Texture;
+    uniform shader colorBlurTexture;
+    uniform float glowIntensity;
+    uniform float packedScale;
+    uniform float gamma;
+    uniform float screenIterations;
+
+    float4 screen(float4 first, float4 second) {
+      return 1.0 - (1.0 - first) * (1.0 - second);
+    }
+
+    half4 main(float2 position) {
+      float4 sweep = float4(inputTexture.eval(position));
+      float4 packed0 = float4(packedGlow0Texture.eval(position)) * packedScale;
+      float4 packed1 = float4(packedGlow1Texture.eval(position)) * packedScale;
+      float4 colorBlur = float4(colorBlurTexture.eval(position));
+      colorBlur.rgb /= colorBlur.a + 0.001;
+      float intensity = pow(max(glowIntensity, 0.0),
+                            1.0 / max(gamma, 0.0001));
+      float first = clamp(packed0.r * intensity, 0.0, 1.0);
+      float levels[7];
+      levels[0] = clamp(packed0.g * intensity, 0.0, 1.0);
+      levels[1] = clamp(packed0.b * intensity, 0.0, 1.0);
+      levels[2] = clamp(packed0.a * intensity, 0.0, 1.0);
+      levels[3] = clamp(packed1.r * intensity, 0.0, 1.0);
+      levels[4] = clamp(packed1.g * intensity, 0.0, 1.0);
+      levels[5] = clamp(packed1.b * intensity, 0.0, 1.0);
+      levels[6] = clamp(packed1.a * intensity, 0.0, 1.0);
+      for (int level = 0; level < 7; ++level)
+        first = 1.0 - (1.0 - first) * (1.0 - levels[level]);
+      float4 glow = clamp(float4(first) *
+                          float4(colorBlur.rgb, 1.0), 0.0, 1.0);
+      float4 result = screen(glow, sweep);
+      for (int iteration = 1; iteration < 8; ++iteration) {
+        if (float(iteration) >= screenIterations) break;
+        result = screen(result, result);
+      }
+      return half4(result);
+    }
+  

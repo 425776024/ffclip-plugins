@@ -1,0 +1,340 @@
+{
+  "format": "videocut.text-animation",
+  "animation": {
+    "layers": [
+      {
+        "id": "reference-animation-44",
+        "time_driver": {
+          "kind": "timed_ranges",
+          "duration_us": 0,
+          "playback": "hold",
+          "timed_mode": "grapheme_sweep"
+        },
+        "animators": [
+          {
+            "id": "selector-1",
+            "anchor": "glyph_center",
+            "position_mode": "text_bounds_offset",
+            "presentation": "transform",
+            "selectors": [
+              {
+                "kind": "range",
+                "based_on": "grapheme",
+                "range_start": 0,
+                "range_end": 1,
+                "offset": 0.0,
+                "edge_smooth": 0,
+                "constrained": true,
+                "shape": "square",
+                "order": "forward",
+                "random_seed": 50.0,
+                "intensity": 1,
+                "intensity_start": 0,
+                "intensity_end": 1
+              }
+            ],
+            "tracks": [],
+            "effect_program_id": "com.videocut.text.qt-type.anim-studio-squeeze-collapse.program.01"
+          }
+        ],
+        "requires_timed_text": true,
+        "render_group": {
+          "mode": "page",
+          "expand_ratio_x": 2.0,
+          "expand_ratio_y": 2.0
+        },
+        "post_effects": [
+          {
+            "id": "effect-1",
+            "node_kind": "radial_blur",
+            "amount": 0.0,
+            "parameters": [
+              {
+                "name": "amount",
+                "values": [
+                  60.0
+                ],
+                "keyframes": [
+                  {
+                    "offset": 0.0,
+                    "value": 0.0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": 0.0,
+                    "bezier_time_out": 0.27999999999999997
+                  },
+                  {
+                    "offset": 0.6666666666666666,
+                    "value": 15.0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": 0.0,
+                    "bezier_time_out": 0.13999999999999999
+                  },
+                  {
+                    "offset": 1.0,
+                    "value": 0.0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": 0.0,
+                    "bezier_time_out": 0.0
+                  }
+                ]
+              },
+              {
+                "name": "blurAlpha",
+                "values": [
+                  1.0
+                ]
+              },
+              {
+                "name": "blurType",
+                "values": [
+                  2.0
+                ]
+              },
+              {
+                "name": "borderType",
+                "values": [
+                  0.0
+                ]
+              },
+              {
+                "name": "center_x",
+                "values": [
+                  0.5
+                ]
+              },
+              {
+                "name": "center_y",
+                "values": [
+                  0.5
+                ]
+              },
+              {
+                "name": "dither",
+                "values": [
+                  1.0
+                ]
+              },
+              {
+                "name": "inverseGammaCorrection",
+                "values": [
+                  0.0
+                ]
+              },
+              {
+                "name": "lightIntensity",
+                "values": [
+                  2.0
+                ]
+              },
+              {
+                "name": "lightTransferMode",
+                "values": [
+                  1.0
+                ]
+              },
+              {
+                "name": "quality",
+                "values": [
+                  0.2
+                ]
+              },
+              {
+                "name": "weightDecay",
+                "values": [
+                  0.965
+                ]
+              }
+            ],
+            "padding_px": 192
+          },
+          {
+            "id": "effect-2",
+            "node_kind": "alpha_outline",
+            "amount": 0.0,
+            "parameters": [
+              {
+                "name": "intensity",
+                "values": [
+                  1.0
+                ]
+              },
+              {
+                "name": "offsetX",
+                "values": [
+                  0.0
+                ]
+              },
+              {
+                "name": "offsetY",
+                "values": [
+                  0.0
+                ]
+              },
+              {
+                "name": "outlineColor",
+                "values": [
+                  0.8,
+                  0.8,
+                  0.8,
+                  1.0
+                ]
+              },
+              {
+                "name": "scaleX",
+                "values": [
+                  1.0
+                ]
+              },
+              {
+                "name": "scaleY",
+                "values": [
+                  1.0
+                ]
+              },
+              {
+                "name": "size",
+                "values": [
+                  5.0
+                ],
+                "keyframes": [
+                  {
+                    "offset": 0.0,
+                    "value": 0.0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": 0.0,
+                    "bezier_time_out": 0.13999999999999999
+                  },
+                  {
+                    "offset": 0.3333333333333333,
+                    "value": 2.0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": 0.0,
+                    "bezier_time_out": 0.0
+                  },
+                  {
+                    "offset": 0.6666666666666666,
+                    "value": 0.5,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.13999999999999999,
+                    "bezier_time_out": 0.13999999999999999
+                  },
+                  {
+                    "offset": 1.0,
+                    "value": 0.0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": 0.0,
+                    "bezier_time_out": 0.0
+                  }
+                ]
+              }
+            ],
+            "padding_px": 192
+          }
+        ]
+      }
+    ],
+    "timed_spans": [
+      {
+        "id": "preview-full-run",
+        "paragraph_id": "paragraph-main",
+        "run_id": "run-main",
+        "utf8_begin": 0,
+        "utf8_end": "run_end",
+        "start_offset_us": 0,
+        "end_offset_us": 3000000,
+        "transition_end_offset_us": 3000000,
+        "semantic": "karaoke_word",
+        "progress": "grapheme_sweep"
+      }
+    ],
+    "execution_graph": {
+      "nodes": [
+        {
+          "id": "layout",
+          "node_kind": "layout",
+          "capability": "layout_glyph_run"
+        },
+        {
+          "id": "selector-0",
+          "node_kind": "selector",
+          "capability": "selector_base",
+          "input_ids": [
+            "layout"
+          ]
+        },
+        {
+          "id": "operator-0",
+          "node_kind": "operator",
+          "capability": "operator_program",
+          "input_ids": [
+            "selector-0"
+          ]
+        },
+        {
+          "id": "scene-prefab",
+          "node_kind": "scene",
+          "capability": "scene_prefab",
+          "input_ids": [
+            "operator-0"
+          ]
+        },
+        {
+          "id": "scene-mesh",
+          "node_kind": "scene",
+          "capability": "scene_mesh",
+          "input_ids": [
+            "scene-prefab"
+          ]
+        },
+        {
+          "id": "material-pass",
+          "node_kind": "material_pass",
+          "capability": "material_color_pass",
+          "input_ids": [
+            "scene-mesh"
+          ]
+        },
+        {
+          "id": "render-target",
+          "node_kind": "render_target",
+          "capability": "render_target_expanded",
+          "input_ids": [
+            "material-pass"
+          ]
+        },
+        {
+          "id": "effect-1",
+          "node_kind": "post_effect_pass",
+          "capability": "none",
+          "input_ids": [
+            "render-target"
+          ],
+          "post_effect_kind": "radial_blur"
+        },
+        {
+          "id": "effect-2",
+          "node_kind": "post_effect_pass",
+          "capability": "none",
+          "input_ids": [
+            "effect-1"
+          ],
+          "post_effect_kind": "alpha_outline"
+        }
+      ]
+    }
+  }
+}

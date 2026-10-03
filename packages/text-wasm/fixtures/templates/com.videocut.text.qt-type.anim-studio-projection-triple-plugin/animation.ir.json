@@ -1,0 +1,544 @@
+{
+  "format": "videocut.text-animation",
+  "animation": {
+    "layers": [
+      {
+        "id": "studio.layer.0",
+        "enabled": true,
+        "combine_mode": "replace",
+        "requires_timed_text": false,
+        "time_driver": {
+          "kind": "clip_local",
+          "start_offset_us": 0,
+          "duration_us": 3000000,
+          "playback": "hold"
+        },
+        "animators": [],
+        "post_effects": [
+          {
+            "id": "studio.post.0.0",
+            "node_kind": "projection",
+            "amount": 0.0,
+            "padding_px": 0.0,
+            "input_ids": [],
+            "parameters": [
+              {
+                "name": "backAlpha",
+                "values": [
+                  1
+                ]
+              },
+              {
+                "name": "mixWithBlack",
+                "values": [
+                  1
+                ]
+              },
+              {
+                "name": "offsetY_0",
+                "values": [
+                  0
+                ]
+              },
+              {
+                "name": "scale",
+                "values": [
+                  0.9800000190734863
+                ]
+              },
+              {
+                "name": "shakeScale",
+                "values": [
+                  1
+                ]
+              },
+              {
+                "name": "shakeTime",
+                "values": [
+                  0.4699999988079071
+                ]
+              }
+            ]
+          },
+          {
+            "id": "studio.post.0.1",
+            "node_kind": "procedural_flame_outline",
+            "amount": 0.0,
+            "padding_px": 0.0,
+            "input_ids": [],
+            "parameters": [
+              {
+                "name": "flameColor",
+                "values": [
+                  0.9119706749916077,
+                  0.7879301309585571,
+                  0.04917982593178749,
+                  1
+                ]
+              },
+              {
+                "name": "flameSpeed",
+                "values": [
+                  0.25
+                ]
+              },
+              {
+                "name": "intensity",
+                "values": [
+                  1
+                ]
+              },
+              {
+                "name": "loopTime",
+                "values": [
+                  0
+                ],
+                "keyframes": [
+                  {
+                    "offset": 0,
+                    "value": 0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 9.225519287833828,
+                    "bezier": true,
+                    "bezier_time_in": 0,
+                    "bezier_time_out": 0.33699999999999997
+                  },
+                  {
+                    "offset": 1,
+                    "value": 10,
+                    "tangent_in": 14.175270108043216,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.2776666666666667,
+                    "bezier_time_out": 0
+                  }
+                ]
+              },
+              {
+                "name": "noiseScale",
+                "values": [
+                  3
+                ]
+              }
+            ]
+          },
+          {
+            "id": "studio.post.0.2",
+            "node_kind": "procedural_flame_outline",
+            "amount": 0.0,
+            "padding_px": 0.0,
+            "input_ids": [],
+            "parameters": [
+              {
+                "name": "flameColor",
+                "values": [
+                  0.9119706749916077,
+                  0.3961242139339447,
+                  0.10560768842697144,
+                  1
+                ]
+              },
+              {
+                "name": "flameSpeed",
+                "values": [
+                  0.5
+                ]
+              },
+              {
+                "name": "intensity",
+                "values": [
+                  1
+                ]
+              },
+              {
+                "name": "loopTime",
+                "values": [
+                  0
+                ],
+                "keyframes": [
+                  {
+                    "offset": 0,
+                    "value": 0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 9.225519287833828,
+                    "bezier": true,
+                    "bezier_time_in": 0,
+                    "bezier_time_out": 0.33699999999999997
+                  },
+                  {
+                    "offset": 1,
+                    "value": 10,
+                    "tangent_in": 14.175270108043216,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.2776666666666667,
+                    "bezier_time_out": 0
+                  }
+                ]
+              },
+              {
+                "name": "noiseScale",
+                "values": [
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "id": "studio.post.0.3",
+            "node_kind": "procedural_flame_outline",
+            "amount": 0.0,
+            "padding_px": 0.0,
+            "input_ids": [],
+            "parameters": [
+              {
+                "name": "flameColor",
+                "values": [
+                  1,
+                  0.04490730166435242,
+                  0,
+                  1
+                ]
+              },
+              {
+                "name": "flameSpeed",
+                "values": [
+                  0.75
+                ]
+              },
+              {
+                "name": "intensity",
+                "values": [
+                  1
+                ]
+              },
+              {
+                "name": "loopTime",
+                "values": [
+                  0
+                ],
+                "keyframes": [
+                  {
+                    "offset": 0,
+                    "value": 0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 9.225519287833828,
+                    "bezier": true,
+                    "bezier_time_in": 0,
+                    "bezier_time_out": 0.33699999999999997
+                  },
+                  {
+                    "offset": 1,
+                    "value": 10,
+                    "tangent_in": 14.175270108043216,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.2776666666666667,
+                    "bezier_time_out": 0
+                  }
+                ]
+              },
+              {
+                "name": "noiseScale",
+                "values": [
+                  10
+                ]
+              }
+            ]
+          },
+          {
+            "id": "studio.post.0.4",
+            "node_kind": "s_glow",
+            "amount": 0.0,
+            "padding_px": 0.0,
+            "input_ids": [],
+            "parameters": [
+              {
+                "name": "brightness",
+                "values": [
+                  1
+                ]
+              },
+              {
+                "name": "combine",
+                "values": [
+                  0
+                ]
+              },
+              {
+                "name": "dither",
+                "values": [
+                  1
+                ]
+              },
+              {
+                "name": "edgeMode",
+                "values": [
+                  1
+                ]
+              },
+              {
+                "name": "glowColor",
+                "values": [
+                  1,
+                  1,
+                  1,
+                  1
+                ]
+              },
+              {
+                "name": "glowFromAlpha",
+                "values": [
+                  0
+                ]
+              },
+              {
+                "name": "glowUnderSource",
+                "values": [
+                  0
+                ]
+              },
+              {
+                "name": "glowWidth",
+                "values": [
+                  0.05000000074505806
+                ]
+              },
+        {
+          "name": "quality",
+          "values": [
+            0.20000000298023224
+                ]
+              },
+              {
+                "name": "show",
+                "values": [
+                  0
+                ]
+              },
+              {
+                "name": "sourceOpacity",
+                "values": [
+                  1
+                ]
+              },
+        {
+          "name": "threshold",
+          "values": [
+            0.10000000149011612
+                ]
+              },
+              {
+                "name": "thresholdAddColor",
+                "values": [
+                  0,
+                  0,
+                  0,
+                  1
+                ]
+              },
+        {
+          "name": "widthBlue",
+          "values": [
+            1.399999976158142
+                ]
+              },
+        {
+          "name": "widthGreen",
+          "values": [
+            1.2000000476837158
+                ]
+              },
+              {
+                "name": "widthRed",
+                "values": [
+                  1
+                ]
+              },
+              {
+                "name": "widthX",
+                "values": [
+                  1
+                ]
+              },
+              {
+                "name": "widthY",
+                "values": [
+                  1
+                ]
+              }
+            ]
+          },
+          {
+            "id": "studio.post.0.5",
+            "node_kind": "linear_wipe",
+            "amount": 0.0,
+            "padding_px": 0.0,
+            "input_ids": [],
+            "parameters": [
+              {
+                "name": "feather",
+                "values": [
+                  0.20000000298023224
+                ]
+              },
+        {
+          "name": "progress",
+          "values": [
+            0.30000001192092896
+                ]
+              },
+              {
+                "name": "rotation",
+                "values": [
+                  0
+                ]
+              }
+            ]
+          },
+          {
+            "id": "studio.post.0.6",
+            "node_kind": "linear_wipe",
+            "amount": 0.0,
+            "padding_px": 0.0,
+            "input_ids": [],
+            "parameters": [
+              {
+                "name": "feather",
+                "values": [
+                  0.20000000298023224
+                ]
+              },
+        {
+          "name": "progress",
+          "values": [
+            0.30000001192092896
+                ]
+              },
+              {
+                "name": "rotation",
+                "values": [
+                  180
+                ]
+              }
+            ]
+          }
+        ],
+        "render_group": {
+          "expand_ratio_x": 1.2000000476837158,
+          "expand_ratio_y": 1.600000023841858,
+          "mode": "per_line",
+          "offset": 0.0,
+          "priority": 0,
+          "random_seed": 50,
+          "random_sort": false,
+          "shape": "square"
+        }
+      }
+    ],
+    "execution_graph": {
+      "nodes": [
+        {
+          "id": "layout",
+          "node_kind": "layout",
+          "capability": "layout_glyph_run"
+        },
+        {
+          "id": "scene-prefab",
+          "node_kind": "scene",
+          "capability": "scene_prefab",
+          "input_ids": [
+            "layout"
+          ]
+        },
+        {
+          "id": "scene-mesh",
+          "node_kind": "scene",
+          "capability": "scene_mesh",
+          "input_ids": [
+            "scene-prefab"
+          ]
+        },
+        {
+          "id": "material-pass",
+          "node_kind": "material_pass",
+          "capability": "material_color_pass",
+          "input_ids": [
+            "scene-mesh"
+          ]
+        },
+        {
+          "id": "render-target",
+          "node_kind": "render_target",
+          "capability": "render_target_expanded",
+          "input_ids": [
+            "material-pass"
+          ]
+        },
+        {
+          "id": "studio.post.0.0",
+          "node_kind": "post_effect_pass",
+          "capability": "none",
+          "input_ids": [
+            "render-target"
+          ],
+          "post_effect_kind": "projection"
+        },
+        {
+          "id": "studio.post.0.1",
+          "node_kind": "post_effect_pass",
+          "capability": "none",
+          "input_ids": [
+            "studio.post.0.0"
+          ],
+          "post_effect_kind": "procedural_flame_outline"
+        },
+        {
+          "id": "studio.post.0.2",
+          "node_kind": "post_effect_pass",
+          "capability": "none",
+          "input_ids": [
+            "studio.post.0.1"
+          ],
+          "post_effect_kind": "procedural_flame_outline"
+        },
+        {
+          "id": "studio.post.0.3",
+          "node_kind": "post_effect_pass",
+          "capability": "none",
+          "input_ids": [
+            "studio.post.0.2"
+          ],
+          "post_effect_kind": "procedural_flame_outline"
+        },
+        {
+          "id": "studio.post.0.4",
+          "node_kind": "post_effect_pass",
+          "capability": "none",
+          "input_ids": [
+            "studio.post.0.3"
+          ],
+          "post_effect_kind": "s_glow"
+        },
+        {
+          "id": "studio.post.0.5",
+          "node_kind": "post_effect_pass",
+          "capability": "none",
+          "input_ids": [
+            "studio.post.0.4"
+          ],
+          "post_effect_kind": "linear_wipe"
+        },
+        {
+          "id": "studio.post.0.6",
+          "node_kind": "post_effect_pass",
+          "capability": "none",
+          "input_ids": [
+            "studio.post.0.5"
+          ],
+          "post_effect_kind": "linear_wipe"
+        }
+      ]
+    }
+  }
+}

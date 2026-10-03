@@ -1,0 +1,15 @@
+
+    uniform shader inputTexture;
+    uniform float2 sampleStep;
+    half4 main(float2 position) {
+      if (length(sampleStep) <= 0.0) {
+        return inputTexture.eval(position);
+      }
+      float4 color = float4(0.0);
+      for (int index = -25; index <= 25; ++index) {
+        color += float4(inputTexture.eval(
+            position + sampleStep * float(index)));
+      }
+      return half4(color / 51.0);
+    }
+  

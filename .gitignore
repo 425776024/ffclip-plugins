@@ -1,0 +1,58 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+node_modules/
+.pnp
+.pnp.js
+release/
+# testing
+coverage/
+
+# production
+dist/
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# local env files
+.env*.local
+.env.production
+
+# editor directories and files
+.idea
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# electron
+electron-dist/
+
+# Local native bridge, preserved pre-refactor edits and verification artifacts
+.local/
+*.tgz
+
+# Private official website and local credentials
+/ffclip/
+.env
+.env.*
+!.env.example
+certs/
+*.key
+*.p12
+*.pfx
+.cache/
+
+# Frozen text runtime is required for source builds; its source is included.
+!packages/text-wasm/dist/
+!packages/text-wasm/dist/**

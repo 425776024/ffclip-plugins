@@ -1,0 +1,58 @@
+
+    uniform shader inputTexture;
+    uniform float2 textureSize;
+
+    float4 sampleQt(float2 uv) {
+      return float4(inputTexture.eval(
+          float2(uv.x, 1.0 - uv.y) * textureSize));
+    }
+
+    float luminance(float3 color) {
+      return dot(color, float3(0.29899999499320984,
+                               0.5870000123977661,
+                               0.11400000005960464));
+    }
+
+    float4 main(float2 xy) {
+      float2 uv = float2(xy.x / textureSize.x,
+                         1.0 - xy.y / textureSize.y);
+      float2 texel = 1.0 / textureSize;
+      float4 northwest = sampleQt(uv - texel);
+      float4 northeast = sampleQt(uv + float2(texel.x, -texel.y));
+      float4 southwest = sampleQt(uv + float2(-texel.x, texel.y));
+      float4 southeast = sampleQt(uv + texel);
+      float lumNorthwest = luminance(northwest.rgb);
+      float lumNortheast = luminance(northeast.rgb);
+      float lumSouthwest = luminance(southwest.rgb);
+      float lumSoutheast = luminance(southeast.rgb);
+      float lumCenter = luminance(sampleQt(uv * texel).rgb);
+      float cornerNorth = lumNorthwest + lumNortheast;
+      float2 direction = float2(
+          -(cornerNorth - (lumSouthwest + lumSoutheast)),
+          (lumNorthwest + lumSouthwest) -
+              (lumNortheast + lumSoutheast));
+      float reduction = min(abs(direction.x), abs(direction.y)) +
+          max((cornerNorth + lumSouthwest + lumSoutheast) * 0.03125,
+              0.0078125);
+      direction = clamp(direction / reduction, float2(-8.0), float2(8.0)) *
+                  texel;
+      float4 first = (sampleQt(uv + direction * -0.1666666716337204) +
+                      sampleQt(uv + direction * 0.1666666716337204)) * 0.5;
+      float4 second = first * 0.5 +
+          (sampleQt(uv + direction * -0.5) +
+           sampleQt(uv + direction * 0.5)) * 0.25;
+      float firstLuminance = luminance(first.rgb);
+      float minimumLuminance =
+          min(lumCenter,
+              min(min(lumNorthwest, lumNortheast),
+                  min(lumSouthwest, lumSoutheast)));
+      float maximumLuminance =
+          max(lumCenter,
+              max(max(lumNorthwest, lumNortheast),
+                  max(lumSouthwest, lumSoutheast)));
+      return firstLuminance < minimumLuminance ||
+                     firstLuminance > maximumLuminance
+                 ? first
+                 : second;
+    }
+  

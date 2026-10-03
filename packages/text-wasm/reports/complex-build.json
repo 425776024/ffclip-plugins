@@ -1,0 +1,35 @@
+{
+  "version": "0.3.0",
+  "build": {
+    "profile": "wasm-raster-v1",
+    "emscripten": "4.0.9",
+    "emsdk": "3bcf1dcd01f040f370e10fe673a092d9ed79ebb5",
+    "skia": "933b272d039add454e6491efafd2db84a18a92dd",
+    "sourceCommit": "63fcff092f283b592362e3c515fb705d2a3604fa",
+    "wasmBytes": 9967023,
+    "wasmSha256": "3cd4cdbd1f91423216f2d250d0d6739db7febf7b04a76f27246ab51576e1f240"
+  },
+  "files": {
+    "dist/build-info.json": "e3079ddbe18095ff74189458f3b876edb7e212b414e3b47cdd1751460f621467",
+    "vendor/SOURCE.json": "07c30fc7720983007abc53f46282974371e28ca2343561ffe3195204168b5b61",
+    "src/composition_plan.cpp": "3eca2ce65ec50798cc590f6f080024edb0dd578978c3f308ec54eb4a854c721f",
+    "src/bridge.cpp": "72b38f7e8602a5e06610b2edf447f4cbeb32d115bf628b278e189e81cee6642a",
+    "src/index.mjs": "80c18356a7da57e5aa20e3ab094e10e29ceb141defa33540917dd7870cb131ee",
+    "src/browser-composition.mjs": "629fdea3663788316710b13399c86221d4e437d11a4c32659d0447f401437243",
+    "src/composition-gpu.mjs": "e289afa6ed4889ace38860d7207b96cb33832495ac49c2f6bfedf32afdda4bc6",
+    "src/composition-shaders.mjs": "b170eb71c02d0d8bdea13c36c849e8566a403c8ca4cd55e2fb0c3502d4682b29",
+    "src/gpu-shaders.mjs": "8e28f871f44c71328b6239241e844a6f722cd3182acf0d1ce5996b08463b50cd",
+    "demo/complex-recipes.mjs": "ea0630e2de1f779abc25e7c8419616bd4f36260f55b33bb6af45f712f140821e",
+    "demo/complex-demo.mjs": "e8648d9296e0a33b299c9a3ef15b99ae3de014dd22a82b410bdfd0152795d070",
+    "videocut-text-wasm-0.3.0.tgz": "a90eeb20e6700330d57e2e01862436fb1686f4d9eb4a77b1965b45ef063de19c",
+    "fixtures/templates/com.videocut.text.qt-type.anim-studio-time-transform-softglow/manifest.json": "23f40187abb09b5a9feb18dd0d875c76ed4f66dae0eb2ac4c5ab3509e5b0e46b",
+    "fixtures/templates/com.videocut.text.qt-type.anim-studio-dual-selector-radial/manifest.json": "74923bf02ae37cda56469dcfcc9a47da4a8c0b635ec0a1f4e137a950d0311787",
+    "fixtures/templates/com.videocut.text.qt-type.flower-style-38/manifest.json": "ebae0eb24de8fa7a5ebe57ad6f9cf6d0a93b749ecac28efd2923482d2d7a4d5c",
+    "fixtures/templates/com.videocut.text.qt-type.bubble-tile/manifest.json": "b22cad823d48514b8bbe71ab6065895596cdf1a1ace5147c657fae8f0b388686",
+    "fixtures/templates/com.videocut.text.qt-type.anim-lua-letter-transform/manifest.json": "8ddbf80d8415b30e93f42e3508a273b0fadf0a0572e39886c57accf5d283e785",
+    "fixtures/templates/com.videocut.text.qt-type.flower-style-03/manifest.json": "9e4b816a8cabf7212142e45a35dbc5fe22513e2e294311df9cc0a932e2fe5504",
+    "fixtures/templates/com.videocut.text.qt-type.bubble-nine-slice/manifest.json": "cd56de1e1e0d76269ea0139ebee953ffaa8df92314013b520954193a44a27017",
+    "fixtures/templates/com.videocut.text.qt-type.anim-lua-cube/manifest.json": "9f87e71fd057c70e9fc77e0e053683865d633ef284968e3f547160ba76819a18",
+    "fixtures/templates/com.videocut.text.qt-type.anim-lua-printer-multistage/manifest.json": "1a3ecc9ca06952c4ff43d5eb23cc7735dce14b16d83126927decffd3c2452612"
+  }
+}

@@ -1,0 +1,7 @@
+
+    uniform float4 color;
+    half4 main(float2 position) {
+      float coverage = smoothstep(0.5, 0.45, length(position * 0.5));
+      return half4(color * coverage);
+    }
+  

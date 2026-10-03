@@ -1,0 +1,710 @@
+{
+  "format": "videocut.text-animation",
+  "animation": {
+    "layers": [
+      {
+        "id": "reference-animation-11",
+        "time_driver": {
+          "kind": "enter_phase",
+          "duration_us": 3000000,
+          "playback": "once"
+        },
+        "animators": [
+          {
+            "id": "selector-1",
+            "anchor": "glyph_center",
+            "position_mode": "text_bounds_offset",
+            "presentation": "transform",
+            "selectors": [
+              {
+                "kind": "range",
+                "based_on": "grapheme",
+                "range_start": 0,
+                "range_end": 1,
+                "offset": 0,
+                "edge_smooth": 0,
+                "constrained": true,
+                "shape": "square",
+                "order": "forward",
+                "random_seed": 50,
+                "intensity": 1,
+                "intensity_start": 0,
+                "intensity_end": 1,
+                "intensity_keyframes": [
+                  {
+                    "offset": 0,
+                    "value": 1,
+                    "tangent_in": 0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": 0,
+                    "bezier_time_out": 0.03666666666666667
+                  },
+                  {
+                    "offset": 0.111,
+                    "value": 0,
+                    "tangent_in": 0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.03666666666666667,
+                    "bezier_time_out": 0.29333333333333333
+                  },
+                  {
+                    "offset": 1,
+                    "value": 0,
+                    "tangent_in": 0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.30233333333333334,
+                    "bezier_time_out": 0
+                  }
+                ]
+              }
+            ],
+            "tracks": [
+              {
+                "property": "opacity",
+                "keyframes": [
+                  {
+                    "offset": 0,
+                    "value": 0
+                  },
+                  {
+                    "offset": 1,
+                    "value": 0
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "selector-2",
+            "anchor": "glyph_center",
+            "position_mode": "distance_from_center",
+            "presentation": "transform",
+            "selectors": [
+              {
+                "kind": "range",
+                "based_on": "grapheme",
+                "range_start": 0,
+                "range_end": 1,
+                "offset": 0,
+                "edge_smooth": 1,
+                "constrained": false,
+                "shape": "triangle",
+                "order": "forward",
+                "random_seed": 50,
+                "intensity": 1,
+                "intensity_start": 0,
+                "intensity_end": 1,
+                "intensity_keyframes": [
+                  {
+                    "offset": 0,
+                    "value": 1,
+                    "tangent_in": 0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": 0,
+                    "bezier_time_out": 0.27499999999999997
+                  },
+                  {
+                    "offset": 0.8333333333333334,
+                    "value": 1,
+                    "tangent_in": 0,
+                    "tangent_out": -5.999999999999998,
+                    "bezier": true,
+                    "bezier_time_in": -0.2833333333333333,
+                    "bezier_time_out": 0.055
+                  },
+                  {
+                    "offset": 1,
+                    "value": 0,
+                    "tangent_in": -6,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.05666666666666667,
+                    "bezier_time_out": 0
+                  }
+                ]
+              }
+            ],
+            "tracks": [
+              {
+                "property": "opacity",
+                "keyframes": [
+                  {
+                    "offset": 0,
+                    "value": 0,
+                    "tangent_in": 0,
+                    "tangent_out": 0.13489208633093525,
+                    "bezier": true,
+                    "bezier_time_in": 0,
+                    "bezier_time_out": 0.3706666666666667
+                  },
+                  {
+                    "offset": 0.8333333333333334,
+                    "value": 1,
+                    "tangent_in": 0.13333333333333344,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.375,
+                    "bezier_time_out": 0.055
+                  },
+                  {
+                    "offset": 1,
+                    "value": 1,
+                    "tangent_in": 0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.05666666666666667,
+                    "bezier_time_out": 0
+                  }
+                ]
+              },
+              {
+                "property": "position_x",
+                "keyframes": [
+                  {
+                    "offset": 0,
+                    "value": 0
+                  },
+                  {
+                    "offset": 1,
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "property": "position_y",
+                "keyframes": [
+                  {
+                    "offset": 0,
+                    "value": 0
+                  },
+                  {
+                    "offset": 1,
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "property": "distance_from_center",
+                "keyframes": [
+                  {
+                    "offset": 0,
+                    "value": 1.5,
+                    "tangent_in": 0,
+                    "tangent_out": -16.288590604026847,
+                    "bezier": true,
+                    "bezier_time_in": 0,
+                    "bezier_time_out": 0.049666666666666665
+                  },
+                  {
+                    "offset": 0.13899999999999998,
+                    "value": -0.6,
+                    "tangent_in": -9.068181818181817,
+                    "tangent_out": -1.720588235294119,
+                    "bezier": true,
+                    "bezier_time_in": -0.044000000000000004,
+                    "bezier_time_out": 0.04533333333333334
+                  },
+                  {
+                    "offset": 0.2776666666666667,
+                    "value": 0.3,
+                    "tangent_in": 0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.04566666666666667,
+                    "bezier_time_out": 0.04566666666666667
+                  },
+                  {
+                    "offset": 0.4166666666666667,
+                    "value": 0,
+                    "tangent_in": 0,
+                    "tangent_out": 0.06239168110918544,
+                    "bezier": true,
+                    "bezier_time_in": -0.046000000000000006,
+                    "bezier_time_out": 0.19233333333333333
+                  },
+                  {
+                    "offset": 1,
+                    "value": 0,
+                    "tangent_in": 0.06554621848739495,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.19833333333333333,
+                    "bezier_time_out": 0
+                  }
+                ]
+              },
+              {
+                "property": "scale_x",
+                "keyframes": [
+                  {
+                    "offset": 0,
+                    "value": 0.5,
+                    "tangent_in": 0,
+                    "tangent_out": 12.566666666666666,
+                    "bezier": true,
+                    "bezier_time_in": 0,
+                    "bezier_time_out": 0.03
+                  },
+                  {
+                    "offset": 0.08333333333333333,
+                    "value": 1.48,
+                    "tangent_in": 7.063291139240504,
+                    "tangent_out": 1.3170731707317085,
+                    "bezier": true,
+                    "bezier_time_in": -0.026333333333333334,
+                    "bezier_time_out": 0.027333333333333334
+                  },
+                  {
+                    "offset": 0.16666666666666666,
+                    "value": 1.06,
+                    "tangent_in": 0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.02766666666666667,
+                    "bezier_time_out": 0.027333333333333334
+                  },
+                  {
+                    "offset": 0.25,
+                    "value": 1.27,
+                    "tangent_in": 0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.027333333333333334,
+                    "bezier_time_out": 0.027333333333333334
+                  },
+                  {
+                    "offset": 0.3333333333333333,
+                    "value": 1,
+                    "tangent_in": 0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.027333333333333334,
+                    "bezier_time_out": 0.21066666666666667
+                  },
+                  {
+                    "offset": 1,
+                    "value": 1,
+                    "tangent_in": 0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.22666666666666668,
+                    "bezier_time_out": 0
+                  }
+                ]
+              },
+              {
+                "property": "scale_y",
+                "keyframes": [
+                  {
+                    "offset": 0,
+                    "value": 0.5,
+                    "tangent_in": 0,
+                    "tangent_out": 12.566666666666666,
+                    "bezier": true,
+                    "bezier_time_in": 0,
+                    "bezier_time_out": 0.03
+                  },
+                  {
+                    "offset": 0.08333333333333333,
+                    "value": 1.48,
+                    "tangent_in": 7.063291139240504,
+                    "tangent_out": 1.3170731707317085,
+                    "bezier": true,
+                    "bezier_time_in": -0.026333333333333334,
+                    "bezier_time_out": 0.027333333333333334
+                  },
+                  {
+                    "offset": 0.16666666666666666,
+                    "value": 1.06,
+                    "tangent_in": 0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.02766666666666667,
+                    "bezier_time_out": 0.027333333333333334
+                  },
+                  {
+                    "offset": 0.25,
+                    "value": 1.27,
+                    "tangent_in": 0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.027333333333333334,
+                    "bezier_time_out": 0.027333333333333334
+                  },
+                  {
+                    "offset": 0.3333333333333333,
+                    "value": 1,
+                    "tangent_in": 0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.027333333333333334,
+                    "bezier_time_out": 0.21066666666666667
+                  },
+                  {
+                    "offset": 1,
+                    "value": 1,
+                    "tangent_in": 0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.22666666666666668,
+                    "bezier_time_out": 0
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "render_group": {
+          "mode": "page",
+          "expand_ratio_x": 2,
+          "expand_ratio_y": 2
+        },
+        "post_effects": [
+          {
+            "id": "effect-1",
+            "node_kind": "radial_blur",
+            "amount": 0,
+            "parameters": [
+              {
+                "name": "amount",
+                "values": [
+                  60
+                ],
+                "keyframes": [
+                  {
+                    "offset": 0,
+                    "value": 100,
+                    "tangent_in": 0,
+                    "tangent_out": -108.00000000000003,
+                    "bezier": true,
+                    "bezier_time_in": 0,
+                    "bezier_time_out": 0.27499999999999997
+                  },
+                  {
+                    "offset": 0.8333333333333334,
+                    "value": 0,
+                    "tangent_in": -108,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.2833333333333333,
+                    "bezier_time_out": 0.055
+                  },
+                  {
+                    "offset": 1,
+                    "value": 0,
+                    "tangent_in": 0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.05666666666666667,
+                    "bezier_time_out": 0
+                  }
+                ]
+              },
+              {
+                "name": "blurAlpha",
+                "values": [
+                  1
+                ]
+              },
+              {
+                "name": "blurType",
+                "values": [
+                  1
+                ]
+              },
+              {
+                "name": "borderType",
+                "values": [
+                  0
+                ]
+              },
+              {
+                "name": "center_x",
+                "values": [
+                  0.5
+                ]
+              },
+              {
+                "name": "center_y",
+                "values": [
+                  0.5
+                ]
+              },
+              {
+                "name": "dither",
+                "values": [
+                  1
+                ]
+              },
+              {
+                "name": "inverseGammaCorrection",
+                "values": [
+                  0
+                ]
+              },
+              {
+                "name": "lightIntensity",
+                "values": [
+                  1
+                ]
+              },
+              {
+                "name": "lightTransferMode",
+                "values": [
+                  0
+                ]
+              },
+              {
+                "name": "quality",
+                "values": [
+                  0.2
+                ]
+              },
+              {
+                "name": "weightDecay",
+                "values": [
+                  0.965
+                ]
+              }
+            ],
+            "padding_px": 192
+          }
+        ],
+        "decorations": [
+          {
+            "id": "decoration-1",
+            "asset_id": "asset://assets/asset-001.json",
+            "anchor": "bbox_center",
+            "fit": "fit_width",
+            "extent_space": "text_local",
+            "inherit": "full",
+            "playback": "hold",
+            "expand_x": 1,
+            "expand_y": 1,
+            "pivot_x": 0,
+            "pivot_y": 0,
+            "relative_offset_x": 0,
+            "relative_offset_y": 0,
+            "scale_x": 1.2,
+            "scale_y": 1.2,
+            "opacity": 0,
+            "rotation_x_degrees": 0,
+            "rotation_y_degrees": 0,
+            "rotation_degrees": 0,
+            "relative_offset_x_keyframes": [
+              {
+                "offset": 0,
+                "value": 0
+              },
+              {
+                "offset": 1,
+                "value": 0
+              }
+            ],
+            "relative_offset_y_keyframes": [
+              {
+                "offset": 0,
+                "value": 0
+              },
+              {
+                "offset": 1,
+                "value": 0
+              }
+            ],
+            "scale_x_keyframes": [
+              {
+                "offset": 0,
+                "value": 1.2
+              },
+              {
+                "offset": 1,
+                "value": 1.2
+              }
+            ],
+            "scale_y_keyframes": [
+              {
+                "offset": 0,
+                "value": 1.2
+              },
+              {
+                "offset": 1,
+                "value": 1.2
+              }
+            ],
+            "opacity_keyframes": [
+              {
+                "offset": 0,
+                "value": 0,
+                "tangent_in": 0,
+                "tangent_out": 0,
+                "bezier": true,
+                "bezier_time_in": 0,
+                "bezier_time_out": 0.055
+              },
+              {
+                "offset": 0.16666666666666666,
+                "value": 0,
+                "tangent_in": 0,
+                "tangent_out": 0,
+                "bezier": true,
+                "bezier_time_in": -0.05666666666666667,
+                "bezier_time_out": 0.08066666666666666
+              },
+              {
+                "offset": 0.33866666666666667,
+                "value": 0.464,
+                "tangent_in": 6.4772727272727275,
+                "tangent_out": 0,
+                "bezier": true,
+                "bezier_time_in": -0.044000000000000004,
+                "bezier_time_out": 0.154
+              },
+              {
+                "offset": 0.8056666666666666,
+                "value": 0.487,
+                "tangent_in": 0,
+                "tangent_out": -7.599118942731277,
+                "bezier": true,
+                "bezier_time_in": -0.15866666666666665,
+                "bezier_time_out": 0.07566666666666667
+              },
+              {
+                "offset": 1,
+                "value": 0,
+                "tangent_in": 0,
+                "tangent_out": 0,
+                "bezier": true,
+                "bezier_time_in": -0.08466666666666667,
+                "bezier_time_out": 0
+              }
+            ],
+            "asset_progress_keyframes": [
+              {
+                "offset": 0,
+                "value": 0,
+                "tangent_in": 0,
+                "tangent_out": 1,
+                "bezier": true,
+                "bezier_time_in": 0,
+                "bezier_time_out": 0.33
+              },
+              {
+                "offset": 1,
+                "value": 1,
+                "tangent_in": 1,
+                "tangent_out": 0,
+                "bezier": true,
+                "bezier_time_in": -0.34,
+                "bezier_time_out": 0
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "execution_graph": {
+      "nodes": [
+        {
+          "id": "layout",
+          "node_kind": "layout",
+          "capability": "layout_glyph_run"
+        },
+        {
+          "id": "media-video",
+          "node_kind": "media_input",
+          "capability": "media_video",
+          "input_ids": [],
+          "resource_ids": [
+            "assets/asset-000.mp4"
+          ]
+        },
+        {
+          "id": "selector-0",
+          "node_kind": "selector",
+          "capability": "selector_base",
+          "input_ids": [
+            "layout"
+          ]
+        },
+        {
+          "id": "operator-0",
+          "node_kind": "operator",
+          "capability": "operator_keyframe",
+          "input_ids": [
+            "selector-0"
+          ]
+        },
+        {
+          "id": "selector-1",
+          "node_kind": "selector",
+          "capability": "selector_base",
+          "input_ids": [
+            "operator-0"
+          ]
+        },
+        {
+          "id": "operator-1",
+          "node_kind": "operator",
+          "capability": "operator_keyframe",
+          "input_ids": [
+            "selector-1"
+          ]
+        },
+        {
+          "id": "scene-prefab",
+          "node_kind": "scene",
+          "capability": "scene_prefab",
+          "input_ids": [
+            "operator-1"
+          ]
+        },
+        {
+          "id": "scene-mesh",
+          "node_kind": "scene",
+          "capability": "scene_mesh",
+          "input_ids": [
+            "scene-prefab"
+          ]
+        },
+        {
+          "id": "material-pass",
+          "node_kind": "material_pass",
+          "capability": "material_color_pass",
+          "input_ids": [
+            "scene-mesh"
+          ]
+        },
+        {
+          "id": "render-target",
+          "node_kind": "render_target",
+          "capability": "render_target_expanded",
+          "input_ids": [
+            "material-pass"
+          ]
+        },
+        {
+          "id": "effect-1",
+          "node_kind": "post_effect_pass",
+          "capability": "none",
+          "input_ids": [
+            "render-target"
+          ],
+          "post_effect_kind": "radial_blur"
+        },
+        {
+          "id": "media-composite",
+          "node_kind": "composite",
+          "capability": "composite_source_over",
+          "input_ids": [
+            "effect-1",
+            "media-video"
+          ]
+        }
+      ]
+    }
+  }
+}

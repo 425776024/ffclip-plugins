@@ -1,0 +1,55 @@
+{
+  "format": "videocut.text-effect-program",
+  "programs": [{
+    "program_id": "com.videocut.text.qt-type.anim-lua-face-noise-shadow.program.controller",
+    "random_seed": 50,
+    "stages": [{
+      "stage_id": "qt-face-noise-material",
+      "kind": "per_unit",
+      "register_count": 29,
+      "instructions": [
+        {"opcode":"input","output_register":17,"input_registers":[],"immediates":[],"input":"time_us"},
+        {"opcode":"input","output_register":18,"input_registers":[],"immediates":[],"input":"animation_duration_us"},
+        {"opcode":"divide","output_register":0,"input_registers":[17,18],"immediates":[],"input":null},
+        {"opcode":"constant","output_register":1,"input_registers":[],"immediates":[1],"input":null},
+        {"opcode":"subtract","output_register":2,"input_registers":[1,0],"immediates":[],"input":null},
+        {"opcode":"constant","output_register":3,"input_registers":[],"immediates":[14],"input":null},
+        {"opcode":"multiply","output_register":4,"input_registers":[2,3],"immediates":[],"input":null},
+        {"opcode":"floor","output_register":5,"input_registers":[4],"immediates":[],"input":null},
+        {"opcode":"divide","output_register":6,"input_registers":[5,3],"immediates":[],"input":null},
+        {"opcode":"constant","output_register":7,"input_registers":[],"immediates":[0.4],"input":null},
+        {"opcode":"power","output_register":8,"input_registers":[6,7],"immediates":[],"input":null},
+        {"opcode":"input","output_register":9,"input_registers":[],"immediates":[],"input":"text_rect_width"},
+        {"opcode":"input","output_register":10,"input_registers":[],"immediates":[],"input":"text_rect_height"},
+        {"opcode":"add","output_register":11,"input_registers":[9,9],"immediates":[],"input":null},
+        {"opcode":"constant","output_register":12,"input_registers":[],"immediates":[0],"input":null},
+        {"opcode":"constant","output_register":13,"input_registers":[],"immediates":[80],"input":null},
+        {"opcode":"constant","output_register":14,"input_registers":[],"immediates":[0.30000001192092896],"input":null},
+        {"opcode":"constant","output_register":15,"input_registers":[],"immediates":[0.5],"input":null},
+        {"opcode":"constant","output_register":16,"input_registers":[],"immediates":[0],"input":null},
+        {"opcode":"constant","output_register":19,"input_registers":[],"immediates":[1000000],"input":null},
+        {"opcode":"divide","output_register":20,"input_registers":[18,19],"immediates":[],"input":null},
+        {"opcode":"constant","output_register":21,"input_registers":[],"immediates":[2],"input":null},
+        {"opcode":"clamp","output_register":22,"input_registers":[20,1,21],"immediates":[],"input":null},
+        {"opcode":"constant","output_register":23,"input_registers":[],"immediates":[7],"input":null},
+        {"opcode":"multiply","output_register":24,"input_registers":[22,23],"immediates":[],"input":null},
+        {"opcode":"multiply","output_register":25,"input_registers":[2,24],"immediates":[],"input":null},
+        {"opcode":"floor","output_register":26,"input_registers":[25],"immediates":[],"input":null},
+        {"opcode":"divide","output_register":27,"input_registers":[26,24],"immediates":[],"input":null},
+        {"opcode":"power","output_register":28,"input_registers":[27,7],"immediates":[],"input":null}
+      ],
+      "outputs": [{"output":"opacity","register_index":1,"transform_index":0}],
+      "execution_parameter_bindings": [
+        {"node_id":"material-program-1","parameter":"material_vector4","domain":"page","value_space":"source_pixels","slot":31,"register_indices":[9,10,9,12]},
+        {"node_id":"material-program-1","parameter":"material_scalar","domain":"page","value_space":"unitless","slot":0,"register_indices":[8]},
+        {"node_id":"material-program-1","parameter":"material_scalar","domain":"page","value_space":"unitless","slot":1,"register_indices":[28]},
+        {"node_id":"material-program-1","parameter":"material_vector2","domain":"page","value_space":"source_pixels","slot":2,"register_indices":[11,10]},
+        {"node_id":"material-program-1","parameter":"material_vector2","domain":"page","value_space":"unitless","slot":3,"register_indices":[12,16]},
+        {"node_id":"material-program-1","parameter":"material_scalar","domain":"page","value_space":"unitless","slot":4,"register_indices":[13]},
+        {"node_id":"material-program-1","parameter":"material_scalar","domain":"page","value_space":"unitless","slot":5,"register_indices":[14]},
+        {"node_id":"material-program-1","parameter":"material_scalar","domain":"page","value_space":"unitless","slot":6,"register_indices":[15]},
+        {"node_id":"material-program-3","parameter":"material_vector4","domain":"page","value_space":"unitless","slot":0,"register_indices":[12,12,12,12]}
+      ]
+    }]
+  }]
+}

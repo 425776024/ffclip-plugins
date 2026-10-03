@@ -1,0 +1,52 @@
+
+    uniform shader glowTexture1;
+    uniform shader glowTexture2;
+    uniform shader glowTexture3;
+    uniform shader glowTexture4;
+    uniform shader inputTexture;
+    uniform float2 textureSize;
+    uniform float2 glowSize;
+    uniform float exposure;
+    uniform float directionCount;
+    uniform float3 glowColor;
+    uniform float displayGlow;
+
+    float4 screen(float4 first, float4 second) {
+      return first + second - first * second;
+    }
+
+    float2 glowCoordinate(float2 qtUv) {
+      return float2(qtUv.x, 1.0 - qtUv.y) * glowSize;
+    }
+
+    float4 sampleInputQt(float2 qtUv) {
+      return float4(inputTexture.eval(
+          float2(qtUv.x, 1.0 - qtUv.y) * textureSize));
+    }
+
+    float4 main(float2 xy) {
+      float2 skUv = xy / textureSize;
+      float2 qtUv = float2(skUv.x, 1.0 - skUv.y);
+      float4 glow = float4(0.0);
+      if (exposure >
+          0.00000999999974737875163555145263671875) {
+        glow = float4(glowTexture1.eval(glowCoordinate(qtUv)));
+      }
+      if (directionCount >= 2.0) {
+        glow = screen(
+            glow, float4(glowTexture2.eval(glowCoordinate(qtUv))));
+      }
+      if (directionCount >= 3.0) {
+        glow = screen(
+            glow, float4(glowTexture3.eval(glowCoordinate(qtUv))));
+      }
+      if (directionCount >= 4.0) {
+        glow = screen(
+            glow, float4(glowTexture4.eval(glowCoordinate(qtUv))));
+      }
+      glow.rgb *= glowColor;
+      float4 outputColor = displayGlow >= 0.5
+          ? glow : screen(glow, sampleInputQt(qtUv));
+      return clamp(outputColor, float4(0.0), float4(1.0));
+    }
+  

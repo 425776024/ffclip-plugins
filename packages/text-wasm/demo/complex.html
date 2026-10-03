@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-CN">
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>VideoCut · 复杂文字模板</title
+  ><link rel="stylesheet" href="./complex.css" />
+  <body>
+    <main>
+      <header>
+        <div>
+          <a href="./gpu.html" class="eyebrow">VIDEOCUT / TEXT LAB</a>
+          <h1>让文字，也成为画面。</h1>
+          <p>背景图案、纹理花字与逐字动画 · 原生模板网页移植实验</p>
+        </div>
+        <span id="state" class="badge">加载引擎</span>
+      </header>
+      <div class="layout">
+        <aside>
+          <h2>模板精选 <span>06</span></h2>
+          <div id="templates"></div>
+          <p class="aside-note">
+            前两项复用原模板的透明视频装饰；中间两项组合原生花字、底板和动画包。
+          </p>
+        </aside>
+        <section class="preview">
+          <div class="preview-heading">
+            <div>
+              <h2 id="title">准备模板…</h2>
+              <p id="subtitle"></p>
+            </div>
+            <span id="time-label">1.50 s</span>
+          </div>
+          <div id="stage">
+            <canvas id="preview" width="640" height="360" aria-label="复杂模板实时预览"></canvas>
+          </div>
+          <div class="transport">
+            <button id="play" disabled>播放动画</button
+            ><input
+              id="time"
+              aria-label="时间"
+              type="range"
+              min="0"
+              max="4999"
+              value="1500"
+              step="1"
+            /><button id="restart" disabled>从头播放</button>
+          </div>
+          <div class="edit">
+            <label for="text">文字内容</label><input id="text" value="绽放" maxlength="10" /><button
+              id="apply"
+              disabled
+            >
+              更新文字
+            </button>
+          </div>
+          <div class="toggles">
+            <label><input id="background" type="checkbox" checked />视频装饰</label
+            ><label><input id="post" type="checkbox" checked />后期效果</label
+            ><button id="verify" disabled>检查时间轴与图层</button>
+          </div>
+          <p id="status" role="status">初始化 WASM 与浏览器 GPU…</p>
+          <details>
+            <summary>模板来源与验证记录</summary>
+            <pre id="diagnostics"></pre>
+          </details>
+        </section>
+      </div>
+      <section class="gallery">
+        <div class="gallery-heading">
+          <h2>动态片段</h2>
+          <p>选中模板后采样 0.35 / 1.00 / 1.80 / 2.60 秒；可拖动时间轴查看完整过程。</p>
+        </div>
+        <div id="frames"></div>
+      </section>
+      <footer>
+        文字与动画求值：VideoCut C++ / WASM · 装饰解码：浏览器 · 合成与后期：WebGPU<br />实验版本：字形使用栅格路径，后期使用画布尺寸；完整桌面
+        SDF 和渲染组尺寸尚未对齐。
+      </footer>
+    </main>
+    <script type="module" src="./complex-demo.mjs"></script>
+  </body>
+</html>

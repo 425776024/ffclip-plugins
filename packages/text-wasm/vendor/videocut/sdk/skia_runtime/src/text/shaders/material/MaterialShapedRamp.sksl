@@ -1,0 +1,35 @@
+uniform shader inputTexture;
+uniform float2 textureSize;
+uniform float2 resolution;
+uniform float2 blurRamp;
+uniform float2 alphaRamp;
+uniform float opacity;
+uniform float intensity;
+uniform float brightSpotThreshold;
+
+half4 main(float2 position) {
+    float2 uv = float2(position.x / textureSize.x, 1.0 - position.y / textureSize.y);
+    float mask = 1.0 - smoothstep(blurRamp.x, blurRamp.y, uv.x);
+    float alpha = smoothstep(alphaRamp.x, alphaRamp.y, uv.x);
+    float2 center = uv * resolution;
+    float stepSize = intensity * mask;
+    float4 result = float4(0.0);
+    float normalization = 0.0;
+    for (int x = -4; x <= 4; ++x) {
+        for (int y = -4; y <= 4; ++y) {
+            float2 point = center + float2(x, y) * stepSize;
+            // Preserve the source's disk selection after pixel arithmetic,
+            // including all 81 coincident samples when intensity is zero.
+            if (distance(point, center) <= 4.0 * stepSize) {
+                float2 sampleUv = point / resolution;
+                float4 color = float4(inputTexture.eval(
+                    float2(sampleUv.x, 1.0 - sampleUv.y) * textureSize));
+                if (color.r + color.g + color.b > brightSpotThreshold * 3.0)
+                    color.rgb *= 1.0 + brightSpotThreshold;
+                result += color;
+                normalization += 1.0;
+            }
+        }
+    }
+    return half4(result / normalization * opacity * alpha);
+}

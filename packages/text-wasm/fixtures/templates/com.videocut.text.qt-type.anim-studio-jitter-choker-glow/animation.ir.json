@@ -1,0 +1,403 @@
+{
+  "format": "videocut.text-animation",
+  "animation": {
+    "layers": [
+      {
+        "id": "studio.layer.0",
+        "enabled": true,
+        "combine_mode": "replace",
+        "requires_timed_text": false,
+        "time_driver": {
+          "kind": "clip_local",
+          "start_offset_us": 0,
+          "duration_us": 3000000,
+          "playback": "hold"
+        },
+        "animators": [
+          {
+            "id": "studio.selector.0",
+            "paragraph_ids": [],
+            "run_ids": [],
+            "position_mode": "absolute_pixels",
+            "anchor": "glyph_center",
+            "anchor_basis": "letter",
+            "anchor_mode": "fixed",
+            "anchor_offset_x": 0.0,
+            "anchor_offset_y": 0.0,
+            "presentation": "transform",
+            "fade_fraction": 0.0,
+            "selectors": [
+              {
+                "kind": "range",
+                "based_on": "grapheme",
+                "range_start": 0.0,
+                "range_end": 1.0,
+                "offset": 0.0,
+                "stagger": 0.0,
+                "edge_smooth": 0.0,
+                "constrained": true,
+                "shape": "square",
+                "order": "forward",
+                "random_seed": 50.0,
+                "intensity": 1.0,
+                "intensity_start": 0.0,
+                "intensity_end": 1.0,
+                "time_start_1": 0.0,
+                "time_start_2": 0.0,
+                "time_end_1": 1.0,
+                "time_end_2": 1.0,
+                "time_cycle": false
+              }
+            ],
+            "tracks": [],
+            "projection": {
+              "kind": "planar_2d",
+              "field_of_view_degrees": 45.0,
+              "vanishing_point_x": 0.5,
+              "vanishing_point_y": 0.5
+            },
+            "effect_program_id": "com.videocut.text.qt-type.anim-studio-jitter-choker-glow.program.custom-selector"
+          }
+        ],
+        "post_effects": [
+          {
+            "id": "studio.post.0.0",
+            "node_kind": "alternating_segment_mask",
+            "amount": 0.0,
+            "padding_px": 0.0,
+            "input_ids": [],
+            "parameters": [
+              {
+                "name": "displacement",
+                "values": [
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "name": "intensity",
+                "values": [
+                  1
+                ]
+              },
+              {
+                "name": "rotationAngle",
+                "values": [
+                  2.299999952316284
+                ]
+              },
+              {
+                "name": "segmentColor",
+                "values": [
+                  0.49976348876953125,
+                  1,
+                  0.21290913224220276,
+                  1
+                ]
+              },
+              {
+                "name": "segmentWidth",
+                "values": [
+                  0.03999999910593033
+                ]
+              }
+            ]
+          },
+          {
+            "id": "studio.post.0.1",
+            "node_kind": "simple_choker",
+            "amount": 0.0,
+            "padding_px": 0.0,
+            "input_ids": [],
+            "parameters": [
+              {
+                "name": "chokeMatte",
+                "values": [
+                  1
+                ]
+              },
+              {
+                "name": "colorTolerance",
+                "values": [
+                  0.5
+                ]
+              },
+              {
+                "name": "enableColorKey",
+                "values": [
+                  1.0
+                ]
+              },
+              {
+                "name": "quality",
+                "values": [
+                  1
+                ]
+              },
+              {
+                "name": "simpleColorKey",
+                "values": [
+                  1,
+                  1,
+                  1,
+                  1
+                ]
+              },
+              {
+                "name": "view",
+                "values": [
+                  0
+                ]
+              }
+            ]
+          },
+          {
+            "id": "studio.post.0.2",
+            "node_kind": "deep_glow",
+            "amount": 0.0,
+            "padding_px": 0.0,
+            "input_ids": [],
+            "parameters": [
+              {
+                "name": "blendMode",
+                "values": [
+                  1
+                ]
+              },
+              {
+                "name": "blueOffset",
+                "values": [
+                  0
+                ]
+              },
+              {
+                "name": "ca",
+                "values": [
+                  0.0
+                ]
+              },
+              {
+                "name": "downSample",
+                "values": [
+                  0.6000000238418579
+                ]
+              },
+              {
+                "name": "exposure",
+                "values": [
+                  1.0499999523162842
+                ]
+              },
+              {
+                "name": "gammaCorrect",
+                "values": [
+                  1.0
+                ]
+              },
+              {
+                "name": "gammaValue",
+                "values": [
+                  3
+                ]
+              },
+              {
+                "name": "glowFromAlpha",
+                "values": [
+                  0.07999999821186066
+                ]
+              },
+              {
+                "name": "glowIter",
+                "values": [
+                  4
+                ]
+              },
+              {
+                "name": "greenOffset",
+                "values": [
+                  0
+                ]
+              },
+              {
+                "name": "quality",
+                "values": [
+                  0.5
+                ]
+              },
+              {
+                "name": "radius",
+                "values": [
+                  800
+                ]
+              },
+              {
+                "name": "ratio",
+                "values": [
+                  1
+                ]
+              },
+              {
+                "name": "redOffset",
+                "values": [
+                  0
+                ]
+              },
+              {
+                "name": "rotate",
+                "values": [
+                  0
+                ]
+              },
+              {
+                "name": "sourceOpacity",
+                "values": [
+                  1
+                ]
+              },
+              {
+                "name": "stepsMult",
+                "values": [
+                  2
+                ]
+              },
+              {
+                "name": "tint",
+                "values": [
+                  0.0
+                ]
+              },
+              {
+                "name": "tintColor",
+                "values": [
+                  1,
+                  0,
+                  0,
+                  1
+                ]
+              },
+              {
+                "name": "tintMix",
+                "values": [
+                  1
+                ]
+              },
+              {
+                "name": "tintMode",
+                "values": [
+                  0
+                ]
+              },
+              {
+                "name": "kernelStrideBase",
+                "values": [
+                  0.001
+                ]
+              },
+              {
+                "name": "kernelStrideAspectPower",
+                "values": [
+                  0.0
+                ]
+              }
+            ]
+          }
+        ],
+        "render_group": {
+          "expand_ratio_x": 1.2000000476837158,
+          "expand_ratio_y": 1.2000000476837158,
+          "mode": "per_line",
+          "offset": 0.0,
+          "priority": 0,
+          "random_seed": 50,
+          "random_sort": false,
+          "shape": "square"
+        }
+      }
+    ],
+    "execution_graph": {
+      "nodes": [
+        {
+          "id": "layout",
+          "node_kind": "layout",
+          "capability": "layout_glyph_run"
+        },
+        {
+          "id": "selector-0",
+          "node_kind": "selector",
+          "capability": "selector_base",
+          "input_ids": [
+            "layout"
+          ]
+        },
+        {
+          "id": "operator-0",
+          "node_kind": "operator",
+          "capability": "operator_program",
+          "input_ids": [
+            "selector-0"
+          ]
+        },
+        {
+          "id": "scene-prefab",
+          "node_kind": "scene",
+          "capability": "scene_prefab",
+          "input_ids": [
+            "operator-0"
+          ]
+        },
+        {
+          "id": "scene-mesh",
+          "node_kind": "scene",
+          "capability": "scene_mesh",
+          "input_ids": [
+            "scene-prefab"
+          ]
+        },
+        {
+          "id": "material-pass",
+          "node_kind": "material_pass",
+          "capability": "material_color_pass",
+          "input_ids": [
+            "scene-mesh"
+          ]
+        },
+        {
+          "id": "render-target",
+          "node_kind": "render_target",
+          "capability": "render_target_expanded",
+          "input_ids": [
+            "material-pass"
+          ]
+        },
+        {
+          "id": "studio.post.0.0",
+          "node_kind": "post_effect_pass",
+          "capability": "none",
+          "input_ids": [
+            "render-target"
+          ],
+          "post_effect_kind": "alternating_segment_mask"
+        },
+        {
+          "id": "studio.post.0.1",
+          "node_kind": "post_effect_pass",
+          "capability": "none",
+          "input_ids": [
+            "studio.post.0.0"
+          ],
+          "post_effect_kind": "simple_choker"
+        },
+        {
+          "id": "studio.post.0.2",
+          "node_kind": "post_effect_pass",
+          "capability": "none",
+          "input_ids": [
+            "studio.post.0.1"
+          ],
+          "post_effect_kind": "deep_glow"
+        }
+      ]
+    }
+  }
+}

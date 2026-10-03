@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh-CN">
+  <meta charset="utf-8" />
+  <title>VideoCut 吸附交互回归</title>
+  <style>
+    body {
+      margin: 20px !important;
+      background: #111;
+      color: #eee;
+      font: 14px system-ui;
+    }
+    button {
+      margin: 4px;
+      padding: 8px;
+    }
+    #fixture {
+      width: min(960px, 95vw);
+    }
+    #fixture .preview-stage {
+      width: 640px;
+      max-width: 100%;
+      position: relative;
+    }
+    #fixture .timeline-scroll {
+      height: 210px;
+      margin-top: 16px;
+    }
+    #status {
+      white-space: pre-wrap;
+    }
+    #values {
+      display: block;
+      margin: 8px 0;
+    }
+  </style>
+  <h1>预览与卡针吸附</h1>
+  <p>5px 捕捉 / 8px 脱离；Ctrl 临时关闭。回归按钮使用合成事件；画布和时间轴可直接用鼠标拖动。</p>
+  <button id="run">运行吸附回归</button>
+  <button id="reset">重置手动验证</button>
+  <div id="fixture"></div>
+  <output id="trusted">尚未记录可信指针操作</output>
+  <pre id="status" aria-live="polite">尚未运行</pre>
+  <script type="module" src="./browser-snapping.ts"></script>
+</html>

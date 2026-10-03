@@ -1,0 +1,15 @@
+
+    uniform shader inputTexture;
+    uniform shader matteTexture;
+    uniform float2 inputSize;
+    uniform float2 matteSize;
+    uniform float view;
+
+    float4 main(float2 xy) {
+      float4 source = float4(inputTexture.eval(xy));
+      float matte = matteTexture.eval(xy * matteSize / inputSize).r;
+      if (view >= 0.5)
+        return float4(float3(matte), 1.0);
+      return float4(source.rgb * matte, matte);
+    }
+  

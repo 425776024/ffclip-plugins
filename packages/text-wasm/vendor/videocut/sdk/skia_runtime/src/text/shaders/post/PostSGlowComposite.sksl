@@ -1,0 +1,63 @@
+
+    uniform shader inputTexture;
+    uniform shader blurTexture1;
+    uniform shader blurTexture2;
+    uniform float2 sourceSize;
+    uniform float2 blurSize;
+    uniform float sourceOpacity;
+    uniform float backgroundBrightness;
+    uniform float3 glowColor;
+    uniform float brightness;
+    uniform float glowUnderSource;
+    uniform float lightBackground;
+    uniform float combine;
+
+    float2 unpackPair(float4 value) {
+      return float2(value.r + value.g / 255.0,
+                    value.b + value.a / 255.0);
+    }
+
+    float overlay(float background, float glow) {
+      return background < 0.5
+          ? 2.0 * background * glow
+          : 1.0 - 2.0 * (1.0 - background) * (1.0 - glow);
+    }
+
+    half4 main(float2 xy) {
+      float2 uv = xy / sourceSize;
+      float4 source = float4(inputTexture.eval(
+          clamp(uv, float2(0.0), float2(1.0)) * sourceSize));
+      float4 background = mix(float4(0.0, 0.0, 0.0, source.a),
+                              source, sourceOpacity) *
+                          backgroundBrightness;
+      float2 first = unpackPair(float4(blurTexture1.eval(
+          clamp(uv, float2(0.0), float2(1.0)) * blurSize)));
+      float2 second = unpackPair(float4(blurTexture2.eval(
+          clamp(uv, float2(0.0), float2(1.0)) * blurSize)));
+      float4 glow = float4(first, second);
+      glow.rgb *= glowColor;
+      glow *= brightness;
+      float4 combinedGlow =
+          mix(glow, mix(glow, source, sourceOpacity), glowUnderSource) *
+          (1.0 - lightBackground);
+      background = clamp(background, float4(0.0), float4(1.0));
+      float4 result = source;
+      if (combine >= 0.5 && combine < 1.5) {
+        result.rgb = combinedGlow.rgb + background.rgb;
+      } else if (combine >= 1.5 && combine < 2.5) {
+        result.rgb = background.rgb * combinedGlow.rgb;
+      } else if (combine >= 2.5 && combine < 3.5) {
+        result.rgb = abs(combinedGlow.rgb - background.rgb);
+      } else if (combine >= 3.5 && combine < 4.5) {
+        result.rgb = float3(overlay(background.r, combinedGlow.r),
+                            overlay(background.g, combinedGlow.g),
+                            overlay(background.b, combinedGlow.b));
+      } else {
+        result.rgb = float3(1.0) -
+            (float3(1.0) - background.rgb) *
+            (float3(1.0) - combinedGlow.rgb);
+      }
+      result.a = glow.a + (1.0 - glow.a) * source.a;
+      return half4(result);
+    }
+  

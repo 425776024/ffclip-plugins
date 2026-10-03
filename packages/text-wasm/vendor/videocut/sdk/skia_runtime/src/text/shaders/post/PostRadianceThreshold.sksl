@@ -1,0 +1,58 @@
+
+    uniform shader inputTexture;
+    uniform float2 textureSize;
+    uniform float thresholdType;
+    uniform float thresholdLow;
+    uniform float thresholdHigh;
+    uniform float thresholdSmooth;
+    uniform float grayScale;
+
+    float4 sampleQt4(float2 qtUv) {
+      return float4(inputTexture.eval(
+          float2(qtUv.x, 1.0 - qtUv.y) * textureSize));
+    }
+
+    float luminance(float3 color) {
+      return dot(color, float3(0.2125999927520751953125,
+                               0.715200006961822509765625,
+                               0.072200000286102294921875));
+    }
+
+    float thresholdS(float value) {
+      if (value <= thresholdLow || value > thresholdHigh) {
+        return 0.0;
+      }
+      return (value - thresholdLow) / (1.0 - thresholdLow);
+    }
+
+    float thresholdD(float value) {
+      if (value <= thresholdLow) {
+        return (thresholdSmooth * value * value) /
+               max(thresholdLow,
+                   0.00000999999974737875163555145263671875);
+      }
+      if (value > thresholdHigh) {
+        return thresholdSmooth *
+               (value * value - thresholdHigh * value + thresholdHigh);
+      }
+      return value;
+    }
+
+    float4 main(float2 xy) {
+      float2 skUv = xy / textureSize;
+      float2 qtUv = float2(skUv.x, 1.0 - skUv.y);
+      float4 color = sampleQt4(qtUv);
+      if (thresholdType < 0.5) {
+        float retained = thresholdS(color.r) + thresholdS(color.g) +
+                         thresholdS(color.b);
+        color.rgb *= retained /
+            max(color.r + color.g + color.b,
+                0.00000999999974737875163555145263671875);
+      } else {
+        color.rgb = float3(thresholdD(color.r), thresholdD(color.g),
+                           thresholdD(color.b));
+        color.rgb = mix(color.rgb, float3(luminance(color.rgb)), grayScale);
+      }
+      return color;
+    }
+  

@@ -1,0 +1,70 @@
+
+    uniform shader inputTexture;
+    uniform shader originalTexture;
+    uniform float2 textureSize;
+    uniform float2 sampleStep;
+    uniform float sampleCount;
+    uniform float gaussianSigma;
+    uniform float customKernel;
+    uniform float centerWeight;
+    uniform float4 kernel0;
+    uniform float4 kernel1;
+    uniform float visibilityAxis;
+    uniform float visibilityMid;
+    uniform float restoreOriginal;
+    uniform float opacity;
+    uniform float colorExponent;
+    uniform float kernelCoordinate;
+    uniform float kernelGain;
+    uniform float kernelOffset;
+    uniform float sumWeights;
+    uniform float trailingSample;
+
+    float4 sampleColor(float2 position) {
+      float4 color = float4(inputTexture.eval(position));
+      return colorExponent == 1.0 ? color : pow(color, float4(colorExponent));
+    }
+
+    half4 main(float2 position) {
+      float visibility = 1.0;
+      if (visibilityAxis >= 0.0) {
+        float coordinate = visibilityAxis < 0.5
+            ? 1.0 - position.y / textureSize.y
+            : position.x / textureSize.x;
+        visibility = max(coordinate * 2.0 - 1.0 - visibilityMid, 0.0) /
+                     max(1.0 - visibilityMid, 0.000001);
+      }
+      float center = customKernel > 0.5 ? centerWeight : kernelGain + kernelOffset;
+      float4 accumulated = sampleColor(position) * center;
+      float normalization = center;
+      for (int index = 1; index <= 1024; ++index) {
+        float distance = float(index);
+        if (distance > floor(sampleCount) + trailingSample) break;
+        float kernelDistance = kernelCoordinate > 0.0
+            ? distance / (sampleCount > 0.0 ? sampleCount : 1.0) * kernelCoordinate : distance;
+        float weight = gaussianSigma > 0.0
+            ? exp(-0.5 * kernelDistance * kernelDistance /
+                  (gaussianSigma * gaussianSigma)) : 1.0;
+        if (kernelCoordinate > 0.0 && sampleCount == 0.0) weight = 0.0;
+        weight = weight * kernelGain + kernelOffset;
+        if (customKernel > 0.5) {
+          if (index <= 4) weight = kernel0[index - 1];
+          else if (index <= 8) weight = kernel1[index - 5];
+          else weight = 0.0;
+        }
+        float2 offset = sampleStep * distance * visibility;
+        accumulated += (sampleColor(position + offset) +
+                        sampleColor(position - offset)) * weight;
+        normalization += 2.0 * weight;
+      }
+      float4 blurred = sumWeights > 0.5
+          ? clamp(accumulated, 0.0, 1.0) : accumulated / normalization;
+      if (colorExponent != 1.0)
+        blurred = pow(clamp(blurred, 0.0, 1.0), float4(1.0 / colorExponent));
+      if (restoreOriginal > 0.5) {
+        blurred = mix(float4(originalTexture.eval(position)),
+                      clamp(blurred, 0.0, 1.0), step(0.001, visibility));
+      }
+      return half4(blurred * opacity);
+    }
+  

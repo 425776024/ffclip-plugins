@@ -1,0 +1,31 @@
+
+    uniform shader inputTexture;
+    uniform float2 sourceSize;
+    uniform float2 targetSize;
+    uniform float glowFromAlpha;
+    uniform float threshold;
+    uniform float3 thresholdAddColor;
+    uniform float useAlphaThreshold;
+
+    float thresholdResponse(float value, float edge) {
+      return value <= edge ? 0.0 : (value - edge) / (1.0 - edge);
+    }
+
+    half4 main(float2 xy) {
+      float2 uv = xy / targetSize;
+      float4 color = float4(inputTexture.eval(
+          clamp(uv, float2(0.0), float2(1.0)) * sourceSize));
+      color.rgb = mix(color.rgb, float3(1.0), glowFromAlpha);
+      float retained;
+      if (useAlphaThreshold >= 0.5) {
+        retained = thresholdResponse(color.a, threshold);
+      } else {
+        retained =
+            (thresholdResponse(color.r, threshold + thresholdAddColor.r) +
+             thresholdResponse(color.g, threshold + thresholdAddColor.g) +
+             thresholdResponse(color.b, threshold + thresholdAddColor.b)) /
+            max(color.r + color.g + color.b, 0.000001);
+      }
+      return half4(color * retained);
+    }
+  

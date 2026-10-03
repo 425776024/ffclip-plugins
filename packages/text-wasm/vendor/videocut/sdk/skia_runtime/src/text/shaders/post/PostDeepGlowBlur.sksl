@@ -1,0 +1,70 @@
+
+    uniform shader inputTexture;
+    uniform float2 textureSize;
+    uniform float gammaValue;
+    uniform float stepsInt;
+    uniform float angle;
+    uniform float2 aspect;
+    uniform float rotate;
+    uniform float steps;
+    uniform float stride;
+    uniform float sigma;
+
+    float gaussian(float value, float deviation) {
+      return exp(-(value * value) /
+                 ((2.0 * deviation) * deviation)) /
+             (2.5066282749176025390625 * deviation);
+    }
+
+    float3 sampleUv(float2 uv) {
+      return float3(inputTexture.eval(
+          clamp(uv, float2(0.0), float2(1.0)) * textureSize).rgb);
+    }
+
+    float2 rotateDirection(float2 value, float radiansValue) {
+      float sine = sin(radiansValue);
+      float cosine = cos(radiansValue);
+      return float2(cosine * value.x + sine * value.y,
+                    -sine * value.x + cosine * value.y);
+    }
+
+    float4 main(float2 xy) {
+      float2 uv = xy / textureSize;
+      float radiansAngle =
+          (angle / 180.0) * 3.141592502593994140625;
+      float2 direction =
+          float2(cos(radiansAngle), sin(radiansAngle)) / aspect;
+      direction = rotateDirection(
+          direction, rotate * 0.01745329251994329576923690768489);
+
+      float centerWeight = gaussian(0.0, sigma);
+      float normalization = centerWeight;
+      float3 accumulated =
+          pow(sampleUv(uv), float3(gammaValue)) * centerWeight;
+      int stepLimit = int(steps);
+      int increment = int(stepsInt);
+      if (increment < 1) {
+        increment = 1;
+      }
+      int nextTap = 1;
+      for (int tap = 1; tap < 32; ++tap) {
+        if (tap >= stepLimit) {
+          break;
+        }
+        if (tap != nextTap) {
+          continue;
+        }
+        nextTap += increment;
+        float sampleIndex = float(tap);
+        float weight = gaussian((sampleIndex / steps) * 15.0, sigma);
+        float2 offset = direction * sampleIndex * stride;
+        accumulated +=
+            (pow(sampleUv(uv + offset), float3(gammaValue)) +
+             pow(sampleUv(uv - offset), float3(gammaValue))) * weight;
+        normalization += weight * 2.0;
+      }
+      float3 color = pow(accumulated / float3(normalization),
+                         float3(1.0 / gammaValue));
+      return float4(color, 1.0);
+    }
+  

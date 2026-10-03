@@ -1,0 +1,53 @@
+{
+  "headtts": {
+    "package": "@met4citizen/headtts",
+    "version": "1.3.0",
+    "gitHead": "c08f4ca8b3253b3e908e501486a1e068e606be5c",
+    "tarball": "https://registry.npmjs.org/@met4citizen/headtts/-/headtts-1.3.0.tgz",
+    "integrity": "sha512-N396/IPQxFt8dxGw29dfH8avgopLI52pWI8mdhfK4GScD4McF0U8Qb8LlzgnT1FqC+NVtVvNYFT9umcusbxl7w==",
+    "license": "MIT",
+    "modifications": "Remove dictionary I/O, unused utilities, and one duplicate whitespace key; use bundled Misaki lexicons."
+  },
+  "misaki": {
+    "repository": "https://github.com/hexgrad/misaki",
+    "commit": "fba1236595f2d2bf21d414ba6e57d25256afada3",
+    "license": "Apache-2.0",
+    "paths": [
+      "misaki/data/us_gold.json",
+      "misaki/data/gb_gold.json"
+    ],
+    "adaptation": "Dictionaries unmodified. Browser adapter uses default pronunciation and HeadTTS rule fallback; no Python, spaCy, eSpeak or model code is used. Dictionary payloads are encoded as JSON.parse(string) to avoid Chromium Worker initialization stack overflow from huge JavaScript object literals."
+  },
+  "files": {
+    "headtts/language-en-us.mjs": {
+      "upstreamSha256": "18b2f18c874ad19ccf8bf27e29c61b4f7ae57ca0e56ebfcf50f7b1b286b4e928",
+      "sha256": "667b625df57fd677a9d4ff988b9d30c88d9838403f3a8aad9432a168fd6f15b3"
+    },
+    "headtts/language.mjs": {
+      "upstreamSha256": "c65e360f94af979df0e2d9582419e5f4bb23231418daa38024e69f95963fdedf",
+      "sha256": "0fe15bfbfe582365e1a20cb10ea227891daceec2c71be2081f7725c66409aa89"
+    },
+    "headtts/utils.mjs": {
+      "upstreamSha256": "9f7cfc7df64314bd2f0e62538468fd02fd6d642dbeb224cc7bd5ce05e74e3207",
+      "sha256": "0f4429b357b119c656dd33a786a5e0cdc7af5da4f7ace3f3cecf4c36aa6cfa0e"
+    },
+    "us_gold.json": {
+      "upstreamSha256": "dc414872a49a28ae6c141463d502fd945f3b2fde040484fdc47d00cc4612686f",
+      "sha256": "dc414872a49a28ae6c141463d502fd945f3b2fde040484fdc47d00cc4612686f"
+    },
+    "gb_gold.json": {
+      "upstreamSha256": "29e62f4b60261c88f7f3c2c7811ca3825978948090b72d2b27d565b729282f71",
+      "sha256": "29e62f4b60261c88f7f3c2c7811ca3825978948090b72d2b27d565b729282f71"
+    },
+    "us_gold.mjs": {
+      "sha256": "bb2a2cf91f5ca9318f997f3d031ee9dd7c737c375c07315df2716ea4ae7f2e9b",
+      "generatedFrom": "us_gold.json",
+      "generation": "JSON.parse(JSON.stringify(original UTF-8 dictionary text)); no lexical changes"
+    },
+    "gb_gold.mjs": {
+      "sha256": "f7e85f018b7e07af87505cf55a262622535be8f8f154c0c9410c1564e4e090e8",
+      "generatedFrom": "gb_gold.json",
+      "generation": "JSON.parse(JSON.stringify(original UTF-8 dictionary text)); no lexical changes"
+    }
+  }
+}

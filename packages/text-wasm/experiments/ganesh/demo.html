@@ -1,0 +1,6 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>VideoCut 原材质 WebGL GPU 实验</title>
+<style>body{font:14px system-ui;background:#171b25;color:#e9edf6;margin:24px}button{padding:10px}#frames{display:flex;gap:16px}#frames canvas{width:45vw;height:auto;background:repeating-conic-gradient(#242b38 0% 25%,#34404e 0% 50%) 0/20px 20px}pre{white-space:pre-wrap}#gpu-context{display:none}</style>
+<h1>SkPicture → Ganesh WebGL</h1><p>独立实验：保留原花字材质/动画指令，GPU 最终回放，暂经 RGBA 回读用于 A/B。尚未接入生产。</p>
+<button id="run">运行冻结 CPU / WebGL GPU 对照</button><p id="status">加载实验引擎…</p>
+<canvas id="gpu-context" width="16" height="16"></canvas><div id="frames"><div>冻结 CPU<canvas id="before"></canvas></div><div>实验 GPU<canvas id="after"></canvas></div></div><pre id="report"></pre>
+<script type="module" src="/demo.mjs"></script></html>

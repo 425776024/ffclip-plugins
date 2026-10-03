@@ -1,0 +1,313 @@
+{
+  "format": "videocut.text-animation",
+  "animation": {
+    "layers": [
+      {
+        "id": "lua-controller-layer",
+        "enabled": true,
+        "combine_mode": "replace",
+        "requires_timed_text": false,
+        "time_driver": {
+          "kind": "enter_phase",
+          "duration_us": 3000000,
+          "playback": "once"
+        },
+        "animators": [
+          {
+            "id": "lua-controller-selector",
+            "paragraph_ids": [],
+            "run_ids": [],
+            "position_mode": "absolute_pixels",
+            "anchor": "glyph_center",
+            "anchor_basis": "letter",
+            "anchor_mode": "fixed",
+            "anchor_offset_x": 0.0,
+            "anchor_offset_y": 0.0,
+            "presentation": "transform",
+            "fade_fraction": 0.0,
+            "selectors": [
+              {
+                "kind": "range",
+                "based_on": "grapheme",
+                "range_start": 0.0,
+                "range_end": 1.0,
+                "offset": 0.0,
+                "stagger": 0.0,
+                "edge_smooth": 0.0,
+                "constrained": true,
+                "shape": "square",
+                "order": "forward",
+                "random_seed": 50.0,
+                "intensity": 1.0,
+                "intensity_start": 0.0,
+                "intensity_end": 1.0,
+                "time_start_1": 0.0,
+                "time_start_2": 0.0,
+                "time_end_1": 1.0,
+                "time_end_2": 1.0,
+                "time_cycle": false
+              }
+            ],
+            "tracks": [],
+            "projection": {
+              "kind": "perspective_3d",
+              "field_of_view_degrees": 45.0,
+              "vanishing_point_x": 0.5,
+              "vanishing_point_y": 0.5
+            },
+            "effect_program_id": "com.videocut.text.qt-type.anim-lua-radial-3d-geometry.program.controller"
+          }
+        ],
+        "render_group": {
+          "mode": "page",
+          "expand_ratio_x": 1,
+          "expand_ratio_y": 1
+        },
+        "post_effects": []
+      }
+    ],
+    "execution_graph": {
+      "nodes": [
+        {
+          "id": "layout",
+          "node_kind": "layout",
+          "capability": "layout_glyph_run",
+          "input_ids": []
+        },
+        {
+          "id": "selector",
+          "node_kind": "selector",
+          "capability": "selector_base",
+          "input_ids": [
+            "layout"
+          ]
+        },
+        {
+          "id": "operator-program",
+          "node_kind": "operator",
+          "capability": "operator_program",
+          "input_ids": [
+            "selector"
+          ]
+        },
+        {
+          "id": "fill-source",
+          "node_kind": "material_pass",
+          "capability": "material_program_pass",
+          "input_ids": [
+            "operator-program"
+          ]
+        },
+        {
+          "id": "outline-source",
+          "node_kind": "material_pass",
+          "capability": "material_program_pass",
+          "input_ids": [
+            "operator-program"
+          ]
+        },
+        {
+          "id": "main-alpha",
+          "node_kind": "material_pass",
+          "capability": "material_color_modulate",
+          "input_ids": [
+            "fill-source"
+          ]
+        },
+        {
+          "id": "clone-alpha",
+          "node_kind": "material_pass",
+          "capability": "material_color_modulate",
+          "input_ids": [
+            "outline-source"
+          ]
+        },
+        {
+          "id": "main-noise",
+          "node_kind": "material_pass",
+          "capability": "material_projection_mesh_composite",
+          "input_ids": [
+            "main-alpha"
+          ]
+        },
+        {
+          "id": "clone-noise",
+          "node_kind": "material_pass",
+          "capability": "material_projection_mesh_composite",
+          "input_ids": [
+            "clone-alpha"
+          ]
+        },
+        {
+          "id": "main-small-x",
+          "node_kind": "material_pass",
+          "capability": "material_packed_multiscale_gaussian_blur",
+          "input_ids": [
+            "main-noise"
+          ]
+        },
+        {
+          "id": "main-small-y",
+          "node_kind": "material_pass",
+          "capability": "material_packed_multiscale_gaussian_blur",
+          "input_ids": [
+            "main-small-x"
+          ]
+        },
+        {
+          "id": "main-large-x",
+          "node_kind": "material_pass",
+          "capability": "material_packed_multiscale_gaussian_blur",
+          "input_ids": [
+            "main-noise"
+          ]
+        },
+        {
+          "id": "main-large-y",
+          "node_kind": "material_pass",
+          "capability": "material_packed_multiscale_gaussian_blur",
+          "input_ids": [
+            "main-large-x"
+          ]
+        },
+        {
+          "id": "main-color-x",
+          "node_kind": "material_pass",
+          "capability": "material_separable_gaussian_blur",
+          "input_ids": [
+            "main-noise"
+          ]
+        },
+        {
+          "id": "main-color-y",
+          "node_kind": "material_pass",
+          "capability": "material_separable_gaussian_blur",
+          "input_ids": [
+            "main-color-x"
+          ]
+        },
+        {
+          "id": "main-glow",
+          "node_kind": "material_pass",
+          "capability": "material_projection_mesh_composite",
+          "input_ids": [
+            "main-noise",
+            "main-small-y",
+            "main-large-y",
+            "main-color-y"
+          ]
+        },
+        {
+          "id": "clone-fixed-y",
+          "node_kind": "material_pass",
+          "capability": "material_separable_gaussian_blur",
+          "input_ids": [
+            "clone-noise"
+          ]
+        },
+        {
+          "id": "clone-fixed-x",
+          "node_kind": "material_pass",
+          "capability": "material_separable_gaussian_blur",
+          "input_ids": [
+            "clone-fixed-y"
+          ]
+        },
+        {
+          "id": "clone-small-x",
+          "node_kind": "material_pass",
+          "capability": "material_packed_multiscale_gaussian_blur",
+          "input_ids": [
+            "clone-fixed-x"
+          ]
+        },
+        {
+          "id": "clone-small-y",
+          "node_kind": "material_pass",
+          "capability": "material_packed_multiscale_gaussian_blur",
+          "input_ids": [
+            "clone-small-x"
+          ]
+        },
+        {
+          "id": "clone-large-x",
+          "node_kind": "material_pass",
+          "capability": "material_packed_multiscale_gaussian_blur",
+          "input_ids": [
+            "clone-fixed-x"
+          ]
+        },
+        {
+          "id": "clone-large-y",
+          "node_kind": "material_pass",
+          "capability": "material_packed_multiscale_gaussian_blur",
+          "input_ids": [
+            "clone-large-x"
+          ]
+        },
+        {
+          "id": "clone-color-x",
+          "node_kind": "material_pass",
+          "capability": "material_separable_gaussian_blur",
+          "input_ids": [
+            "clone-fixed-x"
+          ]
+        },
+        {
+          "id": "clone-color-y",
+          "node_kind": "material_pass",
+          "capability": "material_separable_gaussian_blur",
+          "input_ids": [
+            "clone-color-x"
+          ]
+        },
+        {
+          "id": "clone-shadow",
+          "node_kind": "material_pass",
+          "capability": "material_projection_mesh_composite",
+          "input_ids": [
+            "clone-fixed-x",
+            "clone-large-y"
+          ]
+        },
+        {
+          "id": "clone-glow",
+          "node_kind": "material_pass",
+          "capability": "material_projection_mesh_composite",
+          "input_ids": [
+            "clone-fixed-x",
+            "clone-small-y",
+            "clone-large-y",
+            "clone-color-y"
+          ]
+        },
+        {
+          "id": "clone-composite",
+          "node_kind": "composite",
+          "capability": "composite_source_over",
+          "input_ids": [
+            "clone-shadow",
+            "clone-glow"
+          ]
+        },
+        {
+          "id": "normal-sum",
+          "node_kind": "material_pass",
+          "capability": "material_projection_mesh_composite",
+          "input_ids": [
+            "main-glow",
+            "clone-composite"
+          ]
+        },
+        {
+          "id": "composite",
+          "node_kind": "composite",
+          "capability": "composite_source_over",
+          "input_ids": [
+            "normal-sum"
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "profile": "wasm-raster-v1",
+  "emscripten": "4.0.9",
+  "emsdk": "3bcf1dcd01f040f370e10fe673a092d9ed79ebb5",
+  "skia": "933b272d039add454e6491efafd2db84a18a92dd",
+  "wasmFeatures": [
+    "simd128"
+  ],
+  "rasterPipeline": "four-lane-sse41-via-emscripten",
+  "blurPipeline": "skvx-wasm-simd",
+  "compilerWrapperSha256": "eaf72e9252fe468ecdf299e98b3c858ce17e766c63fb9dd876d05ad182efc411",
+  "sourceCommit": "63fcff092f283b592362e3c515fb705d2a3604fa",
+  "wasmBytes": 10429374,
+  "wasmSha256": "bce307170d3e3a7b498101d909bee9aa17590e1279e2d8bb357ad2364bd6eeeb"
+}

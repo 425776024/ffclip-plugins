@@ -1,0 +1,23 @@
+{
+  "format": "videocut.text-animation",
+  "animation": {
+    "layers": [],
+    "execution_graph": {
+      "nodes": [
+        {
+          "id": "layout",
+          "node_kind": "layout",
+          "capability": "layout_glyph_run"
+        },
+        {
+          "id": "backdrop-material",
+          "node_kind": "operator",
+          "capability": "operator_material",
+          "input_ids": [
+            "layout"
+          ]
+        }
+      ]
+    }
+  }
+}

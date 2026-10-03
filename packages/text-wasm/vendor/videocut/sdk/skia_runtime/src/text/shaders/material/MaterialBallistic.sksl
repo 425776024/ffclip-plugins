@@ -1,0 +1,49 @@
+
+    uniform shader inputTexture;
+    uniform float2 textureSize;
+    uniform float2 outputSize;
+    uniform float2 textOrigin;
+    uniform float2 textExtent;
+    uniform float iTime;
+    half4 main(float2 position) {
+      float2 baseUv = (position - textOrigin) / textExtent;
+      baseUv.y = 1.0 - baseUv.y;
+      float aspectInv = outputSize.y / outputSize.x;
+      float newTime = iTime * 6.0;
+      float4 result = float4(0.0);
+      // The bound Qt Metal pass uses 41 iterations with clamped indices.
+      // Its GLES sibling has a different loop and must not define this pass.
+      for (int index = -20; index <= 20; ++index) {
+        float x = clamp(float(index), -20.0 * aspectInv, 20.0 * aspectInv);
+        float randomY = fract(sin(x) * 1234567.0);
+        float time = mod(newTime - 10.0 * randomY, 4.0);
+        time *= step(newTime, time + 2.0);
+        float2 speed = float2(fract(sin(x) * 136115.0), 0.5) * 2.0 - 1.0;
+        speed.x += 0.1;
+        speed.y += 2.5 *
+            (1.0 + 0.15 * (fract(sin(x) * 11315327.0) * 2.0 - 1.0));
+        float2 sampleUv = baseUv;
+        sampleUv.x += time * speed.x * 1.8;
+        sampleUv.y -= time * 10.0 *
+            (1.0 + 0.5 * (fract(sin(x) * 4234567.0) * 2.0 - 1.0)) *
+            aspectInv * 0.5625;
+        sampleUv.y += pow(time * speed.y, 1.6) * aspectInv * 0.5625;
+        sampleUv.y -= (x - 10.0) * 0.03 * aspectInv;
+        sampleUv = (sampleUv - 0.5) *
+                       pow(2.0, 3.0 - 3.0 * clamp(time, 0.0, 1.0)) +
+                   0.5;
+        sampleUv = (sampleUv - 0.5) *
+                       pow(2.0, 3.0 - 3.0 * clamp(newTime, 0.0, 1.0)) +
+                   0.5;
+        // The actual Metal sampler clamps at the source texture edges.
+        sampleUv = clamp(sampleUv, 0.0, 1.0);
+        float4 sampleColor = float4(inputTexture.eval(
+            float2(sampleUv.x, 1.0 - sampleUv.y) * textureSize));
+        sampleColor *= clamp(time, 0.0, 1.0) *
+                       clamp(newTime, 0.0, 1.0) *
+                       (1.0 - smoothstep(3.0, 4.0, time));
+        result = result * (1.0 - sampleColor.a) + sampleColor;
+      }
+      return half4(result);
+    }
+  

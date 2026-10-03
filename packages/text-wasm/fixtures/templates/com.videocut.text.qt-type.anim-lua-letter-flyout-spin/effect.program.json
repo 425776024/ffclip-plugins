@@ -1,0 +1,71 @@
+{
+  "format": "videocut.text-effect-program",
+  "programs": [
+    {
+      "program_id": "com.videocut.text.qt-type.anim-lua-letter-flyout-spin.program.controller",
+      "random_seed": 50,
+      "stages": [
+        {
+          "stage_id": "qt-random-staggered-cubic-flyout-spin",
+          "kind": "per_unit",
+          "register_count": 46,
+          "instructions": [
+            {"opcode":"input","output_register":0,"input_registers":[],"immediates":[],"input":"progress"},
+            {"opcode":"input","output_register":1,"input_registers":[],"immediates":[],"input":"unit_index"},
+            {"opcode":"input","output_register":2,"input_registers":[],"immediates":[],"input":"unit_count"},
+            {"opcode":"input","output_register":3,"input_registers":[],"immediates":[],"input":"text_rect_height"},
+            {"opcode":"input","output_register":4,"input_registers":[],"immediates":[],"input":"row_count"},
+            {"opcode":"constant","output_register":5,"input_registers":[],"immediates":[1],"input":null},
+            {"opcode":"constant","output_register":6,"input_registers":[],"immediates":[0],"input":null},
+            {"opcode":"constant","output_register":7,"input_registers":[],"immediates":[3],"input":null},
+            {"opcode":"constant","output_register":8,"input_registers":[],"immediates":[0.6],"input":null},
+            {"opcode":"constant","output_register":9,"input_registers":[],"immediates":[500],"input":null},
+            {"opcode":"constant","output_register":10,"input_registers":[],"immediates":[501],"input":null},
+            {"opcode":"constant","output_register":11,"input_registers":[],"immediates":[0.001],"input":null},
+            {"opcode":"constant","output_register":12,"input_registers":[],"immediates":[1.5],"input":null},
+            {"opcode":"constant","output_register":13,"input_registers":[],"immediates":[-720],"input":null},
+            {"opcode":"seeded_shuffle_rank","output_register":14,"input_registers":[1,2],"immediates":[1],"input":null},
+            {"opcode":"subtract","output_register":15,"input_registers":[2,5],"immediates":[],"input":null},
+            {"opcode":"maximum","output_register":16,"input_registers":[15,5],"immediates":[],"input":null},
+            {"opcode":"divide","output_register":17,"input_registers":[14,16],"immediates":[],"input":null},
+            {"opcode":"multiply","output_register":18,"input_registers":[7,8],"immediates":[],"input":null},
+            {"opcode":"multiply","output_register":19,"input_registers":[17,18],"immediates":[],"input":null},
+            {"opcode":"add","output_register":20,"input_registers":[2,6],"immediates":[],"input":null},
+            {"opcode":"constant","output_register":21,"input_registers":[],"immediates":[2],"input":null},
+            {"opcode":"multiply","output_register":22,"input_registers":[1,21],"immediates":[],"input":null},
+            {"opcode":"add","output_register":23,"input_registers":[20,22],"immediates":[],"input":null},
+            {"opcode":"add","output_register":24,"input_registers":[23,5],"immediates":[],"input":null},
+            {"opcode":"sequential_random","output_register":25,"input_registers":[23],"immediates":[],"input":null},
+            {"opcode":"sequential_random","output_register":26,"input_registers":[24],"immediates":[],"input":null},
+            {"opcode":"multiply","output_register":27,"input_registers":[25,10],"immediates":[],"input":null},
+            {"opcode":"floor","output_register":28,"input_registers":[27],"immediates":[],"input":null},
+            {"opcode":"add","output_register":29,"input_registers":[28,9],"immediates":[],"input":null},
+            {"opcode":"multiply","output_register":30,"input_registers":[29,11],"immediates":[],"input":null},
+            {"opcode":"subtract","output_register":31,"input_registers":[7,19],"immediates":[],"input":null},
+            {"opcode":"multiply","output_register":32,"input_registers":[31,30],"immediates":[],"input":null},
+            {"opcode":"multiply","output_register":33,"input_registers":[0,7],"immediates":[],"input":null},
+            {"opcode":"subtract","output_register":34,"input_registers":[33,19],"immediates":[],"input":null},
+            {"opcode":"divide","output_register":35,"input_registers":[34,32],"immediates":[],"input":null},
+            {"opcode":"clamp","output_register":36,"input_registers":[35,6,5],"immediates":[],"input":null},
+            {"opcode":"power","output_register":37,"input_registers":[36,7],"immediates":[],"input":null},
+            {"opcode":"subtract","output_register":38,"input_registers":[5,37],"immediates":[],"input":null},
+            {"opcode":"multiply","output_register":39,"input_registers":[37,13],"immediates":[],"input":null},
+            {"opcode":"maximum","output_register":40,"input_registers":[4,5],"immediates":[],"input":null},
+            {"opcode":"divide","output_register":41,"input_registers":[3,40],"immediates":[],"input":null},
+            {"opcode":"add","output_register":42,"input_registers":[26,12],"immediates":[],"input":null},
+            {"opcode":"multiply","output_register":43,"input_registers":[42,41],"immediates":[],"input":null},
+            {"opcode":"multiply","output_register":44,"input_registers":[43,37],"immediates":[],"input":null},
+            {"opcode":"negate","output_register":45,"input_registers":[44],"immediates":[],"input":null}
+          ],
+          "outputs": [
+            {"output":"opacity","register_index":5,"transform_index":0},
+            {"output":"offset_y","register_index":45,"transform_index":0},
+            {"output":"rotation_z","register_index":39,"transform_index":0},
+            {"output":"scale_x","register_index":38,"transform_index":0},
+            {"output":"scale_y","register_index":38,"transform_index":0}
+          ]
+        }
+      ]
+    }
+  ]
+}

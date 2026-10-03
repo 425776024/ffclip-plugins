@@ -1,0 +1,470 @@
+{
+  "date": "2026-10-02",
+  "started": "2026-10-02T03:46:21.982Z",
+  "completed": "2026-10-02T03:47:22.155Z",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+  "resolution": [1920, 1080],
+  "frameRate": 30,
+  "durationSeconds": 6,
+  "sourceHashes": {
+    "packages/render/html.ts": "c415a6eb44a7bbe29862f69934870a26f0b119ed70927aa8e6c7e963f06d477b",
+    "packages/render/export.ts": "27afa5f8fb29399428e7589f4453f36204a5e7e3a388064d630196978435f6ef",
+    "packages/render/renderer.ts": "e6663dc2f336ec15c8d99df76799933fa4035b879f72050275f929a637810180",
+    "packages/render/worker.ts": "5933bb4c5285e46c79c3d54a4667b430ab227fe6fddc288f111b22699ec66424",
+    "src/editor/template-export.ts": "97b9fa67b94c182c9d21754b3b11ae6937c4ff5a0dcf320fa1f79040bd287f17",
+    "packages/text-wasm/dist/videocut-text.wasm": "bce307170d3e3a7b498101d909bee9aa17590e1279e2d8bb357ad2364bd6eeeb"
+  },
+  "cases": [
+    {
+      "id": "html-video",
+      "sequentialMeanMs": 3940.2999999523163,
+      "preparedMeanMs": 2316.6999999284744,
+      "reduction": 0.41204984393155086,
+      "runs": [
+        {
+          "runId": 0,
+          "htmlPrefetch": false,
+          "textWorkers": false,
+          "wallMs": 4384.599999904633,
+          "path": "/Users/jxinfa/WebstormProjects/videocut/.local/qa/export-speed/export-speed-html-video-0-1790912782569-0b65ed.mp4",
+          "size": 287392,
+          "frames": 180,
+          "encoding": "browser",
+          "comparisons": []
+        },
+        {
+          "runId": 1,
+          "htmlPrefetch": true,
+          "textWorkers": false,
+          "wallMs": 2314.699999809265,
+          "path": "/Users/jxinfa/WebstormProjects/videocut/.local/qa/export-speed/export-speed-html-video-1-1790912786956-c70bf1.mp4",
+          "size": 287392,
+          "frames": 180,
+          "encoding": "browser",
+          "comparisons": [
+            {
+              "requested": 1.1,
+              "actualPTS": 1.1,
+              "mae": 0.09182018389917695
+            },
+            {
+              "requested": 2,
+              "actualPTS": 2,
+              "mae": 0.16074090149176956
+            },
+            {
+              "requested": 2.5,
+              "actualPTS": 2.5,
+              "mae": 0.15280896347736625
+            },
+            {
+              "requested": 4.4,
+              "actualPTS": 4.4,
+              "mae": 0.15247492283950617
+            },
+            {
+              "requested": 5.8,
+              "actualPTS": 5.8,
+              "mae": 0.09890785751028806
+            }
+          ]
+        },
+        {
+          "runId": 2,
+          "htmlPrefetch": true,
+          "textWorkers": false,
+          "wallMs": 2318.7000000476837,
+          "path": "/Users/jxinfa/WebstormProjects/videocut/.local/qa/export-speed/export-speed-html-video-2-1790912789557-0a5bcd.mp4",
+          "size": 287392,
+          "frames": 180,
+          "encoding": "browser",
+          "comparisons": []
+        },
+        {
+          "runId": 3,
+          "htmlPrefetch": false,
+          "textWorkers": false,
+          "wallMs": 3496,
+          "path": "/Users/jxinfa/WebstormProjects/videocut/.local/qa/export-speed/export-speed-html-video-3-1790912791884-5121e0.mp4",
+          "size": 287392,
+          "frames": 180,
+          "encoding": "browser",
+          "comparisons": []
+        }
+      ]
+    },
+    {
+      "id": "html-native-video",
+      "sequentialMeanMs": 15277.800000071526,
+      "preparedMeanMs": 7686.349999904633,
+      "reduction": 0.4968941863443266,
+      "runs": [
+        {
+          "runId": 0,
+          "htmlPrefetch": true,
+          "textWorkers": false,
+          "wallMs": 15327.200000047684,
+          "path": "/Users/jxinfa/WebstormProjects/videocut/.local/qa/export-speed/export-speed-html-native-video-0-1790912795386-3e2548.mp4",
+          "size": 1211348,
+          "frames": 180,
+          "encoding": "browser",
+          "comparisons": []
+        },
+        {
+          "runId": 1,
+          "htmlPrefetch": true,
+          "textWorkers": true,
+          "wallMs": 7714.799999952316,
+          "path": "/Users/jxinfa/WebstormProjects/videocut/.local/qa/export-speed/export-speed-html-native-video-1-1790912810718-278dd5.mp4",
+          "size": 1211073,
+          "frames": 180,
+          "encoding": "browser",
+          "comparisons": [
+            {
+              "requested": 1.1,
+              "actualPTS": 1.1,
+              "mae": 0.5001503022119341
+            },
+            {
+              "requested": 2,
+              "actualPTS": 2,
+              "mae": 0.32586435828189303
+            },
+            {
+              "requested": 2.5,
+              "actualPTS": 2.5,
+              "mae": 0.2692427019032922
+            },
+            {
+              "requested": 4.4,
+              "actualPTS": 4.4,
+              "mae": 0.42897778420781896
+            },
+            {
+              "requested": 5.8,
+              "actualPTS": 5.8,
+              "mae": 0.1035985725308642
+            }
+          ]
+        },
+        {
+          "runId": 2,
+          "htmlPrefetch": true,
+          "textWorkers": true,
+          "wallMs": 7657.899999856949,
+          "path": "/Users/jxinfa/WebstormProjects/videocut/.local/qa/export-speed/export-speed-html-native-video-2-1790912819259-19fffb.mp4",
+          "size": 1211077,
+          "frames": 180,
+          "encoding": "browser",
+          "comparisons": []
+        },
+        {
+          "runId": 3,
+          "htmlPrefetch": true,
+          "textWorkers": false,
+          "wallMs": 15228.400000095367,
+          "path": "/Users/jxinfa/WebstormProjects/videocut/.local/qa/export-speed/export-speed-html-native-video-3-1790912826923-22eeb0.mp4",
+          "size": 1211073,
+          "frames": 180,
+          "encoding": "browser",
+          "comparisons": []
+        }
+      ]
+    }
+  ],
+  "pixelComparisons": [
+    {
+      "kind": "native-source",
+      "timeUs": 1500000,
+      "equal": true,
+      "changedBytes": 0,
+      "comparedBytes": 8294400
+    },
+    {
+      "kind": "native-source",
+      "timeUs": 1533333,
+      "equal": true,
+      "changedBytes": 0,
+      "comparedBytes": 8294400
+    },
+    {
+      "kind": "native-source",
+      "timeUs": 1500000,
+      "equal": true,
+      "changedBytes": 0,
+      "comparedBytes": 8294400
+    },
+    {
+      "kind": "webgpu-composite",
+      "timeTicks": 240000,
+      "equal": true,
+      "changedBytes": 0,
+      "comparedBytes": 8294400,
+      "workers": 2
+    },
+    {
+      "kind": "webgpu-composite",
+      "timeTicks": 244000,
+      "equal": true,
+      "changedBytes": 0,
+      "comparedBytes": 8294400,
+      "workers": 2
+    },
+    {
+      "kind": "webgpu-composite",
+      "timeTicks": 192000,
+      "equal": true,
+      "changedBytes": 0,
+      "comparedBytes": 8294400,
+      "workers": 2
+    }
+  ],
+  "scope": "Actual browser MP4 export call to receipt with unchanged output extent/bitrate, 180 frames and AAC audio; fresh HTML source identity for every run, ordered off/on/on/off. HTML-only first run includes additional initial media/font/codec work. Heavy-text case keeps HTML prefetch enabled on both sides and switches only native-text workers. Pixel readback and decoded comparisons are outside export timing.",
+  "decodeValidation": [
+    {
+      "path": "/Users/jxinfa/WebstormProjects/videocut/.local/qa/export-speed/export-speed-html-video-0-1790912782569-0b65ed.mp4",
+      "fullyDecoded": true,
+      "metadata": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "codec_type": "video",
+            "width": 1920,
+            "height": 1080,
+            "duration": "6.000000",
+            "nb_read_frames": "180"
+          },
+          {
+            "codec_name": "aac",
+            "codec_type": "audio",
+            "duration": "6.000000",
+            "nb_read_frames": "282"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      }
+    },
+    {
+      "path": "/Users/jxinfa/WebstormProjects/videocut/.local/qa/export-speed/export-speed-html-video-1-1790912786956-c70bf1.mp4",
+      "fullyDecoded": true,
+      "metadata": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "codec_type": "video",
+            "width": 1920,
+            "height": 1080,
+            "duration": "6.000000",
+            "nb_read_frames": "180"
+          },
+          {
+            "codec_name": "aac",
+            "codec_type": "audio",
+            "duration": "6.000000",
+            "nb_read_frames": "282"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      }
+    },
+    {
+      "path": "/Users/jxinfa/WebstormProjects/videocut/.local/qa/export-speed/export-speed-html-video-2-1790912789557-0a5bcd.mp4",
+      "fullyDecoded": true,
+      "metadata": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "codec_type": "video",
+            "width": 1920,
+            "height": 1080,
+            "duration": "6.000000",
+            "nb_read_frames": "180"
+          },
+          {
+            "codec_name": "aac",
+            "codec_type": "audio",
+            "duration": "6.000000",
+            "nb_read_frames": "282"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      }
+    },
+    {
+      "path": "/Users/jxinfa/WebstormProjects/videocut/.local/qa/export-speed/export-speed-html-video-3-1790912791884-5121e0.mp4",
+      "fullyDecoded": true,
+      "metadata": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "codec_type": "video",
+            "width": 1920,
+            "height": 1080,
+            "duration": "6.000000",
+            "nb_read_frames": "180"
+          },
+          {
+            "codec_name": "aac",
+            "codec_type": "audio",
+            "duration": "6.000000",
+            "nb_read_frames": "282"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      }
+    },
+    {
+      "path": "/Users/jxinfa/WebstormProjects/videocut/.local/qa/export-speed/export-speed-html-native-video-0-1790912795386-3e2548.mp4",
+      "fullyDecoded": true,
+      "metadata": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "codec_type": "video",
+            "width": 1920,
+            "height": 1080,
+            "duration": "6.000000",
+            "nb_read_frames": "180"
+          },
+          {
+            "codec_name": "aac",
+            "codec_type": "audio",
+            "duration": "6.000000",
+            "nb_read_frames": "282"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      }
+    },
+    {
+      "path": "/Users/jxinfa/WebstormProjects/videocut/.local/qa/export-speed/export-speed-html-native-video-1-1790912810718-278dd5.mp4",
+      "fullyDecoded": true,
+      "metadata": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "codec_type": "video",
+            "width": 1920,
+            "height": 1080,
+            "duration": "6.000000",
+            "nb_read_frames": "180"
+          },
+          {
+            "codec_name": "aac",
+            "codec_type": "audio",
+            "duration": "6.000000",
+            "nb_read_frames": "282"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      }
+    },
+    {
+      "path": "/Users/jxinfa/WebstormProjects/videocut/.local/qa/export-speed/export-speed-html-native-video-2-1790912819259-19fffb.mp4",
+      "fullyDecoded": true,
+      "metadata": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "codec_type": "video",
+            "width": 1920,
+            "height": 1080,
+            "duration": "6.000000",
+            "nb_read_frames": "180"
+          },
+          {
+            "codec_name": "aac",
+            "codec_type": "audio",
+            "duration": "6.000000",
+            "nb_read_frames": "282"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      }
+    },
+    {
+      "path": "/Users/jxinfa/WebstormProjects/videocut/.local/qa/export-speed/export-speed-html-native-video-3-1790912826923-22eeb0.mp4",
+      "fullyDecoded": true,
+      "metadata": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "codec_type": "video",
+            "width": 1920,
+            "height": 1080,
+            "duration": "6.000000",
+            "nb_read_frames": "180"
+          },
+          {
+            "codec_name": "aac",
+            "codec_type": "audio",
+            "duration": "6.000000",
+            "nb_read_frames": "282"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      }
+    },
+    {
+      "path": "/Users/jxinfa/WebstormProjects/videocut/.local/qa/export-speed/packaged-parallel-heavy-export-1790912942012-42b99c.mp4",
+      "fullyDecoded": true,
+      "metadata": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "codec_type": "video",
+            "width": 1920,
+            "height": 1080,
+            "duration": "6.000000",
+            "nb_read_frames": "180"
+          },
+          {
+            "codec_name": "aac",
+            "codec_type": "audio",
+            "duration": "6.000000",
+            "nb_read_frames": "282"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      }
+    }
+  ],
+  "packagedDefaultExport": {
+    "path": "/Users/jxinfa/WebstormProjects/videocut/.local/qa/export-speed/packaged-parallel-heavy-export-1790912942012-42b99c.mp4",
+    "version": 0,
+    "size": 1211073,
+    "format": "mp4",
+    "jobId": "622defc08dc3a496d9cfa684ee0a6be6be71723f",
+    "encoding": "browser",
+    "frames": 180,
+    "wallMs": 8140.236542000001,
+    "completionDialog": true
+  }
+}

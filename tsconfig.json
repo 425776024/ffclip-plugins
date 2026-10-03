@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "lib": [
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "strict": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "types": [
+      "vite/client"
+    ]
+  },
+  "include": [
+    "src/editor/**/*.ts",
+    "src/editor/**/*.vue",
+    "packages/media/**/*.ts",
+    "packages/tts/**/*.ts",
+    "packages/asr/**/*.ts",
+    "packages/vision/**/*.ts",
+    "packages/core/**/*.ts",
+    "packages/core/**/*.mts",
+    "packages/render/**/*.ts",
+    "packages/**/*.d.mts",
+    "vite.config.ts"
+  ]
+}

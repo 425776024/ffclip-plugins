@@ -1,0 +1,96 @@
+
+    uniform shader inputTexture;
+    uniform shader curveTexture;
+    uniform float2 textureSize;
+    uniform float2 outputSize;
+    uniform float2 textOrigin;
+    uniform float2 textExtent;
+    uniform float2 curveSize;
+    uniform float2 textSize;
+    uniform float progress;
+    uniform float minimumLineColumn;
+    uniform float parentScale;
+    uniform float passIndex;
+
+    float cornerNoise(float2 point, float seed) {
+      float2 p = fract(point.yx * 23.512);
+      p += dot(p, p.yx + 15.412 + seed);
+      float value = fract((p.x + p.y) * p.x);
+      return value < 0.5 ? value - 0.05 : value + 0.05;
+    }
+    float lineNoise(float2 uv, float seed) {
+      float2 cell = floor(uv);
+      float2 fraction = smoothstep(0.0, 1.0, fract(uv));
+      return mix(mix(cornerNoise(cell, seed),
+                     cornerNoise(cell + float2(1.0, 0.0), seed), fraction.x),
+                 mix(cornerNoise(cell + float2(0.0, 1.0), seed),
+                     cornerNoise(cell + float2(1.0), seed), fraction.x), fraction.y);
+    }
+    float4 sampleUv(float2 uv) {
+      return float4(inputTexture.eval(float2(uv.x, 1.0 - uv.y) * textureSize));
+    }
+    float4 sampleCut(float2 uv) {
+      if (uv.x < 0.0 || uv.y < 0.0 || uv.x > 1.0 || uv.y > 1.0)
+        return float4(0.0);
+      return sampleUv(uv);
+    }
+    float curve(float value) {
+      return curveTexture.eval(float2(value, 0.5) * curveSize).r;
+    }
+    half4 main(float2 position) {
+      float2 screenUv = float2(position.x / outputSize.x,
+                               1.0 - position.y / outputSize.y);
+      float2 uv = (position - textOrigin) / textExtent;
+      uv.y = 1.0 - uv.y;
+      float2 size = textSize / min(textSize.x, textSize.y) * 720.0 * minimumLineColumn;
+      float maskX = (uv.x + 200.0 / size.x) / (1.0 + 200.0 / size.x);
+      if (passIndex < 0.5) {
+        float4 result = float4(0.0);
+        float weight = 1.0;
+        float uvTime = 0.0;
+        for (int index = 0; index < 10; ++index) {
+          float time = progress - float(index) * 0.011;
+          float mask = mix(curve(time), 0.0, maskX);
+          float rawTime = 2.0 * time - (1.0 - mask) * maskX;
+          uvTime = rawTime;
+          float opacity = curve(clamp(rawTime, 0.0, 1.0));
+          float2 offset = (1.0 - opacity) * float2(-200.0, 700.0) / size;
+          float4 layer = sampleCut(uv - offset) * opacity * weight;
+          result = result * (1.0 - layer.a) + layer;
+          weight *= 0.83;
+        }
+        return half4(mix(result, sampleCut(uv), smoothstep(0.6, 0.95, uvTime)));
+      }
+      float blur = mix(1.0 - smoothstep(0.3, 0.6, progress),
+                       1.0 - smoothstep(0.75, 1.0, progress),
+                       smoothstep(mix(0.0, 0.5, progress), 1.0, maskX));
+      float2 axis = float2(1.0, 0.0);
+      float2 samplePosition = screenUv;
+      if (passIndex > 1.5) {
+        float maskY = uv.y / (1.0 + 700.0 / size.y);
+        float2 noiseUv = float2(maskX, maskY) + float2(0.0, 0.1) * progress;
+        float2 fullSize = size + float2(200.0, 700.0);
+        if (fullSize.x > fullSize.y) noiseUv.x *= fullSize.x / fullSize.y;
+        else noiseUv.y *= fullSize.y / fullSize.x;
+        noiseUv *= 17.0 * minimumLineColumn;
+        float2 noise = float2(lineNoise(noiseUv, 12.32), lineNoise(noiseUv, 11.24)) - 0.5;
+        float noiseIntensity = smoothstep(-1.0 + 2.0 * progress,
+                                          2.0 * progress, maskX);
+        samplePosition += 1.8 * noise * noiseIntensity * parentScale / textSize;
+        axis = float2(0.0, 1.0);
+      }
+      float2 stepSize = parentScale * blur * axis / (size / minimumLineColumn);
+      float weights[9];
+      weights[0] = 0.20; weights[1] = 0.19; weights[2] = 0.17;
+      weights[3] = 0.15; weights[4] = 0.13; weights[5] = 0.11;
+      weights[6] = 0.08; weights[7] = 0.05; weights[8] = 0.02;
+      float4 result = sampleUv(samplePosition) * weights[0];
+      float total = weights[0];
+      for (int index = 1; index < 9; ++index) {
+        result += (sampleUv(samplePosition + float(index) * stepSize) +
+                   sampleUv(samplePosition - float(index) * stepSize)) * weights[index];
+        total += 2.0 * weights[index];
+      }
+      return half4(result / total);
+    }
+  

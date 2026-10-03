@@ -1,0 +1,405 @@
+{
+  "format": "videocut.text-effect-program",
+  "programs": [
+    {
+      "program_id": "com.videocut.text.qt-type.anim-studio-lumi-optics.program.custom-selector",
+      "random_seed": 50,
+      "stages": [
+        {
+          "stage_id": "manual-static-selector",
+          "kind": "per_unit",
+          "register_count": 37,
+          "instructions": [
+            {
+              "opcode": "input",
+              "input_registers": [],
+              "immediates": [],
+              "input": "time_us",
+              "output_register": 0
+            },
+            {
+              "opcode": "constant",
+              "input_registers": [],
+              "immediates": [
+                0.000001
+              ],
+              "input": null,
+              "output_register": 1
+            },
+            {
+              "opcode": "multiply",
+              "input_registers": [
+                0,
+                1
+              ],
+              "immediates": [],
+              "input": null,
+              "output_register": 2
+            },
+            {
+              "opcode": "constant",
+              "input_registers": [],
+              "immediates": [
+                5.0
+              ],
+              "input": null,
+              "output_register": 3
+            },
+            {
+              "opcode": "multiply",
+              "input_registers": [
+                2,
+                3
+              ],
+              "immediates": [],
+              "input": null,
+              "output_register": 4
+            },
+            {
+              "opcode": "floor",
+              "input_registers": [
+                4
+              ],
+              "immediates": [],
+              "input": null,
+              "output_register": 5
+            },
+            {
+              "opcode": "input",
+              "input_registers": [],
+              "immediates": [],
+              "input": "unit_index",
+              "output_register": 6
+            },
+            {
+              "opcode": "add",
+              "input_registers": [
+                6,
+                5
+              ],
+              "immediates": [],
+              "input": null,
+              "output_register": 7
+            },
+            {
+              "opcode": "constant",
+              "input_registers": [],
+              "immediates": [
+                1.67
+              ],
+              "input": null,
+              "output_register": 8
+            },
+            {
+              "opcode": "add",
+              "input_registers": [
+                7,
+                8
+              ],
+              "immediates": [],
+              "input": null,
+              "output_register": 9
+            },
+            {
+              "opcode": "sine",
+              "input_registers": [
+                9
+              ],
+              "immediates": [],
+              "input": null,
+              "output_register": 10
+            },
+            {
+              "opcode": "constant",
+              "input_registers": [],
+              "immediates": [
+                113.709
+              ],
+              "input": null,
+              "output_register": 11
+            },
+            {
+              "opcode": "multiply",
+              "input_registers": [
+                10,
+                11
+              ],
+              "immediates": [],
+              "input": null,
+              "output_register": 12
+            },
+            {
+              "opcode": "floor",
+              "input_registers": [
+                12
+              ],
+              "immediates": [],
+              "input": null,
+              "output_register": 13
+            },
+            {
+              "opcode": "subtract",
+              "input_registers": [
+                12,
+                13
+              ],
+              "immediates": [],
+              "input": null,
+              "output_register": 14
+            },
+            {
+              "opcode": "constant",
+              "input_registers": [],
+              "immediates": [
+                2.0
+              ],
+              "input": null,
+              "output_register": 15
+            },
+            {
+              "opcode": "multiply",
+              "input_registers": [
+                14,
+                15
+              ],
+              "immediates": [],
+              "input": null,
+              "output_register": 16
+            },
+            {
+              "opcode": "constant",
+              "input_registers": [],
+              "immediates": [
+                1.0
+              ],
+              "input": null,
+              "output_register": 17
+            },
+            {
+              "opcode": "subtract",
+              "input_registers": [
+                16,
+                17
+              ],
+              "immediates": [],
+              "input": null,
+              "output_register": 18
+            },
+            {
+              "opcode": "constant",
+              "input_registers": [],
+              "immediates": [
+                40.0
+              ],
+              "input": null,
+              "output_register": 19
+            },
+            {
+              "opcode": "multiply",
+              "input_registers": [
+                18,
+                19
+              ],
+              "immediates": [],
+              "input": null,
+              "output_register": 20
+            },
+            {
+              "opcode": "divide",
+              "input_registers": [
+                20,
+                19
+              ],
+              "immediates": [],
+              "input": null,
+              "output_register": 21
+            },
+            {
+              "opcode": "constant",
+              "input_registers": [],
+              "immediates": [
+                0.3
+              ],
+              "input": null,
+              "output_register": 22
+            },
+            {
+              "opcode": "multiply",
+              "input_registers": [
+                21,
+                22
+              ],
+              "immediates": [],
+              "input": null,
+              "output_register": 23
+            },
+            {
+              "opcode": "add",
+              "input_registers": [
+                17,
+                23
+              ],
+              "immediates": [],
+              "input": null,
+              "output_register": 24
+            },
+            {
+              "opcode": "add",
+              "input_registers": [
+                21,
+                17
+              ],
+              "immediates": [],
+              "input": null,
+              "output_register": 25
+            },
+            {
+              "opcode": "divide",
+              "input_registers": [
+                25,
+                15
+              ],
+              "immediates": [],
+              "input": null,
+              "output_register": 26
+            },
+            {
+              "opcode": "constant",
+              "input_registers": [],
+              "immediates": [
+                0.8
+              ],
+              "input": null,
+              "output_register": 27
+            },
+            {
+              "opcode": "multiply",
+              "input_registers": [
+                26,
+                27
+              ],
+              "immediates": [],
+              "input": null,
+              "output_register": 28
+            },
+            {
+              "opcode": "constant",
+              "input_registers": [],
+              "immediates": [
+                0.2
+              ],
+              "input": null,
+              "output_register": 29
+            },
+            {
+              "opcode": "add",
+              "input_registers": [
+                28,
+                29
+              ],
+              "immediates": [],
+              "input": null,
+              "output_register": 30
+            },
+            {
+              "opcode": "input",
+              "input_registers": [],
+              "immediates": [],
+              "input": "is_normal_unit",
+              "output_register": 31
+            },
+            {
+              "opcode": "constant",
+              "input_registers": [],
+              "immediates": [
+                0.0
+              ],
+              "input": null,
+              "output_register": 32
+            },
+            {
+              "opcode": "select",
+              "input_registers": [
+                31,
+                30,
+                17
+              ],
+              "immediates": [],
+              "input": null,
+              "output_register": 33
+            },
+            {
+              "opcode": "select",
+              "input_registers": [
+                31,
+                20,
+                32
+              ],
+              "immediates": [],
+              "input": null,
+              "output_register": 34
+            },
+            {
+              "opcode": "select",
+              "input_registers": [
+                31,
+                24,
+                17
+              ],
+              "immediates": [],
+              "input": null,
+              "output_register": 35
+            },
+            {
+              "opcode": "add",
+              "input_registers": [
+                6,
+                17
+              ],
+              "immediates": [],
+              "input": null,
+              "output_register": 36
+            }
+          ],
+          "outputs": [
+            {
+              "output": "opacity",
+              "register_index": 33,
+              "transform_index": 0
+            },
+            {
+              "output": "offset_z",
+              "register_index": 34,
+              "transform_index": 0
+            },
+            {
+              "output": "scale_x",
+              "register_index": 35,
+              "transform_index": 0
+            },
+            {
+              "output": "scale_y",
+              "register_index": 35,
+              "transform_index": 0
+            },
+            {
+              "output": "scale_z",
+              "register_index": 17,
+              "transform_index": 0
+            },
+            {
+              "output": "anchor_range_begin",
+              "register_index": 6,
+              "transform_index": 0
+            },
+            {
+              "output": "anchor_range_end",
+              "register_index": 36,
+              "transform_index": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

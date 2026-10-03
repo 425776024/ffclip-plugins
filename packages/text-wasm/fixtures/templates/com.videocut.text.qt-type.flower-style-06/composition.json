@@ -1,0 +1,558 @@
+{
+  "format": "videocut.text-template",
+  "id": "builtin.text.qt-type.flower-style-06",
+  "display": {
+    "name_key": "mediaTextTemplateQtTypeFlowerStyle06",
+    "fallback_name": "Qt Flower Style 06",
+    "category": "flower_preset",
+    "tags": [
+      "flower",
+      "qt-type",
+      "style"
+    ]
+  },
+  "placement": {
+    "default_duration_ticks": 600000,
+    "reference_width": 1920,
+    "reference_height": 1080
+  },
+  "bindings": [
+    {
+      "id": "content",
+      "kind": "plain_text",
+      "default": "Text",
+      "target": {
+        "paragraph_id": "paragraph-main",
+        "run_id": "run-main"
+      },
+      "content_slot_id": "content"
+    }
+  ],
+  "rules": [
+    {
+      "channel": "typography",
+      "mode": "replace",
+      "content_slot_id": "content",
+      "target_layer_id": "",
+      "semantic_role": ""
+    },
+    {
+      "channel": "glyph.fill",
+      "mode": "replace",
+      "content_slot_id": "content",
+      "target_layer_id": "",
+      "semantic_role": ""
+    },
+    {
+      "channel": "glyph.strokes",
+      "mode": "replace",
+      "content_slot_id": "content",
+      "target_layer_id": "",
+      "semantic_role": ""
+    },
+    {
+      "channel": "glyph.shadows",
+      "mode": "replace",
+      "content_slot_id": "content",
+      "target_layer_id": "",
+      "semantic_role": ""
+    },
+    {
+      "channel": "glyph.glows",
+      "mode": "replace",
+      "content_slot_id": "content",
+      "target_layer_id": "",
+      "semantic_role": ""
+    },
+    {
+      "channel": "layout",
+      "mode": "replace",
+      "content_slot_id": "content",
+      "target_layer_id": "",
+      "semantic_role": ""
+    },
+    {
+      "channel": "sdf.material",
+      "mode": "replace",
+      "content_slot_id": "content",
+      "target_layer_id": "",
+      "semantic_role": ""
+    }
+  ],
+  "document": {
+    "layout_box": {
+      "x": 260,
+      "y": 223.66267,
+      "width": 1400,
+      "height": 420,
+      "vertical_alignment": "center",
+      "clip_overflow": false,
+      "sizing_mode": "auto_height",
+      "minimum_width": 0.0,
+      "minimum_height": 0.0,
+      "minimum_fit_font_size": 1.0,
+      "maximum_fit_font_size": 4096.0,
+      "padding": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "pixel_snap": false
+    },
+    "writing_mode": "horizontal",
+    "content_slots": [
+      {
+        "slot_id": "content",
+        "semantic_role": "primary",
+        "paragraph_ids": [
+          "paragraph-main"
+        ],
+        "run_ids": [
+          "run-main"
+        ]
+      }
+    ],
+    "paragraphs": [
+      {
+        "id": "paragraph-main",
+        "style": {
+          "alignment": "center",
+          "direction": "auto",
+          "locale": "und",
+          "line_height": 1.0,
+          "max_lines": 2,
+          "overflow": "visible",
+          "wrap": "word"
+        },
+        "runs": [
+          {
+            "id": "run-main",
+            "text_binding": "content",
+            "locale": "und",
+            "style": {
+              "font": {
+                "primary": {
+                  "kind": "builtin",
+                  "family": "Inter",
+                  "postscript_name": "Inter-Regular",
+                  "weight": 400,
+                  "width": 5,
+                  "slant": "upright",
+                  "face_index": 0,
+                  "variation_axes": [],
+                  "asset_id": "builtin.font.inter.variable.v1",
+                  "platform": "",
+                  "face_fingerprint": "",
+                  "allow_system_glyph_fallback": true
+                },
+                "fallbacks": [],
+                "family": "Inter",
+                "postscript_name": "Inter-Regular",
+                "weight": 400,
+                "width": 5,
+                "slant": "upright",
+                "face_index": 0,
+                "variation_axes": [],
+                "features": [],
+                "allow_system_glyph_fallback": true
+              },
+              "font_size": 411.1111,
+              "letter_spacing": 0,
+              "word_spacing": 0.0,
+              "baseline_shift": 0.0,
+              "materials": {
+                "layers": [
+                  {
+                    "type": "shadow",
+                    "layer_id": "shadow-2",
+                    "z_order": 1,
+                    "blend": "source_over",
+                    "material": {
+                      "kind": "literal",
+                      "material": {
+                        "kind": "solid",
+                        "color": [
+                          0.7529412,
+                          0.0,
+                          0.0,
+                          1.0
+                        ]
+                      }
+                    },
+                    "shadow_kind": "outer",
+                    "offset_x": 0.006128834,
+                    "offset_y": 35.102566,
+                    "blur_radius": 0.0,
+                    "spread": 0.0,
+                    "thickness_angle_degrees": 45.0,
+                    "thickness_distance": 0.0,
+                    "smoothing": "feather",
+                    "round_mask_intensity": 0.0,
+                    "offset_polar": {
+                      "radius_normalized": 0.060941953,
+                      "angle_radians": -1.5706217
+                    },
+                    "strokes": [
+                      {
+                        "type": "stroke",
+                        "layer_id": "shadow-2-stroke-1",
+                        "z_order": 1,
+                        "blend": "source_over",
+                        "material": {
+                          "kind": "literal",
+                          "material": {
+                            "kind": "linear_gradient",
+                            "stops": [
+                              {
+                                "offset": 0.32964602,
+                                "color": [
+                                  0.8,
+                                  0.0,
+                                  0.3019608,
+                                  1.0
+                                ]
+                              },
+                              {
+                                "offset": 0.50884956,
+                                "color": [
+                                  1.0,
+                                  0.45882353,
+                                  0.5803922,
+                                  1.0
+                                ]
+                              },
+                              {
+                                "offset": 0.71460176,
+                                "color": [
+                                  0.77254903,
+                                  0.0,
+                                  0.2901961,
+                                  1.0
+                                ]
+                              }
+                            ],
+                            "start": [
+                              0.0,
+                              0.5
+                            ],
+                            "end": [
+                              1.0,
+                              0.5
+                            ],
+                            "spread": "clamp",
+                            "sampling": "rgba8_lut_256",
+                            "coordinates": {
+                              "space": "grapheme",
+                              "outset": 172.0,
+                              "scale": 1.0
+                            }
+                          }
+                        },
+                        "width": 0.0,
+                        "inner_ring_width": 0.0,
+                        "offset_x": 0.0,
+                        "offset_y": 0.0,
+                        "blur_radius": 0.0,
+                        "spread": 53.80513
+                      }
+                    ]
+                  },
+                  {
+                    "type": "shadow",
+                    "layer_id": "shadow-1",
+                    "z_order": 4,
+                    "blend": "source_over",
+                    "material": {
+                      "kind": "literal",
+                      "material": {
+                        "kind": "solid",
+                        "color": [
+                          0.7529412,
+                          0.0,
+                          0.4627451,
+                          1.0
+                        ]
+                      }
+                    },
+                    "shadow_kind": "outer",
+                    "offset_x": 0.0014723925,
+                    "offset_y": 8.433048,
+                    "blur_radius": 1.4700855,
+                    "spread": 0.0,
+                    "thickness_angle_degrees": 45.0,
+                    "thickness_distance": 0.0,
+                    "smoothing": "feather",
+                    "round_mask_intensity": 0.0,
+                    "offset_polar": {
+                      "radius_normalized": 0.014640708,
+                      "angle_radians": -1.5706217
+                    },
+                    "strokes": [
+                      {
+                        "type": "stroke",
+                        "layer_id": "shadow-1-stroke-1",
+                        "z_order": 4,
+                        "blend": "source_over",
+                        "material": {
+                          "kind": "literal",
+                          "material": {
+                            "kind": "linear_gradient",
+                            "stops": [
+                              {
+                                "offset": 0.25,
+                                "color": [
+                                  0.98039216,
+                                  0.13725491,
+                                  0.63529414,
+                                  1.0
+                                ]
+                              },
+                              {
+                                "offset": 0.69690263,
+                                "color": [
+                                  1.0,
+                                  0.0,
+                                  0.3764706,
+                                  1.0
+                                ]
+                              }
+                            ],
+                            "start": [
+                              0.5,
+                              0.0
+                            ],
+                            "end": [
+                              0.5,
+                              1.0
+                            ],
+                            "spread": "clamp",
+                            "sampling": "rgba8_lut_256",
+                            "coordinates": {
+                              "space": "grapheme",
+                              "outset": 172.0,
+                              "scale": 1.0
+                            }
+                          }
+                        },
+                        "width": 0.0,
+                        "inner_ring_width": 0.0,
+                        "offset_x": 0.0,
+                        "offset_y": 0.0,
+                        "blur_radius": 0.0,
+                        "spread": 35.28205
+                      },
+                      {
+                        "type": "stroke",
+                        "layer_id": "shadow-1-stroke-2",
+                        "z_order": 4,
+                        "blend": "source_over",
+                        "material": {
+                          "kind": "literal",
+                          "material": {
+                            "kind": "linear_gradient",
+                            "stops": [
+                              {
+                                "offset": 0.19690265,
+                                "color": [
+                                  1.0,
+                                  0.89411765,
+                                  0.9647059,
+                                  1.0
+                                ]
+                              },
+                              {
+                                "offset": 0.460177,
+                                "color": [
+                                  1.0,
+                                  1.0,
+                                  1.0,
+                                  1.0
+                                ]
+                              },
+                              {
+                                "offset": 0.7278761,
+                                "color": [
+                                  1.0,
+                                  0.8901961,
+                                  0.9647059,
+                                  1.0
+                                ]
+                              }
+                            ],
+                            "start": [
+                              0.0,
+                              0.5
+                            ],
+                            "end": [
+                              1.0,
+                              0.5
+                            ],
+                            "spread": "clamp",
+                            "sampling": "rgba8_lut_256",
+                            "coordinates": {
+                              "space": "grapheme",
+                              "outset": 172.0,
+                              "scale": 1.0
+                            }
+                          }
+                        },
+                        "width": 70.5641,
+                        "inner_ring_width": 0.0,
+                        "offset_x": 0.0,
+                        "offset_y": 0.0,
+                        "blur_radius": 0.0,
+                        "spread": 9.702564
+                      }
+                    ]
+                  },
+                  {
+                    "type": "stroke",
+                    "layer_id": "stroke-1",
+                    "z_order": 5,
+                    "blend": "source_over",
+                    "material": {
+                      "kind": "literal",
+                      "material": {
+                        "kind": "linear_gradient",
+                        "stops": [
+                          {
+                            "offset": 0.05088495575221239,
+                            "color": [
+                              0.9764705896377563,
+                              0.8666666746139526,
+                              0.1568627506494522,
+                              1
+                            ]
+                          },
+                          {
+                            "offset": 0.4446902654867257,
+                            "color": [
+                              1.0,
+                              0.9647058844566345,
+                              0.45098039507865906,
+                              1
+                            ]
+                          },
+                          {
+                            "offset": 1.0,
+                            "color": [
+                              0.9921568632125854,
+                              0.7921568751335144,
+                              0.12941177189350128,
+                              1
+                            ]
+                          }
+                        ],
+                        "start": [
+                          0.49999999999999994,
+                          0
+                        ],
+                        "end": [
+                          0.5,
+                          1
+                        ],
+                        "spread": "clamp",
+                        "sampling": "rgba8_lut_256",
+                        "coordinates": {
+                          "space": "grapheme",
+                          "outset": 172.0,
+                          "scale": 0.59999996
+                        }
+                      }
+                    },
+                    "width": 0,
+                    "inner_ring_width": 0.0,
+                    "offset_x": 0.0,
+                    "offset_y": 0.0,
+                    "blur_radius": 0.0,
+                    "spread": 0.0
+                  },
+                  {
+                    "type": "fill",
+                    "layer_id": "fill",
+                    "z_order": 6,
+                    "blend": "source_over",
+                    "material": {
+                      "kind": "editable_slot",
+                      "semantic_role": "glyph.primaryFill",
+                      "fallback": {
+                        "kind": "solid",
+                        "color": [
+                          0.99215686,
+                          0.99215686,
+                          0.9843137,
+                          1.0
+                        ]
+                      }
+                    }
+                  }
+                ]
+              },
+              "background": {
+                "enabled": false,
+                "color": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "padding": {
+                  "left": 0,
+                  "top": 0,
+                  "right": 0,
+                  "bottom": 0
+                },
+                "corner_radius": 0
+              },
+              "decoration": {
+                "underline": {
+                  "enabled": false
+                },
+                "strike_through": {
+                  "enabled": false
+                }
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "appearance": {
+    "backdrops": {
+      "layers": []
+    },
+    "sdf_material": {
+      "enabled": true,
+      "source_design_width": 7.2E+2,
+      "source_design_height": 1.28E+3,
+      "distance_range": 172.0,
+      "raster_distance_range": 61.199997,
+      "smoothing_scale": 0.6
+    },
+    "bend": {
+      "enabled": false,
+      "amount": 0.0
+    },
+    "path": {
+      "enabled": false,
+      "geometry_id": "",
+      "commands": [],
+      "start_offset": 0.0,
+      "baseline_offset": 0.0,
+      "overflow": "clip",
+      "loop": false,
+      "rotate_to_tangent": true,
+      "keep_upright": true
+    },
+    "visual_extent": {
+      "allow_control_overflow": true,
+      "maximum_extent_width": 1840,
+      "maximum_extent_height": 900
+    },
+    "global_alpha": 1.0
+  },
+  "decorations": [],
+  "resources": []
+}

@@ -1,0 +1,427 @@
+{
+  "profile": "scalar-simd-raster-comparison-v1",
+  "scope": "640x360 premultiplied RGBA, six recipes, two Chinese bindings and four times each. External-composition cases compare text raster and native plans, not GPU post effects.",
+  "cases": [
+    {
+      "id": "studio-glow",
+      "samples": [
+        {
+          "text": "绽放",
+          "timeUs": 350000,
+          "max": 1,
+          "mean": 0.003832465277777778,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "text": "绽放",
+          "timeUs": 1000000,
+          "max": 1,
+          "mean": 0.0025303819444444445,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "text": "绽放",
+          "timeUs": 1800000,
+          "max": 1,
+          "mean": 0.002964409722222222,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "text": "绽放",
+          "timeUs": 2600000,
+          "max": 1,
+          "mean": 0.002230902777777778,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "text": "文字动画",
+          "timeUs": 350000,
+          "max": 1,
+          "mean": 0.0010416666666666667,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "text": "文字动画",
+          "timeUs": 1000000,
+          "max": 2,
+          "mean": 0.004761284722222222,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "text": "文字动画",
+          "timeUs": 1800000,
+          "max": 1,
+          "mean": 0.0029383680555555556,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "text": "文字动画",
+          "timeUs": 2600000,
+          "max": 1,
+          "mean": 0.00040364583333333333,
+          "fractionOver2": 0,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "id": "studio-radial",
+      "samples": [
+        {
+          "text": "闪耀",
+          "timeUs": 350000,
+          "max": 2,
+          "mean": 0.011827256944444444,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "text": "闪耀",
+          "timeUs": 1000000,
+          "max": 1,
+          "mean": 0.004162326388888889,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "text": "闪耀",
+          "timeUs": 1800000,
+          "max": 1,
+          "mean": 0.0015234375,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "text": "闪耀",
+          "timeUs": 2600000,
+          "max": 0,
+          "mean": 0,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "text": "文字动画",
+          "timeUs": 350000,
+          "max": 2,
+          "mean": 0.0069097222222222225,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "text": "文字动画",
+          "timeUs": 1000000,
+          "max": 1,
+          "mean": 0.001193576388888889,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "text": "文字动画",
+          "timeUs": 1800000,
+          "max": 1,
+          "mean": 0.008172743055555556,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "text": "文字动画",
+          "timeUs": 2600000,
+          "max": 0,
+          "mean": 0,
+          "fractionOver2": 0,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "id": "pattern-flower",
+      "samples": [
+        {
+          "text": "花字",
+          "timeUs": 350000,
+          "max": 2,
+          "mean": 0.0024207899305555554,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "text": "花字",
+          "timeUs": 1000000,
+          "max": 2,
+          "mean": 0.0033072916666666667,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "text": "花字",
+          "timeUs": 1800000,
+          "max": 2,
+          "mean": 0.0026627604166666666,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "text": "花字",
+          "timeUs": 2600000,
+          "max": 3,
+          "mean": 0.008271484375,
+          "fractionOver2": 0.000028211805555555554,
+          "passed": true
+        },
+        {
+          "text": "文字动画",
+          "timeUs": 350000,
+          "max": 2,
+          "mean": 0.0033582899305555558,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "text": "文字动画",
+          "timeUs": 1000000,
+          "max": 3,
+          "mean": 0.004338107638888889,
+          "fractionOver2": 0.000008680555555555556,
+          "passed": true
+        },
+        {
+          "text": "文字动画",
+          "timeUs": 1800000,
+          "max": 2,
+          "mean": 0.0019509548611111112,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "text": "文字动画",
+          "timeUs": 2600000,
+          "max": 3,
+          "mean": 0.004888237847222222,
+          "fractionOver2": 0.000028211805555555554,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "id": "layered-flower",
+      "samples": [
+        {
+          "text": "心动",
+          "timeUs": 350000,
+          "max": 0,
+          "mean": 0,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "text": "心动",
+          "timeUs": 1000000,
+          "max": 1,
+          "mean": 0.0000032552083333333335,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "text": "心动",
+          "timeUs": 1800000,
+          "max": 1,
+          "mean": 0.0000010850694444444444,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "text": "心动",
+          "timeUs": 2600000,
+          "max": 2,
+          "mean": 0.014292534722222222,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "text": "文字动画",
+          "timeUs": 350000,
+          "max": 0,
+          "mean": 0,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "text": "文字动画",
+          "timeUs": 1000000,
+          "max": 1,
+          "mean": 0.0000010850694444444444,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "text": "文字动画",
+          "timeUs": 1800000,
+          "max": 1,
+          "mean": 0.0000010850694444444444,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "text": "文字动画",
+          "timeUs": 2600000,
+          "max": 2,
+          "mean": 0.00521484375,
+          "fractionOver2": 0,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "id": "cube",
+      "samples": [
+        {
+          "text": "空间",
+          "timeUs": 350000,
+          "max": 0,
+          "mean": 0,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "text": "空间",
+          "timeUs": 1000000,
+          "max": 0,
+          "mean": 0,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "text": "空间",
+          "timeUs": 1800000,
+          "max": 0,
+          "mean": 0,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "text": "空间",
+          "timeUs": 2600000,
+          "max": 0,
+          "mean": 0,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "text": "文字动画",
+          "timeUs": 350000,
+          "max": 0,
+          "mean": 0,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "text": "文字动画",
+          "timeUs": 1000000,
+          "max": 0,
+          "mean": 0,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "text": "文字动画",
+          "timeUs": 1800000,
+          "max": 0,
+          "mean": 0,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "text": "文字动画",
+          "timeUs": 2600000,
+          "max": 0,
+          "mean": 0,
+          "fractionOver2": 0,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "id": "printer",
+      "samples": [
+        {
+          "text": "文字动画",
+          "timeUs": 350000,
+          "max": 1,
+          "mean": 0.00016927083333333334,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "text": "文字动画",
+          "timeUs": 1000000,
+          "max": 1,
+          "mean": 0.0014453125,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "text": "文字动画",
+          "timeUs": 1800000,
+          "max": 1,
+          "mean": 0.0012847222222222223,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "text": "文字动画",
+          "timeUs": 2600000,
+          "max": 1,
+          "mean": 0.0010416666666666667,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "text": "文字动画",
+          "timeUs": 350000,
+          "max": 1,
+          "mean": 0.00016927083333333334,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "text": "文字动画",
+          "timeUs": 1000000,
+          "max": 1,
+          "mean": 0.0014453125,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "text": "文字动画",
+          "timeUs": 1800000,
+          "max": 1,
+          "mean": 0.0012847222222222223,
+          "fractionOver2": 0,
+          "passed": true
+        },
+        {
+          "text": "文字动画",
+          "timeUs": 2600000,
+          "max": 1,
+          "mean": 0.0010416666666666667,
+          "fractionOver2": 0,
+          "passed": true
+        }
+      ],
+      "passed": true
+    }
+  ],
+  "passed": true
+}

@@ -1,0 +1,198 @@
+{
+  "format": "videocut.text-animation",
+  "animation": {
+    "layers": [
+      {
+        "id": "lua-controller-layer",
+        "enabled": true,
+        "combine_mode": "replace",
+        "requires_timed_text": false,
+        "time_driver": {
+          "kind": "enter_phase",
+          "duration_us": 3000000,
+          "playback": "once"
+        },
+        "animators": [
+          {
+            "id": "lua-controller-selector",
+            "paragraph_ids": [],
+            "run_ids": [],
+            "position_mode": "absolute_pixels",
+            "anchor": "glyph_center",
+            "anchor_basis": "letter",
+            "anchor_mode": "fixed",
+            "anchor_offset_x": 0.0,
+            "anchor_offset_y": 0.0,
+            "presentation": "transform",
+            "fade_fraction": 0.0,
+            "selectors": [
+              {
+                "kind": "range",
+                "based_on": "grapheme",
+                "range_start": 0.0,
+                "range_end": 1.0,
+                "offset": 0.0,
+                "stagger": 0.0,
+                "edge_smooth": 0.0,
+                "constrained": true,
+                "shape": "square",
+                "order": "forward",
+                "random_seed": 50.0,
+                "intensity": 1.0,
+                "intensity_start": 0.0,
+                "intensity_end": 1.0,
+                "time_start_1": 0.0,
+                "time_start_2": 0.0,
+                "time_end_1": 1.0,
+                "time_end_2": 1.0,
+                "time_cycle": false
+              }
+            ],
+            "tracks": [],
+            "projection": {
+              "kind": "perspective_3d",
+              "field_of_view_degrees": 45.0,
+              "vanishing_point_x": 0.5,
+              "vanishing_point_y": 0.5
+            },
+            "effect_program_id": "com.videocut.text.qt-type.anim-lua-three-mesh-rt.program.controller"
+          }
+        ],
+        "render_group": {
+          "mode": "page",
+          "expand_ratio_x": 1,
+          "expand_ratio_y": 1
+        },
+        "post_effects": []
+      }
+    ],
+    "execution_graph": {
+      "nodes": [
+        {
+          "id": "layout",
+          "node_kind": "layout",
+          "capability": "layout_glyph_run",
+          "input_ids": []
+        },
+        {
+          "id": "selector",
+          "node_kind": "selector",
+          "capability": "selector_base",
+          "input_ids": [
+            "layout"
+          ]
+        },
+        {
+          "id": "operator-program",
+          "node_kind": "operator",
+          "capability": "operator_program",
+          "input_ids": [
+            "selector"
+          ]
+        },
+        {
+          "id": "source-rt",
+          "node_kind": "render_target",
+          "capability": "render_target_offscreen",
+          "input_ids": [
+            "operator-program"
+          ]
+        },
+        {
+          "id": "history-read",
+          "node_kind": "history",
+          "capability": "history_feedback",
+          "history_id": "intensity-history",
+          "input_ids": []
+        },
+        {
+          "id": "feedback",
+          "node_kind": "material_pass",
+          "capability": "material_multimesh_text_composite",
+          "input_ids": [
+            "source-rt",
+            "history-read"
+          ]
+        },
+        {
+          "id": "history-write",
+          "node_kind": "history",
+          "capability": "history_feedback",
+          "history_id": "intensity-history",
+          "input_ids": [
+            "feedback"
+          ]
+        },
+        {
+          "id": "blur-x",
+          "node_kind": "material_pass",
+          "capability": "material_separable_gaussian_blur",
+          "input_ids": [
+            "history-write"
+          ]
+        },
+        {
+          "id": "blur-y",
+          "node_kind": "material_pass",
+          "capability": "material_separable_gaussian_blur",
+          "input_ids": [
+            "blur-x"
+          ]
+        },
+        {
+          "id": "sum-x",
+          "node_kind": "material_pass",
+          "capability": "material_separable_gaussian_blur",
+          "input_ids": [
+            "blur-y"
+          ]
+        },
+        {
+          "id": "sum-y",
+          "node_kind": "material_pass",
+          "capability": "material_separable_gaussian_blur",
+          "input_ids": [
+            "sum-x"
+          ]
+        },
+        {
+          "id": "color-lut",
+          "node_kind": "media_input",
+          "capability": "media_image",
+          "resource_ids": [
+            "assets/imgs/color2.png"
+          ],
+          "input_ids": []
+        },
+        {
+          "id": "default-color-lut",
+          "node_kind": "media_input",
+          "capability": "media_image",
+          "resource_ids": [
+            "assets/imgs/color.png"
+          ],
+          "input_ids": []
+        },
+        {
+          "id": "material-composite",
+          "node_kind": "material_pass",
+          "capability": "material_multimesh_text_composite",
+          "input_ids": [
+            "source-rt",
+            "sum-y",
+            "color-lut",
+            "default-color-lut"
+          ]
+        },
+        {
+          "id": "composite",
+          "node_kind": "composite",
+          "capability": "composite_source_over",
+          "input_ids": [
+            "material-composite"
+          ]
+        }
+      ]
+    }
+  }
+}

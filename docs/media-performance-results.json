@@ -1,0 +1,366 @@
+{
+  "phase": "complete",
+  "started": "2026-09-29T13:56:52.588Z",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36",
+  "longAudioFreshCache": true,
+  "results": [
+    {
+      "name": "ntsc_2997_pts",
+      "milliseconds": 221.10000002384186,
+      "value": {
+        "cold": {
+          "n": 16,
+          "min": 3.700000047683716,
+          "median": 15.700000047683716,
+          "p95": 32.700000047683716,
+          "max": 32.700000047683716
+        },
+        "warm": {
+          "n": 16,
+          "min": 0,
+          "median": 0,
+          "p95": 0.09999990463256836,
+          "max": 0.09999990463256836
+        },
+        "cacheHits": 16,
+        "actual": [
+          {
+            "requested": 0,
+            "expected": 0,
+            "actual": 0
+          },
+          {
+            "requested": 0.001,
+            "expected": 0,
+            "actual": 0
+          },
+          {
+            "requested": 0.033366,
+            "expected": 0,
+            "actual": 0
+          },
+          {
+            "requested": 0.033367,
+            "expected": 0.03336666666666667,
+            "actual": 0.03336666666666667
+          },
+          {
+            "requested": 0.1,
+            "expected": 0.06673333333333334,
+            "actual": 0.06673333333333334
+          },
+          {
+            "requested": 0.333333,
+            "expected": 0.3003,
+            "actual": 0.3003
+          },
+          {
+            "requested": 0.999,
+            "expected": 0.9676333333333333,
+            "actual": 0.9676333333333333
+          },
+          {
+            "requested": 1.001,
+            "expected": 1.001,
+            "actual": 1.001
+          },
+          {
+            "requested": 1.999,
+            "expected": 1.9686333333333332,
+            "actual": 1.9686333333333332
+          },
+          {
+            "requested": 2,
+            "expected": 1.9686333333333332,
+            "actual": 1.9686333333333332
+          },
+          {
+            "requested": 2.001,
+            "expected": 1.9686333333333332,
+            "actual": 1.9686333333333332
+          },
+          {
+            "requested": 2.067,
+            "expected": 2.0353666666666665,
+            "actual": 2.0353666666666665
+          },
+          {
+            "requested": 2.101,
+            "expected": 2.0687333333333333,
+            "actual": 2.0687333333333333
+          },
+          {
+            "requested": 2.8,
+            "expected": 2.769433333333333,
+            "actual": 2.769433333333333
+          },
+          {
+            "requested": 3.4,
+            "expected": 3.370033333333333,
+            "actual": 3.370033333333333
+          },
+          {
+            "requested": 3.99,
+            "expected": 3.9706333333333332,
+            "actual": 3.9706333333333332
+          }
+        ]
+      }
+    },
+    {
+      "name": "vfr_pts",
+      "milliseconds": 221.19999992847443,
+      "value": {
+        "cold": {
+          "n": 16,
+          "min": 4.299999952316284,
+          "median": 17.5,
+          "p95": 22.399999976158142,
+          "max": 22.399999976158142
+        },
+        "warm": {
+          "n": 16,
+          "min": 0,
+          "median": 0,
+          "p95": 0.10000002384185791,
+          "max": 0.10000002384185791
+        },
+        "cacheHits": 16,
+        "actual": [
+          {
+            "requested": 0,
+            "expected": 0,
+            "actual": 0
+          },
+          {
+            "requested": 0.001,
+            "expected": 0,
+            "actual": 0
+          },
+          {
+            "requested": 0.033366,
+            "expected": 0,
+            "actual": 0
+          },
+          {
+            "requested": 0.033367,
+            "expected": 0.03336666666666667,
+            "actual": 0.03336666666666667
+          },
+          {
+            "requested": 0.1,
+            "expected": 0.06673333333333334,
+            "actual": 0.06673333333333334
+          },
+          {
+            "requested": 0.333333,
+            "expected": 0.3003,
+            "actual": 0.3003
+          },
+          {
+            "requested": 0.999,
+            "expected": 0.9676333333333333,
+            "actual": 0.9676333333333333
+          },
+          {
+            "requested": 1.001,
+            "expected": 1.001,
+            "actual": 1.001
+          },
+          {
+            "requested": 1.999,
+            "expected": 1.9686333333333332,
+            "actual": 1.9686333333333332
+          },
+          {
+            "requested": 2,
+            "expected": 1.9686333333333332,
+            "actual": 1.9686333333333332
+          },
+          {
+            "requested": 2.001,
+            "expected": 1.9686333333333332,
+            "actual": 1.9686333333333332
+          },
+          {
+            "requested": 2.067,
+            "expected": 2.002,
+            "actual": 2.002
+          },
+          {
+            "requested": 2.101,
+            "expected": 2.002,
+            "actual": 2.002
+          },
+          {
+            "requested": 2.8,
+            "expected": 2.7027,
+            "actual": 2.7027
+          },
+          {
+            "requested": 3.4,
+            "expected": 3.3033,
+            "actual": 3.3033
+          },
+          {
+            "requested": 3.99,
+            "expected": 3.9039,
+            "actual": 3.9039
+          }
+        ]
+      }
+    },
+    {
+      "name": "cache_identity_across_sessions",
+      "milliseconds": 5,
+      "value": {
+        "cacheHits": 1,
+        "newDecodeJobs": 0
+      }
+    },
+    {
+      "name": "sequential_vfr_cursor",
+      "milliseconds": 73.10000002384186,
+      "value": {
+        "samples": 123,
+        "latency": {
+          "n": 120,
+          "min": 0,
+          "median": 0.10000002384185791,
+          "p95": 0.7000000476837158,
+          "max": 3.799999952316284
+        }
+      }
+    },
+    {
+      "name": "bounded_parallel_decoders",
+      "milliseconds": 82.29999995231628,
+      "value": {
+        "requests": 8,
+        "observedActiveJobs": 2,
+        "configuredConcurrency": 2
+      }
+    },
+    {
+      "name": "shared_decode_and_cancellation",
+      "milliseconds": 11.200000047683716,
+      "value": {
+        "consumers": 12,
+        "decodeJobs": 1,
+        "cancelResponseMs": 1.899999976158142
+      }
+    },
+    {
+      "name": "stereo_numeric_waveform",
+      "milliseconds": 4.299999952316284,
+      "value": {
+        "channels": [
+          {
+            "min": -0.29998779296875,
+            "max": 0.29998779296875
+          },
+          {
+            "min": -0.29998779296875,
+            "max": 0.29998779296875
+          }
+        ],
+        "columns": 1600
+      }
+    },
+    {
+      "name": "clip_visual_worker_dpr",
+      "milliseconds": 110.09999990463257,
+      "value": {
+        "dpr": 2,
+        "canvasWidth": 1442,
+        "cssWidth": 720.71875,
+        "firstPTS": "0.2002",
+        "lastPTS": "3.9706333333333332",
+        "worker": {
+          "sources": 1,
+          "frameBytes": 454400,
+          "pcmBytes": 0,
+          "waveformBytes": 12032,
+          "frameHits": 0,
+          "frameMisses": 10,
+          "activeJobs": 0,
+          "completed": 2,
+          "cancelled": 0
+        }
+      }
+    },
+    {
+      "name": "complete_one_hour_stereo_waveform",
+      "milliseconds": 8638.300000071526,
+      "value": {
+        "duration": 3600,
+        "columns": 7200,
+        "leftPulses": 360,
+        "rightPulses": 360,
+        "lastLeftPeak": 0.8999999761581421,
+        "lastRightPeak": -0.8000000715255737,
+        "cache": {
+          "sources": 4,
+          "frameBytes": 8241952,
+          "pcmBytes": 0,
+          "waveformBytes": 16757856,
+          "frameHits": 33,
+          "frameMisses": 308,
+          "activeJobs": 0,
+          "completed": 402,
+          "cancelled": 1
+        }
+      }
+    },
+    {
+      "name": "one_hour_waveform_warm_cache",
+      "milliseconds": 83.09999990463257,
+      "value": {
+        "before": {
+          "sources": 4,
+          "frameBytes": 8241952,
+          "pcmBytes": 0,
+          "waveformBytes": 16757856,
+          "frameHits": 33,
+          "frameMisses": 308,
+          "activeJobs": 0,
+          "completed": 402,
+          "cancelled": 1
+        },
+        "after": {
+          "sources": 4,
+          "frameBytes": 8241952,
+          "pcmBytes": 0,
+          "waveformBytes": 16757856,
+          "frameHits": 33,
+          "frameMisses": 308,
+          "activeJobs": 0,
+          "completed": 762,
+          "cancelled": 1
+        }
+      }
+    }
+  ],
+  "logs": [],
+  "longAudioAnalyzedSeconds": 3600,
+  "completed": "2026-09-29T13:57:02.227Z",
+  "maximum": {
+    "frameBytes": 8241952,
+    "pcmBytes": 0,
+    "waveformBytes": 16757856,
+    "activeJobs": 2,
+    "sources": 4,
+    "jsHeapBytes": 131744906
+  },
+  "final": {
+    "sources": 4,
+    "frameBytes": 8241952,
+    "pcmBytes": 0,
+    "waveformBytes": 16757856,
+    "frameHits": 33,
+    "frameMisses": 308,
+    "activeJobs": 0,
+    "completed": 762,
+    "cancelled": 1
+  }
+}

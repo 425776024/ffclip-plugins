@@ -1,0 +1,41 @@
+
+    uniform shader inputTexture;
+    uniform float2 textureSize;
+    uniform float chokeAmount;
+
+    float binaryAlpha(float2 uv) {
+      if (uv.x < 0.0 || uv.x > 1.0 || uv.y < 0.0 || uv.y > 1.0)
+        return 0.0;
+      return step(0.5, inputTexture.eval(uv * textureSize).a);
+    }
+
+    float4 main(float2 xy) {
+      float2 uv = xy / textureSize;
+      float matte = inputTexture.eval(xy).a;
+      float radius = abs(chokeAmount) * 1.5;
+      if (radius > 0.0) {
+        float weightedAlpha = 0.0;
+        float weightSum = 0.0;
+        for (int ring = 0; ring < 8; ++ring) {
+          float ringRadius = radius * (float(ring + 1) / 8.0);
+          int directionCount = 8 * (ring + 1);
+          float weight = 1.0 - float(ring) / 8.0;
+          for (int direction = 0; direction < 64; ++direction) {
+            if (direction < directionCount) {
+              float angle = float(direction) * 6.2831854820251465 /
+                            float(directionCount);
+              float2 sampleUv = uv +
+                  float2(cos(angle), sin(angle)) * ringRadius / textureSize;
+              weightedAlpha += binaryAlpha(sampleUv) * weight;
+              weightSum += weight;
+            }
+          }
+        }
+        float average = weightedAlpha / weightSum;
+        matte = chokeAmount > 0.0
+            ? smoothstep(0.800000011920929, 0.810000002384186, average)
+            : smoothstep(0.100000001490116, 0.109999999403954, average);
+      }
+      return float4(float3(matte), 1.0);
+    }
+  

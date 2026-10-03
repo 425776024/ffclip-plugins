@@ -1,0 +1,88 @@
+
+    uniform shader noiseTexture;
+    uniform shader inputTexture;
+    uniform float2 noiseSize;
+    uniform float2 textureSize;
+    uniform float brightness;
+    uniform float contrast;
+    uniform float quantity;
+    uniform float range;
+    uniform float turbulenceType;
+    uniform float motionTileType;
+
+    float2 unpackNoise(float4 value) {
+      return float2(value.r + value.g / 255.0,
+                    value.b + value.a / 255.0);
+    }
+
+    float contrastValue(float value) {
+      value += brightness;
+      return ((value - 0.5) * contrast * 10.0) + 0.5;
+    }
+
+    float validQt(float2 qtUv) {
+      return step(0.0, qtUv.x) * step(qtUv.x, 1.0) *
+             step(0.0, qtUv.y) * step(qtUv.y, 1.0);
+    }
+
+    float2 mirrorQt(float2 qtUv) {
+      return abs(mod(qtUv - float2(1.0), float2(2.0)) - float2(1.0));
+    }
+
+    float4 sampleNoiseTexel(float2 pixelCenter) {
+      // Skia child colors can be lowered to half on Metal. Recover the exact
+      // RGBA8 texel before doing float32 interpolation; the pinned Qt shader
+      // samples texture2d<float>, so its normalized bytes enter _f0 as float.
+      float4 value = float4(noiseTexture.eval(pixelCenter));
+      return floor(value * 255.0 + float4(0.5)) / 255.0;
+    }
+
+    float4 sampleNoiseQt(float2 qtUv) {
+      float2 pixel = float2(qtUv.x, 1.0 - qtUv.y) * noiseSize - float2(0.5);
+      float2 base = floor(pixel);
+      float2 weight = fract(pixel);
+      float4 lower = mix(sampleNoiseTexel(base + float2(0.5, 0.5)),
+                         sampleNoiseTexel(base + float2(1.5, 0.5)),
+                         weight.x);
+      float4 upper = mix(sampleNoiseTexel(base + float2(0.5, 1.5)),
+                         sampleNoiseTexel(base + float2(1.5, 1.5)),
+                         weight.x);
+      return mix(lower, upper, weight.y);
+    }
+
+    float4 sampleInputQt(float2 qtUv) {
+      return float4(inputTexture.eval(
+          float2(qtUv.x, 1.0 - qtUv.y) * textureSize));
+    }
+
+    float4 main(float2 xy) {
+      float2 skUv = xy / textureSize;
+      float2 qtUv = float2(skUv.x, 1.0 - skUv.y);
+      float2 noise = unpackNoise(sampleNoiseQt(qtUv));
+      noise = float2(contrastValue(noise.x), contrastValue(noise.y));
+      float minimumSize = min(textureSize.x, textureSize.y);
+      noise.x = ((noise.x - 0.5) * minimumSize) / textureSize.x + 0.5;
+      noise.y = ((noise.y - 0.5) * minimumSize) / textureSize.y + 0.5;
+      float strength = clamp(quantity,
+          0.00999999977648258209228515625, 1.0) * range;
+      float2 displaced = qtUv;
+      if (turbulenceType < 0.5) {
+        displaced += (noise - float2(0.5)) * strength;
+      } else if (turbulenceType < 1.5) {
+        displaced.x += (noise.x - 0.5) * strength;
+      } else if (turbulenceType < 2.5) {
+        displaced.y += (noise.y - 0.5) * strength;
+      } else {
+        displaced += (noise - float2(0.5)) * strength;
+      }
+      float valid = 1.0;
+      if (motionTileType < 0.5) {
+        valid = validQt(displaced);
+      } else if (motionTileType < 1.5) {
+        displaced = fract(displaced);
+      } else {
+        displaced = mirrorQt(displaced);
+      }
+      return sampleInputQt(displaced) * valid;
+    }
+  

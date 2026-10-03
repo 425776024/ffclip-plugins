@@ -1,0 +1,31 @@
+
+    uniform shader inputTexture;
+    uniform shader blurTexture;
+
+    float3 rgbToHsv(float3 color) {
+      float4 K = float4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);
+      float4 p = mix(float4(color.bg, K.wz), float4(color.gb, K.xy),
+                     step(color.b, color.g));
+      float4 q = mix(float4(p.xyw, color.r), float4(color.r, p.yzx),
+                     step(p.x, color.r));
+      float d = q.x - min(q.w, q.y);
+      return float3(abs(q.z + (q.w - q.y) / (6.0 * d + 1.0e-10)),
+                    d / (q.x + 1.0e-10), q.x);
+    }
+
+    float3 hsvToRgb(float3 color) {
+      float4 K = float4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
+      float3 p = abs(fract(color.xxx + K.xyz) * 6.0 - K.www);
+      return color.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), color.y);
+    }
+
+    half4 main(float2 position) {
+      float4 original = float4(inputTexture.eval(position));
+      float3 hsv = rgbToHsv(original.rgb);
+      hsv.y *= 0.75;
+      hsv.z *= 1.4;
+      original.rgb = hsvToRgb(hsv);
+      float4 blurred = float4(blurTexture.eval(position));
+      return half4(original + blurred * (1.0 - original.a));
+    }
+  

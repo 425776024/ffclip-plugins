@@ -1,0 +1,152 @@
+{
+  "format": "videocut.text-animation",
+  "animation": {
+    "layers": [
+      {
+        "id": "lua-controller-layer",
+        "enabled": true,
+        "combine_mode": "replace",
+        "requires_timed_text": false,
+        "time_driver": {
+          "kind": "enter_phase",
+          "duration_us": 3000000,
+          "playback": "once"
+        },
+        "animators": [
+          {
+            "id": "lua-controller-selector",
+            "paragraph_ids": [],
+            "run_ids": [],
+            "position_mode": "absolute_pixels",
+            "anchor": "glyph_center",
+            "anchor_basis": "letter",
+            "anchor_mode": "fixed",
+            "anchor_offset_x": 0.0,
+            "anchor_offset_y": 0.0,
+            "presentation": "transform",
+            "fade_fraction": 0.0,
+            "selectors": [
+              {
+                "kind": "range",
+                "based_on": "grapheme",
+                "range_start": 0.0,
+                "range_end": 1.0,
+                "offset": 0.0,
+                "stagger": 0.0,
+                "edge_smooth": 0.0,
+                "constrained": true,
+                "shape": "square",
+                "order": "forward",
+                "random_seed": 50.0,
+                "intensity": 1.0,
+                "intensity_start": 0.0,
+                "intensity_end": 1.0,
+                "time_start_1": 0.0,
+                "time_start_2": 0.0,
+                "time_end_1": 1.0,
+                "time_end_2": 1.0,
+                "time_cycle": false
+              }
+            ],
+            "tracks": [],
+            "projection": {
+              "kind": "perspective_3d",
+              "field_of_view_degrees": 45.0,
+              "vanishing_point_x": 0.5,
+              "vanishing_point_y": 0.5
+            },
+            "effect_program_id": "com.videocut.text.qt-type.anim-lua-cube.program.controller"
+          }
+        ],
+        "render_group": {
+          "mode": "page",
+          "expand_ratio_x": 1.0,
+          "expand_ratio_y": 1.0
+        },
+        "post_effects": []
+      }
+    ],
+    "execution_graph": {
+      "nodes": [
+        {
+          "id": "layout",
+          "node_kind": "layout",
+          "capability": "layout_glyph_run",
+          "input_ids": []
+        },
+        {
+          "id": "selector",
+          "node_kind": "selector",
+          "capability": "selector_base",
+          "input_ids": [
+            "layout"
+          ]
+        },
+        {
+          "id": "operator-1",
+          "node_kind": "operator",
+          "capability": "operator_program",
+          "input_ids": [
+            "selector"
+          ]
+        },
+        {
+          "id": "operator-2",
+          "node_kind": "operator",
+          "capability": "operator_scene_lookup",
+          "input_ids": [
+            "operator-1"
+          ]
+        },
+        {
+          "id": "scene-entity",
+          "node_kind": "scene",
+          "capability": "scene_entity",
+          "input_ids": [
+            "operator-2"
+          ]
+        },
+        {
+          "id": "scene-mesh",
+          "node_kind": "scene",
+          "capability": "scene_mesh",
+          "input_ids": [
+            "scene-entity"
+          ]
+        },
+        {
+          "id": "scene-camera",
+          "node_kind": "scene",
+          "capability": "scene_camera",
+          "input_ids": [
+            "scene-mesh"
+          ]
+        },
+        {
+          "id": "scene-projection",
+          "node_kind": "scene",
+          "capability": "scene_projection",
+          "input_ids": [
+            "scene-camera"
+          ]
+        },
+        {
+          "id": "material-program-1",
+          "node_kind": "material_pass",
+          "capability": "material_cube_projection_composite",
+          "input_ids": [
+            "scene-projection"
+          ]
+        },
+        {
+          "id": "composite",
+          "node_kind": "composite",
+          "capability": "composite_source_over",
+          "input_ids": [
+            "material-program-1"
+          ]
+        }
+      ]
+    }
+  }
+}

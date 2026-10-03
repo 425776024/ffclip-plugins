@@ -1,0 +1,12 @@
+uniform shader inputTexture;
+uniform float2 textureSize;
+// Source time (an IR-provided phase), normalized amplitude, spatial frequency
+// in pi units, and phase multiplier. No source-unused color multiplier.
+uniform float4 wave;
+
+half4 main(float2 position) {
+    float2 uv = position / textureSize;
+    // Authored wave UV has an upward Y axis; Skia texture pixels run downward.
+    uv.y -= sin(uv.x * wave.z * 3.1415926 + wave.x * wave.w) * wave.y;
+    return inputTexture.eval(uv * textureSize);
+}

@@ -1,0 +1,66 @@
+// Source contract: mask-motion rt.xshader's mask, blur and composite passes.
+uniform shader inputTexture;
+uniform shader originalTexture;
+uniform float2 textureSize;
+uniform float screenWidth;
+uniform float passIndex;
+uniform float progress;
+uniform float blurStride;
+uniform float glowRange;
+uniform float maskRight;
+uniform float maskWidth;
+uniform float shearStrength;
+uniform float textureFixScale;
+
+float4 sampleInput(float2 uv) {
+    return float4(inputTexture.eval(float2(uv.x, 1.0 - uv.y) * textureSize));
+}
+
+float4 sampleOriginal(float2 uv) {
+    return float4(originalTexture.eval(float2(uv.x, 1.0 - uv.y) * textureSize));
+}
+
+float inside(float2 uv) {
+    return step(0.0, uv.x) * step(0.0, uv.y) *
+           step(uv.x, 1.0) * step(uv.y, 1.0);
+}
+
+float4 blurInput(float2 uv) {
+    float4 result = sampleInput(uv);
+    float normalization = 1.0;
+    float stepX = 2.0 * blurStride / screenWidth;
+    for (int index = 1; index < 25; ++index) {
+        float2 delta = float2(float(index) * stepX, 0.0);
+        float positive = inside(uv + delta);
+        float negative = inside(uv - delta);
+        result += sampleInput(uv + delta) * positive;
+        result += sampleInput(uv - delta) * negative;
+        normalization += positive + negative;
+        // The source tests its range after sampling, including the first pair
+        // beyond the range. Do not round the range or drop that final pair.
+        if (float(index) > glowRange) break;
+    }
+    return result / normalization;
+}
+
+half4 main(float2 position) {
+    float2 uv = float2(position.x / textureSize.x,
+                      1.0 - position.y / textureSize.y);
+    float2 shifted = uv + float2((-2.0 * shearStrength * uv.y + 0.35) * progress, 0.0);
+    float maskX = (shifted.x - 0.5) * textureFixScale + 0.5;
+    if (passIndex < 0.5) {
+        float visible = smoothstep(maskRight - 0.01 - maskWidth * 0.5,
+                                   maskRight - maskWidth * 0.5, maskX) *
+                        smoothstep(maskRight + 0.01 + maskWidth * 0.1,
+                                   maskRight + maskWidth * 0.1, maskX);
+        return half4(sampleOriginal(shifted) * visible);
+    }
+
+    float4 blurred = blurInput(uv);
+    if (passIndex < 1.5) return half4(blurred);
+
+    float4 original = sampleOriginal(shifted) * smoothstep(1.0, 0.95, progress) *
+                      (1.0 - smoothstep(maskRight - maskWidth * 0.5,
+                                        maskRight, maskX));
+    return half4(mix(blurred, original / (original.a + 0.0001), original.a));
+}

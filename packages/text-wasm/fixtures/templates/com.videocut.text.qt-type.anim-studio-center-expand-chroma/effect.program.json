@@ -1,0 +1,365 @@
+{
+  "format": "videocut.text-effect-program",
+  "programs": [
+    {
+      "program_id": "com.videocut.text.qt-type.anim-studio-center-expand-chroma.program.custom-selector",
+      "random_seed": 50,
+      "stages": [
+        {
+          "stage_id": "manual-static-selector",
+          "kind": "per_unit",
+          "register_count": 35,
+          "instructions": [
+            {
+              "opcode": "input",
+              "input_registers": [],
+              "immediates": [],
+              "input": "progress",
+              "output_register": 0
+            },
+            {
+              "opcode": "constant",
+              "input_registers": [],
+              "immediates": [
+                0.0
+              ],
+              "input": null,
+              "output_register": 1
+            },
+            {
+              "opcode": "constant",
+              "input_registers": [],
+              "immediates": [
+                1.0
+              ],
+              "input": null,
+              "output_register": 2
+            },
+            {
+              "opcode": "constant",
+              "input_registers": [],
+              "immediates": [
+                0.15
+              ],
+              "input": null,
+              "output_register": 3
+            },
+            {
+              "opcode": "constant",
+              "input_registers": [],
+              "immediates": [
+                0.85
+              ],
+              "input": null,
+              "output_register": 4
+            },
+            {
+              "opcode": "less_than",
+              "input_registers": [
+                3,
+                0
+              ],
+              "immediates": [],
+              "input": null,
+              "output_register": 5
+            },
+            {
+              "opcode": "subtract",
+              "input_registers": [
+                0,
+                3
+              ],
+              "immediates": [],
+              "input": null,
+              "output_register": 6
+            },
+            {
+              "opcode": "divide",
+              "input_registers": [
+                6,
+                4
+              ],
+              "immediates": [],
+              "input": null,
+              "output_register": 7
+            },
+            {
+              "opcode": "select",
+              "input_registers": [
+                5,
+                7,
+                1
+              ],
+              "immediates": [],
+              "input": null,
+              "output_register": 8
+            },
+            {
+              "opcode": "constant",
+              "input_registers": [],
+              "immediates": [
+                -10
+              ],
+              "input": null,
+              "output_register": 9
+            },
+            {
+              "opcode": "multiply",
+              "input_registers": [
+                8,
+                9
+              ],
+              "immediates": [],
+              "input": null,
+              "output_register": 10
+            },
+            {
+              "opcode": "constant",
+              "input_registers": [],
+              "immediates": [
+                2.0
+              ],
+              "input": null,
+              "output_register": 11
+            },
+            {
+              "opcode": "power",
+              "input_registers": [
+                11,
+                10
+              ],
+              "immediates": [],
+              "input": null,
+              "output_register": 12
+            },
+            {
+              "opcode": "equal",
+              "input_registers": [
+                8,
+                2
+              ],
+              "immediates": [],
+              "input": null,
+              "output_register": 13
+            },
+            {
+              "opcode": "select",
+              "input_registers": [
+                13,
+                1,
+                12
+              ],
+              "immediates": [],
+              "input": null,
+              "output_register": 14
+            },
+            {
+              "opcode": "input",
+              "input_registers": [],
+              "immediates": [],
+            "input": "row_initial_bounds_x",
+              "output_register": 15
+            },
+            {
+              "opcode": "input",
+              "input_registers": [],
+              "immediates": [],
+            "input": "row_initial_bounds_width",
+              "output_register": 16
+            },
+            {
+              "opcode": "constant",
+              "input_registers": [],
+              "immediates": [
+                0.5
+              ],
+              "input": null,
+              "output_register": 17
+            },
+            {
+              "opcode": "multiply",
+              "input_registers": [
+                16,
+                17
+              ],
+              "immediates": [],
+              "input": null,
+              "output_register": 18
+            },
+            {
+              "opcode": "add",
+              "input_registers": [
+                15,
+                18
+              ],
+              "immediates": [],
+              "input": null,
+              "output_register": 19
+            },
+            {
+              "opcode": "input",
+              "input_registers": [],
+              "immediates": [],
+              "input": "initial_position_x",
+              "output_register": 20
+            },
+            {
+              "opcode": "subtract",
+              "input_registers": [
+                19,
+                20
+              ],
+              "immediates": [],
+              "input": null,
+              "output_register": 21
+            },
+            {
+              "opcode": "multiply",
+              "input_registers": [
+                21,
+                14
+              ],
+              "immediates": [],
+              "input": null,
+              "output_register": 22
+            },
+            {
+              "opcode": "input",
+              "input_registers": [],
+              "immediates": [],
+            "input": "row_initial_bounds_y",
+              "output_register": 23
+            },
+            {
+              "opcode": "input",
+              "input_registers": [],
+              "immediates": [],
+            "input": "row_initial_bounds_height",
+              "output_register": 24
+            },
+            {
+              "opcode": "multiply",
+              "input_registers": [
+                24,
+                17
+              ],
+              "immediates": [],
+              "input": null,
+              "output_register": 25
+            },
+            {
+              "opcode": "add",
+              "input_registers": [
+                23,
+                25
+              ],
+              "immediates": [],
+              "input": null,
+              "output_register": 26
+            },
+            {
+              "opcode": "input",
+              "input_registers": [],
+              "immediates": [],
+              "input": "initial_position_y",
+              "output_register": 27
+            },
+            {
+              "opcode": "subtract",
+              "input_registers": [
+                26,
+                27
+              ],
+              "immediates": [],
+              "input": null,
+              "output_register": 28
+            },
+            {
+              "opcode": "multiply",
+              "input_registers": [
+                28,
+                14
+              ],
+              "immediates": [],
+              "input": null,
+              "output_register": 29
+            },
+            {
+              "opcode": "input",
+              "input_registers": [],
+              "immediates": [],
+              "input": "is_normal_unit",
+              "output_register": 30
+            },
+            {
+              "opcode": "select",
+              "input_registers": [
+                30,
+                22,
+                1
+              ],
+              "immediates": [],
+              "input": null,
+              "output_register": 31
+            },
+            {
+              "opcode": "select",
+              "input_registers": [
+                30,
+                29,
+                1
+              ],
+              "immediates": [],
+              "input": null,
+              "output_register": 32
+            },
+            {
+              "opcode": "input",
+              "input_registers": [],
+              "immediates": [],
+              "input": "unit_index",
+              "output_register": 33
+            },
+            {
+              "opcode": "add",
+              "input_registers": [
+                33,
+                2
+              ],
+              "immediates": [],
+              "input": null,
+              "output_register": 34
+            }
+          ],
+          "outputs": [
+            {
+              "output": "opacity",
+              "register_index": 2,
+              "transform_index": 0
+            },
+            {
+              "output": "offset_x",
+              "register_index": 31,
+              "transform_index": 0
+            },
+            {
+              "output": "offset_y",
+              "register_index": 32,
+              "transform_index": 0
+            },
+            {
+              "output": "anchor_range_begin",
+              "register_index": 33,
+              "transform_index": 0
+            },
+            {
+              "output": "anchor_range_end",
+              "register_index": 34,
+              "transform_index": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,922 @@
+{
+  "format": "videocut.text-effect-program",
+  "programs": [
+    {
+      "program_id": "com.videocut.text.qt-type.anim-lua-three-mesh-rt.program.controller",
+      "random_seed": 50,
+      "stages": [
+        {
+          "stage_id": "qt-three-mesh-rt-material",
+          "kind": "per_unit",
+          "register_count": 67,
+          "instructions": [
+            {
+              "opcode": "input",
+              "output_register": 0,
+              "input_registers": [],
+              "immediates": [],
+              "input": "time_us"
+            },
+            {
+              "opcode": "constant",
+              "output_register": 1,
+              "input_registers": [],
+              "immediates": [
+                0
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 2,
+              "input_registers": [],
+              "immediates": [
+                1
+              ],
+              "input": null
+            },
+            {
+              "opcode": "input",
+              "output_register": 3,
+              "input_registers": [],
+              "immediates": [],
+              "input": "animation_duration_us"
+            },
+            {"opcode":"constant","output_register":49,"input_registers":[],"immediates":[10],"input":null},
+            {
+              "opcode": "add",
+              "output_register": 4,
+              "input_registers": [3,49],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "add",
+              "output_register": 5,
+              "input_registers": [3,2],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "modulo",
+              "output_register": 6,
+              "input_registers": [
+                0,
+                4
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "divide",
+              "output_register": 7,
+              "input_registers": [
+                6,
+                5
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 8,
+              "input_registers": [],
+              "immediates": [
+                0.7
+              ],
+              "input": null
+            },
+            {
+              "opcode": "divide",
+              "output_register": 9,
+              "input_registers": [
+                7,
+                8
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "clamp",
+              "output_register": 10,
+              "input_registers": [
+                9,
+                1,
+                2
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "input",
+              "output_register": 11,
+              "input_registers": [],
+              "immediates": [],
+              "input": "unit_count"
+            },
+            {
+              "opcode": "input",
+              "output_register": 12,
+              "input_registers": [],
+              "immediates": [],
+              "input": "unit_index"
+            },
+            {
+              "opcode": "constant",
+              "output_register": 13,
+              "input_registers": [],
+              "immediates": [
+                0.6
+              ],
+              "input": null
+            },
+            {
+              "opcode": "divide",
+              "output_register": 14,
+              "input_registers": [
+                13,
+                11
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "multiply",
+              "output_register": 15,
+              "input_registers": [
+                14,
+                12
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "subtract",
+              "output_register": 16,
+              "input_registers": [
+                10,
+                15
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 17,
+              "input_registers": [],
+              "immediates": [
+                0.4
+              ],
+              "input": null
+            },
+            {
+              "opcode": "divide",
+              "output_register": 18,
+              "input_registers": [
+                16,
+                17
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "clamp",
+              "output_register": 19,
+              "input_registers": [
+                18,
+                1,
+                2
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 20,
+              "input_registers": [],
+              "immediates": [
+                0.1
+              ],
+              "input": null
+            },
+            {
+              "opcode": "less_than",
+              "output_register": 21,
+              "input_registers": [
+                20,
+                19
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "subtract",
+              "output_register": 22,
+              "input_registers": [
+                2,
+                19
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {"opcode":"constant","output_register":50,"input_registers":[],"immediates":[40],"input":null},
+            {"opcode":"constant","output_register":51,"input_registers":[],"immediates":[300000],"input":null},
+            {"opcode":"subtract","output_register":52,"input_registers":[3,51],"immediates":[],"input":null},
+            {"opcode":"constant","output_register":53,"input_registers":[],"immediates":[1000000],"input":null},
+            {"opcode":"divide","output_register":54,"input_registers":[52,53],"immediates":[],"input":null},
+            {"opcode":"clamp","output_register":55,"input_registers":[54,1,2],"immediates":[],"input":null},
+            {"opcode":"mix","output_register":23,"input_registers":[49,50,55],"immediates":[],"input":null},
+            {
+              "opcode": "multiply",
+              "output_register": 24,
+              "input_registers": [
+                22,
+                23
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "negate",
+              "output_register": 25,
+              "input_registers": [
+                24
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 26,
+              "input_registers": [],
+              "immediates": [
+                0.76
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 27,
+              "input_registers": [],
+              "immediates": [
+                40000
+              ],
+              "input": null
+            },
+            {
+              "opcode": "less_than",
+              "output_register": 28,
+              "input_registers": [
+                6,
+                27
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "select",
+              "output_register": 29,
+              "input_registers": [
+                28,
+                1,
+                26
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "input",
+              "output_register": 30,
+              "input_registers": [],
+              "immediates": [],
+              "input": "text_rect_width"
+            },
+            {
+              "opcode": "input",
+              "output_register": 31,
+              "input_registers": [],
+              "immediates": [],
+              "input": "text_rect_height"
+            },
+            {
+              "opcode": "input",
+              "output_register": 32,
+              "input_registers": [],
+              "immediates": [],
+              "input": "output_width"
+            },
+            {
+              "opcode": "input",
+              "output_register": 33,
+              "input_registers": [],
+              "immediates": [],
+              "input": "output_height"
+            },
+            {
+              "opcode": "divide",
+              "output_register": 34,
+              "input_registers": [
+                30,
+                32
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "divide",
+              "output_register": 35,
+              "input_registers": [
+                31,
+                33
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "minimum",
+              "output_register": 36,
+              "input_registers": [
+                32,
+                33
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 37,
+              "input_registers": [],
+              "immediates": [
+                720
+              ],
+              "input": null
+            },
+            {
+              "opcode": "input",
+              "output_register": 38,
+              "input_registers": [],
+              "immediates": [],
+              "input": "source_to_output_scale_x"
+            },
+            {
+              "opcode": "multiply",
+              "output_register": 39,
+              "input_registers": [
+                34,
+                38
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 40,
+              "input_registers": [],
+              "immediates": [
+                4
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 41,
+              "input_registers": [],
+              "immediates": [
+                6
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 42,
+              "input_registers": [],
+              "immediates": [
+                2.2
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 43,
+              "input_registers": [],
+              "immediates": [
+                15
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 44,
+              "input_registers": [],
+              "immediates": [
+                2
+              ],
+              "input": null
+            },
+            {
+              "opcode": "input",
+              "output_register": 45,
+              "input_registers": [],
+              "immediates": [],
+              "input": "first_unit_color_red"
+            },
+            {
+              "opcode": "input",
+              "output_register": 46,
+              "input_registers": [],
+              "immediates": [],
+              "input": "first_unit_color_green"
+            },
+            {
+              "opcode": "input",
+              "output_register": 47,
+              "input_registers": [],
+              "immediates": [],
+              "input": "first_unit_color_blue"
+            },
+            {
+              "opcode": "input",
+              "output_register": 48,
+              "input_registers": [],
+              "immediates": [],
+              "input": "first_unit_color_alpha"
+            },
+            {
+              "opcode": "input",
+              "output_register": 56,
+              "input_registers": [],
+              "immediates": [],
+              "input": "source_to_output_scale_y"
+            },
+            {
+              "opcode": "multiply",
+              "output_register": 57,
+              "input_registers": [35, 56],
+              "immediates": [],
+              "input": null
+            },
+            {"opcode":"input","output_register":58,"input_registers":[],"immediates":[],"input":"source_origin_output_x"},
+            {"opcode":"input","output_register":59,"input_registers":[],"immediates":[],"input":"source_origin_output_y"},
+            {"opcode":"constant","output_register":60,"input_registers":[],"immediates":[0.5],"input":null},
+            {"opcode":"multiply","output_register":61,"input_registers":[32,60],"immediates":[],"input":null},
+            {"opcode":"multiply","output_register":62,"input_registers":[33,60],"immediates":[],"input":null},
+            {"opcode":"subtract","output_register":63,"input_registers":[58,61],"immediates":[],"input":null},
+            {"opcode":"subtract","output_register":64,"input_registers":[59,62],"immediates":[],"input":null},
+            {"opcode":"divide","output_register":65,"input_registers":[63,32],"immediates":[],"input":null},
+            {
+              "opcode":"divide","output_register":66,"input_registers":[64,32],"immediates":[],"input":null
+            }
+          ],
+          "outputs": [
+            {
+              "output": "offset_x",
+              "register_index": 24,
+              "transform_index": 0
+            },
+            {
+              "output": "offset_y",
+              "register_index": 25,
+              "transform_index": 0
+            },
+            {
+              "output": "opacity",
+              "register_index": 21,
+              "transform_index": 0
+            },
+            {
+              "output": "instance_color_red",
+              "register_index": 2,
+              "transform_index": 0
+            },
+            {
+              "output": "instance_color_green",
+              "register_index": 2,
+              "transform_index": 0
+            },
+            {
+              "output": "instance_color_blue",
+              "register_index": 2,
+              "transform_index": 0
+            },
+            {
+              "output": "instance_color_alpha",
+              "register_index": 2,
+              "transform_index": 0
+            }
+          ],
+          "execution_parameter_bindings": [
+            {
+              "node_id": "feedback",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 7,
+              "register_indices": [
+                1
+              ]
+            },
+            {
+              "node_id": "feedback",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 0,
+              "register_indices": [
+                29
+              ]
+            },
+            {
+              "node_id": "history-write",
+              "parameter": "node_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 1,
+              "register_indices": [
+                2
+              ]
+            },
+            {
+              "node_id": "blur-x",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 0,
+              "register_indices": [
+                39
+              ]
+            },
+            {
+              "node_id": "blur-x",
+              "parameter": "material_vector2",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 1,
+              "register_indices": [
+                2,
+                1
+              ]
+            },
+            {
+              "node_id": "blur-x",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 2,
+              "register_indices": [
+                40
+              ]
+            },
+            {
+              "node_id": "blur-x",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 4,
+              "register_indices": [
+                41
+              ]
+            },
+            {
+              "node_id": "blur-x",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 9,
+              "register_indices": [
+                42
+              ]
+            },
+            {
+              "node_id": "blur-x",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 12,
+              "register_indices": [
+                43
+              ]
+            },
+            {
+              "node_id": "blur-x",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 13,
+              "register_indices": [
+                2
+              ]
+            },
+            {
+              "node_id": "blur-y",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 0,
+              "register_indices": [
+                39
+              ]
+            },
+            {
+              "node_id": "blur-y",
+              "parameter": "material_vector2",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 1,
+              "register_indices": [
+                1,
+                2
+              ]
+            },
+            {
+              "node_id": "blur-y",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 2,
+              "register_indices": [
+                40
+              ]
+            },
+            {
+              "node_id": "blur-y",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 4,
+              "register_indices": [
+                41
+              ]
+            },
+            {
+              "node_id": "blur-y",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 9,
+              "register_indices": [
+                42
+              ]
+            },
+            {
+              "node_id": "blur-y",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 12,
+              "register_indices": [
+                43
+              ]
+            },
+            {
+              "node_id": "blur-y",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 13,
+              "register_indices": [
+                2
+              ]
+            },
+            {
+              "node_id": "sum-x",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 0,
+              "register_indices": [
+                39
+              ]
+            },
+            {
+              "node_id": "sum-x",
+              "parameter": "material_vector2",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 1,
+              "register_indices": [
+                2,
+                1
+              ]
+            },
+            {
+              "node_id": "sum-x",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 2,
+              "register_indices": [
+                40
+              ]
+            },
+            {
+              "node_id": "sum-x",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 4,
+              "register_indices": [
+                44
+              ]
+            },
+            {
+              "node_id": "sum-x",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 10,
+              "register_indices": [
+                1
+              ]
+            },
+            {
+              "node_id": "sum-x",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 11,
+              "register_indices": [
+                2
+              ]
+            },
+            {
+              "node_id": "sum-x",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 12,
+              "register_indices": [
+                43
+              ]
+            },
+            {
+              "node_id": "sum-x",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 13,
+              "register_indices": [
+                2
+              ]
+            },
+            {
+              "node_id": "sum-x",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 14,
+              "register_indices": [
+                2
+              ]
+            },
+            {
+              "node_id": "sum-y",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 0,
+              "register_indices": [
+                39
+              ]
+            },
+            {
+              "node_id": "sum-y",
+              "parameter": "material_vector2",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 1,
+              "register_indices": [
+                1,
+                2
+              ]
+            },
+            {
+              "node_id": "sum-y",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 2,
+              "register_indices": [
+                40
+              ]
+            },
+            {
+              "node_id": "sum-y",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 4,
+              "register_indices": [
+                44
+              ]
+            },
+            {
+              "node_id": "sum-y",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 10,
+              "register_indices": [
+                1
+              ]
+            },
+            {
+              "node_id": "sum-y",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 11,
+              "register_indices": [
+                2
+              ]
+            },
+            {
+              "node_id": "sum-y",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 12,
+              "register_indices": [
+                43
+              ]
+            },
+            {
+              "node_id": "sum-y",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 13,
+              "register_indices": [
+                2
+              ]
+            },
+            {
+              "node_id": "sum-y",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 14,
+              "register_indices": [
+                2
+              ]
+            },
+            {
+              "node_id": "material-composite",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 7,
+              "register_indices": [
+                2
+              ]
+            },
+            {
+              "node_id": "material-composite",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 1,
+              "register_indices": [
+                48
+              ]
+            },
+            {
+              "node_id": "material-composite",
+              "parameter": "material_vector2",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 2,
+              "register_indices": [
+                65,
+                66
+              ]
+            },
+            {
+              "node_id": "material-composite",
+              "parameter": "material_vector2",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 3,
+              "register_indices": [
+                39,
+                57
+              ]
+            },
+            {
+              "node_id": "material-composite",
+              "parameter": "material_vector4",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 6,
+              "register_indices": [
+                45,
+                46,
+                47,
+                48
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

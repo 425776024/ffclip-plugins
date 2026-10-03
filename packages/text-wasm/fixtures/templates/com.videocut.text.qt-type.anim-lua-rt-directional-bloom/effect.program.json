@@ -1,0 +1,57 @@
+{
+  "format": "videocut.text-effect-program",
+  "programs": [{
+    "program_id": "com.videocut.text.qt-type.anim-lua-rt-directional-bloom.program.controller",
+    "random_seed": 50,
+    "stages": [{
+      "stage_id": "qt-dual-offset-mask-material",
+      "kind": "per_unit",
+      "register_count": 32,
+      "instructions": [
+        {"opcode":"input","output_register":0,"input_registers":[],"immediates":[],"input":"progress"},
+        {"opcode":"constant","output_register":1,"input_registers":[],"immediates":[0],"input":null},
+        {"opcode":"constant","output_register":2,"input_registers":[],"immediates":[1],"input":null},
+        {"opcode":"modulo","output_register":31,"input_registers":[0,2],"immediates":[],"input":null},
+        {"opcode":"input","output_register":3,"input_registers":[],"immediates":[],"input":"row_count"},
+        {"opcode":"input","output_register":4,"input_registers":[],"immediates":[],"input":"text_rect_height"},
+        {"opcode":"input","output_register":5,"input_registers":[],"immediates":[],"input":"text_rect_width"},
+        {"opcode":"divide","output_register":6,"input_registers":[4,3],"immediates":[],"input":null},
+        {"opcode":"constant","output_register":7,"input_registers":[],"immediates":[1.1],"input":null},
+        {"opcode":"divide","output_register":8,"input_registers":[7,3],"immediates":[],"input":null},
+        {"opcode":"input","output_register":9,"input_registers":[],"immediates":[],"input":"font_size"},
+        {"opcode":"constant","output_register":10,"input_registers":[],"immediates":[0.4],"input":null},
+        {"opcode":"multiply","output_register":11,"input_registers":[9,10],"immediates":[],"input":null},
+        {"opcode":"add","output_register":12,"input_registers":[5,5],"immediates":[],"input":null},
+        {"opcode":"add","output_register":13,"input_registers":[12,11],"immediates":[],"input":null},
+        {"opcode":"constant","output_register":14,"input_registers":[],"immediates":[3],"input":null},
+        {"opcode":"multiply","output_register":15,"input_registers":[4,14],"immediates":[],"input":null},
+        {"opcode":"add","output_register":16,"input_registers":[15,11],"immediates":[],"input":null},
+        {"opcode":"constant","output_register":17,"input_registers":[],"immediates":[-0.03],"input":null},
+        {"opcode":"multiply","output_register":18,"input_registers":[17,6],"immediates":[],"input":null},
+        {"opcode":"divide","output_register":19,"input_registers":[18,13],"immediates":[],"input":null},
+        {"opcode":"constant","output_register":20,"input_registers":[],"immediates":[0.05],"input":null},
+        {"opcode":"multiply","output_register":21,"input_registers":[20,6],"immediates":[],"input":null},
+        {"opcode":"divide","output_register":22,"input_registers":[21,16],"immediates":[],"input":null},
+        {"opcode":"cubic_bezier_timing","output_register":23,"input_registers":[31],"immediates":[0.33333333,0,0.66666667,1],"input":null},
+        {"opcode":"constant","output_register":24,"input_registers":[],"immediates":[1.10859375],"input":null},
+        {"opcode":"multiply","output_register":25,"input_registers":[23,24],"immediates":[],"input":null},
+        {"opcode":"constant","output_register":26,"input_registers":[],"immediates":[-0.08527241613753172],"input":null},
+        {"opcode":"add","output_register":27,"input_registers":[26,25],"immediates":[],"input":null},
+        {"opcode":"constant","output_register":28,"input_registers":[],"immediates":[0.5],"input":null},
+        {"opcode":"constant","output_register":29,"input_registers":[],"immediates":[55],"input":null},
+        {"opcode":"constant","output_register":30,"input_registers":[],"immediates":[0.75],"input":null}
+      ],
+      "outputs": [{"output":"opacity","register_index":2,"transform_index":0}],
+      "execution_parameter_bindings": [
+        {"node_id":"material-program-1","parameter":"material_vector4","domain":"page","value_space":"source_pixels","slot":31,"register_indices":[5,4,5,4]},
+        {"node_id":"material-program-1","parameter":"material_scalar","domain":"page","value_space":"unitless","slot":0,"register_indices":[8]},
+        {"node_id":"material-program-1","parameter":"material_vector2","domain":"page","value_space":"unitless","slot":1,"register_indices":[1,1]},
+        {"node_id":"material-program-1","parameter":"material_vector2","domain":"page","value_space":"unitless","slot":2,"register_indices":[19,22]},
+        {"node_id":"material-program-1","parameter":"material_scalar","domain":"page","value_space":"unitless","slot":3,"register_indices":[30]},
+        {"node_id":"material-program-1","parameter":"material_scalar","domain":"page","value_space":"unitless","slot":4,"register_indices":[2]},
+        {"node_id":"material-program-1","parameter":"material_vector2","domain":"page","value_space":"unitless","slot":5,"register_indices":[27,28]},
+        {"node_id":"material-program-1","parameter":"material_scalar","domain":"page","value_space":"unitless","slot":6,"register_indices":[29]}
+      ]
+    }]
+  }]
+}

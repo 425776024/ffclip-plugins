@@ -1,0 +1,40 @@
+VideoCut browser speech synthesis includes:
+
+ONNX Runtime Web 1.30.0, Copyright Microsoft Corporation, MIT.
+Source: https://github.com/microsoft/onnxruntime/tree/v1.30.0
+Package: https://registry.npmjs.org/onnxruntime-web/-/onnxruntime-web-1.30.0.tgz
+The packaged WASM binaries are unchanged; JavaScript source-map pointers are removed.
+
+Chinese/English phonemization derived from @uzen/kokoro-js 1.2.4, Apache-2.0.
+Source: https://github.com/uzen-zone/kokoro-js
+Package: https://registry.npmjs.org/@uzen/kokoro-js/-/kokoro-js-1.2.4.tgz
+Only the phonemization code is retained. Model downloading, Transformers.js,
+Node file handling and voice caching are removed. The original package-file
+SHA256 and modification notice are recorded in the retained frontend source.
+Signed quantities and sentence-final decimal/version expressions are corrected.
+
+English G2P is pure JavaScript, with no phonemizer/eSpeak dependency.
+HeadTTS language rules 1.3.0, Copyright 2025 Mika Suominen, MIT.
+Pinned source: https://github.com/met4citizen/HeadTTS/tree/c08f4ca8b3253b3e908e501486a1e068e606be5c
+Package: https://registry.npmjs.org/@met4citizen/headtts/-/headtts-1.3.0.tgz
+Only language-en-us, language base and two utility functions are retained.
+Node/remote dictionary loading and unrelated runtime utilities are removed.
+No HeadTTS CMU dictionary, inference, WebSocket or model runtime is included.
+
+Misaki US and GB gold pronunciation dictionaries, Apache-2.0, unmodified.
+Pinned source: https://github.com/hexgrad/misaki/tree/fba1236595f2d2bf21d414ba6e57d25256afada3/misaki/data
+The local adapter selects dictionary default pronunciation, splits camel-case
+brands, and applies HeadTTS letter rules to unknown words. No Python, spaCy,
+eSpeak fallback or neural Misaki code is included. British dictionary entries
+retain GB pronunciation; unknown words use an adapted US rule fallback.
+Exact upstream/local file hashes and modifications: ENGLISH-SOURCE.json.
+Full licenses: licenses/HeadTTS-MIT.txt and licenses/Misaki-Apache-2.0.txt.
+
+pinyin-pro 3.28.1, MIT, bundled unmodified into the speech worker.
+Source: https://github.com/zh-lx/pinyin-pro
+Package: https://registry.npmjs.org/pinyin-pro/-/pinyin-pro-3.28.1.tgz
+
+Model weights and voice files are not included in this release. The explicit
+model installer obtains a pinned Apache-2.0 Kokoro-82M-v1.1-zh ONNX export from
+https://huggingface.co/onnx-community/Kokoro-82M-v1.1-zh-ONNX
+The browser reads installed same-origin files only, without remote model access.

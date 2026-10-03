@@ -1,0 +1,28 @@
+
+    uniform shader inputTexture;
+    uniform float2 textureSize;
+    uniform float mappedProgress;
+    uniform float rotationRadians;
+    uniform float feather;
+
+    float4 sampleInputQt(float2 qtUv) {
+      return float4(inputTexture.eval(
+          float2(qtUv.x, 1.0 - qtUv.y) * textureSize));
+    }
+
+    float4 main(float2 xy) {
+      float2 skUv = xy / textureSize;
+      float2 qtUv = float2(skUv.x, 1.0 - skUv.y);
+      float sine = sin(rotationRadians);
+      float cosine = cos(rotationRadians);
+      float2 centered = qtUv - float2(0.5);
+      float2 rotated = float2(
+          centered.x * cosine - centered.y * sine,
+          centered.x * sine + centered.y * cosine) + float2(0.5);
+      float mask = feather <= 0.0
+          ? (rotated.y >= mappedProgress ? 1.0 : 0.0)
+          : smoothstep(mappedProgress - feather,
+                       mappedProgress + feather, rotated.y);
+      return sampleInputQt(qtUv) * mask;
+    }
+  

@@ -1,0 +1,22 @@
+
+    uniform shader inputTexture;
+    uniform float2 textureSize;
+    uniform float2 authoredOffset;
+
+    half4 sampleUv(float2 uv) {
+      float2 boundedUv = clamp(uv, float2(0.0), float2(1.0));
+      return inputTexture.eval(boundedUv * textureSize);
+    }
+
+    half4 main(float2 xy) {
+      float2 uv = xy / textureSize;
+      half4 color = sampleUv(uv);
+      float2 delta = (authoredOffset * (1.0 - uv)) * uv;
+      half4 redSample = sampleUv(uv + delta);
+      half4 blueSample = sampleUv(uv - delta);
+      color.r = redSample.r;
+      color.b = blueSample.b;
+      color.a = (redSample.a + color.a + blueSample.a) / 3.0;
+      return color;
+    }
+  

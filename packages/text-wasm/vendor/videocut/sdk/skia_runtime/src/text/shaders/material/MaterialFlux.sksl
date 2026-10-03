@@ -1,0 +1,114 @@
+
+    uniform shader inputTexture;
+    uniform shader bloom0Texture;
+    uniform shader bloom1Texture;
+    uniform float2 textureSize;
+    uniform float2 viewportSize;
+    uniform float2 offset;
+    uniform float scale;
+    uniform float time;
+    uniform float intensity;
+    uniform float alpha;
+    uniform float3 backgroundColor;
+    uniform float angle;
+    uniform float displacement;
+    uniform float noiseSize;
+    uniform float passIndex;
+    uniform float3 glowIntensity;
+    uniform float3 glowExposure;
+
+    float3 mod289(float3 value) {
+      return value - floor(value * 0.003460207612) * 289.0;
+    }
+    float3 permute(float3 value) { return mod289((value * 34.0 + 1.0) * value); }
+    float simplex(float2 value) {
+      float2 cell = floor(value + dot(value, float2(0.366025403784439)));
+      float2 p0 = value - cell + dot(cell, float2(0.211324865405187));
+      float2 next = p0.x > p0.y ? float2(1.0, 0.0) : float2(0.0, 1.0);
+      float2 p1 = p0 + 0.211324865405187 - next;
+      float2 p2 = p0 - 0.577350269189626;
+      cell -= floor(cell * 0.003460207612) * 289.0;
+      float3 p = permute(permute(cell.y + float3(0.0, next.y, 1.0)) +
+                         cell.x + float3(0.0, next.x, 1.0));
+      float3 weight = max(0.5 - float3(dot(p0, p0), dot(p1, p1), dot(p2, p2)), 0.0);
+      weight *= weight;
+      weight *= weight;
+      float3 x = 2.0 * fract(p * 0.024390243902439) - 1.0;
+      float3 h = abs(x) - 0.5;
+      float3 a = x - floor(x + 0.5);
+      weight *= 1.79284291400159 - 0.85373472095314 * (a * a + h * h);
+      float3 gradient = a * float3(p0.x, p1.x, p2.x) +
+                        h * float3(p0.y, p1.y, p2.y);
+      return 130.0 * dot(weight, gradient);
+    }
+    float flowNoise(float2 point, float evolution) {
+      return simplex(point + float2(0.0, evolution)) +
+             simplex(-(point - float2(0.0, evolution + 5.6)));
+    }
+    float2 flowNormal(float2 point, float evolution) {
+      // Qt supplies ScreenParams.zw = 1 + 1 / viewport; the source
+      // gradient uses 1 - ScreenParams.zw, a negative one-pixel step.
+      float2 delta = 1.0 - (1.0 + 1.0 / viewportSize);
+      return float2(flowNoise(point + float2(delta.x, 0.0), evolution) -
+                    flowNoise(point - float2(delta.x, 0.0), evolution),
+                    flowNoise(point + float2(0.0, delta.y), evolution) -
+                    flowNoise(point - float2(0.0, delta.y), evolution)) *
+             0.5 * intensity;
+    }
+    float2 gradientRandom(float2 point) {
+      return -1.0 + 2.0 * fract(sin(float2(
+          dot(point, float2(127.1, 311.7)),
+          dot(point, float2(269.5, 183.3)))) * 43758.5453123);
+    }
+    float gradientNoise(float2 point) {
+      float2 cell = floor(point);
+      float2 f = fract(point);
+      float2 u = f * f * (3.0 - 2.0 * f);
+      return mix(mix(dot(gradientRandom(cell), f),
+                     dot(gradientRandom(cell + float2(1.0, 0.0)),
+                         f - float2(1.0, 0.0)), u.x),
+                 mix(dot(gradientRandom(cell + float2(0.0, 1.0)),
+                         f - float2(0.0, 1.0)),
+                     dot(gradientRandom(cell + float2(1.0)), f - 1.0), u.x), u.y);
+    }
+    half4 main(float2 position) {
+      if (passIndex > 1.5) {
+        float4 source = float4(inputTexture.eval(position));
+        float4 bloom0 = float4(bloom0Texture.eval(position));
+        float4 bloom1 = float4(bloom1Texture.eval(position));
+        float3 powers = pow(max(float3(bloom0.a, bloom1.a, source.a) *
+                               glowIntensity, float3(0.0)), glowExposure);
+        powers = pow(powers, float3(1.0 / 2.2));
+        bloom0 = clamp(bloom0 * powers.x, 0.0, 1.0);
+        bloom1 = clamp(bloom1 * powers.y, 0.0, 1.0);
+        source = clamp(source * powers.z, 0.0, 1.0);
+        float4 bloom = 1.0 - (1.0 - bloom0) * (1.0 - bloom1);
+        return half4(1.0 - (1.0 - source) * (1.0 - bloom));
+      }
+      float2 uv = float2(position.x / textureSize.x,
+                         1.0 - position.y / textureSize.y);
+      float2 noiseUv = (uv - 0.5) * viewportSize / min(viewportSize.x, viewportSize.y) /
+                       scale + 0.5;
+      if (passIndex < 0.5) {
+        float4 source = float4(inputTexture.eval(position));
+        float2 point = (noiseUv - offset + 103.15) * 4.8 * 1.35;
+        float evolution = time * 0.625;
+        evolution -= floor(evolution / 289.0) * 289.0;
+        point -= flowNormal(point, evolution);
+        float noise = flowNoise(point - flowNormal(point, evolution), evolution);
+        noise = clamp((clamp(noise * 0.5 + 0.5, 0.0, 1.0) - 0.5) * 1.5 +
+                       0.5, 0.0, 1.0);
+        noise = clamp(noise * 1.35, 0.0, 1.0);
+        float3 base = mix(backgroundColor * source.a, source.rgb, 1.0 - alpha);
+        return half4(mix(source.rgb, base, noise) + 0.1 * source.a, source.a);
+      }
+      float2 point = (noiseUv - offset) * 200.0 / noiseSize;
+      float2 noise = float2(gradientNoise(point + 153.052),
+                            gradientNoise(-point + 531.61));
+      float theta = angle * 0.017453292519943295;
+      float2 rotated = float2(cos(theta) * noise.x + sin(theta) * noise.y,
+                              -sin(theta) * noise.x + cos(theta) * noise.y);
+      uv += rotated * displacement * min(viewportSize.x, viewportSize.y) / viewportSize;
+      return inputTexture.eval(float2(uv.x, 1.0 - uv.y) * textureSize);
+    }
+  

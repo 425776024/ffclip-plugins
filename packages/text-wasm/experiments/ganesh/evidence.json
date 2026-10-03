@@ -1,0 +1,270 @@
+{
+  "scope": "Independent Ganesh WebGL2 portable material replay; production CPU default untouched",
+  "backend": {
+    "vendor": "Google Inc. (Apple)",
+    "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)"
+  },
+  "width": 1920,
+  "height": 1080,
+  "text": "灵感花开",
+  "fonts": [
+    {
+      "id": "f44cc815b0dfe574419bee01579e8610",
+      "family": "Arial"
+    },
+    {
+      "id": "a144308de324eb9bb1a1d5a99339eefc",
+      "family": "PingFang SC"
+    }
+  ],
+  "baselineWasmSha256": "e3919e3efecf861e7e6320ee1592b44a09f6d4e951313a03d231731624a98099",
+  "experimentWasmSha256": "e5acef38ac3826391b114731f693071bea37838174cc762dcfd5845e731c8396",
+  "quality": {
+    "samples": 28,
+    "gpuSurfaces": 112,
+    "cpuBuildExact": true,
+    "geometryExact": true,
+    "reverseExact": true,
+    "rgbaExact": false,
+    "withinOneLSB": false,
+    "samplesAt800ms": [
+      {
+        "recipe": "flower03",
+        "rawChannelDiff": {
+          "max": 255,
+          "mean": 0.03156708140432099,
+          "changed": 72795,
+          "over1": 14682,
+          "alphaChanged": 6984
+        },
+        "visible": {
+          "activePixels": 779700,
+          "changedPixels": 49790,
+          "alpha": {
+            "max": 7,
+            "changedPixels": 6984,
+            "over1Pixels": 12,
+            "mae": 0.008984224701808388,
+            "samples": 779700
+          },
+          "black": {
+            "max": 6.807843137254906,
+            "changedPixels": 49656,
+            "over1Pixels": 6592,
+            "mae": 0.025342696746946246,
+            "samples": 2339100
+          },
+          "white": {
+            "max": 5.474509803921592,
+            "changedPixels": 49787,
+            "over1Pixels": 10287,
+            "mae": 0.03132307130025669,
+            "samples": 2339100
+          },
+          "opaque": {
+            "max": 2,
+            "changedPixels": 31398,
+            "over1Pixels": 474,
+            "mae": 0.01925437544613018,
+            "samples": 2114013
+          }
+        },
+        "baselineHash": "737c2da7250493037994af5cb358f879dbea7cbf84f4f32bbf8b92aa6dce87c8",
+        "gpuHash": "3db0aaa338b9feab5cfbe21aee59f627bd0fcddd21a93c4089f7d16ecd135570"
+      },
+      {
+        "recipe": "flower38",
+        "rawChannelDiff": {
+          "max": 255,
+          "mean": 0.9214954668209877,
+          "changed": 256708,
+          "over1": 210725,
+          "alphaChanged": 191737
+        },
+        "visible": {
+          "activePixels": 515084,
+          "changedPixels": 206443,
+          "alpha": {
+            "max": 18,
+            "changedPixels": 191737,
+            "over1Pixels": 172079,
+            "mae": 1.489634700359553,
+            "samples": 515084
+          },
+          "black": {
+            "max": 18,
+            "changedPixels": 206443,
+            "over1Pixels": 173236,
+            "mae": 0.5098988613469677,
+            "samples": 1545252
+          },
+          "white": {
+            "max": 18,
+            "changedPixels": 206443,
+            "over1Pixels": 174805,
+            "mae": 1.006783402750284,
+            "samples": 1545252
+          },
+          "opaque": {
+            "max": 2,
+            "changedPixels": 14047,
+            "over1Pixels": 55,
+            "mae": 0.01756668631409975,
+            "samples": 956868
+          }
+        },
+        "baselineHash": "8cefde1b13cdf82fbd080c29e6680a5ad314fce1d1eb28446bd2959a0ef29000",
+        "gpuHash": "4edf6008b32877a48e1501aef836f4ed4f4f6304113427f2b89c413659da4ff5"
+      },
+      {
+        "recipe": "flower03-tile-letter",
+        "rawChannelDiff": {
+          "max": 255,
+          "mean": 0.02245997299382716,
+          "changed": 81373,
+          "over1": 8878,
+          "alphaChanged": 3039
+        },
+        "visible": {
+          "activePixels": 1237255,
+          "changedPixels": 60448,
+          "alpha": {
+            "max": 7,
+            "changedPixels": 3039,
+            "over1Pixels": 135,
+            "mae": 0.0027690330610908825,
+            "samples": 1237255
+          },
+          "black": {
+            "max": 20,
+            "changedPixels": 60394,
+            "over1Pixels": 4798,
+            "mae": 0.02159744255699118,
+            "samples": 3711765
+          },
+          "white": {
+            "max": 20,
+            "changedPixels": 60445,
+            "over1Pixels": 6215,
+            "mae": 0.02296269126022029,
+            "samples": 3711765
+          },
+          "opaque": {
+            "max": 20,
+            "changedPixels": 51389,
+            "over1Pixels": 1563,
+            "mae": 0.01995303559197833,
+            "samples": 3509892
+          }
+        },
+        "baselineHash": "4826333a1cf7cbb4b6c84b6074283a656042349c12ac9078ab82c8c2dbf71929",
+        "gpuHash": "6c8d7f93336192a2ec3d0325d58891e8a00d0abecca3f07c4c597aeae6ee55d0"
+      },
+      {
+        "recipe": "flower38-nine-letter",
+        "rawChannelDiff": {
+          "max": 255,
+          "mean": 0.22338722511574075,
+          "changed": 325458,
+          "over1": 242868,
+          "alphaChanged": 25584
+        },
+        "visible": {
+          "activePixels": 1209000,
+          "changedPixels": 182732,
+          "alpha": {
+            "max": 12,
+            "changedPixels": 25584,
+            "over1Pixels": 22680,
+            "mae": 0.07078411910669975,
+            "samples": 1209000
+          },
+          "black": {
+            "max": 60,
+            "changedPixels": 182729,
+            "over1Pixels": 131053,
+            "mae": 0.2625577861031363,
+            "samples": 3627000
+          },
+          "white": {
+            "max": 60,
+            "changedPixels": 182731,
+            "over1Pixels": 131710,
+            "mae": 0.285904411899859,
+            "samples": 3627000
+          },
+          "opaque": {
+            "max": 60,
+            "changedPixels": 155451,
+            "over1Pixels": 107472,
+            "mae": 0.24617193171466686,
+            "samples": 3503007
+          }
+        },
+        "baselineHash": "3f3110c7bb02ac671540fa6c3aa086bf909e9fca0af3bc0cc787a13842b3241a",
+        "gpuHash": "a9d6521982c7b5c5832da77b86b06ec41aa54c395f9959408945f1f640a2d46d"
+      }
+    ]
+  },
+  "softwareMask": {
+    "complete": true,
+    "cpuBuildExact": true,
+    "geometryExact": true,
+    "reverseExact": true,
+    "all28GpuHashesEqualOriginal": true
+  },
+  "uncontendedWarmTiming": {
+    "scope": "GPU final replay of unchanged portable materials; includes RGBA publication/readback",
+    "samplesPerRecipe": 15,
+    "warmupPerRecipe": 5,
+    "physicalGpuSurfaces": 84,
+    "includesReadback": true,
+    "editorFpsClaim": false,
+    "summary": [
+      {
+        "recipe": "flower03",
+        "baseline": {
+          "mean": 40.73333332538605,
+          "p95": 43.200000047683716
+        },
+        "gpu": {
+          "mean": 10.186666671435038,
+          "p95": 14.100000023841858
+        }
+      },
+      {
+        "recipe": "flower38",
+        "baseline": {
+          "mean": 29.019999996821085,
+          "p95": 30.399999976158142
+        },
+        "gpu": {
+          "mean": 10.433333341280619,
+          "p95": 15.700000047683716
+        }
+      },
+      {
+        "recipe": "flower03-tile-letter",
+        "baseline": {
+          "mean": 24.826666673024494,
+          "p95": 38.200000047683716
+        },
+        "gpu": {
+          "mean": 9.753333322207133,
+          "p95": 11.300000071525574
+        }
+      },
+      {
+        "recipe": "flower38-nine-letter",
+        "baseline": {
+          "mean": 105.47999998728434,
+          "p95": 180.89999997615814
+        },
+        "gpu": {
+          "mean": 16.90666667620341,
+          "p95": 22.600000023841858
+        }
+      }
+    ]
+  }
+}

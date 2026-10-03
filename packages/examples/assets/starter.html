@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        width: 1280px;
+        height: 720px;
+        overflow: hidden;
+        background: transparent;
+        color: #f7f2e8;
+        font-family: 'Helvetica Neue', 'PingFang SC', Arial, sans-serif;
+      }
+      :root {
+        --accent: #a4e0d2;
+        --highlight: #efc19a;
+        --landscape: url('data:image/jpeg;base64,__LANDSCAPE_DATA__');
+      }
+      .scene {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+      }
+      .gradient {
+        background: linear-gradient(112deg, #fdf5e5 5%, var(--accent) 48%, #7abaae 95%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+      }
+      .headline .word {
+        display: inline-block;
+        white-space: pre;
+        background-size: 180% 100%;
+      }
+      .shade {
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(90deg, #07171bec 0%, #07171b80 44%, #07171b08 80%),
+          linear-gradient(0deg, #06151be0, transparent 28%, transparent 80%, #06151b75);
+      }
+      .brand {
+        position: absolute;
+        left: 64px;
+        top: 49px;
+        font-size: 31px;
+        font-weight: 750;
+        letter-spacing: -1.6px;
+      }
+      .brand span {
+        color: var(--highlight);
+      }
+      .edition {
+        position: absolute;
+        right: 64px;
+        top: 60px;
+        letter-spacing: 3px;
+        font-size: 13px;
+        opacity: 0.72;
+      }
+      .rule {
+        position: absolute;
+        left: 64px;
+        top: 110px;
+        height: 1px;
+        width: 1152px;
+        background: #f7eee933;
+        transform-origin: left;
+      }
+      .chapter {
+        position: absolute;
+        left: 68px;
+        top: 167px;
+        letter-spacing: 3px;
+        font-size: 16px;
+        color: var(--accent);
+      }
+      .headline {
+        position: absolute;
+        left: 61px;
+        top: 215px;
+        margin: 0;
+        font-size: 107px;
+        line-height: 1.12;
+        font-weight: 760;
+        letter-spacing: -5px;
+      }
+      .description {
+        position: absolute;
+        left: 68px;
+        top: 467px;
+        font-size: 23px;
+        line-height: 1.5;
+        letter-spacing: 1px;
+        color: #e4e6dacc;
+      }
+      .locator {
+        position: absolute;
+        left: 969px;
+        top: 536px;
+        width: 247px;
+        padding: 17px 0 0;
+        border-top: 1px solid #f7eee975;
+        font-size: 11px;
+        letter-spacing: 2.5px;
+        line-height: 1.9;
+        color: #e9e5d8ae;
+      }
+      .locator b {
+        font-size: 19px;
+        color: #fff4e0;
+        font-weight: 400;
+        letter-spacing: 1.5px;
+      }
+      .footer {
+        position: absolute;
+        top: 666px;
+        left: 64px;
+        letter-spacing: 2px;
+        font-size: 12px;
+        opacity: 0.7;
+      }
+      .counter {
+        position: absolute;
+        top: 657px;
+        right: 64px;
+        font-size: 22px;
+        letter-spacing: 3px;
+        color: var(--highlight);
+      }
+      .progress {
+        position: absolute;
+        top: 707px;
+        left: 64px;
+        width: 1152px;
+        height: 2px;
+        background: #e8efeb33;
+      }
+      .progress i {
+        display: block;
+        height: 100%;
+        background: linear-gradient(90deg, var(--accent), var(--highlight));
+        transform-origin: left;
+      }
+      .ribbon {
+        position: absolute;
+        width: 500px;
+        height: 410px;
+        right: -116px;
+        top: 220px;
+        opacity: 0.33;
+      }
+      .ribbon path {
+        fill: none;
+        stroke: url(#ribbonGradient);
+        stroke-width: 1.2;
+      }
+      #middle {
+        background: #f4efe5;
+        color: #1b3838;
+      }
+      #middle .brand span {
+        color: #a66742;
+      }
+      #middle .edition {
+        color: #655e50;
+      }
+      #middle .rule {
+        background: #203e3a30;
+      }
+      #middle .chapter {
+        color: #776445;
+      }
+      #middle .headline {
+        font-size: 83px;
+        top: 215px;
+      }
+      #middle .gradient {
+        background-image: linear-gradient(115deg, #254945, #657f64 55%, #bd8953);
+      }
+      #middle .description {
+        color: #53635a;
+        top: 448px;
+        width: 500px;
+        font-size: 21px;
+      }
+      #middle .footer {
+        color: #6c786b;
+      }
+      #middle .counter {
+        color: #936a43;
+      }
+      #middle .progress {
+        background: #1b383822;
+      }
+      #middle .progress i {
+        background: linear-gradient(90deg, #436f68, #c19058);
+      }
+      .halo {
+        position: absolute;
+        left: 825px;
+        top: -154px;
+        width: 700px;
+        height: 700px;
+        border-radius: 50%;
+        background: radial-gradient(circle, #f3d8b3 0%, #e6dac8 34%, transparent 69%);
+      }
+      .folio {
+        position: absolute;
+        left: 654px;
+        top: 168px;
+        width: 562px;
+        height: 306px;
+        padding: 12px;
+        background: #faf6ed;
+        box-shadow: 0 24px 65px #293b3926;
+        transform-origin: 70% 70%;
+      }
+      .folio .photo {
+        width: 100%;
+        height: 100%;
+        background-image: var(--landscape);
+        background-position: center;
+        background-size: cover;
+      }
+      .photo-caption {
+        position: absolute;
+        bottom: 27px;
+        left: 29px;
+        font-size: 12px;
+        letter-spacing: 3px;
+        color: #f7eee5;
+      }
+      .folio-line {
+        position: absolute;
+        left: 645px;
+        top: 158px;
+        width: 582px;
+        height: 326px;
+        border: 1px solid #a58b6970;
+      }
+      .layers {
+        position: absolute;
+        left: 68px;
+        right: 64px;
+        top: 526px;
+        display: flex;
+        gap: 19px;
+      }
+      .layer {
+        flex: 1;
+        height: 62px;
+        border-top: 1px solid #b6bbaa;
+        padding: 12px 0;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        font-size: 21px;
+        color: #304e47;
+      }
+      .layer b {
+        font-family: Georgia, serif;
+        font-size: 27px;
+        font-weight: 400;
+        color: #a2754e;
+      }
+      .wave {
+        display: flex;
+        align-items: center;
+        gap: 3px;
+        height: 22px;
+        margin-left: auto;
+      }
+      .wave i {
+        width: 2px;
+        height: 12px;
+        background: #809b82;
+      }
+      #ending .shade {
+        background:
+          linear-gradient(0deg, #06171ce8, #071a2199 45%, #071a21aa),
+          radial-gradient(ellipse at 50% 50%, #14332f20, #06151a60);
+      }
+      #ending .chapter,
+      #ending .description,
+      #ending .headline {
+        text-align: center;
+        left: 64px;
+        right: 64px;
+      }
+      #ending .chapter {
+        top: 175px;
+      }
+      #ending .headline {
+        top: 229px;
+        font-size: 74px;
+        letter-spacing: -3px;
+        background-image: linear-gradient(110deg, #fff4db 17%, #e8c9a2 54%, #a0d4c9 87%);
+      }
+      #ending .description {
+        top: 458px;
+        color: #e5e5d6c7;
+        font-size: 19px;
+        letter-spacing: 3px;
+      }
+      .signature {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 528px;
+        text-align: center;
+        font-family: Georgia, serif;
+        font-size: 31px;
+        letter-spacing: -0.8px;
+        color: #eff0db;
+      }
+      .signature:before,
+      .signature:after {
+        content: '';
+        display: inline-block;
+        width: 58px;
+        height: 1px;
+        vertical-align: middle;
+        margin: 0 22px;
+        background: #dfd9bf75;
+      }
+      .iris {
+        position: absolute;
+        border: 1px solid #ebd5ae38;
+        border-radius: 50%;
+        width: 1100px;
+        height: 1100px;
+        left: 90px;
+        top: -226px;
+      }
+      .caption-matte {
+        position: absolute;
+        left: 240px;
+        right: 240px;
+        top: 590px;
+        height: 48px;
+        border-radius: 3px;
+        background: #183c35;
+      }
+      .headline {
+        background: none !important;
+      }
+      #ending .word {
+        background-image: linear-gradient(110deg, #fff4db 17%, #e8c9a2 54%, #a0d4c9 87%);
+      }
+      html[data-locale='en'] .headline {
+        font-size: 91px;
+        letter-spacing: -4px;
+      }
+      html[data-locale='en'] #middle .headline {
+        font-size: 76px;
+      }
+      html[data-locale='en'] .layer {
+        font-size: 17px;
+      }
+      html[data-locale='en'] #ending .headline {
+        font-size: 83px;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="scene" id="opening">
+      <div class="shade"></div>
+      <div class="brand">ffclip<span>.</span></div>
+      <div class="edition" data-copy="edition"></div>
+      <div class="rule"></div>
+      <div class="chapter" data-copy="chapter1"></div>
+      <h1 class="headline gradient" data-copy="headline1"></h1>
+      <div class="description" data-copy="description1"></div>
+      <div class="locator">
+        A MOMENT IN MOTION<br /><b>BEYOND THE HORIZON</b><br />PICTURE / WORDS / SOUND
+      </div>
+      <svg class="ribbon" viewBox="0 0 500 410">
+        <defs>
+          <linearGradient id="ribbonGradient">
+            <stop stop-color="#a4e0d2" />
+            <stop offset="1" stop-color="#efc19a" />
+          </linearGradient>
+        </defs>
+        <path d="M-30 409C212 283 503 312 426 94S180 11 306 309" />
+        <path d="M-10 425C232 275 497 331 439 105S189-8 322 316" />
+      </svg>
+      <div class="footer" data-copy="footer"></div>
+      <div class="counter">01 / 03</div>
+      <div class="progress"><i></i></div>
+    </section>
+    <section class="scene" id="middle">
+      <div class="halo"></div>
+      <div class="brand">ffclip<span>.</span></div>
+      <div class="edition" data-copy="edition"></div>
+      <div class="rule"></div>
+      <div class="chapter" data-copy="chapter2"></div>
+      <h1 class="headline gradient" data-copy="headline2"></h1>
+      <div class="description" data-copy="description2"></div>
+      <div class="folio-line"></div>
+      <div class="folio">
+        <div class="photo"></div>
+        <div class="photo-caption">A STORY TAKES SHAPE</div>
+      </div>
+      <div class="layers">
+        <div class="layer"><b>01</b><span data-copy="animation"></span></div>
+        <div class="layer"><b>02</b><span class="gradient" data-copy="titles"></span></div>
+        <div class="layer">
+          <b>03</b><span data-copy="voiceover"></span>
+          <div class="wave"></div>
+        </div>
+        <div class="layer"><b>04</b><span data-copy="captions"></span></div>
+      </div>
+      <div class="caption-matte"></div>
+      <div class="footer" data-copy="footer"></div>
+      <div class="counter">02 / 03</div>
+      <div class="progress"><i></i></div>
+    </section>
+    <section class="scene" id="ending">
+      <div class="shade"></div>
+      <div class="iris"></div>
+      <div class="brand">ffclip<span>.</span></div>
+      <div class="edition" data-copy="edition"></div>
+      <div class="rule"></div>
+      <div class="chapter" data-copy="chapter3"></div>
+      <h1 class="headline gradient" data-copy="headline3"></h1>
+      <div class="description" data-copy="description3"></div>
+      <div class="signature">ffclip.</div>
+      <div class="footer" data-copy="footer"></div>
+      <div class="counter">03 / 03</div>
+      <div class="progress"><i></i></div>
+    </section>
+    <script>
+      const clamp = (x) => Math.max(0, Math.min(1, x));
+      const ease = (x) => 1 - (1 - clamp(x)) ** 3;
+      const scenes = ['opening', 'middle', 'ending'].map((id) => document.getElementById(id));
+      const wave = document.querySelector('.wave');
+      for (let i = 0; i < 15; i++) wave.appendChild(document.createElement('i'));
+      window.tick = function (seconds, context) {
+        const t = Math.max(0, Math.min(18, seconds)),
+          v = context.variables;
+        document.documentElement.dataset.locale = v.locale;
+        document.documentElement.style.setProperty('--accent', v.accent);
+        document.documentElement.style.setProperty('--highlight', v.highlight);
+        document.querySelectorAll('[data-copy]').forEach((el) => {
+          const value = v[el.dataset.copy] || '';
+          if (el.dataset.value === value) return;
+          el.dataset.value = value;
+          if (!el.classList.contains('headline')) {
+            el.textContent = value;
+            return;
+          }
+          el.replaceChildren();
+          const words = v.locale === 'en' ? value.match(/\S+\s*/g) || [] : Array.from(value);
+          words.forEach((word) => {
+            const span = document.createElement('span');
+            span.className = 'word gradient';
+            span.textContent = word;
+            el.appendChild(span);
+          });
+        });
+        scenes.forEach((scene, index) => {
+          const local = t - index * 6;
+          // Each state comes only from the source clock, including reverse seeks.
+          scene.style.visibility =
+            index === 0 || (local >= -0.4 && (index === 2 || local < 6)) ? 'visible' : 'hidden';
+          scene.style.clipPath =
+            index === 1 ? `inset(0 ${100 * (1 - ease((local + 0.4) / 0.4))}% 0 0)` : 'none';
+          scene.style.opacity = index === 2 ? clamp((local + 0.35) / 0.35) : '1';
+          scene
+            .querySelectorAll('.chapter, .headline, .description, .locator, .signature')
+            .forEach((el, order) => {
+              const p = ease((local - 0.14 - order * 0.12) / 0.7);
+              el.style.opacity = p * (index === 2 ? 1 : 1 - clamp((local - 5.55) / 0.45));
+              el.style.transform = `translateY(${22 * (1 - p)}px)`;
+            });
+          scene.querySelector('.rule').style.transform = `scaleX(${ease(local / 0.8)})`;
+          scene.querySelector('.progress i').style.transform = `scaleX(${t / 18})`;
+          scene.querySelectorAll('.word').forEach((el, letter) => {
+            const p = ease((local - 0.22 - letter * 0.075) / 0.65);
+            el.style.opacity = p;
+            el.style.transform = `translateY(${32 * (1 - p)}px) rotate(${3 * (1 - p)}deg)`;
+            el.style.backgroundPosition = `${50 + 40 * Math.sin(local * 0.65)}% 0`;
+          });
+        });
+        const m = t - 6;
+        document.querySelector('.folio').style.transform =
+          `translateY(${40 * (1 - ease(m / 0.9))}px) rotate(${-3 + ease(m / 1.1) * 3}deg)`;
+        document.querySelector('.folio-line').style.opacity = ease((m - 0.3) / 0.7);
+        document.querySelectorAll('.layer').forEach((el, index) => {
+          const p = ease((m - 0.65 - index * 0.28) / 0.7);
+          el.style.opacity = p;
+          el.style.transform = `translateY(${18 * (1 - p)}px)`;
+        });
+        document
+          .querySelectorAll('.wave i')
+          .forEach(
+            (el, index) =>
+              (el.style.height = `${5 + 17 * Math.abs(Math.sin(m * 3 + index * 0.72))}px`)
+          );
+        document.querySelector('.ribbon').style.transform =
+          `translateY(${-t * 2}px) rotate(${t * 0.6}deg)`;
+        document.querySelector('.iris').style.transform =
+          `scale(${1 + clamp((t - 12) / 6) * 0.12})`;
+      };
+    </script>
+  </body>
+</html>

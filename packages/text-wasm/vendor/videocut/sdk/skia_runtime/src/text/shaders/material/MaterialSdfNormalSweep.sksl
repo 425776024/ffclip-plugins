@@ -1,0 +1,74 @@
+
+    uniform shader inputTexture;
+    uniform shader originalTexture;
+    uniform float2 textureSize;
+    uniform float3 lightPosition;
+    uniform float3 eyePosition;
+    uniform float shininess;
+    uniform float fontScale;
+    uniform float bandWidth;
+    uniform float2 textPosition;
+    uniform float textRotationDegrees;
+    uniform float4 lightColor;
+
+    float decodeBase255(float4 value) {
+      return value.x + value.y / 255.0 + value.z / 65025.0 +
+             value.w / 16581375.0;
+    }
+
+    float2 rotatePoint(float2 point, float radians) {
+      point -= float2(0.5);
+      float sine = sin(radians);
+      float cosine = cos(radians);
+      return float2(cosine * point.x - sine * point.y,
+                    sine * point.x + cosine * point.y) + float2(0.5);
+    }
+
+    half4 main(float2 position) {
+      float2 uv = position / textureSize;
+      float centerDistance = decodeBase255(inputTexture.eval(position));
+      float dx = decodeBase255(inputTexture.eval(position + float2(1.0, 0.0))) -
+                 decodeBase255(inputTexture.eval(position - float2(1.0, 0.0)));
+      float dy = decodeBase255(inputTexture.eval(position + float2(0.0, 1.0))) -
+                 decodeBase255(inputTexture.eval(position - float2(0.0, 1.0)));
+      float2 gradient = normalize(float2(dx, dy) * 0.5);
+      gradient = mix(gradient, float2(0.0), centerDistance);
+      float4 original = float4(originalTexture.eval(position));
+      float3 normalDirection =
+          original.a * normalize(float3(-gradient, centerDistance));
+      float3 effectiveEye = eyePosition;
+      effectiveEye.x = 0.0;
+      float2 lightUv = uv;
+      lightUv.x = (lightUv.x - 0.5) *
+                      max(1.0, textureSize.x / textureSize.y) +
+                  0.5;
+      lightUv = rotatePoint(
+                    lightUv,
+                    -0.1745329252 +
+                        textRotationDegrees * 0.017453292519943295) -
+                textPosition;
+      float sweptX = lightUv.x + textPosition.y * 0.1745329252;
+      float3 currentPosition = float3(
+          (sweptX * 2.0 - 1.0) / max(fontScale, 0.0001), 0.0,
+          centerDistance);
+      float3 eyeDirection = normalize(effectiveEye - currentPosition);
+      float3 lightDirection = normalize(lightPosition - currentPosition);
+      float3 halfDirection = normalize((lightDirection + eyeDirection) * 0.5);
+      float lightStrength = pow(
+          max(dot(normalDirection, halfDirection), 0.0),
+          max(shininess, 0.0001));
+      float sweepCoordinate =
+          (sweptX - 0.5) / max(fontScale, 0.0001) + 0.5 -
+          (lightPosition.x + 2.0) * 0.25;
+      float mask = smoothstep(bandWidth, 0.5,
+                              0.5 - abs(sweepCoordinate)) * 0.2;
+      float maskCore = smoothstep(0.0, 0.5,
+                                  0.5 - abs(sweepCoordinate));
+      float4 highlight = float4(float3(1.0), centerDistance) * lightStrength;
+      highlight = highlight * (1.0 - centerDistance) * maskCore * 3.0 +
+                  highlight * centerDistance * 0.1;
+      float4 light = clamp(highlight + mask * original.a, 0.0, 1.0) *
+                     lightColor;
+      return half4(light + original);
+    }
+  

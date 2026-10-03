@@ -1,0 +1,75 @@
+{
+  "format": "com.videocut.text-template",
+  "package_id": "com.videocut.text.qt-type.anim-studio-dual-selector-radial",
+  "kind": "text_animation",
+  "license": "LicenseRef-Project-Owned",
+  "capabilities": [
+    "animation",
+    "composition-overlay",
+    "decoration",
+    "post-effect",
+    "visual-extent"
+  ],
+  "entries": {
+    "composition": {
+      "path": "composition.json",
+      "media_type": "application/vnd.videocut.text-template+json"
+    },
+    "effect_program": {
+      "path": "effect.program.json",
+      "media_type": "application/vnd.videocut.text-effect-program+json"
+    },
+    "animation": {
+      "path": "animation.ir.json",
+      "media_type": "application/vnd.videocut.text-animation+json"
+    }
+  },
+  "files": [
+    {
+      "path": "animation.ir.json",
+      "role": "entry.animation",
+      "media_type": "application/vnd.videocut.text-animation+json"
+    },
+    {
+      "path": "assets/asset-000.mp4",
+      "role": "resource",
+      "media_type": "video/mp4;profile=videocut-packed-alpha"
+    },
+    {
+      "path": "assets/asset-001.json",
+      "role": "resource",
+      "media_type": "application/json"
+    },
+    {
+      "path": "composition.json",
+      "role": "entry.composition",
+      "media_type": "application/vnd.videocut.text-template+json"
+    },
+    {
+      "path": "effect.program.json",
+      "role": "entry.effect-program",
+      "media_type": "application/vnd.videocut.text-effect-program+json"
+    }
+  ],
+  "presentation": {
+    "name_key": "studio-radial",
+    "fallback_name": "聚拢成句",
+    "category": "animation_preset",
+    "tags": [
+      "animation",
+      "enter",
+      "slide-up"
+    ],
+    "default_duration_ticks": 600000,
+    "fidelity": "redesigned"
+  },
+  "preview": {
+    "poster": "",
+    "fixture_text": "灵感",
+    "time_seconds": 0.5
+  },
+  "fallback": {
+    "policy": "reject",
+    "notes": []
+  }
+}

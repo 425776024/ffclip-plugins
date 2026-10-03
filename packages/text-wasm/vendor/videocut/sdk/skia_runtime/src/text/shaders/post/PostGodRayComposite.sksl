@@ -1,0 +1,238 @@
+
+    uniform shader rayTexture;
+    uniform shader inputTexture;
+    uniform float2 raySize;
+    uniform float2 textureSize;
+    uniform float2 center;
+    uniform float useAngle;
+    uniform float minAngle;
+    uniform float maxAngle;
+    uniform float intensity;
+    uniform float brightness;
+    uniform float quality;
+    uniform float weightDecay;
+    uniform float normalizationSample;
+    uniform float sampleScale;
+    uniform float sampleBias;
+    uniform float colorDecay;
+    uniform float borderType;
+    uniform float blendMode;
+    uniform float3 lightColor;
+    uniform float displayRayOnly;
+    uniform float inverseGammaCorrection;
+    uniform float gamma;
+    uniform float grayscaleCorrection;
+    uniform float dither;
+    uniform float noiseIntensity;
+
+    float4 sampleInputQt(float2 qtUv) {
+      return float4(inputTexture.eval(
+          float2(qtUv.x, 1.0 - qtUv.y) * textureSize));
+    }
+
+    float4 sampleRayQt(float2 qtUv) {
+      float4 color = float4(rayTexture.eval(
+          float2(qtUv.x, 1.0 - qtUv.y) * raySize));
+      if (inverseGammaCorrection >= 0.5) {
+        color.rgb = pow(color.rgb, float3(gamma));
+      }
+      return color;
+    }
+
+    float randomValue(float2 qtUv) {
+      return fract(sin(dot(qtUv, float2(41.0, 289.0))) * 45758.546875);
+    }
+
+    float mirrorCoordinate(float value) {
+      value = abs(value);
+      return abs((floor(ceil(value) * 0.5) * 2.0) - value);
+    }
+
+    float4 addBlend(float4 ray, float4 source) {
+      return float4(ray.rgb + source.rgb,
+                    ray.a + source.a * (1.0 - ray.a));
+    }
+
+    float4 lightenBlend(float4 ray, float4 source) {
+      return float4(max(ray.rgb, source.rgb),
+                    ray.a + source.a * (1.0 - ray.a));
+    }
+
+    float4 multiplyBlend(float4 ray, float4 source) {
+      return float4(ray.rgb * source.rgb,
+                    ray.a + source.a * (1.0 - ray.a));
+    }
+
+    float4 normalBlend(float4 ray, float4 source) {
+      float alpha = ray.a + source.a * (1.0 - ray.a);
+      float3 rgb = (ray.rgb * ray.a +
+                    source.rgb * ((1.0 - ray.a) * source.a)) /
+                   float3(max(alpha,
+                       0.001000000047497451305389404296875));
+      return float4(rgb, alpha);
+    }
+
+    float4 screenBlend(float4 ray, float4 source) {
+      return float4(1.0) -
+             ((float4(1.0) - ray) * (float4(1.0) - source));
+    }
+
+    // LumiGodRay's interval wraps once around atan2 and feathers the smaller
+    // of the selected sector and its complement.
+    float directionAngle(float2 delta) {
+      float angle = atan(delta.y * textureSize.y / textureSize.x, delta.x);
+      if (angle < minAngle) {
+        angle += 6.283185482025146;
+      } else if (angle > maxAngle) {
+        angle -= 6.283185482025146;
+      }
+      return angle;
+    }
+
+    float angularFeather(float angle) {
+      float span = maxAngle - minAngle;
+      float minorSpan = span < 3.1415927410125732
+          ? span : 6.283185482025146 - span;
+      float feather = clamp(minorSpan * 0.2,
+          min(0.1745329201221466, minorSpan * 0.5), 0.7853981852531433);
+      float weight = 1.0;
+      if (angle <= minAngle || angle >= maxAngle) {
+        weight = 0.0;
+      } else if (angle < minAngle + feather) {
+        weight = (angle - minAngle) / max(feather, 0.001);
+      } else if (angle > maxAngle - feather) {
+        weight = (maxAngle - angle) / max(feather, 0.001);
+      }
+      return smoothstep(0.0, 1.0, weight);
+    }
+
+    float4 main(float2 xy) {
+      float2 skUv = xy / textureSize;
+      float2 qtUv = float2(skUv.x, 1.0 - skUv.y);
+      float4 source = sampleInputQt(qtUv);
+      float4 ray = sampleRayQt(qtUv);
+      float2 delta = (qtUv - center) * intensity;
+      float radialDistance = length(delta);
+      float angularWeight = 1.0;
+      float angularGate = 1.0;
+      if (useAngle >= 0.5) {
+        if (radialDistance > 0.001) {
+          float angle = directionAngle(delta);
+          angularWeight = angularFeather(angle);
+          if (angle < minAngle || angle > maxAngle) {
+            return displayRayOnly >= 0.5 ? float4(0.0) : source;
+          }
+        }
+        float radialGate = smoothstep(0.0, 0.1, radialDistance);
+        float span = maxAngle - minAngle;
+        if (span > 1.5707963705062866) {
+          radialGate += ((span - 1.5707963705062866) /
+                         1.5707963705062866) * (1.0 - radialGate);
+        }
+        angularGate = angularWeight * clamp(radialGate, 0.0, 1.0);
+      }
+      float normalizedDistance = sign(radialDistance) *
+          (0.89999997615814208984375 * abs(radialDistance) +
+           0.100000001490116119384765625);
+      float sampleCount = min(
+          quality * normalizedDistance * sampleScale + sampleBias,
+          512.0);
+      float2 sampleStep = delta /
+          float2(max(sampleCount,
+              0.00000999999974737875163555145263671875));
+      float weightStep = pow(pow(weightDecay, normalizationSample),
+                             1.0 / sampleCount);
+      float currentWeight = 1.0;
+      float accumulatedWeight = 1.0;
+      float2 sampleOrigin = qtUv;
+      float random = 0.0;
+      if (dither >
+              0.001000000047497451305389404296875 ||
+          noiseIntensity >
+              0.001000000047497451305389404296875) {
+        random = randomValue(qtUv);
+      }
+      if (dither >
+          0.001000000047497451305389404296875) {
+        sampleOrigin += (delta * (dither * (random * 2.0 - 1.0))) /
+                        float2(normalizationSample);
+      }
+      float inverseColorDecay = 1.0 /
+          max(colorDecay, 0.001000000047497451305389404296875);
+      for (int index = 1; index <= 512; ++index) {
+        float sampleIndex = float(index);
+        if (sampleIndex > sampleCount) {
+          break;
+        }
+        currentWeight *= weightStep;
+        float2 rayUv = sampleOrigin - sampleStep * sampleIndex;
+        float radialFactor = smoothstep(
+            0.0, 2.0 * inverseColorDecay,
+            1.0 / max(distance(rayUv, center),
+                0.001000000047497451305389404296875));
+        bool outside = rayUv.x < 0.0 || rayUv.y < 0.0 ||
+                       rayUv.x > 1.0 || rayUv.y > 1.0;
+        if (outside) {
+          if (borderType < 0.5) {
+            rayUv = float2(mirrorCoordinate(rayUv.x),
+                           mirrorCoordinate(rayUv.y));
+            ray += sampleRayQt(rayUv) * (currentWeight * radialFactor);
+            accumulatedWeight += currentWeight;
+          } else {
+            accumulatedWeight += currentWeight;
+          }
+        } else {
+          ray += sampleRayQt(rayUv) * (currentWeight * radialFactor);
+          accumulatedWeight += currentWeight;
+        }
+      }
+      ray /= float4(accumulatedWeight);
+      if (noiseIntensity >
+          0.001000000047497451305389404296875) {
+        float radialNoise = smoothstep(
+            0.0, 5.0 * inverseColorDecay,
+            1.0 / max(distance(qtUv, center),
+                0.001000000047497451305389404296875));
+        ray.rgb = float3(1.0) -
+            ((float3(1.0) - ray.rgb) *
+             (1.0 - radialNoise * noiseIntensity * random));
+      }
+      float brightnessFactor =
+          11.6700000762939453125 * brightness -
+          19.0 * pow(brightness, 2.0) +
+          23.0 * pow(brightness, 3.0);
+      ray *= float4(brightnessFactor);
+      ray.rgb *= ray.a;
+      ray.rgb *= lightColor;
+      ray = clamp(ray, float4(0.0), float4(1.0));
+      if (inverseGammaCorrection >= 0.5) {
+        ray.rgb = pow(ray.rgb, float3(1.0 / gamma));
+      }
+      ray.rgb = pow(ray.rgb, float3(grayscaleCorrection));
+      if (weightDecay < 0.800000011920928955078125) {
+        ray = mix(float4(0.0), ray,
+                  float4(1.25 * weightDecay));
+      }
+      float4 outputColor;
+      if (displayRayOnly >= 0.5) {
+        outputColor = ray;
+      } else if (blendMode >= 0.5 && blendMode < 1.5) {
+        outputColor = addBlend(ray, source);
+      } else if (blendMode >= 1.5 && blendMode < 2.5) {
+        outputColor = lightenBlend(ray, source);
+      } else if (blendMode >= 2.5 && blendMode < 3.5) {
+        outputColor = multiplyBlend(ray, source);
+      } else if (blendMode >= 3.5 && blendMode < 4.5) {
+        outputColor = normalBlend(ray, source);
+      } else {
+        outputColor = screenBlend(ray, source);
+      }
+      if (useAngle >= 0.5) {
+        outputColor = mix(source, outputColor, angularGate);
+        if (displayRayOnly >= 0.5) {
+          outputColor *= angularWeight;
+        }
+      }
+      return clamp(outputColor, float4(0.0), float4(1.0));
+    }
+  

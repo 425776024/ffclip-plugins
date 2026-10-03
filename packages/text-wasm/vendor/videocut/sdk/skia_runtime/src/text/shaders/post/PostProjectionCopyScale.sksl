@@ -1,0 +1,32 @@
+
+    uniform shader inputTexture;
+    uniform float2 textureSize;
+    uniform float inverseScale;
+    uniform float backAlpha;
+    uniform float mixWithBlack;
+    uniform float offsetY;
+    uniform float2 shake;
+    uniform float shakeScale;
+    uniform float2 textExpandRatio;
+
+    float4 sampleQt(float2 uv) {
+      return float4(inputTexture.eval(
+          float2(uv.x, 1.0 - uv.y) * textureSize));
+    }
+
+    float4 main(float2 xy) {
+      float2 uv = float2(xy.x / textureSize.x,
+                         1.0 - xy.y / textureSize.y);
+      float2 primaryUv = uv;
+      primaryUv.y -= offsetY / textExpandRatio.y;
+      primaryUv -= shake * shakeScale / textExpandRatio;
+      float4 primary = sampleQt(primaryUv);
+      float4 background =
+          sampleQt((uv - float2(0.5)) * inverseScale + float2(0.5)) *
+          backAlpha;
+      float4 blackBackground = float4(0.0, 0.0, 0.0, background.a);
+      float4 selectedBackground =
+          mix(background, blackBackground, mixWithBlack);
+      return selectedBackground * (1.0 - primary.a) + primary;
+    }
+  

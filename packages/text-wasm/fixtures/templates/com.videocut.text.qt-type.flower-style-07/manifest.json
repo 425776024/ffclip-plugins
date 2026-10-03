@@ -1,0 +1,63 @@
+{
+  "format": "com.videocut.text-template",
+  "package_id": "com.videocut.text.qt-type.flower-style-07",
+  "kind": "text_flower",
+  "license": "LicenseRef-Project-Owned",
+  "capabilities": [
+    "flower",
+    "typography",
+    "visual-extent"
+  ],
+  "entries": {
+    "composition": {
+      "path": "composition.json",
+      "media_type": "application/vnd.videocut.text-template+json"
+    },
+    "effect_program": {
+      "path": "effect.program.json",
+      "media_type": "application/vnd.videocut.text-effect-program+json"
+    },
+    "animation": {
+      "path": "animation.ir.json",
+      "media_type": "application/vnd.videocut.text-animation+json"
+    }
+  },
+  "files": [
+    {
+      "path": "animation.ir.json",
+      "role": "entry.animation",
+      "media_type": "application/vnd.videocut.text-animation+json"
+    },
+    {
+      "path": "composition.json",
+      "role": "entry.composition",
+      "media_type": "application/vnd.videocut.text-template+json"
+    },
+    {
+      "path": "effect.program.json",
+      "role": "entry.effect-program",
+      "media_type": "application/vnd.videocut.text-effect-program+json"
+    }
+  ],
+  "presentation": {
+    "name_key": "mediaTextTemplateQtTypeFlowerStyle07",
+    "fallback_name": "Qt Flower Style 07",
+    "category": "flower_preset",
+    "tags": [
+      "flower",
+      "qt-type",
+      "style"
+    ],
+    "default_duration_ticks": 600000,
+    "fidelity": "exact"
+  },
+  "preview": {
+    "poster": "",
+    "fixture_text": "花字",
+    "time_seconds": 0.5
+  },
+  "fallback": {
+    "policy": "reject",
+    "notes": []
+  }
+}

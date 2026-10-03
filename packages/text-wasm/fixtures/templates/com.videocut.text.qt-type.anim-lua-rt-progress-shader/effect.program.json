@@ -1,0 +1,186 @@
+{
+  "format": "videocut.text-effect-program",
+  "programs": [
+    {
+      "program_id": "com.videocut.text.qt-type.anim-lua-rt-progress-shader.program.controller",
+      "random_seed": 50,
+      "stages": [
+        {
+          "stage_id": "qt-particle-scatter-source-grid",
+          "kind": "per_unit",
+          "register_count": 16,
+          "instructions": [
+            {"opcode":"input","output_register":11,"input_registers":[],"immediates":[],"input":"time_us"},
+            {"opcode":"input","output_register":12,"input_registers":[],"immediates":[],"input":"animation_duration_us"},
+            {"opcode":"constant","output_register":13,"input_registers":[],"immediates":[4000010],"input":null},
+            {"opcode":"add","output_register":14,"input_registers":[12,13],"immediates":[],"input":null},
+            {"opcode":"modulo","output_register":15,"input_registers":[11,14],"immediates":[],"input":null},
+            {
+              "opcode": "divide",
+              "output_register": 0,
+              "input_registers": [15,14],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 1,
+              "input_registers": [],
+              "immediates": [
+                1
+              ],
+              "input": null
+            },
+            {
+              "opcode": "input",
+              "output_register": 2,
+              "input_registers": [],
+              "immediates": [],
+              "input": "text_rect_width"
+            },
+            {
+              "opcode": "input",
+              "output_register": 3,
+              "input_registers": [],
+              "immediates": [],
+              "input": "text_rect_height"
+            },
+            {
+              "opcode": "input",
+              "output_register": 4,
+              "input_registers": [],
+              "immediates": [],
+              "input": "font_size"
+            },
+            {
+              "opcode": "input",
+              "output_register": 5,
+              "input_registers": [],
+              "immediates": [],
+              "input": "unit_count"
+            },
+            {
+              "opcode": "constant",
+              "output_register": 6,
+              "input_registers": [],
+              "immediates": [
+                0
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 7,
+              "input_registers": [],
+              "immediates": [
+                0.4
+              ],
+              "input": null
+            },
+            {
+              "opcode": "multiply",
+              "output_register": 8,
+              "input_registers": [
+                4,
+                7
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "add",
+              "output_register": 9,
+              "input_registers": [
+                2,
+                8
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "add",
+              "output_register": 10,
+              "input_registers": [
+                3,
+                8
+              ],
+              "immediates": [],
+              "input": null
+            }
+          ],
+          "outputs": [],
+          "execution_parameter_bindings": [
+            {
+              "node_id": "material-program-1",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 0,
+              "register_indices": [
+                0
+              ]
+            },
+            {
+              "node_id": "material-program-1",
+              "parameter": "material_vector2",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 1,
+              "register_indices": [
+                9,
+                10
+              ]
+            },
+            {
+              "node_id": "material-program-1",
+              "parameter": "material_vector3",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 2,
+              "register_indices": [
+                1,
+                6,
+                6
+              ]
+            },
+            {
+              "node_id": "material-program-1",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 3,
+              "register_indices": [
+                5
+              ]
+            },
+            {
+              "node_id": "material-program-1",
+              "parameter": "material_vector3",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 4,
+              "register_indices": [
+                6,
+                1,
+                6
+              ]
+            },
+            {
+              "node_id": "material-program-1",
+              "parameter": "material_vector4",
+              "domain": "page",
+              "value_space": "source_pixels",
+              "slot": 31,
+              "register_indices": [
+                2,
+                3,
+                6,
+                6
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

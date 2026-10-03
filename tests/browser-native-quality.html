@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VideoCut Native Full HD Pixel Quality A/B</title>
+  <style>
+    body {
+      margin: 24px;
+      font: 14px system-ui;
+      color: #dce7f3;
+      background: #11151d;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    p {
+      line-height: 1.6;
+      max-width: 1080px;
+    }
+    button {
+      font: inherit;
+      padding: 10px 18px;
+      margin: 0 10px 16px 0;
+    }
+    section {
+      margin: 20px 0;
+    }
+    .pair {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    figure {
+      margin: 0;
+      max-width: calc(50vw - 40px);
+    }
+    figcaption {
+      padding-bottom: 8px;
+    }
+    canvas {
+      display: block;
+      width: 640px;
+      max-width: 100%;
+      height: auto;
+      border: 1px solid #546070;
+      background-color: #171c27;
+      background-image: conic-gradient(
+        #ffffff0b 25%,
+        transparent 0 50%,
+        #ffffff0b 0 75%,
+        transparent 0
+      );
+      background-size: 24px 24px;
+    }
+    pre {
+      white-space: pre-wrap;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+  </style>
+  <h1>1920 × 1080 原生花字 · 优化前后逐字节 A/B</h1>
+  <p>
+    两套 WASM 使用同一真实模板组合与本机系统字体。逐字节比较原生 straight RGBA
+    在原始画布坐标中的完整 Full HD 输出，记录差异数量、最大误差和时刻。SHA-256
+    只作附加证据；哈希相同不替代直接像素比较。 包含冷帧、变化时刻、倒退卡针，以及非零阴影 opacity
+    控制。下方画布只通过 CSS 缩小显示。
+  </p>
+  <button id="run">运行 Full HD 质量 A/B</button
+  ><button id="stop">取消</button>
+  <button id="download" disabled>下载 JSON 报告</button>
+  <div id="frames"></div>
+  <pre id="status" aria-live="polite">尚未运行</pre>
+  <script type="module" src="./browser-native-quality.ts"></script>
+</html>

@@ -1,0 +1,100 @@
+{
+  "profile": "webgpu-effects-experimental-v1",
+  "timestamp": "2026-09-29T09:47:19.457Z",
+  "adapter": {
+    "vendor": "apple",
+    "architecture": "metal-3",
+    "description": "",
+    "isFallbackAdapter": false
+  },
+  "reference": {
+    "shaderSource": "Unmodified vendored Metal shaders",
+    "scope": "Same WASM-generated mesh and same RGBA input; not whole desktop text pipeline parity",
+    "device": "Apple M4 Pro",
+    "width": 640,
+    "height": 360,
+    "shaderSha256": {
+      "MetalTextSdf.metal": "41c363c1827136854129b990934936cb7726f1f564b2474e14f02918f4a2f1c3",
+      "MetalGaussian.metal": "a005e6ad26e550360e50f618808f25d78a1b35766a59e01e020c24aa2b971793",
+      "MetalQtTextSoftGlow.metal": "885cbd9a1aa2092397eb6ae377e82bc36fbe53e4cc0cc43cc21124d4958d9fb9"
+    },
+    "wasmSha256": "4f7fc216203619c37a395b47fa1e8cb85df9b67bf54c426da053a150d6666a76",
+    "inputSha256": "ba01b36831d3493fd4f00a599ad0b66a819f1739b12022471bf9a20f7b17e51c",
+    "distanceMeshSha256": "bea608bdef500e9d7231c0a3611dfefa3ad58c076b2cf762c13c9c022d7c7db5",
+    "shapeMeshSha256": "9251fd8916d2a9b4675ba0f35e546c3ffca4cee2769a72f9dfcd85afcef0ed42"
+  },
+  "portSha256": {
+    "webgpu.mjs": "203f3594138ff8307127f39e003cf70dfe579f89f4d693607adb63d2643b49dc",
+    "gpu-shaders.mjs": "8e28f871f44c71328b6239241e844a6f722cd3182acf0d1ce5996b08463b50cd"
+  },
+  "cases": [
+    {
+      "effect": "sdf-distance-field",
+      "meanNormalizedDistanceError": 4.920045275054456e-9,
+      "maxNormalizedDistanceError": 0.000015318627450980392,
+      "aboveOnePercentFraction": 0,
+      "visible": true,
+      "passed": true,
+      "scope": "Native MetalTextSdf algorithm on the same SDK mesh; decoded RG distances compared, not full native atlas/material/layout parity."
+    },
+    {
+      "effect": "gaussian",
+      "meanAbsByteError": 0.0000010850694444444444,
+      "maxByteError": 1,
+      "differentChannelFraction": 0.0000010850694444444444,
+      "above2ByteFraction": 0,
+      "parameterChangeMeanError": 10.910767144097223,
+      "deterministic": true,
+      "passed": true
+    },
+    {
+      "effect": "soft-glow",
+      "meanAbsByteError": 0.00001193576388888889,
+      "maxByteError": 1,
+      "differentChannelFraction": 0.00001193576388888889,
+      "above2ByteFraction": 0,
+      "parameterChangeMeanError": 4.968793402777778,
+      "deterministic": true,
+      "passed": true
+    },
+    {
+      "effect": "sdf-stroke-control",
+      "passed": true
+    }
+  ],
+  "timings": [
+    {
+      "effect": "sdf",
+      "frames": 60,
+      "width": 640,
+      "height": 360,
+      "medianCompletedMs": 0.30000007152557373,
+      "p95CompletedMs": 0.6000000238418579,
+      "totalMs": 26.299999952316284
+    },
+    {
+      "effect": "gaussian",
+      "frames": 60,
+      "width": 640,
+      "height": 360,
+      "medianCompletedMs": 0.9000000953674316,
+      "p95CompletedMs": 2.4000000953674316,
+      "totalMs": 66.90000009536743
+    },
+    {
+      "effect": "soft-glow",
+      "frames": 60,
+      "width": 640,
+      "height": 360,
+      "medianCompletedMs": 1,
+      "p95CompletedMs": 2.5,
+      "totalMs": 71.29999995231628
+    }
+  ],
+  "passed": true,
+  "notes": [
+    "GPU readback comparisons against unmodified native Metal shaders.",
+    "SDF uses the same WASM-generated base outline for both backends. This does not validate full desktop template parity.",
+    "Timings include JS submission and GPU queue completion, exclude first shader compilation and cached SDF mesh generation; no claim about screen presentation latency."
+  ]
+}

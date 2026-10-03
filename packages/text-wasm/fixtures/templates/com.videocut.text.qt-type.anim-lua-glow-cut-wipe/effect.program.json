@@ -1,0 +1,755 @@
+{
+  "format": "videocut.text-effect-program",
+  "programs": [
+    {
+      "program_id": "com.videocut.text.qt-type.anim-lua-glow-cut-wipe.program.controller",
+      "random_seed": 50,
+      "stages": [
+        {
+          "stage_id": "qt-glow-cut-material-source",
+          "kind": "per_unit",
+          "register_count": 28,
+          "instructions": [
+            {
+              "opcode": "input",
+              "output_register": 0,
+              "input_registers": [],
+              "immediates": [],
+              "input": "progress"
+            },
+            {
+              "opcode": "cubic_bezier_timing",
+              "output_register": 1,
+              "input_registers": [
+                0
+              ],
+              "immediates": [
+                0.392293,
+                0,
+                0.525038,
+                1
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 2,
+              "input_registers": [],
+              "immediates": [
+                1
+              ],
+              "input": null
+            },
+            {
+              "opcode": "subtract",
+              "output_register": 3,
+              "input_registers": [
+                2,
+                1
+              ],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 4,
+              "input_registers": [],
+              "immediates": [
+                2
+              ],
+              "input": null
+            },
+            {
+              "opcode": "input",
+              "output_register": 5,
+              "input_registers": [],
+              "immediates": [],
+              "input": "first_unit_color_red"
+            },
+            {
+              "opcode": "input",
+              "output_register": 6,
+              "input_registers": [],
+              "immediates": [],
+              "input": "first_unit_color_green"
+            },
+            {
+              "opcode": "input",
+              "output_register": 7,
+              "input_registers": [],
+              "immediates": [],
+              "input": "first_unit_color_blue"
+            },
+            {
+              "opcode": "input",
+              "output_register": 8,
+              "input_registers": [],
+              "immediates": [],
+              "input": "text_rect_width"
+            },
+            {
+              "opcode": "input",
+              "output_register": 9,
+              "input_registers": [],
+              "immediates": [],
+              "input": "text_rect_height"
+            },
+            {
+              "opcode": "constant",
+              "output_register": 10,
+              "input_registers": [],
+              "immediates": [
+                -0.03999999910593033
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 11,
+              "input_registers": [],
+              "immediates": [
+                0.01499999966472387
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 12,
+              "input_registers": [],
+              "immediates": [
+                7
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 13,
+              "input_registers": [],
+              "immediates": [
+                0.4
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 14,
+              "input_registers": [],
+              "immediates": [
+                2.2
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 15,
+              "input_registers": [],
+              "immediates": [
+                -0.01
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 16,
+              "input_registers": [],
+              "immediates": [
+                10
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 17,
+              "input_registers": [],
+              "immediates": [
+                16
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 18,
+              "input_registers": [],
+              "immediates": [
+                256
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 19,
+              "input_registers": [],
+              "immediates": [
+                1
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 20,
+              "input_registers": [],
+              "immediates": [
+                0
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 21,
+              "input_registers": [],
+              "immediates": [
+                1
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 22,
+              "input_registers": [],
+              "immediates": [
+                4
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 23,
+              "input_registers": [],
+              "immediates": [
+                2.4
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 24,
+              "input_registers": [],
+              "immediates": [
+                0.549
+              ],
+              "input": null
+            },
+            {
+              "opcode": "constant",
+              "output_register": 25,
+              "input_registers": [],
+              "immediates": [
+                0.6706
+              ],
+              "input": null
+            },
+            {
+              "opcode": "input",
+              "output_register": 26,
+              "input_registers": [],
+              "immediates": [],
+              "input": "canvas_rect_width"
+            },
+            {
+              "opcode": "input",
+              "output_register": 27,
+              "input_registers": [],
+              "immediates": [],
+              "input": "canvas_rect_height"
+            }
+          ],
+          "outputs": [
+            {
+              "output": "opacity",
+              "register_index": 2,
+              "transform_index": 0
+            }
+          ],
+          "execution_parameter_bindings": [
+            {
+              "node_id": "material-program-1",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 0,
+              "register_indices": [
+                3
+              ]
+            },
+            {
+              "node_id": "material-program-1",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 1,
+              "register_indices": [
+                10
+              ]
+            },
+            {
+              "node_id": "material-program-1",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 2,
+              "register_indices": [
+                11
+              ]
+            },
+            {
+              "node_id": "material-program-1",
+              "parameter": "material_vector2",
+              "domain": "page",
+              "value_space": "reference_pixels",
+              "slot": 3,
+              "register_indices": [
+                8,
+                9
+              ]
+            },
+            {
+              "node_id": "material-program-1",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 4,
+              "register_indices": [
+                12
+              ]
+            },
+            {
+              "node_id": "material-program-1",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 5,
+              "register_indices": [
+                13
+              ]
+            },
+            {
+              "node_id": "material-program-1",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 6,
+              "register_indices": [
+                14
+              ]
+            },
+            {
+              "node_id": "material-program-2",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 0,
+              "register_indices": [
+                3
+              ]
+            },
+            {
+              "node_id": "material-program-2",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 1,
+              "register_indices": [
+                10
+              ]
+            },
+            {
+              "node_id": "material-program-2",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 2,
+              "register_indices": [
+                11
+              ]
+            },
+            {
+              "node_id": "material-program-2",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 3,
+              "register_indices": [
+                15
+              ]
+            },
+            {
+              "node_id": "material-program-2",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 4,
+              "register_indices": [
+                16
+              ]
+            },
+            {
+              "node_id": "material-program-3",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 0,
+              "register_indices": [
+                17
+              ]
+            },
+            {
+              "node_id": "material-program-3",
+              "parameter": "material_vector2",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 1,
+              "register_indices": [
+                19,
+                20
+              ]
+            },
+            {
+              "node_id": "material-program-3",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 2,
+              "register_indices": [
+                21
+              ]
+            },
+            {
+              "node_id": "material-program-3",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 3,
+              "register_indices": [
+                22
+              ]
+            },
+            {
+              "node_id": "material-program-3",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 4,
+              "register_indices": [
+                23
+              ]
+            },
+            {
+              "node_id": "material-program-3",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 5,
+              "register_indices": [
+                19
+              ]
+            },
+            {
+              "node_id": "material-program-4",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 0,
+              "register_indices": [
+                17
+              ]
+            },
+            {
+              "node_id": "material-program-4",
+              "parameter": "material_vector2",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 1,
+              "register_indices": [
+                20,
+                19
+              ]
+            },
+            {
+              "node_id": "material-program-4",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 2,
+              "register_indices": [
+                21
+              ]
+            },
+            {
+              "node_id": "material-program-4",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 3,
+              "register_indices": [
+                22
+              ]
+            },
+            {
+              "node_id": "material-program-4",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 4,
+              "register_indices": [
+                23
+              ]
+            },
+            {
+              "node_id": "material-program-4",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 5,
+              "register_indices": [
+                20
+              ]
+            },
+            {
+              "node_id": "material-program-5",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 0,
+              "register_indices": [
+                18
+              ]
+            },
+            {
+              "node_id": "material-program-5",
+              "parameter": "material_vector2",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 1,
+              "register_indices": [
+                19,
+                20
+              ]
+            },
+            {
+              "node_id": "material-program-5",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 2,
+              "register_indices": [
+                21
+              ]
+            },
+            {
+              "node_id": "material-program-5",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 3,
+              "register_indices": [
+                22
+              ]
+            },
+            {
+              "node_id": "material-program-5",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 4,
+              "register_indices": [
+                23
+              ]
+            },
+            {
+              "node_id": "material-program-5",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 5,
+              "register_indices": [
+                19
+              ]
+            },
+            {
+              "node_id": "material-program-6",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 0,
+              "register_indices": [
+                18
+              ]
+            },
+            {
+              "node_id": "material-program-6",
+              "parameter": "material_vector2",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 1,
+              "register_indices": [
+                20,
+                19
+              ]
+            },
+            {
+              "node_id": "material-program-6",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 2,
+              "register_indices": [
+                21
+              ]
+            },
+            {
+              "node_id": "material-program-6",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 3,
+              "register_indices": [
+                22
+              ]
+            },
+            {
+              "node_id": "material-program-6",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 4,
+              "register_indices": [
+                23
+              ]
+            },
+            {
+              "node_id": "material-program-6",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 5,
+              "register_indices": [
+                20
+              ]
+            },
+            {
+              "node_id": "material-program-7",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 0,
+              "register_indices": [
+                4
+              ]
+            },
+            {
+              "node_id": "material-program-7",
+              "parameter": "material_vector4",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 1,
+              "register_indices": [
+                2,
+                2,
+                2,
+                2
+              ]
+            },
+            {
+              "node_id": "material-program-7",
+              "parameter": "material_vector3",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 2,
+              "register_indices": [
+                5,
+                6,
+                7
+              ]
+            },
+            {
+              "node_id": "material-program-7",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 3,
+              "register_indices": [
+                23
+              ]
+            },
+            {
+              "node_id": "material-program-7",
+              "parameter": "material_vector4",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 4,
+              "register_indices": [
+                24,
+                25,
+                2,
+                2
+              ]
+            },
+            {
+              "node_id": "material-program-7",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 5,
+              "register_indices": [
+                4
+              ]
+            },
+            {
+              "node_id": "material-program-3",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 6,
+              "register_indices": [
+                19
+              ]
+            },
+            {
+              "node_id": "material-program-4",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 6,
+              "register_indices": [
+                19
+              ]
+            },
+            {
+              "node_id": "material-program-5",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 6,
+              "register_indices": [
+                19
+              ]
+            },
+            {
+              "node_id": "material-program-6",
+              "parameter": "material_scalar",
+              "domain": "page",
+              "value_space": "unitless",
+              "slot": 6,
+              "register_indices": [
+                19
+              ]
+            },
+            {
+              "node_id": "material-program-1",
+              "parameter": "material_vector4",
+              "domain": "page",
+              "value_space": "source_pixels",
+              "slot": 31,
+              "register_indices": [
+                26,
+                27,
+                20,
+                20
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

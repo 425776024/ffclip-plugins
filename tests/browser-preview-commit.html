@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="zh-CN">
+  <meta charset="utf-8" />
+  <title>Preview commit regression</title>
+  <style>
+    #run {
+      margin: 12px;
+    }
+    #status {
+      margin: 12px;
+      white-space: pre-wrap;
+    }
+    #fixture {
+      width: min(1200px, 100vw);
+      height: 580px;
+    }
+    #fixture .editor-shell {
+      height: 580px;
+    }
+  </style>
+  <button id="run">运行预览提交回归</button>
+  <div id="fixture"></div>
+  <pre id="status">尚未运行</pre>
+  <script type="module" src="./browser-preview-commit.ts"></script>
+</html>

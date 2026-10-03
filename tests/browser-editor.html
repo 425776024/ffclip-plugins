@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="zh-CN">
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VideoCut Editor Component Integration</title>
+  <style>
+    body { margin: 20px !important; font: 14px system-ui; background: #111; color: #eee; }
+    #run { padding: 12px 20px; margin: 12px 0; }
+    #component-fixture { width: min(900px, 95vw); }
+    #component-fixture .preview-stage { width: 640px; max-width: 100%; position: relative; }
+    #component-fixture .timeline-scroll { height: 150px; margin-top: 16px; }
+    #status { white-space: pre-wrap; line-height: 1.45; }
+  </style>
+  <h1>编辑器组件集成验收 · 合成事件</h1>
+  <p>挂载真实 Timeline 与 Preview，合成 PointerEvent / Escape / 外部作品替换。此测试不代表物理鼠标或键盘验收。</p>
+  <button id="run">运行组件集成测试</button>
+  <pre id="status" aria-live="polite">尚未运行</pre>
+  <div id="component-fixture"></div>
+  <script type="module" src="./browser-editor.ts"></script>
+</html>

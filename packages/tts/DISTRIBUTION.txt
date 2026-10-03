@@ -1,0 +1,18 @@
+Browser TTS distribution status (2026-10-01, 0.2.0)
+
+The compiled phonemizer/eSpeak NG dependency has been replaced. It is absent
+from package.json and the lockfile, and its compiled engine and GPL notice are
+not shipped by the release asset list. English speech remains available offline
+using the MIT HeadTTS JavaScript letter rules and Apache-2.0 Misaki US/GB gold
+lexicons. Chinese text normalization and pinyin retain their existing licenses.
+
+This resolves the previous missing Corresponding Source issue by removing that
+engine from this distribution. It does not relicense upstream eSpeak, change
+the project's own license, or constitute clearance of unrelated dependencies.
+See NOTICE.txt and ENGLISH-SOURCE.json for exact revisions, source locations,
+archive integrity, modified-file hashes and shipped license files.
+
+English OOV words use letter rules. Homographs use dictionary default readings;
+there is no context-sensitive POS model. Inference still uses the separately
+installed Apache-2.0 Kokoro v1.1 Chinese/English model with local browser
+WebGPU or WASM execution. Model/voice files are not included in the plugin.

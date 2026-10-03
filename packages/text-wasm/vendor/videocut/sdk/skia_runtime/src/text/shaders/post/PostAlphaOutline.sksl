@@ -1,0 +1,65 @@
+
+    uniform shader inputTexture;
+    uniform float2 textureSize;
+    uniform float offsetX;
+    uniform float offsetY;
+    uniform float ratio;
+    uniform float size;
+    uniform float scaleX;
+    uniform float scaleY;
+    uniform float4 outlineColor;
+    uniform float intensity;
+
+    float4 sampleQt(float2 qtUv) {
+      return float4(inputTexture.eval(
+          float2(qtUv.x, 1.0 - qtUv.y) * textureSize));
+    }
+
+    float3 srgbToLinear(float3 color) {
+      return mix(pow((color + float3(0.054999999701976776123046875)) *
+                     float3(0.947867333889007568359375),
+                     float3(2.400000095367431640625)),
+                 color * float3(0.077399380505084991455078125),
+                 step(color, float3(0.040449999272823333740234375)));
+    }
+
+    float3 linearToSrgb(float3 color) {
+      return mix((pow(color, float3(0.4166666567325592041015625)) *
+                  1.05499994754791259765625) -
+                     float3(0.054999999701976776123046875),
+                 color * 12.9200000762939453125,
+                 step(color, float3(0.003130800090730190277099609375)));
+    }
+
+    float4 main(float2 xy) {
+      float2 skUv = xy / textureSize;
+      float2 qtUv = float2(skUv.x, 1.0 - skUv.y);
+      float4 sampled = sampleQt(qtUv);
+      half3 sampledHalf = half3(sampled.rgb);
+      float4 original = sampled;
+      original.rgb = srgbToLinear(float3(sampledHalf));
+      float2 outlineUv = qtUv - float2(offsetX, offsetY / ratio);
+      float scaledSize = size *
+          0.001000000047497451305389404296875;
+      float maximumAlpha = 0.0;
+      for (int index = 0; index < 16; ++index) {
+        float angle = float(half(index)) *
+            0.3926990926265716552734375;
+        float2 direction = float2(cos(angle), sin(angle)) * scaledSize;
+        float4 neighbor = sampleQt(
+            outlineUv + float2(direction.x * scaleX,
+                               direction.y * (scaleY / ratio)));
+        maximumAlpha = max(maximumAlpha, float(half(neighbor.a)));
+      }
+      float centerAlpha = float(half(sampleQt(outlineUv).a));
+      float outlineAlpha =
+          clamp(maximumAlpha - centerAlpha, 0.0, 1.0) * outlineColor.a;
+      float3 linearOutline = srgbToLinear(outlineColor.rgb);
+      float4 effected = float4(
+          mix(original.rgb, linearOutline, float3(outlineAlpha)),
+          max(float(half(sampled.a)), outlineAlpha));
+      float4 outputColor = mix(original, effected, float4(intensity));
+      outputColor.rgb = linearToSrgb(outputColor.rgb);
+      return outputColor;
+    }
+  

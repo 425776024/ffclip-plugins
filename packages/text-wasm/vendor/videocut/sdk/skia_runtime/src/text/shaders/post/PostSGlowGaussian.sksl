@@ -1,0 +1,88 @@
+
+    uniform shader inputTexture;
+    uniform float2 screenSize;
+    uniform float2 axis;
+    uniform float edgeMode;
+    uniform float dither;
+    uniform float4 colorRadius;
+    uniform float maxRadius;
+    uniform float4 colorSigma;
+    uniform float packedInput;
+    uniform float secondPair;
+    uniform float hashPlus;
+    uniform float hashMinus;
+
+    float hashNoise(float2 value) {
+      float2 q = fract(value * 13.5170001983642578125);
+      q += float2(dot(q, q.yx + float2(22.5410003662109375)));
+      return fract((q.x + q.y) * q.y) - 0.5;
+    }
+
+    float validUv(float2 uv) {
+      if (edgeMode >= 0.5) {
+        return 1.0;
+      }
+      return step(0.0, uv.x) * step(uv.x, 1.0) *
+             step(0.0, uv.y) * step(uv.y, 1.0);
+    }
+
+    float2 unpackPair(float4 value) {
+      return float2(value.r + value.g / 255.0,
+                    value.b + value.a / 255.0);
+    }
+
+    float4 loadChannels(float2 uv) {
+      float valid = validUv(uv);
+      float4 sampled = float4(inputTexture.eval(
+          clamp(uv, float2(0.0), float2(1.0)) * screenSize));
+      if (packedInput < 0.5) {
+        return sampled * valid;
+      }
+      float2 pair = unpackPair(sampled) * valid;
+      return secondPair < 0.5 ? float4(pair, 0.0, 0.0)
+                              : float4(0.0, 0.0, pair);
+    }
+
+    float4 sampleSides(float distance, float stride, float2 uv) {
+      float plusDistance = distance + dither * stride * hashNoise(
+          float2(distance + uv.x + hashPlus, distance * uv.y));
+      float minusDistance = distance + dither * stride * hashNoise(
+          float2(distance + uv.x + hashMinus, distance * uv.y));
+      float2 inverseSize = float2(1.0) / screenSize;
+      return loadChannels(uv + axis * inverseSize * plusDistance) +
+             loadChannels(uv - axis * inverseSize * minusDistance);
+    }
+
+    half4 packPair(float2 value) {
+      return half4(floor(value.x * 255.0) / 255.0,
+                   fract(value.x * 255.0),
+                   floor(value.y * 255.0) / 255.0,
+                   fract(value.y * 255.0));
+    }
+
+    half4 main(float2 xy) {
+      float2 uv = xy / screenSize;
+      float4 accumulated = loadChannels(uv);
+      float4 normalization = float4(1.0);
+      float stride = max(1.0,
+          max(max(colorRadius.r, colorRadius.g), colorRadius.b) /
+          maxRadius);
+      float distance = 1.0;
+      for (int tap = 0; tap < 128; ++tap) {
+        if (distance > maxRadius * stride ||
+            (distance > colorRadius.r && distance > colorRadius.g &&
+             distance > colorRadius.b)) {
+          break;
+        }
+        float4 active = step(float4(distance), colorRadius);
+        float4 weight = active * exp(
+            float4(-(distance * distance)) /
+            max(colorSigma, float4(0.000001)));
+        accumulated += sampleSides(distance, stride, uv) * weight;
+        normalization += weight * 2.0;
+        distance += stride;
+      }
+      float4 result = accumulated / normalization;
+      return packPair(secondPair < 0.5 ? result.rg : result.ba);
+    }
+  

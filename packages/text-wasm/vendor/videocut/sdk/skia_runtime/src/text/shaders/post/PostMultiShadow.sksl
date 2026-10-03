@@ -1,0 +1,49 @@
+
+    uniform shader inputTexture;
+    uniform float2 textureSize;
+    uniform float2 renderGroupExpandRatio;
+    uniform int layerCount;
+    uniform float originalAlpha;
+    uniform float4 transform0; uniform float4 color0;
+    uniform float4 transform1; uniform float4 color1;
+    uniform float4 transform2; uniform float4 color2;
+    uniform float4 transform3; uniform float4 color3;
+    uniform float4 transform4; uniform float4 color4;
+    uniform float4 transform5; uniform float4 color5;
+    uniform float4 transform6; uniform float4 color6;
+    uniform float4 transform7; uniform float4 color7;
+    float4 shadow(float2 xy, float4 transform, float4 color) {
+      float2 point = xy / textureSize;
+      point.x -= transform.x / renderGroupExpandRatio.x;
+      point.y += transform.y / renderGroupExpandRatio.y;
+      point -= 0.5;
+      point.y *= textureSize.y / textureSize.x;
+      float cosine = cos(transform.w);
+      float sine = sin(transform.w);
+      point = float2(cosine * point.x + sine * point.y,
+                     -sine * point.x + cosine * point.y);
+      point.y *= textureSize.x / textureSize.y;
+      point /= max(transform.z, 0.00001);
+      point += 0.5;
+      float valid = step(0.0, point.x) * step(point.x, 1.0) *
+                    step(0.0, point.y) * step(point.y, 1.0);
+      float alpha = inputTexture.eval(point * textureSize).a * color.a * valid;
+      return float4(color.rgb * alpha, alpha);
+    }
+    float4 over(float4 top, float4 bottom) {
+      return top + bottom * (1.0 - top.a);
+    }
+    float4 main(float2 xy) {
+      float4 result = float4(0.0);
+      if (layerCount > 7) result = over(shadow(xy, transform7, color7), result);
+      if (layerCount > 6) result = over(shadow(xy, transform6, color6), result);
+      if (layerCount > 5) result = over(shadow(xy, transform5, color5), result);
+      if (layerCount > 4) result = over(shadow(xy, transform4, color4), result);
+      if (layerCount > 3) result = over(shadow(xy, transform3, color3), result);
+      if (layerCount > 2) result = over(shadow(xy, transform2, color2), result);
+      if (layerCount > 1) result = over(shadow(xy, transform1, color1), result);
+      if (layerCount > 0) result = over(shadow(xy, transform0, color0), result);
+      float4 source = inputTexture.eval(xy) * originalAlpha;
+      return over(source, result);
+    }
+  

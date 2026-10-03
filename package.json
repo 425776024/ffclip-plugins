@@ -1,0 +1,74 @@
+{
+  "name": "@ffclip-com/videocut",
+  "version": "0.2.11",
+  "description": "Local video editing with agent tools, live browser previews and MP4/WebM export",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "bin": {
+    "videocut-web": "./dist/bin/videocut.mjs"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/client/index.d.mts",
+      "import": "./dist/client/index.mjs"
+    },
+    "./core": {
+      "types": "./dist/core/project.d.mts",
+      "import": "./dist/core/project.mjs"
+    },
+    "./server": {
+      "types": "./dist/server/index.d.mts",
+      "import": "./dist/server/index.mjs"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "plugins/videocut-local/.codex-plugin/plugin.json",
+    "plugins/videocut-local/.mcp.json",
+    "plugins/videocut-local/skills/video-editing/SKILL.md",
+    "plugins/videocut-local/skills/initialize-demo",
+    "plugins/videocut-local/skills/motion-templates",
+    "plugins/videocut-local/skills/visual-understanding"
+  ],
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "build": "node scripts/build-types.mjs && vue-tsc --noEmit && node scripts/build-release.mjs",
+    "build:types": "node scripts/build-types.mjs",
+    "build:html-posters": "node scripts/build-html-posters.mjs",
+    "build:text-presets": "node scripts/build-text-presets.mjs",
+    "build:website": "node scripts/build-website.mjs",
+    "release:npm": "node scripts/publish-npm.mjs",
+    "start": "node dist/bin/videocut.mjs",
+    "test": "npm run build && node --test tests/*.test.mjs",
+    "build:native": "node scripts/build-native.mjs",
+    "prepack": "npm run build && npm run check:package",
+    "check:package": "node scripts/check-package.mjs",
+    "test:package": "npm run build && node --test tests/packaging.test.mjs",
+    "format": "prettier --write src packages bin scripts tests docs README.md",
+    "build:plugin": "npm run build && node scripts/build-plugin.mjs"
+  },
+  "devDependencies": {
+    "@huggingface/transformers": "3.8.1",
+    "@types/node": "^22.13.4",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "esbuild": "0.25.11",
+    "gsap": "3.15.0",
+    "mediabunny": "1.61.0",
+    "onnxruntime-web": "1.30.0",
+    "parse5": "8.0.0",
+    "pinyin-pro": "3.28.1",
+    "prettier": "^3.9.9",
+    "typescript": "^5.7.3",
+    "vite": "6.2.6",
+    "vue": "^3.5.13",
+    "vue-tsc": "^2.2.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/425776024/ffclip-plugins.git"
+  }
+}

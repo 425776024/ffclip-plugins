@@ -1,0 +1,1850 @@
+{
+  "format": "videocut.text-template",
+  "id": "builtin.text.qt-type.flower-scene-13",
+  "display": {
+    "name_key": "mediaTextTemplateQtTypeFlowerScene13",
+    "fallback_name": "Qt Flower Scene 13",
+    "category": "flower_preset",
+    "tags": [
+      "flower",
+      "qt-type",
+      "scene"
+    ]
+  },
+  "placement": {
+    "default_duration_ticks": 600000,
+    "reference_width": 1920,
+    "reference_height": 1080
+  },
+  "bindings": [
+    {
+      "id": "content",
+      "kind": "plain_text",
+      "default": "Text",
+      "target": {
+        "paragraph_id": "paragraph-main",
+        "run_id": "run-main"
+      },
+      "content_slot_id": "content"
+    }
+  ],
+  "rules": [
+    {
+      "channel": "typography",
+      "mode": "replace",
+      "content_slot_id": "content",
+      "target_layer_id": "",
+      "semantic_role": ""
+    },
+    {
+      "channel": "glyph.fill",
+      "mode": "replace",
+      "content_slot_id": "content",
+      "target_layer_id": "",
+      "semantic_role": ""
+    },
+    {
+      "channel": "glyph.strokes",
+      "mode": "replace",
+      "content_slot_id": "content",
+      "target_layer_id": "",
+      "semantic_role": ""
+    },
+    {
+      "channel": "glyph.shadows",
+      "mode": "replace",
+      "content_slot_id": "content",
+      "target_layer_id": "",
+      "semantic_role": ""
+    },
+    {
+      "channel": "glyph.glows",
+      "mode": "replace",
+      "content_slot_id": "content",
+      "target_layer_id": "",
+      "semantic_role": ""
+    },
+    {
+      "channel": "layout",
+      "mode": "replace",
+      "content_slot_id": "content",
+      "target_layer_id": "",
+      "semantic_role": ""
+    },
+    {
+      "channel": "sdf.material",
+      "mode": "replace",
+      "content_slot_id": "content",
+      "target_layer_id": "",
+      "semantic_role": ""
+    }
+  ],
+  "document": {
+    "layout_box": {
+      "x": 260,
+      "y": 223.66267,
+      "width": 1400,
+      "height": 420,
+      "vertical_alignment": "center",
+      "clip_overflow": false,
+      "sizing_mode": "auto_height",
+      "minimum_width": 0.0,
+      "minimum_height": 0.0,
+      "minimum_fit_font_size": 1.0,
+      "maximum_fit_font_size": 4096.0,
+      "padding": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "pixel_snap": false
+    },
+    "writing_mode": "horizontal",
+    "content_slots": [
+      {
+        "slot_id": "content",
+        "semantic_role": "primary",
+        "paragraph_ids": [
+          "paragraph-main"
+        ],
+        "run_ids": [
+          "run-main"
+        ]
+      }
+    ],
+    "paragraphs": [
+      {
+        "id": "paragraph-main",
+        "style": {
+          "alignment": "center",
+          "direction": "auto",
+          "locale": "und",
+          "line_height": 1.0,
+          "max_lines": 2,
+          "overflow": "visible",
+          "wrap": "word"
+        },
+        "runs": [
+          {
+            "id": "run-main",
+            "text_binding": "content",
+            "locale": "und",
+            "style": {
+              "font": {
+                "primary": {
+                  "kind": "builtin",
+                  "family": "Inter",
+                  "postscript_name": "Inter-Regular",
+                  "weight": 400,
+                  "width": 5,
+                  "slant": "upright",
+                  "face_index": 0,
+                  "variation_axes": [],
+                  "asset_id": "builtin.font.inter.variable.v1",
+                  "platform": "",
+                  "face_fingerprint": "",
+                  "allow_system_glyph_fallback": false
+                },
+                "fallbacks": [
+                  {
+                    "kind": "builtin",
+                    "family": "Source Han Sans SC Medium",
+                    "postscript_name": "SourceHanSansSC-Medium",
+                    "weight": 500,
+                    "width": 5,
+                    "slant": "upright",
+                    "face_index": 0,
+                    "variation_axes": [],
+                    "asset_id": "builtin.font.reference-cjk.source-han-sans-sc-medium.v1",
+                    "platform": "",
+                    "face_fingerprint": "",
+                    "allow_system_glyph_fallback": false
+                  }
+                ],
+                "family": "Inter",
+                "postscript_name": "Inter-Regular",
+                "weight": 400,
+                "width": 5,
+                "slant": "upright",
+                "face_index": 0,
+                "variation_axes": [],
+                "features": [],
+                "allow_system_glyph_fallback": false
+              },
+              "font_size": 411.1111,
+              "letter_spacing": 0,
+              "word_spacing": 0.0,
+              "baseline_shift": 0.0,
+              "materials": {
+                "layers": [
+                  {
+                    "layer_id": "scene-material-00",
+                    "z_order": 0,
+                    "blend": "source_over",
+                    "material": {
+                      "kind": "literal",
+                      "material": {
+                        "kind": "linear_gradient",
+                        "stops": [
+                          {
+                            "offset": 0.0,
+                            "color": [
+                              0,
+                              0,
+                              0,
+                              0
+                            ]
+                          },
+                          {
+                            "offset": 0.06666666666666667,
+                            "color": [
+                              0,
+                              0,
+                              0,
+                              0
+                            ]
+                          },
+                          {
+                            "offset": 0.13333333333333333,
+                            "color": [
+                              0,
+                              0,
+                              0,
+                              0
+                            ]
+                          },
+                          {
+                            "offset": 0.2,
+                            "color": [
+                              0,
+                              0,
+                              0,
+                              0
+                            ]
+                          },
+                          {
+                            "offset": 0.26666666666666666,
+                            "color": [
+                              0,
+                              0,
+                              0,
+                              0
+                            ]
+                          },
+                          {
+                            "offset": 0.3333333333333333,
+                            "color": [
+                              0.7368421052631579,
+                              0.7368421052631579,
+                              0.7368421052631579,
+                              0.07450980392156863
+                            ]
+                          },
+                          {
+                            "offset": 0.4,
+                            "color": [
+                              0.728813559322034,
+                              0.728813559322034,
+                              0.728813559322034,
+                              0.23137254901960785
+                            ]
+                          },
+                          {
+                            "offset": 0.4666666666666667,
+                            "color": [
+                              0.7171717171717171,
+                              0.7171717171717171,
+                              0.7171717171717171,
+                              0.38823529411764707
+                            ]
+                          },
+                          {
+                            "offset": 0.5333333333333333,
+                            "color": [
+                              0.7226890756302521,
+                              0.7226890756302521,
+                              0.7226890756302521,
+                              0.4666666666666667
+                            ]
+                          },
+                          {
+                            "offset": 0.6,
+                            "color": [
+                              0.7226890756302521,
+                              0.7226890756302521,
+                              0.7226890756302521,
+                              0.4666666666666667
+                            ]
+                          },
+                          {
+                            "offset": 0.6666666666666666,
+                            "color": [
+                              0.7226890756302521,
+                              0.7226890756302521,
+                              0.7226890756302521,
+                              0.4666666666666667
+                            ]
+                          },
+                          {
+                            "offset": 0.7333333333333333,
+                            "color": [
+                              0.7226890756302521,
+                              0.7226890756302521,
+                              0.7226890756302521,
+                              0.4666666666666667
+                            ]
+                          },
+                          {
+                            "offset": 0.8,
+                            "color": [
+                              0.7226890756302521,
+                              0.7226890756302521,
+                              0.7226890756302521,
+                              0.4666666666666667
+                            ]
+                          },
+                          {
+                            "offset": 0.8666666666666667,
+                            "color": [
+                              0.7226890756302521,
+                              0.7226890756302521,
+                              0.7226890756302521,
+                              0.4666666666666667
+                            ]
+                          },
+                          {
+                            "offset": 0.9333333333333333,
+                            "color": [
+                              0.7226890756302521,
+                              0.7226890756302521,
+                              0.7226890756302521,
+                              0.4666666666666667
+                            ]
+                          },
+                          {
+                            "offset": 1.0,
+                            "color": [
+                              0.7226890756302521,
+                              0.7226890756302521,
+                              0.7226890756302521,
+                              0.4666666666666667
+                            ]
+                          }
+                        ],
+                        "start": [
+                          0.1464466171338814,
+                          0.14644660167957124
+                        ],
+                        "end": [
+                          0.8535533828661186,
+                          0.8535533983204288
+                        ],
+                        "spread": "clamp",
+                        "sampling": "rgba8_lut_256",
+                        "coordinates": {
+                          "space": "grapheme",
+                          "outset": 172.0,
+                          "scale": 1
+                        }
+                      }
+                    },
+                    "offset_polar": {
+                      "radius_normalized": 0.033689480274915695,
+                      "angle_radians": -0.9357695579528809
+                    },
+                    "offset_x": 11.511111282482029,
+                    "offset_y": 15.622221360501634,
+                    "type": "stroke",
+                    "width": 172.0,
+                    "signed_start_width": 60.19999897480011,
+                    "blur_radius": 0.0,
+                    "spread": 0
+                  },
+                  {
+                    "layer_id": "scene-material-01",
+                    "z_order": 1,
+                    "blend": "source_over",
+                    "material": {
+                      "kind": "literal",
+                      "material": {
+                        "kind": "solid",
+                        "color": [
+                          0,
+                          0,
+                          0,
+                          0
+                        ]
+                      }
+                    },
+                    "offset_polar": {
+                      "radius_normalized": 0.033689480274915695,
+                      "angle_radians": -0.9357695579528809
+                    },
+                    "offset_x": 11.511111282482029,
+                    "offset_y": 15.622221360501634,
+                    "type": "shadow",
+                    "shadow_kind": "outer",
+                    "blur_radius": 0.0,
+                    "spread": 30.099999487400055,
+                    "smoothing": "feather",
+                    "round_mask_intensity": 0
+                  },
+                  {
+                    "layer_id": "scene-material-02",
+                    "z_order": 2,
+                    "blend": "source_over",
+                    "material": {
+                      "kind": "literal",
+                      "material": {
+                        "kind": "linear_gradient",
+                        "stops": [
+                          {
+                            "offset": 0.0,
+                            "color": [
+                              0,
+                              0,
+                              0,
+                              0
+                            ]
+                          },
+                          {
+                            "offset": 0.06666666666666667,
+                            "color": [
+                              0,
+                              0,
+                              0,
+                              0
+                            ]
+                          },
+                          {
+                            "offset": 0.13333333333333333,
+                            "color": [
+                              0,
+                              0,
+                              0,
+                              0
+                            ]
+                          },
+                          {
+                            "offset": 0.2,
+                            "color": [
+                              0,
+                              0,
+                              0,
+                              0
+                            ]
+                          },
+                          {
+                            "offset": 0.26666666666666666,
+                            "color": [
+                              0,
+                              0,
+                              0,
+                              0
+                            ]
+                          },
+                          {
+                            "offset": 0.3333333333333333,
+                            "color": [
+                              0,
+                              0,
+                              0,
+                              0
+                            ]
+                          },
+                          {
+                            "offset": 0.4,
+                            "color": [
+                              0,
+                              0,
+                              0,
+                              0
+                            ]
+                          },
+                          {
+                            "offset": 0.4666666666666667,
+                            "color": [
+                              1.0,
+                              1.0,
+                              1.0,
+                              0.10980392156862745
+                            ]
+                          },
+                          {
+                            "offset": 0.5333333333333333,
+                            "color": [
+                              1.0,
+                              1.0,
+                              1.0,
+                              0.2196078431372549
+                            ]
+                          },
+                          {
+                            "offset": 0.6,
+                            "color": [
+                              1.0,
+                              0.9882352941176471,
+                              0.9882352941176471,
+                              0.3333333333333333
+                            ]
+                          },
+                          {
+                            "offset": 0.6666666666666666,
+                            "color": [
+                              1.0,
+                              0.9911504424778761,
+                              0.9911504424778761,
+                              0.44313725490196076
+                            ]
+                          },
+                          {
+                            "offset": 0.7333333333333333,
+                            "color": [
+                              1.0,
+                              1.0,
+                              1.0,
+                              0.5529411764705883
+                            ]
+                          },
+                          {
+                            "offset": 0.8,
+                            "color": [
+                              1.0,
+                              1.0,
+                              1.0,
+                              0.6627450980392157
+                            ]
+                          },
+                          {
+                            "offset": 0.8666666666666667,
+                            "color": [
+                              1.0,
+                              0.9949494949494949,
+                              0.9949494949494949,
+                              0.7764705882352941
+                            ]
+                          },
+                          {
+                            "offset": 0.9333333333333333,
+                            "color": [
+                              1.0,
+                              0.995575221238938,
+                              0.995575221238938,
+                              0.8862745098039215
+                            ]
+                          },
+                          {
+                            "offset": 1.0,
+                            "color": [
+                              1.0,
+                              0.996078431372549,
+                              0.996078431372549,
+                              1.0
+                            ]
+                          }
+                        ],
+                        "start": [
+                          0.500000021855695,
+                          4.996003610813204e-16
+                        ],
+                        "end": [
+                          0.499999978144305,
+                          0.9999999999999996
+                        ],
+                        "spread": "clamp",
+                        "sampling": "rgba8_lut_256",
+                        "coordinates": {
+                          "space": "grapheme",
+                          "outset": 172.0,
+                          "scale": 1
+                        }
+                      }
+                    },
+                    "offset_polar": {
+                      "radius_normalized": 0.010093730874359608,
+                      "angle_radians": -0.7853981852531433
+                    },
+                    "offset_x": 4.111110946218268,
+                    "offset_y": 4.1111111259206465,
+                    "type": "stroke",
+                    "width": 137.59999179840088,
+                    "signed_start_width": 99.75999712944031,
+                    "blur_radius": 0.8600000608712435,
+                    "spread": 0
+                  },
+                  {
+                    "layer_id": "scene-material-03",
+                    "z_order": 3,
+                    "blend": "source_over",
+                    "material": {
+                      "kind": "literal",
+                      "material": {
+                        "kind": "solid",
+                        "color": [
+                          0,
+                          0,
+                          0,
+                          0
+                        ]
+                      }
+                    },
+                    "offset_polar": {
+                      "radius_normalized": 0.010093730874359608,
+                      "angle_radians": -0.7853981852531433
+                    },
+                    "offset_x": 4.111110946218268,
+                    "offset_y": 4.1111111259206465,
+                    "type": "shadow",
+                    "shadow_kind": "outer",
+                    "blur_radius": 0.8600000608712435,
+                    "spread": 49.879998564720154,
+                    "smoothing": "feather",
+                    "round_mask_intensity": 0
+                  },
+                  {
+                    "layer_id": "scene-material-04",
+                    "z_order": 4,
+                    "blend": "source_over",
+                    "material": {
+                      "kind": "literal",
+                      "material": {
+                        "kind": "linear_gradient",
+                        "stops": [
+                          {
+                            "offset": 0.0,
+                            "color": [
+                              1.0,
+                              0.996078431372549,
+                              0.996078431372549,
+                              1.0
+                            ]
+                          },
+                          {
+                            "offset": 0.06666666666666667,
+                            "color": [
+                              1.0,
+                              0.996078431372549,
+                              0.996078431372549,
+                              1.0
+                            ]
+                          },
+                          {
+                            "offset": 0.13333333333333333,
+                            "color": [
+                              1.0,
+                              0.996078431372549,
+                              0.996078431372549,
+                              1.0
+                            ]
+                          },
+                          {
+                            "offset": 0.2,
+                            "color": [
+                              1.0,
+                              0.996078431372549,
+                              0.996078431372549,
+                              1.0
+                            ]
+                          },
+                          {
+                            "offset": 0.26666666666666666,
+                            "color": [
+                              1.0,
+                              0.996078431372549,
+                              0.996078431372549,
+                              1.0
+                            ]
+                          },
+                          {
+                            "offset": 0.3333333333333333,
+                            "color": [
+                              1.0,
+                              0.995575221238938,
+                              0.995575221238938,
+                              0.8862745098039215
+                            ]
+                          },
+                          {
+                            "offset": 0.4,
+                            "color": [
+                              1.0,
+                              0.9941176470588236,
+                              0.9941176470588236,
+                              0.6666666666666666
+                            ]
+                          },
+                          {
+                            "offset": 0.4666666666666667,
+                            "color": [
+                              1.0,
+                              0.9911504424778761,
+                              0.9911504424778761,
+                              0.44313725490196076
+                            ]
+                          },
+                          {
+                            "offset": 0.5333333333333333,
+                            "color": [
+                              1.0,
+                              1.0,
+                              1.0,
+                              0.2196078431372549
+                            ]
+                          },
+                          {
+                            "offset": 0.6,
+                            "color": [
+                              0,
+                              0,
+                              0,
+                              0
+                            ]
+                          },
+                          {
+                            "offset": 0.6666666666666666,
+                            "color": [
+                              0,
+                              0,
+                              0,
+                              0
+                            ]
+                          },
+                          {
+                            "offset": 0.7333333333333333,
+                            "color": [
+                              0,
+                              0,
+                              0,
+                              0
+                            ]
+                          },
+                          {
+                            "offset": 0.8,
+                            "color": [
+                              0,
+                              0,
+                              0,
+                              0
+                            ]
+                          },
+                          {
+                            "offset": 0.8666666666666667,
+                            "color": [
+                              0,
+                              0,
+                              0,
+                              0
+                            ]
+                          },
+                          {
+                            "offset": 0.9333333333333333,
+                            "color": [
+                              0,
+                              0,
+                              0,
+                              0
+                            ]
+                          },
+                          {
+                            "offset": 1.0,
+                            "color": [
+                              0,
+                              0,
+                              0,
+                              0
+                            ]
+                          }
+                        ],
+                        "start": [
+                          0.11697777191327757,
+                          0.17860620293558438
+                        ],
+                        "end": [
+                          0.8830222280867224,
+                          0.8213937970644156
+                        ],
+                        "spread": "clamp",
+                        "sampling": "rgba8_lut_256",
+                        "coordinates": {
+                          "space": "grapheme",
+                          "outset": 172.0,
+                          "scale": 1
+                        }
+                      }
+                    },
+                    "offset_polar": {
+                      "radius_normalized": 0.006733358837664127,
+                      "angle_radians": 2.1293954849243164
+                    },
+                    "offset_x": -2.055555157794964,
+                    "offset_y": -3.2888894029301685,
+                    "type": "stroke",
+                    "width": 137.59999179840088,
+                    "signed_start_width": 103.19999384880066,
+                    "blur_radius": 0.0,
+                    "spread": 0
+                  },
+                  {
+                    "layer_id": "scene-material-05",
+                    "z_order": 5,
+                    "blend": "source_over",
+                    "material": {
+                      "kind": "literal",
+                      "material": {
+                        "kind": "solid",
+                        "color": [
+                          0,
+                          0,
+                          0,
+                          0
+                        ]
+                      }
+                    },
+                    "offset_polar": {
+                      "radius_normalized": 0.006733358837664127,
+                      "angle_radians": 2.1293954849243164
+                    },
+                    "offset_x": -2.055555157794964,
+                    "offset_y": -3.2888894029301685,
+                    "type": "shadow",
+                    "shadow_kind": "outer",
+                    "blur_radius": 0.0,
+                    "spread": 51.59999692440033,
+                    "smoothing": "feather",
+                    "round_mask_intensity": 0
+                  },
+                  {
+                    "layer_id": "scene-material-06",
+                    "z_order": 6,
+                    "blend": "source_over",
+                    "material": {
+                      "kind": "literal",
+                      "material": {
+                        "kind": "linear_gradient",
+                        "stops": [
+                          {
+                            "offset": 0.0,
+                            "color": [
+                              0,
+                              0,
+                              0,
+                              0
+                            ]
+                          },
+                          {
+                            "offset": 0.06666666666666667,
+                            "color": [
+                              0,
+                              0,
+                              0,
+                              0
+                            ]
+                          },
+                          {
+                            "offset": 0.13333333333333333,
+                            "color": [
+                              0,
+                              0,
+                              0,
+                              0
+                            ]
+                          },
+                          {
+                            "offset": 0.2,
+                            "color": [
+                              0,
+                              0,
+                              0,
+                              0
+                            ]
+                          },
+                          {
+                            "offset": 0.26666666666666666,
+                            "color": [
+                              0,
+                              0,
+                              0,
+                              0
+                            ]
+                          },
+                          {
+                            "offset": 0.3333333333333333,
+                            "color": [
+                              0,
+                              0,
+                              0,
+                              0
+                            ]
+                          },
+                          {
+                            "offset": 0.4,
+                            "color": [
+                              0,
+                              0,
+                              0,
+                              0
+                            ]
+                          },
+                          {
+                            "offset": 0.4666666666666667,
+                            "color": [
+                              0,
+                              0,
+                              0,
+                              0
+                            ]
+                          },
+                          {
+                            "offset": 0.5333333333333333,
+                            "color": [
+                              0,
+                              0,
+                              0,
+                              0
+                            ]
+                          },
+                          {
+                            "offset": 0.6,
+                            "color": [
+                              1.0,
+                              1.0,
+                              1.0,
+                              0.1411764705882353
+                            ]
+                          },
+                          {
+                            "offset": 0.6666666666666666,
+                            "color": [
+                              1.0,
+                              0.9896907216494846,
+                              0.9896907216494846,
+                              0.3803921568627451
+                            ]
+                          },
+                          {
+                            "offset": 0.7333333333333333,
+                            "color": [
+                              1.0,
+                              1.0,
+                              1.0,
+                              0.615686274509804
+                            ]
+                          },
+                          {
+                            "offset": 0.8,
+                            "color": [
+                              1.0,
+                              0.9954128440366973,
+                              0.9954128440366973,
+                              0.8549019607843137
+                            ]
+                          },
+                          {
+                            "offset": 0.8666666666666667,
+                            "color": [
+                              1.0,
+                              0.996078431372549,
+                              0.996078431372549,
+                              1.0
+                            ]
+                          },
+                          {
+                            "offset": 0.9333333333333333,
+                            "color": [
+                              1.0,
+                              0.996078431372549,
+                              0.996078431372549,
+                              1.0
+                            ]
+                          },
+                          {
+                            "offset": 1.0,
+                            "color": [
+                              1.0,
+                              0.996078431372549,
+                              0.996078431372549,
+                              1.0
+                            ]
+                          }
+                        ],
+                        "start": [
+                          0.2500000126183915,
+                          0.9330127091774508
+                        ],
+                        "end": [
+                          0.7499999873816086,
+                          0.06698729082254917
+                        ],
+                        "spread": "clamp",
+                        "sampling": "rgba8_lut_256",
+                        "coordinates": {
+                          "space": "grapheme",
+                          "outset": 172.0,
+                          "scale": 1
+                        }
+                      }
+                    },
+                    "offset_polar": {
+                      "radius_normalized": 0.005574444774538279,
+                      "angle_radians": 0.8760581016540527
+                    },
+                    "offset_x": 2.0555552809777566,
+                    "offset_y": -2.4666665932467886,
+                    "type": "stroke",
+                    "width": 146.20000410079956,
+                    "signed_start_width": 103.19999384880066,
+                    "blur_radius": 0.0,
+                    "spread": 0
+                  },
+                  {
+                    "layer_id": "scene-material-07",
+                    "z_order": 7,
+                    "blend": "source_over",
+                    "material": {
+                      "kind": "literal",
+                      "material": {
+                        "kind": "solid",
+                        "color": [
+                          0,
+                          0,
+                          0,
+                          0
+                        ]
+                      }
+                    },
+                    "offset_polar": {
+                      "radius_normalized": 0.005574444774538279,
+                      "angle_radians": 0.8760581016540527
+                    },
+                    "offset_x": 2.0555552809777566,
+                    "offset_y": -2.4666665932467886,
+                    "type": "shadow",
+                    "shadow_kind": "outer",
+                    "blur_radius": 0.0,
+                    "spread": 51.59999692440033,
+                    "smoothing": "feather",
+                    "round_mask_intensity": 0
+                  },
+                  {
+                    "layer_id": "scene-material-08",
+                    "z_order": 8,
+                    "blend": "source_over",
+                    "material": {
+                      "kind": "literal",
+                      "material": {
+                        "kind": "linear_gradient",
+                        "stops": [
+                          {
+                            "offset": 0.0,
+                            "color": [
+                              0.9176470588235294,
+                              0.9176470588235294,
+                              0.9176470588235294,
+                              1.0
+                            ]
+                          },
+                          {
+                            "offset": 0.06666666666666667,
+                            "color": [
+                              0.9176470588235294,
+                              0.9176470588235294,
+                              0.9176470588235294,
+                              1.0
+                            ]
+                          },
+                          {
+                            "offset": 0.13333333333333333,
+                            "color": [
+                              0.9163179916317991,
+                              0.9163179916317991,
+                              0.9163179916317991,
+                              0.9372549019607843
+                            ]
+                          },
+                          {
+                            "offset": 0.2,
+                            "color": [
+                              0.9182692307692308,
+                              0.9182692307692308,
+                              0.9182692307692308,
+                              0.8156862745098039
+                            ]
+                          },
+                          {
+                            "offset": 0.26666666666666666,
+                            "color": [
+                              0.9209039548022598,
+                              0.9209039548022598,
+                              0.9209039548022598,
+                              0.6941176470588235
+                            ]
+                          },
+                          {
+                            "offset": 0.3333333333333333,
+                            "color": [
+                              0.9178082191780823,
+                              0.9178082191780823,
+                              0.9178082191780823,
+                              0.5725490196078431
+                            ]
+                          },
+                          {
+                            "offset": 0.4,
+                            "color": [
+                              0.9217391304347826,
+                              0.9217391304347826,
+                              0.9217391304347826,
+                              0.45098039215686275
+                            ]
+                          },
+                          {
+                            "offset": 0.4666666666666667,
+                            "color": [
+                              0.9166666666666666,
+                              0.9166666666666666,
+                              0.9166666666666666,
+                              0.32941176470588235
+                            ]
+                          },
+                          {
+                            "offset": 0.5333333333333333,
+                            "color": [
+                              0.9074074074074074,
+                              0.9074074074074074,
+                              0.9074074074074074,
+                              0.21176470588235294
+                            ]
+                          },
+                          {
+                            "offset": 0.6,
+                            "color": [
+                              0.9130434782608695,
+                              0.9130434782608695,
+                              0.9130434782608695,
+                              0.09019607843137255
+                            ]
+                          },
+                          {
+                            "offset": 0.6666666666666666,
+                            "color": [
+                              0,
+                              0,
+                              0,
+                              0
+                            ]
+                          },
+                          {
+                            "offset": 0.7333333333333333,
+                            "color": [
+                              0,
+                              0,
+                              0,
+                              0
+                            ]
+                          },
+                          {
+                            "offset": 0.8,
+                            "color": [
+                              0,
+                              0,
+                              0,
+                              0
+                            ]
+                          },
+                          {
+                            "offset": 0.8666666666666667,
+                            "color": [
+                              0,
+                              0,
+                              0,
+                              0
+                            ]
+                          },
+                          {
+                            "offset": 0.9333333333333333,
+                            "color": [
+                              0,
+                              0,
+                              0,
+                              0
+                            ]
+                          },
+                          {
+                            "offset": 1.0,
+                            "color": [
+                              0,
+                              0,
+                              0,
+                              0
+                            ]
+                          }
+                        ],
+                        "start": [
+                          0.0904239770326109,
+                          0.21321178299969024
+                        ],
+                        "end": [
+                          0.909576022967389,
+                          0.7867882170003098
+                        ],
+                        "spread": "clamp",
+                        "sampling": "rgba8_lut_256",
+                        "coordinates": {
+                          "space": "grapheme",
+                          "outset": 172.0,
+                          "scale": 1
+                        }
+                      }
+                    },
+                    "offset_polar": {
+                      "radius_normalized": 0.007979794405400753,
+                      "angle_radians": -1.1071487665176392
+                    },
+                    "offset_x": 2.0555551869885704,
+                    "offset_y": 4.111110874746905,
+                    "type": "stroke",
+                    "width": 154.80000615119934,
+                    "signed_start_width": 111.79999589920044,
+                    "blur_radius": 12.899999231100082,
+                    "spread": 0
+                  },
+                  {
+                    "layer_id": "scene-material-09",
+                    "z_order": 9,
+                    "blend": "source_over",
+                    "material": {
+                      "kind": "literal",
+                      "material": {
+                        "kind": "solid",
+                        "color": [
+                          0,
+                          0,
+                          0,
+                          0
+                        ]
+                      }
+                    },
+                    "offset_polar": {
+                      "radius_normalized": 0.007979794405400753,
+                      "angle_radians": -1.1071487665176392
+                    },
+                    "offset_x": 2.0555551869885704,
+                    "offset_y": 4.111110874746905,
+                    "type": "shadow",
+                    "shadow_kind": "outer",
+                    "blur_radius": 12.899999231100082,
+                    "spread": 55.89999794960022,
+                    "smoothing": "feather",
+                    "round_mask_intensity": 0
+                  },
+                  {
+                    "layer_id": "scene-material-10",
+                    "z_order": 10,
+                    "blend": "source_over",
+                    "material": {
+                      "kind": "literal",
+                      "material": {
+                        "kind": "solid",
+                        "color": [
+                          1.0,
+                          1.0,
+                          1.0,
+                          0.6666666865348816
+                        ]
+                      }
+                    },
+                    "offset_polar": {
+                      "radius_normalized": 0.006056239362806082,
+                      "angle_radians": -0.7853981852531433
+                    },
+                    "offset_x": 2.4666669091204265,
+                    "offset_y": 2.466667016941868,
+                    "type": "shadow",
+                    "shadow_kind": "outer",
+                    "blur_radius": 0.0,
+                    "spread": 60.19999897480011,
+                    "smoothing": "feather",
+                    "round_mask_intensity": 0
+                  },
+                  {
+                    "layer_id": "scene-material-11",
+                    "z_order": 11,
+                    "blend": "source_over",
+                    "material": {
+                      "kind": "literal",
+                      "material": {
+                        "kind": "solid",
+                        "color": [
+                          0.5,
+                          0.34999999155600886,
+                          0.34999999155600886,
+                          0.7058823704719543
+                        ]
+                      }
+                    },
+                    "offset_polar": {
+                      "radius_normalized": 0.02257026731967926,
+                      "angle_radians": -1.249045729637146
+                    },
+                    "offset_x": 4.1111113700202555,
+                    "offset_y": 12.3333323521042,
+                    "type": "shadow",
+                    "shadow_kind": "outer",
+                    "blur_radius": 25.799998462200165,
+                    "spread": 0.0,
+                    "smoothing": "feather",
+                    "round_mask_intensity": 0
+                  },
+                  {
+                    "layer_id": "scene-material-12",
+                    "z_order": 12,
+                    "blend": "source_over",
+                    "material": {
+                      "kind": "literal",
+                      "material": {
+                        "kind": "solid",
+                        "color": [
+                          0.75,
+                          0.75,
+                          0.75,
+                          1
+                        ]
+                      }
+                    },
+                    "offset_polar": {
+                      "radius_normalized": 0.022850656881928444,
+                      "angle_radians": -0.8960553407669067
+                    },
+                    "offset_x": 8.222223150215815,
+                    "offset_y": 10.277778014834558,
+                    "type": "shadow",
+                    "shadow_kind": "outer",
+                    "blur_radius": 8.599999487400055,
+                    "spread": 0.0,
+                    "smoothing": "feather",
+                    "round_mask_intensity": 0
+                  },
+                  {
+                    "layer_id": "scene-material-13",
+                    "z_order": 13,
+                    "blend": "source_over",
+                    "material": {
+                      "kind": "literal",
+                      "material": {
+                        "kind": "linear_gradient",
+                        "stops": [
+                          {
+                            "offset": 0.0,
+                            "color": [
+                              1.0,
+                              0.7098039215686275,
+                              0.7098039215686275,
+                              1.0
+                            ]
+                          },
+                          {
+                            "offset": 0.06666666666666667,
+                            "color": [
+                              1.0,
+                              0.7254901960784313,
+                              0.7254901960784313,
+                              1.0
+                            ]
+                          },
+                          {
+                            "offset": 0.13333333333333333,
+                            "color": [
+                              1.0,
+                              0.7450980392156863,
+                              0.7450980392156863,
+                              1.0
+                            ]
+                          },
+                          {
+                            "offset": 0.2,
+                            "color": [
+                              1.0,
+                              0.7647058823529411,
+                              0.7647058823529411,
+                              1.0
+                            ]
+                          },
+                          {
+                            "offset": 0.26666666666666666,
+                            "color": [
+                              1.0,
+                              0.7843137254901961,
+                              0.7843137254901961,
+                              1.0
+                            ]
+                          },
+                          {
+                            "offset": 0.3333333333333333,
+                            "color": [
+                              1.0,
+                              0.8070866141732284,
+                              0.8070866141732284,
+                              0.996078431372549
+                            ]
+                          },
+                          {
+                            "offset": 0.4,
+                            "color": [
+                              1.0,
+                              0.8235294117647058,
+                              0.8235294117647058,
+                              1.0
+                            ]
+                          },
+                          {
+                            "offset": 0.4666666666666667,
+                            "color": [
+                              1.0,
+                              0.8464566929133858,
+                              0.8464566929133858,
+                              0.996078431372549
+                            ]
+                          },
+                          {
+                            "offset": 0.5333333333333333,
+                            "color": [
+                              1.0,
+                              0.8627450980392157,
+                              0.8627450980392157,
+                              1.0
+                            ]
+                          },
+                          {
+                            "offset": 0.6,
+                            "color": [
+                              1.0,
+                              0.8823529411764706,
+                              0.8823529411764706,
+                              1.0
+                            ]
+                          },
+                          {
+                            "offset": 0.6666666666666666,
+                            "color": [
+                              1.0,
+                              0.9019607843137255,
+                              0.9019607843137255,
+                              1.0
+                            ]
+                          },
+                          {
+                            "offset": 0.7333333333333333,
+                            "color": [
+                              1.0,
+                              0.9215686274509803,
+                              0.9215686274509803,
+                              1.0
+                            ]
+                          },
+                          {
+                            "offset": 0.8,
+                            "color": [
+                              1.0,
+                              0.9411764705882353,
+                              0.9411764705882353,
+                              1.0
+                            ]
+                          },
+                          {
+                            "offset": 0.8666666666666667,
+                            "color": [
+                              1.0,
+                              0.9607843137254902,
+                              0.9607843137254902,
+                              1.0
+                            ]
+                          },
+                          {
+                            "offset": 0.9333333333333333,
+                            "color": [
+                              1.0,
+                              0.9803921568627451,
+                              0.9803921568627451,
+                              1.0
+                            ]
+                          },
+                          {
+                            "offset": 1.0,
+                            "color": [
+                              1.0,
+                              1.0,
+                              1.0,
+                              1.0
+                            ]
+                          }
+                        ],
+                        "start": [
+                          0.500000021855695,
+                          0.9999999999999996
+                        ],
+                        "end": [
+                          0.499999978144305,
+                          4.996003610813204e-16
+                        ],
+                        "spread": "clamp",
+                        "sampling": "rgba8_lut_256",
+                        "coordinates": {
+                          "space": "grapheme",
+                          "outset": 172.0,
+                          "scale": 1
+                        }
+                      }
+                    },
+                    "offset_polar": {
+                      "radius_normalized": 0.010093730874359608,
+                      "angle_radians": -0.7853981852531433
+                    },
+                    "offset_x": 4.111110946218268,
+                    "offset_y": 4.1111111259206465,
+                    "type": "shadow",
+                    "shadow_kind": "outer",
+                    "blur_radius": 8.599999487400055,
+                    "spread": 0.0,
+                    "smoothing": "feather",
+                    "round_mask_intensity": 0
+                  },
+                  {
+                    "layer_id": "scene-material-14",
+                    "z_order": 14,
+                    "blend": "source_over",
+                    "material": {
+                      "kind": "literal",
+                      "material": {
+                        "kind": "solid",
+                        "color": [
+                          0.0,
+                          0.0,
+                          0.0,
+                          0.09803921729326248
+                        ]
+                      }
+                    },
+                    "offset_polar": {
+                      "radius_normalized": 0.015140596777200699,
+                      "angle_radians": -0.7853981852531433
+                    },
+                    "offset_x": 6.1666666089882165,
+                    "offset_y": 6.1666668785417915,
+                    "type": "shadow",
+                    "shadow_kind": "outer",
+                    "blur_radius": 8.599999487400055,
+                    "spread": 0.0,
+                    "smoothing": "feather",
+                    "round_mask_intensity": 0
+                  },
+                  {
+                    "layer_id": "scene-material-15",
+                    "z_order": 15,
+                    "blend": "source_over",
+                    "material": {
+                      "kind": "literal",
+                      "material": {
+                        "kind": "solid",
+                        "color": [
+                          1,
+                          0.9999899864196777,
+                          0.9999899864196777,
+                          1
+                        ]
+                      }
+                    },
+                    "offset_polar": {
+                      "radius_normalized": 0.006056239362806082,
+                      "angle_radians": 2.356194496154785
+                    },
+                    "offset_x": -2.4666669777385017,
+                    "offset_y": -2.4666669483237937,
+                    "type": "shadow",
+                    "shadow_kind": "outer",
+                    "blur_radius": 0.0,
+                    "spread": 0.0,
+                    "smoothing": "feather",
+                    "round_mask_intensity": 0
+                  },
+                  {
+                    "layer_id": "scene-material-16",
+                    "z_order": 16,
+                    "blend": "source_over",
+                    "material": {
+                      "kind": "literal",
+                      "material": {
+                        "kind": "solid",
+                        "color": [
+                          1,
+                          1,
+                          1,
+                          1
+                        ]
+                      }
+                    },
+                    "offset_polar": {
+                      "radius_normalized": 0,
+                      "angle_radians": 0
+                    },
+                    "offset_x": 0.0,
+                    "offset_y": 0.0,
+                    "type": "fill"
+                  },
+                  {
+                    "layer_id": "scene-material-17",
+                    "z_order": 17,
+                    "blend": "source_over",
+                    "material": {
+                      "kind": "literal",
+                      "material": {
+                        "kind": "linear_gradient",
+                        "stops": [
+                          {
+                            "offset": 0.0,
+                            "color": [
+                              1.0,
+                              1.0,
+                              1.0,
+                              1.0
+                            ]
+                          },
+                          {
+                            "offset": 0.06666666666666667,
+                            "color": [
+                              1.0,
+                              1.0,
+                              1.0,
+                              1.0
+                            ]
+                          },
+                          {
+                            "offset": 0.13333333333333333,
+                            "color": [
+                              1.0,
+                              1.0,
+                              1.0,
+                              1.0
+                            ]
+                          },
+                          {
+                            "offset": 0.2,
+                            "color": [
+                              1.0,
+                              1.0,
+                              1.0,
+                              1.0
+                            ]
+                          },
+                          {
+                            "offset": 0.26666666666666666,
+                            "color": [
+                              1.0,
+                              1.0,
+                              1.0,
+                              1.0
+                            ]
+                          },
+                          {
+                            "offset": 0.3333333333333333,
+                            "color": [
+                              1.0,
+                              1.0,
+                              1.0,
+                              1.0
+                            ]
+                          },
+                          {
+                            "offset": 0.4,
+                            "color": [
+                              1.0,
+                              1.0,
+                              1.0,
+                              1.0
+                            ]
+                          },
+                          {
+                            "offset": 0.4666666666666667,
+                            "color": [
+                              1.0,
+                              1.0,
+                              1.0,
+                              1.0
+                            ]
+                          },
+                          {
+                            "offset": 0.5333333333333333,
+                            "color": [
+                              1.0,
+                              1.0,
+                              1.0,
+                              1.0
+                            ]
+                          },
+                          {
+                            "offset": 0.6,
+                            "color": [
+                              1.0,
+                              1.0,
+                              1.0,
+                              1.0
+                            ]
+                          },
+                          {
+                            "offset": 0.6666666666666666,
+                            "color": [
+                              1.0,
+                              1.0,
+                              1.0,
+                              1.0
+                            ]
+                          },
+                          {
+                            "offset": 0.7333333333333333,
+                            "color": [
+                              1.0,
+                              1.0,
+                              1.0,
+                              1.0
+                            ]
+                          },
+                          {
+                            "offset": 0.8,
+                            "color": [
+                              1.0,
+                              1.0,
+                              1.0,
+                              1.0
+                            ]
+                          },
+                          {
+                            "offset": 0.8666666666666667,
+                            "color": [
+                              1.0,
+                              1.0,
+                              1.0,
+                              1.0
+                            ]
+                          },
+                          {
+                            "offset": 0.9333333333333333,
+                            "color": [
+                              1.0,
+                              1.0,
+                              1.0,
+                              1.0
+                            ]
+                          },
+                          {
+                            "offset": 1.0,
+                            "color": [
+                              1.0,
+                              1.0,
+                              1.0,
+                              1.0
+                            ]
+                          }
+                        ],
+                        "start": [
+                          0.500000021855695,
+                          0.9999999999999996
+                        ],
+                        "end": [
+                          0.499999978144305,
+                          4.996003610813204e-16
+                        ],
+                        "spread": "clamp",
+                        "sampling": "rgba8_lut_256",
+                        "coordinates": {
+                          "space": "grapheme",
+                          "outset": 172.0,
+                          "scale": 1
+                        }
+                      }
+                    },
+                    "offset_polar": {
+                      "radius_normalized": 0,
+                      "angle_radians": 0
+                    },
+                    "offset_x": 0.0,
+                    "offset_y": 0.0,
+                    "type": "shadow",
+                    "shadow_kind": "inner",
+                    "offset_uv": {
+                      "x": 0.004394530784338713,
+                      "y": 0.0023437500931322575
+                    },
+                    "blur_radius": 17.19999897480011,
+                    "spread": 0.0,
+                    "sdf_blur_scale": 1
+                  }
+                ]
+              },
+              "background": {
+                "enabled": false,
+                "color": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "padding": {
+                  "left": 0,
+                  "top": 0,
+                  "right": 0,
+                  "bottom": 0
+                },
+                "corner_radius": 0
+              },
+              "decoration": {
+                "underline": {
+                  "enabled": false
+                },
+                "strike_through": {
+                  "enabled": false
+                }
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "appearance": {
+    "backdrops": {
+      "layers": []
+    },
+    "sdf_material": {
+      "enabled": true,
+      "source_design_width": 720.0,
+      "source_design_height": 1280.0,
+      "distance_range": 172.0,
+      "raster_distance_range": 30,
+      "smoothing_scale": 0.6,
+      "source_creation_component": "sdf_text"
+    },
+    "bend": {
+      "enabled": false,
+      "amount": 0.0
+    },
+    "path": {
+      "enabled": false,
+      "geometry_id": "",
+      "commands": [],
+      "start_offset": 0.0,
+      "baseline_offset": 0.0,
+      "overflow": "clip",
+      "loop": false,
+      "rotate_to_tangent": true,
+      "keep_upright": true
+    },
+    "visual_extent": {
+      "allow_control_overflow": true,
+      "maximum_extent_width": 1840,
+      "maximum_extent_height": 900
+    },
+    "global_alpha": 1.0
+  },
+  "decorations": [],
+  "resources": []
+}

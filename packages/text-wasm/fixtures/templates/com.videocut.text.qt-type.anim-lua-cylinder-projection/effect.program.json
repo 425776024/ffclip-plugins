@@ -1,0 +1,47 @@
+{
+  "format": "videocut.text-effect-program",
+  "programs": [{
+    "program_id": "com.videocut.text.qt-type.anim-lua-cylinder-projection.program.controller",
+    "random_seed": 50,
+    "stages": [{
+      "stage_id": "qt-cylinder-projection-mesh-material",
+      "kind": "per_unit",
+      "register_count": 20,
+      "instructions": [
+        {"opcode":"input","output_register":0,"input_registers":[],"immediates":[],"input":"progress"},
+        {"opcode":"constant","output_register":1,"input_registers":[],"immediates":[540.0],"input":null},
+        {"opcode":"constant","output_register":2,"input_registers":[],"immediates":[360.0],"input":null},
+        {"opcode":"cubic_bezier_timing","output_register":19,"input_registers":[0],"immediates":[0,0,1,1],"input":null},
+        {"opcode":"multiply","output_register":3,"input_registers":[19,2],"immediates":[],"input":null},
+        {"opcode":"subtract","output_register":4,"input_registers":[1,3],"immediates":[],"input":null},
+        {"opcode":"input","output_register":5,"input_registers":[],"immediates":[],"input":"text_rect_width"},
+        {"opcode":"input","output_register":6,"input_registers":[],"immediates":[],"input":"text_rect_height"},
+        {"opcode":"constant","output_register":7,"input_registers":[],"immediates":[1.2],"input":null},
+        {"opcode":"constant","output_register":8,"input_registers":[],"immediates":[60.0],"input":null},
+        {"opcode":"constant","output_register":9,"input_registers":[],"immediates":[0.0],"input":null},
+        {"opcode":"constant","output_register":10,"input_registers":[],"immediates":[1.0],"input":null},
+        {"opcode":"input","output_register":11,"input_registers":[],"immediates":[],"input":"font_size"},
+        {"opcode":"constant","output_register":12,"input_registers":[],"immediates":[0.4],"input":null},
+        {"opcode":"multiply","output_register":13,"input_registers":[11,12],"immediates":[],"input":null},
+        {"opcode":"add","output_register":14,"input_registers":[5,13],"immediates":[],"input":null},
+        {"opcode":"add","output_register":15,"input_registers":[6,13],"immediates":[],"input":null},
+        {"opcode":"constant","output_register":16,"input_registers":[],"immediates":[20],"input":null},
+        {"opcode":"constant","output_register":17,"input_registers":[],"immediates":[128],"input":null},
+        {"opcode":"constant","output_register":18,"input_registers":[],"immediates":[1.732],"input":null}
+      ],
+      "outputs": [{"output":"opacity","register_index":10,"transform_index":0}],
+      "execution_parameter_bindings": [
+        {"node_id":"material-program-1","parameter":"material_vector4","domain":"page","value_space":"source_pixels","slot":31,"register_indices":[5,6,9,9]},
+        {"node_id":"material-program-1","parameter":"material_scalar","domain":"page","value_space":"unitless","slot":0,"register_indices":[4]},
+        {"node_id":"material-program-1","parameter":"material_vector2","domain":"page","value_space":"source_pixels","slot":1,"register_indices":[14,15]},
+        {"node_id":"material-program-1","parameter":"material_scalar","domain":"page","value_space":"unitless","slot":2,"register_indices":[7]},
+        {"node_id":"material-program-1","parameter":"material_scalar","domain":"page","value_space":"unitless","slot":3,"register_indices":[8]},
+        {"node_id":"material-program-1","parameter":"material_scalar","domain":"page","value_space":"unitless","slot":4,"register_indices":[9]},
+        {"node_id":"material-program-1","parameter":"material_scalar","domain":"page","value_space":"unitless","slot":5,"register_indices":[10]},
+        {"node_id":"material-program-1","parameter":"material_scalar","domain":"page","value_space":"unitless","slot":6,"register_indices":[16]},
+        {"node_id":"material-program-1","parameter":"material_scalar","domain":"page","value_space":"unitless","slot":8,"register_indices":[17]},
+        {"node_id":"material-program-1","parameter":"material_scalar","domain":"page","value_space":"unitless","slot":9,"register_indices":[18]}
+      ]
+    }]
+  }]
+}

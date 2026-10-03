@@ -1,0 +1,530 @@
+{
+  "format": "videocut.text-animation",
+  "animation": {
+    "layers": [
+      {
+        "id": "reference-animation-04",
+        "time_driver": {
+          "kind": "enter_phase",
+          "duration_us": 3000000,
+          "playback": "once"
+        },
+        "animators": [
+          {
+            "id": "selector-1",
+            "anchor": "glyph_center",
+            "position_mode": "text_bounds_offset",
+            "presentation": "transform",
+            "selectors": [
+              {
+                "kind": "range",
+                "based_on": "grapheme",
+                "range_start": 0,
+                "range_end": 1,
+                "offset": 0.0,
+                "edge_smooth": 0,
+                "constrained": true,
+                "shape": "square",
+                "order": "forward",
+                "random_seed": 50.0,
+                "intensity": 1,
+                "intensity_start": 0,
+                "intensity_end": 1
+              }
+            ],
+            "tracks": [
+              {
+                "property": "position_x",
+                "keyframes": [
+                  {
+                    "offset": 0.0,
+                    "value": 0.0
+                  },
+                  {
+                    "offset": 1.0,
+                    "value": 0.0
+                  }
+                ]
+              },
+              {
+                "property": "position_y",
+                "keyframes": [
+                  {
+                    "offset": 0.0,
+                    "value": -4.0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": 0.0,
+                    "bezier_time_out": 0.27499999999999997
+                  },
+                  {
+                    "offset": 0.8333333333333334,
+                    "value": 0.0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.27499999999999997,
+                    "bezier_time_out": 0.055
+                  },
+                  {
+                    "offset": 1.0,
+                    "value": 0.0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.05666666666666667,
+                    "bezier_time_out": 0.0
+                  }
+                ]
+              },
+              {
+                "property": "distance_from_center",
+                "keyframes": [
+                  {
+                    "offset": 0.0,
+                    "value": -0.09
+                  },
+                  {
+                    "offset": 1.0,
+                    "value": -0.09
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "selector-2",
+            "anchor": "glyph_center",
+            "position_mode": "space_x",
+            "presentation": "transform",
+            "selectors": [
+              {
+                "kind": "range",
+                "based_on": "grapheme",
+                "range_start": 0,
+                "range_end": 1,
+                "offset": 0.0,
+                "edge_smooth": 0,
+                "constrained": true,
+                "shape": "square",
+                "order": "forward",
+                "random_seed": 50.0,
+                "intensity": 1,
+                "intensity_start": 0,
+                "intensity_end": 1
+              }
+            ],
+            "tracks": [
+              {
+                "property": "position_x",
+                "keyframes": [
+                  {
+                    "offset": 0.0,
+                    "value": 0.0
+                  },
+                  {
+                    "offset": 1.0,
+                    "value": 0.0
+                  }
+                ]
+              },
+              {
+                "property": "position_y",
+                "keyframes": [
+                  {
+                    "offset": 0.0,
+                    "value": 0.0
+                  },
+                  {
+                    "offset": 1.0,
+                    "value": 0.0
+                  }
+                ]
+              },
+              {
+                "property": "distance_from_center",
+                "keyframes": [
+                  {
+                    "offset": 0.0,
+                    "value": -1.0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": 0.0,
+                    "bezier_time_out": 0.2713333333333333
+                  },
+                  {
+                    "offset": 0.8223333333333334,
+                    "value": 0.0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.2713333333333333,
+                    "bezier_time_out": 0.058666666666666666
+                  },
+                  {
+                    "offset": 1.0,
+                    "value": 0.0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.06033333333333333,
+                    "bezier_time_out": 0.0
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "render_group": {
+          "mode": "page",
+          "expand_ratio_x": 2.0,
+          "expand_ratio_y": 2.0
+        },
+        "post_effects": [
+          {
+            "id": "effect-1",
+            "node_kind": "god_ray",
+            "amount": 0.0,
+            "parameters": [
+              {
+                "name": "angle",
+                "values": [
+                  0.0
+                ]
+              },
+              {
+                "name": "angleRange",
+                "values": [
+                  360.0
+                ]
+              },
+              {
+                "name": "angleType",
+                "values": [
+                  0.0
+                ]
+              },
+              {
+                "name": "blendMode",
+                "values": [
+                  0.0
+                ]
+              },
+              {
+                "name": "borderType",
+                "values": [
+                  0.0
+                ]
+              },
+              {
+                "name": "brightness",
+                "values": [
+                  1.0
+                ],
+                "keyframes": [
+                  {
+                    "offset": 0.0,
+                    "value": 1.0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": 0.0,
+                    "bezier_time_out": 0.24566666666666667
+                  },
+                  {
+                    "offset": 0.7223333333333333,
+                    "value": 1.0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.2383333333333333,
+                    "bezier_time_out": 0.09166666666666667
+                  },
+                  {
+                    "offset": 1.0,
+                    "value": 0.0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.09433333333333332,
+                    "bezier_time_out": 0.0
+                  }
+                ]
+              },
+              {
+                "name": "center_x",
+                "values": [
+                  0.5
+                ]
+              },
+              {
+                "name": "center_y",
+                "values": [
+                  -0.5
+                ],
+                "keyframes": [
+                  {
+                    "offset": 0.0,
+                    "value": -0.5,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": 0.0,
+                    "bezier_time_out": 0.12833333333333333
+                  },
+                  {
+                    "offset": 0.389,
+                    "value": -0.5,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.12833333333333333,
+                    "bezier_time_out": 0.165
+                  },
+                  {
+                    "offset": 0.8889999999999999,
+                    "value": 0.5,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.165,
+                    "bezier_time_out": 0.03666666666666667
+                  },
+                  {
+                    "offset": 1.0,
+                    "value": 0.5,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.03766666666666667,
+                    "bezier_time_out": 0.0
+                  }
+                ]
+              },
+              {
+                "name": "colorDecay",
+                "values": [
+                  0.9
+                ]
+              },
+              {
+                "name": "colorType",
+                "values": [
+                  1.0
+                ]
+              },
+              {
+                "name": "directionPoint",
+                "values": [
+                  0.5,
+                  0.5
+                ]
+              },
+              {
+                "name": "displayRayOnly",
+                "values": [
+                  0.0
+                ]
+              },
+              {
+                "name": "dither",
+                "values": [
+                  0.0
+                ]
+              },
+              {
+                "name": "grayscaleCorrection",
+                "values": [
+                  0.0
+                ]
+              },
+              {
+                "name": "inverseGammaCorrection",
+                "values": [
+                  1.0
+                ]
+              },
+              {
+                "name": "lightColor",
+                "values": [
+                  1.0,
+                  0.6,
+                  0.2,
+                  1.0
+                ]
+              },
+              {
+                "name": "lightSource",
+                "values": [
+                  0.0
+                ]
+              },
+              {
+                "name": "noiseIntensity",
+                "values": [
+                  0.0
+                ]
+              },
+              {
+                "name": "quality",
+                "values": [
+                  10.0
+                ]
+              },
+              {
+                "name": "range",
+                "values": [
+                  0.8999999761581421
+                ]
+              },
+              {
+                "name": "scaleType",
+                "values": [
+                  1.0
+                ]
+              },
+              {
+                "name": "smoothness",
+                "values": [
+                  0.07999999821186066
+                ]
+              },
+              {
+                "name": "useAngle",
+                "values": [
+                  0.0
+                ]
+              },
+              {
+                "name": "weightDecay",
+                "values": [
+                  0.8600000143051147
+                ]
+              }
+            ],
+            "padding_px": 192
+          },
+          {
+            "id": "effect-2",
+            "node_kind": "linear_wipe",
+            "amount": 0.0,
+            "parameters": [
+              {
+                "name": "feather",
+                "values": [
+                  0.20000000298023224
+                ]
+              },
+              {
+                "name": "progress",
+                "values": [
+                  0.3100000023841858
+                ]
+              },
+              {
+                "name": "rotation",
+                "values": [
+                  180.0
+                ]
+              }
+            ],
+            "padding_px": 192
+          }
+        ]
+      }
+    ],
+    "execution_graph": {
+      "nodes": [
+        {
+          "id": "layout",
+          "node_kind": "layout",
+          "capability": "layout_glyph_run"
+        },
+        {
+          "id": "selector-0",
+          "node_kind": "selector",
+          "capability": "selector_base",
+          "input_ids": [
+            "layout"
+          ]
+        },
+        {
+          "id": "operator-0",
+          "node_kind": "operator",
+          "capability": "operator_keyframe",
+          "input_ids": [
+            "selector-0"
+          ]
+        },
+        {
+          "id": "selector-1",
+          "node_kind": "selector",
+          "capability": "selector_base",
+          "input_ids": [
+            "operator-0"
+          ]
+        },
+        {
+          "id": "operator-1",
+          "node_kind": "operator",
+          "capability": "operator_keyframe",
+          "input_ids": [
+            "selector-1"
+          ]
+        },
+        {
+          "id": "scene-prefab",
+          "node_kind": "scene",
+          "capability": "scene_prefab",
+          "input_ids": [
+            "operator-1"
+          ]
+        },
+        {
+          "id": "scene-mesh",
+          "node_kind": "scene",
+          "capability": "scene_mesh",
+          "input_ids": [
+            "scene-prefab"
+          ]
+        },
+        {
+          "id": "material-pass",
+          "node_kind": "material_pass",
+          "capability": "material_color_pass",
+          "input_ids": [
+            "scene-mesh"
+          ]
+        },
+        {
+          "id": "render-target",
+          "node_kind": "render_target",
+          "capability": "render_target_expanded",
+          "input_ids": [
+            "material-pass"
+          ]
+        },
+        {
+          "id": "effect-1",
+          "node_kind": "post_effect_pass",
+          "capability": "none",
+          "input_ids": [
+            "render-target"
+          ],
+          "post_effect_kind": "god_ray"
+        },
+        {
+          "id": "effect-2",
+          "node_kind": "post_effect_pass",
+          "capability": "none",
+          "input_ids": [
+            "effect-1"
+          ],
+          "post_effect_kind": "linear_wipe"
+        }
+      ]
+    }
+  }
+}

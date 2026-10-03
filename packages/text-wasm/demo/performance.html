@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>文字渲染 · 优化前后对比</title>
+<link rel="stylesheet" href="./style.css">
+<style>main{max-width:1100px;margin:auto;padding:28px}.pair{display:grid;grid-template-columns:1fr 1fr;gap:16px}canvas{width:100%;height:auto;background:#121821;border-radius:12px}button{width:auto}pre{white-space:pre-wrap;font-size:12px;max-height:380px;overflow:auto}table{width:100%;border-collapse:collapse}td,th{text-align:left;padding:12px;border-bottom:1px solid #343a43}@media(max-width:650px){.pair{grid-template-columns:1fr}}</style>
+<main>
+<a href="./complex.html">← 复杂模板</a>
+<h1>相同画面，更快绘制</h1>
+<p>640×360 · 同一模板、文字和时间点 · 优化前后交替测量 · 等待 GPU 完成</p>
+<button id="run">运行性能与画面对比</button>
+<p id="status" role="status">准备开始。需要本地保存的 0.3.0 基线 WASM。</p>
+<div class="pair"><section><h2>优化前 · 单像素</h2><div id="before"></div></section><section><h2>优化后 · SIMD</h2><div id="after"></div></section></div>
+<table><thead><tr><th>模板</th><th>优化前 P50 / P95</th><th>优化后 P50 / P95</th><th>画面</th></tr></thead><tbody id="results"></tbody></table>
+<p>24 个不同时间点，帧缓存无法容纳整段；不包含初始化、下载和额外像素读回。检查阈值：预乘 RGBA 平均差 ≤0.1/255，通道差大于 2 的比例 ≤0.5%。原始差异和最大值保留在记录中。</p>
+<details><summary>完整测量记录</summary><pre id="report"></pre></details>
+</main>
+<script type="module" src="./performance.mjs"></script>
+</html>

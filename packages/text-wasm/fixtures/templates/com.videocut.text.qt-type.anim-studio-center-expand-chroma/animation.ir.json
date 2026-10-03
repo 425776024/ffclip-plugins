@@ -1,0 +1,741 @@
+{
+  "format": "videocut.text-animation",
+  "animation": {
+    "layers": [
+      {
+        "id": "studio.layer.0",
+        "enabled": true,
+        "combine_mode": "replace",
+        "requires_timed_text": false,
+        "time_driver": {
+          "kind": "clip_local",
+          "start_offset_us": 0,
+          "duration_us": 3000000,
+          "playback": "hold"
+        },
+        "animators": [
+          {
+            "id": "studio.selector.0",
+            "paragraph_ids": [],
+            "run_ids": [],
+            "position_mode": "absolute_pixels",
+            "anchor": "glyph_center",
+            "anchor_basis": "letter",
+            "anchor_mode": "fixed",
+            "anchor_offset_x": 0.0,
+            "anchor_offset_y": 0.0,
+            "presentation": "transform",
+            "fade_fraction": 0.0,
+            "selectors": [
+              {
+                "kind": "range",
+                "based_on": "grapheme",
+                "range_start": 0.0,
+                "range_end": 1.0,
+                "offset": 0.0,
+                "stagger": 0.0,
+                "edge_smooth": 0.0,
+                "constrained": true,
+                "shape": "square",
+                "order": "forward",
+                "random_seed": 50.0,
+                "intensity": 1.0,
+                "intensity_start": 0.0,
+                "intensity_end": 1.0,
+                "time_start_1": 0.0,
+                "time_start_2": 0.0,
+                "time_end_1": 1.0,
+                "time_end_2": 1.0,
+                "time_cycle": false
+              }
+            ],
+            "tracks": [],
+            "projection": {
+              "kind": "planar_2d",
+              "field_of_view_degrees": 45.0,
+              "vanishing_point_x": 0.5,
+              "vanishing_point_y": 0.5
+            },
+            "effect_program_id": "com.videocut.text.qt-type.anim-studio-center-expand-chroma.program.custom-selector"
+          },
+          {
+            "id": "studio.selector.1",
+            "paragraph_ids": [],
+            "run_ids": [],
+            "position_mode": "absolute_pixels",
+            "anchor": "glyph_center",
+            "anchor_basis": "letter",
+            "anchor_mode": "fixed",
+            "anchor_offset_x": 0.0,
+            "anchor_offset_y": 0.0,
+            "presentation": "transform",
+            "fade_fraction": 0.0,
+            "selectors": [
+              {
+                "kind": "range",
+                "based_on": "grapheme",
+                "range_start": 0.0,
+                "range_end": 1.0,
+                "offset": 0.0,
+                "stagger": 0.0,
+                "edge_smooth": 0.0,
+                "constrained": true,
+                "shape": "square",
+                "order": "forward",
+                "random_seed": 50.0,
+                "intensity": 1.0,
+                "intensity_start": 0.0,
+                "intensity_end": 1.0,
+                "time_start_1": 0.0,
+                "time_start_2": 0.0,
+                "time_end_1": 1.0,
+                "time_end_2": 1.0,
+                "time_cycle": false
+              }
+            ],
+            "tracks": [
+              {
+                "property": "scale_x",
+                "keyframes": [
+                  {
+                    "offset": 0.0,
+                    "value": 1.0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": false,
+                    "bezier_time_in": 0.0,
+                    "bezier_time_out": 0.0
+                  }
+                ]
+              },
+              {
+                "property": "scale_y",
+                "keyframes": [
+                  {
+                    "offset": 0.0,
+                    "value": 0.0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": 0.0,
+                    "bezier_time_out": 0.14766666666666667
+                  },
+                  {
+                    "offset": 0.44733333333333336,
+                    "value": 0.05,
+                    "tangent_in": -0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.14766666666666667,
+                    "bezier_time_out": 0.07166666666666667
+                  },
+                  {
+                    "offset": 0.6646666666666666,
+                    "value": 1.0,
+                    "tangent_in": -0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.07166666666666667,
+                    "bezier_time_out": 0.11066666666666668
+                  },
+                  {
+                    "offset": 1.0,
+                    "value": 1.0,
+                    "tangent_in": -0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.114,
+                    "bezier_time_out": 0.0
+                  }
+                ]
+              }
+            ],
+            "projection": {
+              "kind": "planar_2d",
+              "field_of_view_degrees": 45.0,
+              "vanishing_point_x": 0.5,
+              "vanishing_point_y": 0.5
+            }
+          }
+        ],
+        "post_effects": [
+          {
+            "id": "studio.post.0.0",
+            "node_kind": "chromatic_aberration",
+            "amount": 0.0,
+            "padding_px": 0.0,
+            "input_ids": [],
+            "parameters": [
+              {
+                "name": "offsetX",
+                "values": [
+                  0.30000001192092896
+                ],
+                "keyframes": [
+                  {
+                    "offset": 0,
+                    "value": 0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": 0,
+                    "bezier_time_out": 0.14533333333333334
+                  },
+                  {
+                    "offset": 0.44,
+                    "value": 0,
+                    "tangent_in": -0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.14533333333333334,
+                    "bezier_time_out": 0.007333333333333333
+                  },
+                  {
+                    "offset": 0.4623333333333333,
+                    "value": 0.2,
+                    "tangent_in": -0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.007333333333333333,
+                    "bezier_time_out": 0.11566666666666665
+                  },
+                  {
+                    "offset": 0.8130000000000001,
+                    "value": 0.2,
+                    "tangent_in": -0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.11566666666666665,
+                    "bezier_time_out": 0.06166666666666667
+                  },
+                  {
+                    "offset": 1,
+                    "value": 0,
+                    "tangent_in": -0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.06366666666666666,
+                    "bezier_time_out": 0
+                  }
+                ]
+              },
+              {
+                "name": "offsetY",
+                "values": [
+                  0.4000000059604645
+                ],
+                "keyframes": [
+                  {
+                    "offset": 0,
+                    "value": 0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": 0,
+                    "bezier_time_out": 0.14566666666666667
+                  },
+                  {
+                    "offset": 0.44166666666666665,
+                    "value": 0,
+                    "tangent_in": -0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.14566666666666667,
+                    "bezier_time_out": 0.009666666666666667
+                  },
+                  {
+                    "offset": 0.47100000000000003,
+                    "value": 0.084,
+                    "tangent_in": -0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.009666666666666667,
+                    "bezier_time_out": 0.11233333333333334
+                  },
+                  {
+                    "offset": 0.8113333333333334,
+                    "value": 0.3,
+                    "tangent_in": -0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.11233333333333334,
+                    "bezier_time_out": 0.06233333333333333
+                  },
+                  {
+                    "offset": 1,
+                    "value": 0,
+                    "tangent_in": -0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.06433333333333334,
+                    "bezier_time_out": 0
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "studio.post.0.1",
+            "node_kind": "block_glitch_dot_matrix",
+            "amount": 0.0,
+            "padding_px": 0.0,
+            "input_ids": [],
+            "parameters": [
+              {
+                "name": "blockScale",
+                "values": [
+                  100
+                ]
+              },
+              {
+                "name": "glitchAmount",
+                "values": [
+                  8.859999656677246
+                ],
+                "keyframes": [
+                  {
+                    "offset": 0,
+                    "value": 8.86,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": 0,
+                    "bezier_time_out": 0.20233333333333334
+                  },
+                  {
+                    "offset": 0.613,
+                    "value": 9,
+                    "tangent_in": -0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.20233333333333334,
+                    "bezier_time_out": 0.063
+                  },
+                  {
+                    "offset": 0.8039999999999999,
+                    "value": 9,
+                    "tangent_in": -0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.063,
+                    "bezier_time_out": 0.06466666666666666
+                  },
+                  {
+                    "offset": 1,
+                    "value": 0,
+                    "tangent_in": -0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.06666666666666667,
+                    "bezier_time_out": 0
+                  }
+                ]
+              },
+              {
+                "name": "intensity",
+                "values": [
+                  1
+                ],
+                "keyframes": [
+                  {
+                    "offset": 0,
+                    "value": 0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": 0,
+                    "bezier_time_out": 0.145
+                  },
+                  {
+                    "offset": 0.43933333333333335,
+                    "value": 0,
+                    "tangent_in": -0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.145,
+                    "bezier_time_out": 0.009
+                  },
+                  {
+                    "offset": 0.4663333333333333,
+                    "value": 1,
+                    "tangent_in": -0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.009,
+                    "bezier_time_out": 0.114
+                  },
+                  {
+                    "offset": 0.8119999999999999,
+                    "value": 1,
+                    "tangent_in": -0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.114,
+                    "bezier_time_out": 0.062
+                  },
+                  {
+                    "offset": 1,
+                    "value": 0,
+                    "tangent_in": -0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.064,
+                    "bezier_time_out": 0
+                  }
+                ]
+              },
+              {
+                "name": "jitterSpeed",
+                "values": [
+                  100
+                ],
+                "keyframes": [
+                  {
+                    "offset": 0,
+                    "value": 50,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": 0,
+                    "bezier_time_out": 0.14566666666666667
+                  },
+                  {
+                    "offset": 0.441,
+                    "value": 50,
+                    "tangent_in": -0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.14566666666666667,
+                    "bezier_time_out": 0.18433333333333335
+                  },
+                  {
+                    "offset": 1,
+                    "value": 100,
+                    "tangent_in": -0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.18999999999999997,
+                    "bezier_time_out": 0
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "studio.post.0.2",
+            "node_kind": "radiance_glow",
+            "amount": 0.0,
+            "padding_px": 0.0,
+            "input_ids": [],
+            "parameters": [
+              {
+                "name": "angle",
+                "values": [
+                  0
+                ]
+              },
+              {
+                "name": "directionNum",
+                "values": [
+                  2
+                ]
+              },
+              {
+                "name": "displayGlow",
+                "values": [
+                  0.0
+                ]
+              },
+              {
+                "name": "erodeIterations",
+                "values": [
+                  0
+                ]
+              },
+              {
+                "name": "erodeStepMulplier",
+                "values": [
+                  0.5
+                ]
+              },
+              {
+                "name": "exposure",
+                "values": [
+                  3
+                ],
+                "keyframes": [
+                  {
+                    "offset": 0,
+                    "value": 3,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": 0,
+                    "bezier_time_out": 0.268
+                  },
+                  {
+                    "offset": 0.8119999999999999,
+                    "value": 3,
+                    "tangent_in": -0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.268,
+                    "bezier_time_out": 0.062
+                  },
+                  {
+                    "offset": 1,
+                    "value": 0,
+                    "tangent_in": -0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.064,
+                    "bezier_time_out": 0
+                  }
+                ]
+              },
+              {
+                "name": "glowColor",
+                "values": [
+                  1,
+                  1,
+                  1,
+                  1
+                ]
+              },
+              {
+                "name": "glowIntensity",
+                "values": [
+                  105.5
+                ]
+              },
+              {
+                "name": "grayScale",
+                "values": [
+                  0
+                ]
+              },
+              {
+                "name": "quality",
+                "values": [
+                  1
+                ]
+              },
+              {
+                "name": "thresholdHigh",
+                "values": [
+                  1
+                ]
+              },
+        {
+          "name": "thresholdLow",
+          "values": [
+            0.10000000149011612
+                ]
+              },
+              {
+                "name": "thresholdSmooth",
+                "values": [
+                  0
+                ]
+              },
+              {
+                "name": "thresholdType",
+                "values": [
+                  0
+                ]
+              },
+              {
+                "name": "useMask",
+                "values": [
+                  0.0
+                ]
+              }
+            ]
+          },
+          {
+            "id": "studio.post.0.3",
+            "node_kind": "linear_wipe",
+            "amount": 0.0,
+            "padding_px": 0.0,
+            "input_ids": [],
+            "parameters": [
+              {
+                "name": "feather",
+                "values": [
+                  0.20000000298023224
+                ]
+              },
+        {
+          "name": "progress",
+          "values": [
+            0.30000001192092896
+                ]
+              },
+              {
+                "name": "rotation",
+                "values": [
+                  90
+                ]
+              }
+            ]
+          },
+          {
+            "id": "studio.post.0.4",
+            "node_kind": "linear_wipe",
+            "amount": 0.0,
+            "padding_px": 0.0,
+            "input_ids": [],
+            "parameters": [
+              {
+                "name": "feather",
+                "values": [
+                  0.20000000298023224
+                ]
+              },
+        {
+          "name": "progress",
+          "values": [
+            0.30000001192092896
+                ]
+              },
+              {
+                "name": "rotation",
+                "values": [
+                  -90
+                ]
+              }
+            ]
+          }
+        ],
+        "render_group": {
+          "expand_ratio_x": 1.600000023841858,
+          "expand_ratio_y": 1.0499999523162842,
+          "mode": "page",
+          "offset": 0.0,
+          "priority": 0,
+          "random_seed": 50,
+          "random_sort": false,
+          "shape": "square"
+        }
+      }
+    ],
+    "execution_graph": {
+      "nodes": [
+        {
+          "id": "layout",
+          "node_kind": "layout",
+          "capability": "layout_glyph_run"
+        },
+        {
+          "id": "selector-0",
+          "node_kind": "selector",
+          "capability": "selector_base",
+          "input_ids": [
+            "layout"
+          ]
+        },
+        {
+          "id": "operator-0",
+          "node_kind": "operator",
+          "capability": "operator_program",
+          "input_ids": [
+            "selector-0"
+          ]
+        },
+        {
+          "id": "selector-1",
+          "node_kind": "selector",
+          "capability": "selector_base",
+          "input_ids": [
+            "operator-0"
+          ]
+        },
+        {
+          "id": "operator-1",
+          "node_kind": "operator",
+          "capability": "operator_keyframe",
+          "input_ids": [
+            "selector-1"
+          ]
+        },
+        {
+          "id": "scene-prefab",
+          "node_kind": "scene",
+          "capability": "scene_prefab",
+          "input_ids": [
+            "operator-1"
+          ]
+        },
+        {
+          "id": "scene-mesh",
+          "node_kind": "scene",
+          "capability": "scene_mesh",
+          "input_ids": [
+            "scene-prefab"
+          ]
+        },
+        {
+          "id": "material-pass",
+          "node_kind": "material_pass",
+          "capability": "material_color_pass",
+          "input_ids": [
+            "scene-mesh"
+          ]
+        },
+        {
+          "id": "render-target",
+          "node_kind": "render_target",
+          "capability": "render_target_expanded",
+          "input_ids": [
+            "material-pass"
+          ]
+        },
+        {
+          "id": "studio.post.0.0",
+          "node_kind": "post_effect_pass",
+          "capability": "none",
+          "input_ids": [
+            "render-target"
+          ],
+          "post_effect_kind": "chromatic_aberration"
+        },
+        {
+          "id": "studio.post.0.1",
+          "node_kind": "post_effect_pass",
+          "capability": "none",
+          "input_ids": [
+            "studio.post.0.0"
+          ],
+          "post_effect_kind": "block_glitch_dot_matrix"
+        },
+        {
+          "id": "studio.post.0.2",
+          "node_kind": "post_effect_pass",
+          "capability": "none",
+          "input_ids": [
+            "studio.post.0.1"
+          ],
+          "post_effect_kind": "radiance_glow"
+        },
+        {
+          "id": "studio.post.0.3",
+          "node_kind": "post_effect_pass",
+          "capability": "none",
+          "input_ids": [
+            "studio.post.0.2"
+          ],
+          "post_effect_kind": "linear_wipe"
+        },
+        {
+          "id": "studio.post.0.4",
+          "node_kind": "post_effect_pass",
+          "capability": "none",
+          "input_ids": [
+            "studio.post.0.3"
+          ],
+          "post_effect_kind": "linear_wipe"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,60 @@
+
+    uniform shader inputTexture;
+    uniform shader blurTexture;
+    uniform float2 inputSize;
+    uniform float2 blurSize;
+    uniform float blendMode;
+    uniform float opacity;
+    uniform float gammaValue;
+    uniform float composite;
+    uniform float multiplier;
+
+    float3 screen(float3 background, float3 foreground) {
+      return float3(1.0) -
+             (float3(1.0) - background) *
+             (float3(1.0) - foreground);
+    }
+
+    float3 add(float3 background, float3 foreground) {
+      return min(background + foreground, float3(1.0));
+    }
+
+    float4 blend(float4 background, float4 foreground) {
+      float denominator = max(background.a,
+                              0.001000000047497451305389404296875);
+      float3 straightBackground = background.rgb / denominator;
+      float3 straightForeground = foreground.rgb / denominator;
+      float3 modeColor = blendMode < 0.5
+          ? screen(straightBackground, straightForeground)
+          : add(straightBackground, straightForeground);
+      float3 mixedMode =
+          modeColor * opacity + straightBackground * (1.0 - opacity);
+      float3 color =
+          background.rgb * (1.0 - foreground.a) +
+          foreground.rgb * (1.0 - background.a) +
+          mixedMode * (background.a * foreground.a);
+      float alpha = background.a + foreground.a * (1.0 - background.a);
+      return float4(color, alpha);
+    }
+
+    float4 main(float2 xy) {
+      float2 uv = xy / inputSize;
+      float4 inputColor = float4(inputTexture.eval(
+          clamp(uv, float2(0.0), float2(1.0)) * inputSize));
+      float4 blurColor = float4(blurTexture.eval(
+          clamp(uv, float2(0.0), float2(1.0)) * blurSize));
+      blurColor = float4(pow(blurColor.rgb, float3(gammaValue)),
+                         blurColor.a);
+      float4 color;
+      if (composite >= 0.5) {
+        inputColor = float4(pow(inputColor.rgb, float3(gammaValue)),
+                            inputColor.a);
+        color = blend(inputColor, blurColor);
+      } else {
+        color = blurColor * opacity;
+      }
+      color *= multiplier;
+      color = float4(pow(color.rgb, float3(1.0 / gammaValue)), color.a);
+      return clamp(color, float4(0.0), float4(1.0));
+    }
+  

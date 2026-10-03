@@ -1,0 +1,318 @@
+{
+  "profile": "browser-composition-experimental-v1",
+  "timestamp": "2026-09-29T10:28:56.375Z",
+  "adapter": {
+    "vendor": "apple",
+    "architecture": "metal-3",
+    "isFallbackAdapter": false
+  },
+  "cases": [
+    {
+      "id": "studio-glow",
+      "sources": [
+        "anim-studio-time-transform-softglow"
+      ],
+      "samples": [
+        {
+          "timeUs": 350000,
+          "totalMs": 3.4000000953674316,
+          "textMs": 0.8000000715255737,
+          "mediaFrames": [
+            8
+          ],
+          "sha256": "926e7eb4c14a6775742a83c9d2480d6e81d94fd477201cb8af7090b4c0a99ea9",
+          "nonzeroAlpha": 43726
+        },
+        {
+          "timeUs": 1000000,
+          "totalMs": 3.399999976158142,
+          "textMs": 0.5999999046325684,
+          "mediaFrames": [
+            24
+          ],
+          "sha256": "13f7dd864d8f69f8a68f9a977ef2f3a278e6131fbc41bd0fac8965b94d67954d",
+          "nonzeroAlpha": 53338
+        },
+        {
+          "timeUs": 1800000,
+          "totalMs": 1.5999999046325684,
+          "textMs": 0.5999999046325684,
+          "mediaFrames": [
+            43
+          ],
+          "sha256": "7c4db7ee3ba70333be6a87e0d28b872411c633dd21801b45880e4947635cad8d",
+          "nonzeroAlpha": 54165
+        },
+        {
+          "timeUs": 2600000,
+          "totalMs": 1.6999999284744263,
+          "textMs": 0.5,
+          "mediaFrames": [
+            63
+          ],
+          "sha256": "f0ebc3ebf4bc8be9c149c5276d3b9d89d2650cb9725647760065666dcc3f0c66",
+          "nonzeroAlpha": 48572
+        }
+      ],
+      "deterministic": true,
+      "animated": true,
+      "background": {
+        "meanByteDifference": 4.307595486111111,
+        "changedFraction": 0.089287109375
+      },
+      "postEffects": {
+        "meanByteDifference": 6.110874565972222,
+        "changedFraction": 0.18339952256944445
+      },
+      "edited": true,
+      "passed": true
+    },
+    {
+      "id": "studio-radial",
+      "sources": [
+        "anim-studio-dual-selector-radial"
+      ],
+      "samples": [
+        {
+          "timeUs": 350000,
+          "totalMs": 4.399999976158142,
+          "textMs": 0.7999999523162842,
+          "mediaFrames": [],
+          "sha256": "ca4d24778feea3baeedfdc28ae3a13e764fc89cc64f12932d11f2ed7c8015674",
+          "nonzeroAlpha": 91956
+        },
+        {
+          "timeUs": 1000000,
+          "totalMs": 2.299999952316284,
+          "textMs": 0.6000000238418579,
+          "mediaFrames": [
+            24
+          ],
+          "sha256": "ae5185168aa67313d1f3c27c9ae9885a9f31547a4ba547e3c6db40d97b611c80",
+          "nonzeroAlpha": 110637
+        },
+        {
+          "timeUs": 1800000,
+          "totalMs": 2.100000023841858,
+          "textMs": 0.6999999284744263,
+          "mediaFrames": [
+            43
+          ],
+          "sha256": "4cdb93750c73d9506e20573e851e0099b75411ce69c60f5bb954914692d3fd76",
+          "nonzeroAlpha": 93343
+        },
+        {
+          "timeUs": 2600000,
+          "totalMs": 1.7000000476837158,
+          "textMs": 0.6000000238418579,
+          "mediaFrames": [
+            63
+          ],
+          "sha256": "3f9104c36c4d9aec57b8219b5da47277b3ce8bdcd650b509bfe344625151aa63",
+          "nonzeroAlpha": 33304
+        }
+      ],
+      "deterministic": true,
+      "animated": true,
+      "background": {
+        "meanByteDifference": 5.649195963541667,
+        "changedFraction": 0.246298828125
+      },
+      "postEffects": {
+        "meanByteDifference": 8.795159505208334,
+        "changedFraction": 0.27221462673611113
+      },
+      "edited": true,
+      "passed": true
+    },
+    {
+      "id": "pattern-flower",
+      "sources": [
+        "flower-style-38",
+        "bubble-tile",
+        "anim-lua-letter-transform"
+      ],
+      "samples": [
+        {
+          "timeUs": 350000,
+          "totalMs": 153.89999997615814,
+          "textMs": 152.39999997615814,
+          "mediaFrames": [],
+          "sha256": "a70e7c3d0c8f594f72eed8f822c2a98f8d8d58a741405b25ee26a64f37a5fb25",
+          "nonzeroAlpha": 33680
+        },
+        {
+          "timeUs": 1000000,
+          "totalMs": 158.70000004768372,
+          "textMs": 157.40000009536743,
+          "mediaFrames": [],
+          "sha256": "a609fc3c159c6345e5969c2a275baa0183afe5163db61dd0ed76b13780748f04",
+          "nonzeroAlpha": 33988
+        },
+        {
+          "timeUs": 1800000,
+          "totalMs": 131.89999997615814,
+          "textMs": 130.19999992847443,
+          "mediaFrames": [],
+          "sha256": "88717fdf4122fc952019ecaf46ac0fd0266488bccb8cdc8882848a1cec50b4e2",
+          "nonzeroAlpha": 27417
+        },
+        {
+          "timeUs": 2600000,
+          "totalMs": 133,
+          "textMs": 131,
+          "mediaFrames": [],
+          "sha256": "cbd0ee49b2fd699a38d96a43e581ab0533e51bfa0a1db253423daae38e3f184c",
+          "nonzeroAlpha": 5437
+        }
+      ],
+      "deterministic": true,
+      "animated": true,
+      "background": null,
+      "postEffects": null,
+      "edited": true,
+      "passed": true
+    },
+    {
+      "id": "layered-flower",
+      "sources": [
+        "flower-style-03",
+        "bubble-nine-slice",
+        "anim-lua-letter-transform"
+      ],
+      "samples": [
+        {
+          "timeUs": 350000,
+          "totalMs": 16.600000023841858,
+          "textMs": 14.799999952316284,
+          "mediaFrames": [],
+          "sha256": "9400a661ca9aea290a69e82636ded8fcf27ffd95ca79272e41dc59672e85251a",
+          "nonzeroAlpha": 49334
+        },
+        {
+          "timeUs": 1000000,
+          "totalMs": 13.600000023841858,
+          "textMs": 12.400000095367432,
+          "mediaFrames": [],
+          "sha256": "0bd1a485bb492edc8559eb3e10da4bc620786b9f4859bcba78fb0509da93aff4",
+          "nonzeroAlpha": 48841
+        },
+        {
+          "timeUs": 1800000,
+          "totalMs": 10.300000071525574,
+          "textMs": 9.100000023841858,
+          "mediaFrames": [],
+          "sha256": "f0ad361b1a8baabc7a9e515f44453d14179926f6a2eb89f7eb8cce213f6642cf",
+          "nonzeroAlpha": 38397
+        },
+        {
+          "timeUs": 2600000,
+          "totalMs": 9.300000071525574,
+          "textMs": 8.400000095367432,
+          "mediaFrames": [],
+          "sha256": "9f5854cf33baa0e6b56bf6ed405dca2f29b80afa84cb2236c9e9c39f1cd583bd",
+          "nonzeroAlpha": 14236
+        }
+      ],
+      "deterministic": true,
+      "animated": true,
+      "background": null,
+      "postEffects": null,
+      "edited": true,
+      "passed": true
+    },
+    {
+      "id": "cube",
+      "sources": [
+        "anim-lua-cube"
+      ],
+      "samples": [
+        {
+          "timeUs": 350000,
+          "totalMs": 71.89999997615814,
+          "textMs": 70.39999997615814,
+          "mediaFrames": [],
+          "sha256": "e24ffd582ae42664b4ac5611b2806b70c852b24d6030b2db8ba74656b531b642",
+          "nonzeroAlpha": 14599
+        },
+        {
+          "timeUs": 1000000,
+          "totalMs": 55.39999997615814,
+          "textMs": 54.199999928474426,
+          "mediaFrames": [],
+          "sha256": "19b27cfa30fb6f898a40aba8f602aecc189bb1e521eaa84f491c405cada4ae00",
+          "nonzeroAlpha": 1120
+        },
+        {
+          "timeUs": 1800000,
+          "totalMs": 55.39999997615814,
+          "textMs": 53.800000071525574,
+          "mediaFrames": [],
+          "sha256": "0294cf3b631613508f23d3506c080e3abbcd069e0d838b742e1ff601f0ecfbc8",
+          "nonzeroAlpha": 10235
+        },
+        {
+          "timeUs": 2600000,
+          "totalMs": 58.200000047683716,
+          "textMs": 57.10000002384186,
+          "mediaFrames": [],
+          "sha256": "37dd8a65a83f1243e6b921c0cfed7daf57823618d004a1f4455f421094a9a9c6",
+          "nonzeroAlpha": 14625
+        }
+      ],
+      "deterministic": true,
+      "animated": true,
+      "background": null,
+      "postEffects": null,
+      "edited": true,
+      "passed": true
+    },
+    {
+      "id": "printer",
+      "sources": [
+        "anim-lua-printer-multistage"
+      ],
+      "samples": [
+        {
+          "timeUs": 350000,
+          "totalMs": 6.5,
+          "textMs": 3.399999976158142,
+          "mediaFrames": [],
+          "sha256": "d191fef77b0b2babc8cf6b45b71b5f896f7f857e37d8168df9d771de8000b96e",
+          "nonzeroAlpha": 20181
+        },
+        {
+          "timeUs": 1000000,
+          "totalMs": 5.199999928474426,
+          "textMs": 3.100000023841858,
+          "mediaFrames": [],
+          "sha256": "e94dd3d360ca29dc7e11ace866303ef9723ed1077cc4ab7f00feffa0c11d962d",
+          "nonzeroAlpha": 19350
+        },
+        {
+          "timeUs": 1800000,
+          "totalMs": 3.899999976158142,
+          "textMs": 2.600000023841858,
+          "mediaFrames": [],
+          "sha256": "f5f2babbda2dcdab6906645f3cc0a51cbd058638f401ceeda850cc3623693edd",
+          "nonzeroAlpha": 14075
+        },
+        {
+          "timeUs": 2600000,
+          "totalMs": 4.100000023841858,
+          "textMs": 2.3000000715255737,
+          "mediaFrames": [],
+          "sha256": "3511b04da3e68038d32d7e3c9ab4ed61d10db39fb43d5b746e1ed35f86c1b8ff",
+          "nonzeroAlpha": 7645
+        }
+      ],
+      "deterministic": true,
+      "animated": true,
+      "background": null,
+      "postEffects": null,
+      "edited": true,
+      "passed": true
+    }
+  ],
+  "scope": "Real browser pixels, animation, background/post ablation, repeat seek and Chinese edit. Not native full-template pixel parity."
+}

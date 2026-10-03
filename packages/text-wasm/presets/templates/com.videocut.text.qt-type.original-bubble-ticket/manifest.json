@@ -1,0 +1,66 @@
+{
+  "format": "com.videocut.text-template",
+  "package_id": "com.videocut.text.qt-type.original-bubble-ticket",
+  "kind": "text_bubble",
+  "license": "LicenseRef-Project-Owned",
+  "capabilities": [
+    "bubble",
+    "editable-text"
+  ],
+  "entries": {
+    "composition": {
+      "path": "composition.json",
+      "media_type": "application/vnd.videocut.text-template+json"
+    },
+    "effect_program": {
+      "path": "effect.program.json",
+      "media_type": "application/vnd.videocut.text-effect-program+json"
+    },
+    "animation": {
+      "path": "animation.ir.json",
+      "media_type": "application/vnd.videocut.text-animation+json"
+    }
+  },
+  "files": [
+    {
+      "path": "animation.ir.json",
+      "role": "entry.animation",
+      "media_type": "application/vnd.videocut.text-animation+json"
+    },
+    {
+      "path": "assets/asset-000.png",
+      "role": "resource",
+      "media_type": "image/png"
+    },
+    {
+      "path": "composition.json",
+      "role": "entry.composition",
+      "media_type": "application/vnd.videocut.text-template+json"
+    },
+    {
+      "path": "effect.program.json",
+      "role": "entry.effect-program",
+      "media_type": "application/vnd.videocut.text-effect-program+json"
+    }
+  ],
+  "presentation": {
+    "name_key": "bubble-ticket",
+    "fallback_name": "今日票券",
+    "category": "bubble_preset",
+    "tags": [
+      "bubble",
+      "qt-type"
+    ],
+    "default_duration_ticks": 600000,
+    "fidelity": "redesigned"
+  },
+  "preview": {
+    "poster": "",
+    "fixture_text": "一起",
+    "time_seconds": 0.5
+  },
+  "fallback": {
+    "policy": "reject",
+    "notes": []
+  }
+}

@@ -1,0 +1,606 @@
+{
+  "format": "videocut.text-animation",
+  "animation": {
+    "layers": [
+      {
+        "id": "studio.layer.0",
+        "enabled": true,
+        "combine_mode": "replace",
+        "requires_timed_text": false,
+        "time_driver": {
+          "kind": "clip_local",
+          "start_offset_us": 0,
+          "duration_us": 3000000,
+          "playback": "hold"
+        },
+        "animators": [
+          {
+            "id": "studio.selector.0",
+            "paragraph_ids": [],
+            "run_ids": [],
+            "position_mode": "absolute_pixels",
+            "anchor": "glyph_center",
+            "anchor_basis": "letter",
+            "anchor_mode": "fixed",
+            "anchor_offset_x": 0.0,
+            "anchor_offset_y": 0.0,
+            "presentation": "transform",
+            "fade_fraction": 0.0,
+            "selectors": [
+              {
+                "kind": "range",
+                "based_on": "grapheme",
+                "range_start": 0.0,
+                "range_end": 1.0,
+                "offset": 0.0,
+                "stagger": 0.0,
+                "edge_smooth": 0.0,
+                "constrained": true,
+                "shape": "square",
+                "order": "forward",
+                "random_seed": 50.0,
+                "intensity": 1.0,
+                "intensity_start": 0.0,
+                "intensity_end": 1.0,
+                "time_start_1": 0.0,
+                "time_start_2": 0.0,
+                "time_end_1": 1.0,
+                "time_end_2": 1.0,
+                "time_cycle": false
+              }
+            ],
+            "tracks": [],
+            "projection": {
+              "kind": "planar_2d",
+              "field_of_view_degrees": 45.0,
+              "vanishing_point_x": 0.5,
+              "vanishing_point_y": 0.5
+            },
+            "effect_program_id": "com.videocut.text.qt-type.anim-studio-sequential-signal-pulse.program.custom-selector"
+          }
+        ],
+        "post_effects": [
+          {
+            "id": "studio.post.0.0",
+            "node_kind": "dynamic_signal_glitch",
+            "amount": 0.0,
+            "padding_px": 0.0,
+            "input_ids": [],
+            "parameters": [
+              {
+                "name": "initialColorOffset",
+                "values": [
+                  1.5
+                ]
+              },
+              {
+                "name": "initialDistortionAmount",
+                "values": [
+                  0
+                ]
+              },
+              {
+                "name": "initialFlashFrequency",
+                "values": [
+                  10
+                ]
+              },
+              {
+                "name": "initialGlitchStrength",
+                "values": [
+                  0.7
+                ]
+              },
+              {
+                "name": "intensity",
+                "values": [
+                  1
+                ],
+                "keyframes": [
+                  {
+                    "offset": 0,
+                    "value": 0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 25.723404255319153,
+                    "bezier": true,
+                    "bezier_time_in": 0,
+                    "bezier_time_out": 0.015666666666666666
+                  },
+                  {
+                    "offset": 0.04,
+                    "value": 0.7,
+                    "tangent_in": -0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.017333333333333333,
+                    "bezier_time_out": 0.028333333333333335
+                  },
+                  {
+                    "offset": 0.09999999999999999,
+                    "value": 0,
+                    "tangent_in": -12.978260869565219,
+                    "tangent_out": 25.723404255319153,
+                    "bezier": true,
+                    "bezier_time_in": -0.015333333333333332,
+                    "bezier_time_out": 0.015666666666666666
+                  },
+                  {
+                    "offset": 0.13999999999999999,
+                    "value": 0.7,
+                    "tangent_in": -0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.017333333333333333,
+                    "bezier_time_out": 0.028333333333333335
+                  },
+                  {
+                    "offset": 0.19999999999999998,
+                    "value": 0,
+                    "tangent_in": -12.978260869565219,
+                    "tangent_out": 25.723404255319153,
+                    "bezier": true,
+                    "bezier_time_in": -0.015333333333333332,
+                    "bezier_time_out": 0.015666666666666666
+                  },
+                  {
+                    "offset": 0.24,
+                    "value": 0.7,
+                    "tangent_in": -0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.017333333333333333,
+                    "bezier_time_out": 0.028333333333333335
+                  },
+                  {
+                    "offset": 0.3,
+                    "value": 0,
+                    "tangent_in": -12.978260869565219,
+                    "tangent_out": 25.723404255319153,
+                    "bezier": true,
+                    "bezier_time_in": -0.015333333333333332,
+                    "bezier_time_out": 0.015666666666666666
+                  },
+                  {
+                    "offset": 0.34,
+                    "value": 0.7,
+                    "tangent_in": -0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.017333333333333333,
+                    "bezier_time_out": 0.028333333333333335
+                  },
+                  {
+                    "offset": 0.39999999999999997,
+                    "value": 0,
+                    "tangent_in": -12.978260869565219,
+                    "tangent_out": 25.723404255319153,
+                    "bezier": true,
+                    "bezier_time_in": -0.015333333333333332,
+                    "bezier_time_out": 0.015666666666666666
+                  },
+                  {
+                    "offset": 0.44,
+                    "value": 0.7,
+                    "tangent_in": -0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.017333333333333333,
+                    "bezier_time_out": 0.028333333333333335
+                  },
+                  {
+                    "offset": 0.5,
+                    "value": 0,
+                    "tangent_in": -12.978260869565219,
+                    "tangent_out": 25.723404255319153,
+                    "bezier": true,
+                    "bezier_time_in": -0.015333333333333332,
+                    "bezier_time_out": 0.015666666666666666
+                  },
+                  {
+                    "offset": 0.54,
+                    "value": 0.7,
+                    "tangent_in": -0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.017333333333333333,
+                    "bezier_time_out": 0.028333333333333335
+                  },
+                  {
+                    "offset": 0.6,
+                    "value": 0,
+                    "tangent_in": -12.978260869565219,
+                    "tangent_out": 25.723404255319153,
+                    "bezier": true,
+                    "bezier_time_in": -0.015333333333333332,
+                    "bezier_time_out": 0.015666666666666666
+                  },
+                  {
+                    "offset": 0.64,
+                    "value": 0.7,
+                    "tangent_in": -0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.017333333333333333,
+                    "bezier_time_out": 0.028333333333333335
+                  },
+                  {
+                    "offset": 0.7000000000000001,
+                    "value": 0,
+                    "tangent_in": -12.978260869565219,
+                    "tangent_out": 25.723404255319153,
+                    "bezier": true,
+                    "bezier_time_in": -0.015333333333333332,
+                    "bezier_time_out": 0.015666666666666666
+                  },
+                  {
+                    "offset": 0.7400000000000001,
+                    "value": 0.7,
+                    "tangent_in": -0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.017333333333333333,
+                    "bezier_time_out": 0.028333333333333335
+                  },
+                  {
+                    "offset": 0.7999999999999999,
+                    "value": 0,
+                    "tangent_in": -12.978260869565219,
+                    "tangent_out": 25.723404255319153,
+                    "bezier": true,
+                    "bezier_time_in": -0.015333333333333332,
+                    "bezier_time_out": 0.015666666666666666
+                  },
+                  {
+                    "offset": 0.84,
+                    "value": 0.7,
+                    "tangent_in": -0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.017333333333333333,
+                    "bezier_time_out": 0.028333333333333335
+                  },
+                  {
+                    "offset": 0.9,
+                    "value": 0,
+                    "tangent_in": -12.978260869565219,
+                    "tangent_out": 25.723404255319153,
+                    "bezier": true,
+                    "bezier_time_in": -0.015333333333333332,
+                    "bezier_time_out": 0.015666666666666666
+                  },
+                  {
+                    "offset": 0.94,
+                    "value": 0.7,
+                    "tangent_in": -0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.017333333333333333,
+                    "bezier_time_out": 0.028333333333333335
+                  },
+                  {
+                    "offset": 1,
+                    "value": 0,
+                    "tangent_in": -12.978260869565219,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.015333333333333332,
+                    "bezier_time_out": 0
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "studio.post.0.1",
+            "node_kind": "pulse_envelope",
+            "amount": 0.0,
+            "padding_px": 0.0,
+            "input_ids": [],
+            "parameters": [
+              {
+                "name": "intensity",
+                "values": [
+                  1
+                ],
+                "keyframes": [
+                  {
+                    "offset": 0,
+                    "value": 0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 25.723404255319153,
+                    "bezier": true,
+                    "bezier_time_in": 0,
+                    "bezier_time_out": 0.015666666666666666
+                  },
+                  {
+                    "offset": 0.04,
+                    "value": 0.7,
+                    "tangent_in": -0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.017333333333333333,
+                    "bezier_time_out": 0.028333333333333335
+                  },
+                  {
+                    "offset": 0.09999999999999999,
+                    "value": 0,
+                    "tangent_in": -12.978260869565219,
+                    "tangent_out": 25.723404255319153,
+                    "bezier": true,
+                    "bezier_time_in": -0.015333333333333332,
+                    "bezier_time_out": 0.015666666666666666
+                  },
+                  {
+                    "offset": 0.13999999999999999,
+                    "value": 0.7,
+                    "tangent_in": -0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.017333333333333333,
+                    "bezier_time_out": 0.028333333333333335
+                  },
+                  {
+                    "offset": 0.19999999999999998,
+                    "value": 0,
+                    "tangent_in": -12.978260869565219,
+                    "tangent_out": 25.723404255319153,
+                    "bezier": true,
+                    "bezier_time_in": -0.015333333333333332,
+                    "bezier_time_out": 0.015666666666666666
+                  },
+                  {
+                    "offset": 0.24,
+                    "value": 0.7,
+                    "tangent_in": -0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.017333333333333333,
+                    "bezier_time_out": 0.028333333333333335
+                  },
+                  {
+                    "offset": 0.3,
+                    "value": 0,
+                    "tangent_in": -12.978260869565219,
+                    "tangent_out": 25.723404255319153,
+                    "bezier": true,
+                    "bezier_time_in": -0.015333333333333332,
+                    "bezier_time_out": 0.015666666666666666
+                  },
+                  {
+                    "offset": 0.34,
+                    "value": 0.7,
+                    "tangent_in": -0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.017333333333333333,
+                    "bezier_time_out": 0.028333333333333335
+                  },
+                  {
+                    "offset": 0.39999999999999997,
+                    "value": 0,
+                    "tangent_in": -12.978260869565219,
+                    "tangent_out": 25.723404255319153,
+                    "bezier": true,
+                    "bezier_time_in": -0.015333333333333332,
+                    "bezier_time_out": 0.015666666666666666
+                  },
+                  {
+                    "offset": 0.44,
+                    "value": 0.7,
+                    "tangent_in": -0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.017333333333333333,
+                    "bezier_time_out": 0.028333333333333335
+                  },
+                  {
+                    "offset": 0.5,
+                    "value": 0,
+                    "tangent_in": -12.978260869565219,
+                    "tangent_out": 25.723404255319153,
+                    "bezier": true,
+                    "bezier_time_in": -0.015333333333333332,
+                    "bezier_time_out": 0.015666666666666666
+                  },
+                  {
+                    "offset": 0.54,
+                    "value": 0.7,
+                    "tangent_in": -0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.017333333333333333,
+                    "bezier_time_out": 0.028333333333333335
+                  },
+                  {
+                    "offset": 0.6,
+                    "value": 0,
+                    "tangent_in": -12.978260869565219,
+                    "tangent_out": 25.723404255319153,
+                    "bezier": true,
+                    "bezier_time_in": -0.015333333333333332,
+                    "bezier_time_out": 0.015666666666666666
+                  },
+                  {
+                    "offset": 0.64,
+                    "value": 0.7,
+                    "tangent_in": -0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.017333333333333333,
+                    "bezier_time_out": 0.028333333333333335
+                  },
+                  {
+                    "offset": 0.7000000000000001,
+                    "value": 0,
+                    "tangent_in": -12.978260869565219,
+                    "tangent_out": 25.723404255319153,
+                    "bezier": true,
+                    "bezier_time_in": -0.015333333333333332,
+                    "bezier_time_out": 0.015666666666666666
+                  },
+                  {
+                    "offset": 0.7400000000000001,
+                    "value": 0.7,
+                    "tangent_in": -0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.017333333333333333,
+                    "bezier_time_out": 0.028333333333333335
+                  },
+                  {
+                    "offset": 0.7999999999999999,
+                    "value": 0,
+                    "tangent_in": -12.978260869565219,
+                    "tangent_out": 25.723404255319153,
+                    "bezier": true,
+                    "bezier_time_in": -0.015333333333333332,
+                    "bezier_time_out": 0.015666666666666666
+                  },
+                  {
+                    "offset": 0.84,
+                    "value": 0.7,
+                    "tangent_in": -0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.017333333333333333,
+                    "bezier_time_out": 0.028333333333333335
+                  },
+                  {
+                    "offset": 0.9,
+                    "value": 0,
+                    "tangent_in": -12.978260869565219,
+                    "tangent_out": 25.723404255319153,
+                    "bezier": true,
+                    "bezier_time_in": -0.015333333333333332,
+                    "bezier_time_out": 0.015666666666666666
+                  },
+                  {
+                    "offset": 0.94,
+                    "value": 0.7,
+                    "tangent_in": -0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": -0.017333333333333333,
+                    "bezier_time_out": 0.028333333333333335
+                  },
+                  {
+                    "offset": 1,
+                    "value": 0,
+                    "tangent_in": -12.978260869565219,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.015333333333333332,
+                    "bezier_time_out": 0
+                  }
+                ]
+              },
+              {
+                "name": "maxBlurStrength",
+                "values": [
+                  1
+                ]
+              },
+              {
+                "name": "minBlurStrength",
+                "values": [
+                  0
+                ]
+              },
+              {
+                "name": "syncCycle",
+                "values": [
+                  0.3
+                ]
+              }
+            ]
+          }
+        ],
+        "render_group": {
+          "expand_ratio_x": 2.0,
+          "expand_ratio_y": 2.0,
+          "mode": "page",
+          "offset": 0.0,
+          "priority": 0,
+          "random_seed": 50,
+          "random_sort": false,
+          "shape": "square"
+        }
+      }
+    ],
+    "execution_graph": {
+      "nodes": [
+        {
+          "id": "layout",
+          "node_kind": "layout",
+          "capability": "layout_glyph_run"
+        },
+        {
+          "id": "selector-0",
+          "node_kind": "selector",
+          "capability": "selector_base",
+          "input_ids": [
+            "layout"
+          ]
+        },
+        {
+          "id": "operator-0",
+          "node_kind": "operator",
+          "capability": "operator_program",
+          "input_ids": [
+            "selector-0"
+          ]
+        },
+        {
+          "id": "scene-prefab",
+          "node_kind": "scene",
+          "capability": "scene_prefab",
+          "input_ids": [
+            "operator-0"
+          ]
+        },
+        {
+          "id": "scene-mesh",
+          "node_kind": "scene",
+          "capability": "scene_mesh",
+          "input_ids": [
+            "scene-prefab"
+          ]
+        },
+        {
+          "id": "material-pass",
+          "node_kind": "material_pass",
+          "capability": "material_color_pass",
+          "input_ids": [
+            "scene-mesh"
+          ]
+        },
+        {
+          "id": "render-target",
+          "node_kind": "render_target",
+          "capability": "render_target_expanded",
+          "input_ids": [
+            "material-pass"
+          ]
+        },
+        {
+          "id": "studio.post.0.0",
+          "node_kind": "post_effect_pass",
+          "capability": "none",
+          "input_ids": [
+            "render-target"
+          ],
+          "post_effect_kind": "dynamic_signal_glitch"
+        },
+        {
+          "id": "studio.post.0.1",
+          "node_kind": "post_effect_pass",
+          "capability": "none",
+          "input_ids": [
+            "studio.post.0.0"
+          ],
+          "post_effect_kind": "pulse_envelope"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "format": "videocut.text-animation",
+  "animation": {
+    "layers": [
+      {
+        "id": "lua-controller-layer",
+        "enabled": true,
+        "combine_mode": "replace",
+        "requires_timed_text": false,
+        "time_driver": {
+          "kind": "loop_phase",
+          "duration_us": 3000000,
+          "playback": "loop"
+        },
+        "animators": [
+          {
+            "id": "lua-controller-selector",
+            "paragraph_ids": [],
+            "run_ids": [],
+            "position_mode": "absolute_pixels",
+            "anchor": "glyph_center",
+            "anchor_basis": "letter",
+            "anchor_mode": "fixed",
+            "anchor_offset_x": 0,
+            "anchor_offset_y": 0,
+            "presentation": "transform",
+            "fade_fraction": 0,
+            "selectors": [
+              {
+                "kind": "range",
+                "based_on": "grapheme",
+                "range_start": 0,
+                "range_end": 1,
+                "offset": 0,
+                "stagger": 0,
+                "edge_smooth": 0,
+                "constrained": true,
+                "shape": "square",
+                "order": "forward",
+                "random_seed": 50,
+                "intensity": 1,
+                "intensity_start": 0,
+                "intensity_end": 1,
+                "time_start_1": 0,
+                "time_start_2": 0,
+                "time_end_1": 1,
+                "time_end_2": 1,
+                "time_cycle": false
+              }
+            ],
+            "tracks": [],
+            "projection": {
+              "kind": "planar_2d",
+              "field_of_view_degrees": 45,
+              "vanishing_point_x": 0.5,
+              "vanishing_point_y": 0.5
+            },
+            "effect_program_id": "com.videocut.text.qt-type.original-anim-breathe.program.controller"
+          }
+        ],
+        "post_effects": []
+      }
+    ],
+    "execution_graph": {
+      "nodes": [
+        {
+          "id": "layout",
+          "node_kind": "layout",
+          "capability": "layout_glyph_run",
+          "input_ids": []
+        },
+        {
+          "id": "selector",
+          "node_kind": "selector",
+          "capability": "selector_base",
+          "input_ids": [
+            "layout"
+          ]
+        },
+        {
+          "id": "operator-1",
+          "node_kind": "operator",
+          "capability": "operator_program",
+          "input_ids": [
+            "selector"
+          ]
+        },
+        {
+          "id": "scene-entity",
+          "node_kind": "scene",
+          "capability": "scene_entity",
+          "input_ids": [
+            "operator-1"
+          ]
+        },
+        {
+          "id": "composite",
+          "node_kind": "composite",
+          "capability": "composite_source_over",
+          "input_ids": [
+            "scene-entity"
+          ]
+        }
+      ]
+    }
+  }
+}

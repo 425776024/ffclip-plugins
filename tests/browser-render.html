@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh-CN">
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VideoCut Render QA</title>
+  <style>
+    body {
+      font: 14px system-ui;
+      background: #10151b;
+      color: #dce7f3;
+      margin: 24px;
+    }
+    button {
+      font: inherit;
+      padding: 10px 20px;
+      margin: 0 12px 12px 0;
+    }
+    canvas {
+      width: 480px;
+      max-width: 45vw;
+      border: 1px solid #546070;
+    }
+    pre {
+      white-space: pre-wrap;
+      line-height: 1.5;
+    }
+    section {
+      display: flex;
+      gap: 20px;
+    }
+  </style>
+  <h1>统一渲染器 · 浏览器导出验收</h1>
+  <p>
+    真实 WebGPU、WebCodecs、文字 WASM、Node
+    写出协议；导出后按同一时间戳重新解码并逐像素比较。低分辨率测试不能替代高清长视频性能验收。
+  </p>
+  <button id="run">运行渲染与导出矩阵</button
+  ><button id="stop">取消</button>
+  <section>
+    <div>预览参考<br /><canvas id="preview" width="640" height="360"></canvas></div>
+    <div>导出后解码<br /><canvas id="decoded" width="640" height="360"></canvas></div>
+  </section>
+  <pre id="status" aria-live="polite">尚未运行</pre>
+  <script type="module" src="./browser-render.ts"></script>
+</html>

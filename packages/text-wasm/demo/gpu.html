@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="zh-CN">
+  <meta charset="utf-8" /><meta
+    name="viewport"
+    content="width=device-width,initial-scale=1"
+  /><title>VideoCut · GPU 效果试移植</title
+  ><link rel="stylesheet" href="./style.css" /><style>
+    .controls {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      align-items: end;
+    }
+    .controls label {
+      min-width: 120px;
+      flex: 1;
+    }
+    .controls button {
+      width: auto;
+      padding: 12px 22px;
+    }
+    .stage {
+      margin-top: 22px;
+    }
+    canvas {
+      width: 100%;
+    }
+    pre {
+      white-space: pre-wrap;
+    }
+    main {
+      max-width: 1100px;
+    }
+    .comparison {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    .comparison canvas {
+      background: #23242d;
+    }
+    nav {
+      margin: 16px 0;
+    }
+    .controls input:not([type='range']) {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background: #101519;
+      color: #eef4f3;
+      border: 1px solid #333c42;
+      border-radius: 8px;
+    }
+    a {
+      color: #74dac2;
+    }
+  </style>
+  <body>
+    <main>
+      <header>
+        <div>
+          <small>VIDEOCUT / WEBGPU EXPERIMENT</small>
+          <h1>三个效果，浏览器 GPU 绘制。</h1>
+          <p>SDK 字形网格 → SDF 描边 → Metal 高斯模糊 / 柔光的 WGSL 移植。</p>
+        </div>
+        <span id="engine-state" class="badge">初始化</span>
+      </header>
+      <div class="controls">
+        <label>文字<input id="text" value="花字" maxlength="12" /></label
+        ><label
+          >效果<select id="effect">
+            <option value="sdf">SDF 描边</option>
+            <option value="gaussian">高斯模糊</option>
+            <option value="soft-glow">柔光</option>
+          </select></label
+        ><label
+          >强度 <output id="strength-value" for="strength">12</output
+          ><input id="strength" type="range" min="0" max="32" value="12" /></label
+        ><button id="apply" disabled>更新文字</button
+        ><button id="animate" disabled>播放强度动画</button>
+      </div>
+      <div class="stage">
+        <canvas id="gpu" width="640" height="360" aria-label="GPU 效果预览"></canvas>
+      </div>
+      <div class="metrics">
+        <span id="timing">等待 GPU</span><button id="benchmark" disabled>测量 60 帧</button
+        ><button id="verify" disabled>对比 Metal 参考</button>
+      </div>
+      <p id="status" role="status">加载中…</p>
+      <p class="hint">
+        试验范围：基础排版轮廓、纯色 SDF
+        描边、高斯模糊和柔光。此页使用独立效果参数；原生模板的完整材质、逐字动画和执行图尚未接入 GPU
+        路径。
+      </p>
+      <details>
+        <summary>GPU 与验证记录</summary>
+        <pre id="diagnostics"></pre>
+      </details>
+      <p class="hint">下方为初始“花字”的三种 GPU 输出；上方可实时改字和调整效果。</p>
+      <div id="comparisons" class="comparison"></div>
+      <nav>
+        <a href="./complex.html">复杂图案与动画模板 →</a> ·
+        <a href="./index.html">原生模板 CPU 演示</a>
+      </nav>
+    </main>
+    <script type="module" src="./gpu-demo.mjs"></script>
+  </body>
+</html>

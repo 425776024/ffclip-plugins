@@ -1,0 +1,36 @@
+
+    uniform shader inputTexture;
+    uniform float2 inputSize;
+    uniform float2 outputSize;
+    uniform float useAlphaThreshold;
+    uniform float colorType;
+    uniform float threshold;
+
+    float4 sampleInputQt(float2 qtUv) {
+      return float4(inputTexture.eval(
+          float2(qtUv.x, 1.0 - qtUv.y) * inputSize));
+    }
+
+    float luminance(float3 color) {
+      return dot(color, float3(0.2125999927520751953125,
+                               0.715200006961822509765625,
+                               0.072200000286102294921875));
+    }
+
+    float4 main(float2 xy) {
+      float2 skUv = xy / outputSize;
+      float2 qtUv = float2(skUv.x, 1.0 - skUv.y);
+      float4 color = sampleInputQt(qtUv);
+      float selected = luminance(color.rgb);
+      if (useAlphaThreshold >= 0.5) {
+        selected = color.a;
+      }
+      if (colorType >= 0.5) {
+        color.rgb = float3(selected);
+      }
+      if (selected < threshold) {
+        color = float4(0.0);
+      }
+      return color;
+    }
+  

@@ -1,0 +1,28 @@
+{
+  "name": "videocut-local",
+  "version": "0.2.11",
+  "description": "Edit local video with live previews, animated titles and MP4/WebM export.",
+  "author": {
+    "name": "VideoCut"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "VideoCut",
+    "shortDescription": "Local video editing with live previews",
+    "longDescription": "Import local media, edit the timeline, add captions and animated titles, and export videos with an agent.",
+    "developerName": "VideoCut",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Initialize the built-in editable example and open its live preview.",
+      "Import video, audio and images, then edit them and open a live preview.",
+      "Trim the first two seconds, add a title and adjust the background music volume.",
+      "Review my project and export the finished video."
+    ],
+    "brandColor": "#34D1BF"
+  },
+  "mcpServers": "./.mcp.json"
+}

@@ -1,0 +1,68 @@
+
+    uniform shader inputTexture;
+    uniform float2 textureSize;
+    uniform float sampleCount;
+    uniform float2 axis;
+    uniform float sigma;
+    uniform float transferGamma;
+    uniform float encodedInput;
+    uniform float encodeOutput;
+
+    float gaussianWeight(float value, float deviation) {
+      return 0.39894 * exp(-0.5 * value * value /
+                          (deviation * deviation)) / deviation;
+    }
+
+    float decodeBase255(float4 value) {
+      return value.x + value.y / 255.0 + value.z / 65025.0 +
+             value.w / 16581375.0;
+    }
+
+    float4 encodeBase255(float value) {
+      float remaining = value * 255.0;
+      float4 encoded = float4(0.0);
+      encoded.x = floor(remaining) / 255.0;
+      remaining = fract(remaining) * 255.0;
+      encoded.y = floor(remaining) / 255.0;
+      remaining = fract(remaining) * 255.0;
+      encoded.z = floor(remaining) / 255.0;
+      encoded.w = fract(remaining);
+      return encoded;
+    }
+
+    float sampleDistance(float2 position) {
+      if (position.x < 0.0 || position.y < 0.0 ||
+          position.x > textureSize.x || position.y > textureSize.y)
+        return 0.0;
+      float4 value = float4(inputTexture.eval(position));
+      float distanceValue = encodedInput >= 0.5
+                                ? decodeBase255(value)
+                                : value.a;
+      return pow(max(distanceValue, 0.0), transferGamma);
+    }
+
+    half4 main(float2 position) {
+      float count = clamp(floor(sampleCount + 0.5), 1.0, 1024.0);
+      float2 direction = length(axis) > 0.0 ? normalize(axis)
+                                             : float2(1.0, 0.0);
+      float deviation = max(sigma, 0.0001);
+      float centerWeight = gaussianWeight(0.0, deviation);
+      float accumulated = sampleDistance(position) * centerWeight;
+      float normalization = centerWeight;
+      for (int index = 1; index <= 1024; ++index) {
+        float coordinate = float(index);
+        if (coordinate > count) break;
+        float weight = gaussianWeight(
+            coordinate / count * 15.0, deviation);
+        accumulated +=
+            (sampleDistance(position + direction * coordinate) +
+             sampleDistance(position - direction * coordinate)) * weight;
+        normalization += weight * 2.0;
+      }
+      float result = pow(accumulated / normalization,
+                         1.0 / max(transferGamma, 0.0001));
+      return half4(encodeOutput >= 0.5
+                       ? encodeBase255(result)
+                       : float4(result));
+    }
+  

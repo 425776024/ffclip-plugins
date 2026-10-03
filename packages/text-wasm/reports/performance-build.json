@@ -1,0 +1,30 @@
+{
+  "version": "0.4.0",
+  "build": {
+    "profile": "wasm-raster-v1",
+    "emscripten": "4.0.9",
+    "emsdk": "3bcf1dcd01f040f370e10fe673a092d9ed79ebb5",
+    "skia": "933b272d039add454e6491efafd2db84a18a92dd",
+    "wasmFeatures": [
+      "simd128"
+    ],
+    "rasterPipeline": "four-lane-sse41-via-emscripten",
+    "blurPipeline": "skvx-wasm-simd",
+    "compilerWrapperSha256": "eaf72e9252fe468ecdf299e98b3c858ce17e766c63fb9dd876d05ad182efc411",
+    "sourceCommit": "63fcff092f283b592362e3c515fb705d2a3604fa",
+    "wasmBytes": 10428091,
+    "wasmSha256": "7033e5d30b6bfdcb757601ea6c9b4c7d4af9573d1b1747265122b3b44f64b7d3"
+  },
+  "files": {
+    "CMakeLists.txt": "4c011a788b172d55e7b53e24b5b88d9cab340c95fa427d70da55f883942bcd6a",
+    "scripts/build.mjs": "03a8030c17429ba66aec4c2f37abd56cd48e1abb86ff5e0a969f3700a0bb9de5",
+    "scripts/skia-compiler.py": "eaf72e9252fe468ecdf299e98b3c858ce17e766c63fb9dd876d05ad182efc411",
+    "src/bridge.cpp": "c4a0a5a5752ebcd8e7092317f877c626be2b95720573d03355eae83b35c490eb",
+    "src/index.mjs": "007c9d1c16fef0bad8ac0fc65e87b5f759c7bf5c44a4f10274ba21dae6335134",
+    "demo/performance.mjs": "401843070582e5eb8cf7fce3bba59bf7b57afa22173eff458ba51457b4b88cf6",
+    "scripts/compare-raster.mjs": "837c93178d3778f3fac68daee88c412f4fb875a51e026f219b50f2ce789fd51f",
+    "vendor/SOURCE.json": "07c30fc7720983007abc53f46282974371e28ca2343561ffe3195204168b5b61",
+    "videocut-text-wasm-0.4.0.tgz": "acd6d26fdaf48e7ac2713ec99591679efe456fb1c75e87274427d494698096bd"
+  },
+  "baselineWasmSha256": "3cd4cdbd1f91423216f2d250d0d6739db7febf7b04a76f27246ab51576e1f240"
+}

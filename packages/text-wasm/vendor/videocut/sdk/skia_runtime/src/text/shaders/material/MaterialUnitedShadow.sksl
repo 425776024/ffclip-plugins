@@ -1,0 +1,18 @@
+uniform shader materialTexture;
+uniform shader maskTexture;
+uniform shader unitedCoverageTexture;
+uniform shader previousTexture;
+uniform int uniformMaterial;
+
+float4 main(float2 position) {
+    float4 previous = previousTexture.eval(position);
+    float coverage = maskTexture.eval(position).a;
+    if (coverage <= 1.0 / 255.0) return previous;
+    float unitedCoverage = unitedCoverageTexture.eval(position).a;
+    float4 material = materialTexture.eval(position);
+    float4 source = clamp(material * (unitedCoverage / coverage), 0.0, 1.0);
+    // Uniform material visits glyphs backwards: the first covered glyph in
+    // authored order wins, even when its material itself is transparent.
+    if (uniformMaterial != 0) return source;
+    return source + previous * (1.0 - source.a);
+}

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VideoCut HTML Clip Evidence</title>
+  <style>
+    body {
+      margin: 24px !important;
+      font: 14px system-ui !important;
+      background: #10151b;
+      color: #dce7f3;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    p {
+      line-height: 1.6;
+    }
+    #run,
+    #stop {
+      padding: 10px 18px;
+      margin: 0 10px 16px 0;
+      background: #263b47;
+    }
+    #run:disabled {
+      opacity: 0.5;
+    }
+    #canvases {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    #canvases canvas {
+      width: min(640px, 44vw);
+      border: 1px solid #546070;
+    }
+    #component-fixture {
+      width: min(1000px, 96vw);
+      margin: 18px 0;
+    }
+    #component-fixture .preview-stage {
+      width: 640px;
+      max-width: 100%;
+      position: relative;
+    }
+    #component-fixture .timeline-scroll {
+      height: 345px;
+      margin-top: 12px;
+    }
+    #component-fixture .qa-component-time {
+      padding: 9px 0;
+      color: #c6d4f5;
+    }
+    #status {
+      white-space: pre-wrap;
+      line-height: 1.5;
+      font-size: 12px;
+    }
+  </style>
+  <h1>HTML / GSAP 与视频时间轴 · 浏览器验收</h1>
+  <p>
+    运行真实 Chromium DOM 逐帧渲染、场景合成器、Preview / Timeline 组件与 MP4
+    导出协议。逐像素验证透明度、往返寻帧、裁剪和分割；导出后重新读取画面与立体声音频。组件拖拽使用合成事件，结果不代表物理鼠标或长视频性能验收。
+  </p>
+  <button id="run">运行 HTML 动画验收</button
+  ><button id="stop">取消</button>
+  <section id="canvases">
+    <div>合成预览<br /><canvas id="preview" width="640" height="360"></canvas></div>
+    <div>导出后解码<br /><canvas id="decoded" width="640" height="360"></canvas></div>
+  </section>
+  <div id="component-fixture"></div>
+  <pre id="status" aria-live="polite">尚未运行</pre>
+  <script type="module" src="./browser-html.ts"></script>
+</html>

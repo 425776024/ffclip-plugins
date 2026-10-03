@@ -1,0 +1,15 @@
+import { execFileSync } from 'node:child_process';
+import { mkdir, writeFile } from 'node:fs/promises';
+import { resolve, join } from 'node:path';
+import { createHash } from 'node:crypto';
+import { root } from './common.mjs';
+const archive = resolve(process.argv[2] || join(root, 'videocut-text-wasm-0.3.0.tgz'));
+const entry = name => execFileSync('tar', ['-xOf', archive, `package/dist/${name}`], {maxBuffer:32*1024*1024});
+const info = JSON.parse(entry('build-info.json'));
+const wasm = entry('videocut-text.wasm');
+if (createHash('sha256').update(wasm).digest('hex') !== info.wasmSha256) throw Error('Baseline WASM digest mismatch');
+const dir = join(root, '.cache/perf');
+await mkdir(dir, {recursive:true});
+await writeFile(join(dir, 'baseline.wasm'), wasm);
+for (const name of ['index.mjs', 'videocut-text.mjs']) await writeFile(join(dir,name),entry(name));
+console.log(`Prepared matching JS/WASM baseline ${info.wasmSha256}. Open /demo/performance.html.`);

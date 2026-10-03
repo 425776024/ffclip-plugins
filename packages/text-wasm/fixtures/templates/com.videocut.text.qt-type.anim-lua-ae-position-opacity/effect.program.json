@@ -1,0 +1,79 @@
+{
+  "format": "videocut.text-effect-program",
+  "programs": [
+    {
+      "program_id": "com.videocut.text.qt-type.anim-lua-ae-position-opacity.program.controller",
+      "random_seed": 50,
+      "stages": [
+        {
+          "stage_id": "qt-ae-row-local-reverse-shuffle-position-opacity",
+          "kind": "per_unit",
+          "register_count": 48,
+          "instructions": [
+            {"opcode":"input","output_register":0,"input_registers":[],"immediates":[],"input":"progress"},
+            {"opcode":"input","output_register":1,"input_registers":[],"immediates":[],"input":"index_in_row"},
+            {"opcode":"input","output_register":2,"input_registers":[],"immediates":[],"input":"row_unit_count"},
+            {"opcode":"input","output_register":3,"input_registers":[],"immediates":[],"input":"rect_height"},
+            {"opcode":"input","output_register":4,"input_registers":[],"immediates":[],"input":"normal_unit_index"},
+            {"opcode":"input","output_register":5,"input_registers":[],"immediates":[],"input":"normal_unit_count"},
+            {"opcode":"input","output_register":6,"input_registers":[],"immediates":[],"input":"row_index"},
+            {"opcode":"input","output_register":7,"input_registers":[],"immediates":[],"input":"row_count"},
+            {"opcode":"constant","output_register":8,"input_registers":[],"immediates":[0.0],"input":null},
+            {"opcode":"constant","output_register":9,"input_registers":[],"immediates":[1.0],"input":null},
+            {"opcode":"constant","output_register":10,"input_registers":[],"immediates":[0.03333333333333333],"input":null},
+
+            {"opcode":"subtract","output_register":11,"input_registers":[5,7],"immediates":[],"input":null},
+            {"opcode":"multiply","output_register":12,"input_registers":[11,10],"immediates":[],"input":null},
+            {"opcode":"add","output_register":13,"input_registers":[9,12],"immediates":[],"input":null},
+            {"opcode":"multiply","output_register":14,"input_registers":[0,13],"immediates":[],"input":null},
+
+            {"opcode":"subtract","output_register":15,"input_registers":[4,1],"immediates":[],"input":null},
+            {"opcode":"subtract","output_register":16,"input_registers":[15,6],"immediates":[],"input":null},
+            {"opcode":"subtract","output_register":17,"input_registers":[2,9],"immediates":[],"input":null},
+            {"opcode":"subtract","output_register":18,"input_registers":[17,1],"immediates":[],"input":null},
+            {"opcode":"seeded_reverse_shuffle_rank","output_register":19,"input_registers":[18,2,15],"immediates":[],"input":null},
+            {"opcode":"add","output_register":20,"input_registers":[16,19],"immediates":[],"input":null},
+            {"opcode":"multiply","output_register":21,"input_registers":[20,10],"immediates":[],"input":null},
+            {"opcode":"subtract","output_register":22,"input_registers":[14,21],"immediates":[],"input":null},
+
+            {"opcode":"less_than_or_equal","output_register":23,"input_registers":[22,8],"immediates":[],"input":null},
+            {"opcode":"less_than","output_register":24,"input_registers":[22,9],"immediates":[],"input":null},
+
+            {"opcode":"constant","output_register":25,"input_registers":[],"immediates":[0.6666666666666666],"input":null},
+            {"opcode":"divide","output_register":26,"input_registers":[22,25],"immediates":[],"input":null},
+            {"opcode":"maximum","output_register":27,"input_registers":[26,8],"immediates":[],"input":null},
+            {"opcode":"minimum","output_register":28,"input_registers":[27,9],"immediates":[],"input":null},
+            {"opcode":"cubic_bezier_timing","output_register":29,"input_registers":[28],"immediates":[0.16666666666666666,0.16666666666666666,0.0,1.0],"input":null},
+            {"opcode":"constant","output_register":30,"input_registers":[],"immediates":[-1.169876956939695],"input":null},
+            {"opcode":"constant","output_register":31,"input_registers":[],"immediates":[0.000123043060305],"input":null},
+            {"opcode":"mix","output_register":32,"input_registers":[30,31,29],"immediates":[],"input":null},
+            {"opcode":"multiply","output_register":33,"input_registers":[3,32],"immediates":[],"input":null},
+            {"opcode":"select","output_register":34,"input_registers":[24,33,8],"immediates":[],"input":null},
+            {"opcode":"select","output_register":35,"input_registers":[23,8,34],"immediates":[],"input":null},
+
+            {"opcode":"constant","output_register":36,"input_registers":[],"immediates":[0.5666666666666667],"input":null},
+            {"opcode":"divide","output_register":37,"input_registers":[22,36],"immediates":[],"input":null},
+            {"opcode":"maximum","output_register":38,"input_registers":[37,8],"immediates":[],"input":null},
+            {"opcode":"minimum","output_register":39,"input_registers":[38,9],"immediates":[],"input":null},
+            {"opcode":"cubic_bezier_timing","output_register":40,"input_registers":[39],"immediates":[0.16666666666666666,0.16666666666666666,0.8333333333333334,0.8333333333333334],"input":null},
+            {"opcode":"select","output_register":41,"input_registers":[23,8,40],"immediates":[],"input":null},
+            {"opcode":"select","output_register":42,"input_registers":[23,8,9],"immediates":[],"input":null},
+
+            {"opcode":"float32","output_register":43,"input_registers":[35],"immediates":[],"input":null},
+            {"opcode":"float32","output_register":44,"input_registers":[41],"immediates":[],"input":null},
+            {"opcode":"float32","output_register":45,"input_registers":[42],"immediates":[],"input":null},
+            {"opcode":"add","output_register":46,"input_registers":[44,8],"immediates":[],"input":null},
+            {"opcode":"add","output_register":47,"input_registers":[45,8],"immediates":[],"input":null}
+          ],
+          "outputs": [
+            {"output":"offset_y","register_index":43,"transform_index":0},
+            {"output":"opacity","register_index":46,"transform_index":0},
+            {"output":"scale_x","register_index":47,"transform_index":0},
+            {"output":"scale_y","register_index":47,"transform_index":0}
+          ]
+        }
+      ]
+    }
+  ]
+}
+

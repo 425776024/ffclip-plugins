@@ -1,0 +1,34 @@
+uniform shader inputTexture;
+uniform shader glowTexture1;
+uniform shader glowTexture2;
+uniform shader glowTexture3;
+uniform shader glowTexture4;
+uniform shader glowTexture5;
+uniform shader glowTexture6;
+uniform shader glowTexture7;
+uniform shader depthTexture;
+uniform float intensity;
+uniform float colorExponent;
+uniform float useDepth;
+uniform float4 tint;
+uniform float originalAlpha;
+uniform float outputAlpha;
+
+float4 screen(float4 accumulated, float4 layer, float gain) {
+    return 1.0 - (1.0 - accumulated) * (1.0 - clamp(layer * gain, 0.0, 1.0));
+}
+
+half4 main(float2 position) {
+    float depth = useDepth > 0.5 ? float(depthTexture.eval(position).a) : 1.0;
+    float gain = pow(intensity * depth * 0.5, 1.0 / colorExponent);
+    float4 glow = clamp(float4(glowTexture1.eval(position)) * gain, 0.0, 1.0);
+    glow = screen(glow, float4(glowTexture2.eval(position)), gain);
+    glow = screen(glow, float4(glowTexture3.eval(position)), gain);
+    glow = screen(glow, float4(glowTexture4.eval(position)), gain);
+    glow = screen(glow, float4(glowTexture5.eval(position)), gain);
+    glow = screen(glow, float4(glowTexture6.eval(position)), gain);
+    glow = screen(glow, float4(glowTexture7.eval(position)), gain);
+    glow = clamp(glow * max(gain, 1.0), 0.0, 1.0) * tint;
+    float4 original = float4(inputTexture.eval(position)) * originalAlpha;
+    return half4((1.0 - (1.0 - glow) * (1.0 - original)) * outputAlpha);
+}

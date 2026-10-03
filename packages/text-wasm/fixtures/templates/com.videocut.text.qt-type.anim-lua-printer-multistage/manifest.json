@@ -1,0 +1,63 @@
+{
+  "format": "com.videocut.text-template",
+  "package_id": "com.videocut.text.qt-type.anim-lua-printer-multistage",
+  "kind": "text_animation",
+  "license": "LicenseRef-Project-Owned",
+  "capabilities": [
+    "animation",
+    "effect-program",
+    "visual-extent"
+  ],
+  "entries": {
+    "composition": {
+      "path": "composition.json",
+      "media_type": "application/vnd.videocut.text-template+json"
+    },
+    "effect_program": {
+      "path": "effect.program.json",
+      "media_type": "application/vnd.videocut.text-effect-program+json"
+    },
+    "animation": {
+      "path": "animation.ir.json",
+      "media_type": "application/vnd.videocut.text-animation+json"
+    }
+  },
+  "files": [
+    {
+      "path": "animation.ir.json",
+      "role": "entry.animation",
+      "media_type": "application/vnd.videocut.text-animation+json"
+    },
+    {
+      "path": "composition.json",
+      "role": "entry.composition",
+      "media_type": "application/vnd.videocut.text-template+json"
+    },
+    {
+      "path": "effect.program.json",
+      "role": "entry.effect-program",
+      "media_type": "application/vnd.videocut.text-effect-program+json"
+    }
+  ],
+  "presentation": {
+    "name_key": "mediaTextTemplateQtTypeAnimLuaprinter_multistage",
+    "fallback_name": "ANIM-LUA-PRINTER-MULTISTAGE",
+    "category": "animation_preset",
+    "tags": [
+      "animation",
+      "qt-lua",
+      "printer-multistage"
+    ],
+    "default_duration_ticks": 600000,
+    "fidelity": "exact"
+  },
+  "preview": {
+    "poster": "",
+    "fixture_text": "花字",
+    "time_seconds": 0.5
+  },
+  "fallback": {
+    "policy": "reject",
+    "notes": []
+  }
+}

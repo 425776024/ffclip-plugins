@@ -1,0 +1,16 @@
+uniform shader inputTexture;
+uniform float2 stepPixels;
+
+half4 main(float2 position) {
+    float4 color = float4(inputTexture.eval(position));
+    float maximumAlpha = color.a;
+    float minimumAlpha = color.a;
+    for (int index = 0; index < 32; ++index) {
+        float angle = (6.28318530718 / 32.0) * float(index);
+        float2 offset = float2(cos(angle), sin(angle)) * stepPixels;
+        float alpha = inputTexture.eval(position + offset).a;
+        maximumAlpha = max(maximumAlpha, alpha);
+        minimumAlpha = min(minimumAlpha, alpha);
+    }
+    return half4(color * smoothstep(0.0, 0.8, maximumAlpha - minimumAlpha));
+}

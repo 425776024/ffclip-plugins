@@ -1,0 +1,81 @@
+{
+  "format": "videocut.text-effect-program",
+  "programs": [
+    {
+      "program_id": "com.videocut.text.qt-type.anim-lua-opacity.program.controller",
+      "random_seed": 50,
+      "stages": [
+        {
+          "stage_id": "printer-one-floor-opacity",
+          "kind": "per_unit",
+          "register_count": 8,
+          "instructions": [
+            {
+              "opcode": "input",
+              "output_register": 0,
+              "input_registers": [],
+              "immediates": [],
+              "input": "progress"
+            },
+            {
+              "opcode": "input",
+              "output_register": 1,
+              "input_registers": [],
+              "immediates": [],
+              "input": "unit_index"
+            },
+            {
+              "opcode": "input",
+              "output_register": 2,
+              "input_registers": [],
+              "immediates": [],
+              "input": "unit_count"
+            },
+            {
+              "opcode": "constant",
+              "output_register": 3,
+              "input_registers": [],
+              "immediates": [1.0],
+              "input": null
+            },
+            {
+              "opcode": "add",
+              "output_register": 4,
+              "input_registers": [1, 3],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "add",
+              "output_register": 5,
+              "input_registers": [2, 3],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "divide",
+              "output_register": 6,
+              "input_registers": [4, 5],
+              "immediates": [],
+              "input": null
+            },
+            {
+              "opcode": "step",
+              "output_register": 7,
+              "input_registers": [6, 0],
+              "immediates": [],
+              "input": null
+            }
+          ],
+          "outputs": [
+            {
+              "output": "opacity",
+              "register_index": 7,
+              "transform_index": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

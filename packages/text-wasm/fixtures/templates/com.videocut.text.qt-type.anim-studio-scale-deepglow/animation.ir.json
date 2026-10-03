@@ -1,0 +1,521 @@
+{
+  "format": "videocut.text-animation",
+  "animation": {
+    "layers": [
+      {
+        "id": "reference-animation-06",
+        "time_driver": {
+          "kind": "enter_phase",
+          "duration_us": 3000000,
+          "playback": "once"
+        },
+        "animators": [
+          {
+            "id": "selector-1",
+            "anchor": "glyph_center",
+            "position_mode": "text_bounds_offset",
+            "presentation": "transform",
+            "selectors": [
+              {
+                "kind": "range",
+                "based_on": "grapheme",
+                "range_start": 0,
+                "range_end": 1,
+                "offset": 0.0,
+                "edge_smooth": 1,
+                "constrained": false,
+                "shape": "square",
+                "order": "forward",
+                "random_seed": 50.0,
+                "intensity": 1,
+                "intensity_start": 0,
+                "intensity_end": 1
+              }
+            ],
+            "tracks": [
+              {
+                "property": "opacity",
+                "keyframes": [
+                  {
+                    "offset": 0.0,
+                    "value": 0.0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": 0.0,
+                    "bezier_time_out": 0.0
+                  },
+                  {
+                    "offset": 0.45766666666666667,
+                    "value": 1.0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.19233333333333333,
+                    "bezier_time_out": 0.12766666666666668
+                  },
+                  {
+                    "offset": 0.8443333333333333,
+                    "value": 1.0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": 0.0,
+                    "bezier_time_out": 0.051333333333333335
+                  },
+                  {
+                    "offset": 1.0,
+                    "value": 1.0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.053,
+                    "bezier_time_out": 0.0
+                  }
+                ]
+              },
+              {
+                "property": "scale_x",
+                "keyframes": [
+                  {
+                    "offset": 0.0,
+                    "value": 0.3,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": 0.0,
+                    "bezier_time_out": 0.0
+                  },
+                  {
+                    "offset": 0.7333333333333334,
+                    "value": 1.0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.308,
+                    "bezier_time_out": 0.08800000000000001
+                  },
+                  {
+                    "offset": 1.0,
+                    "value": 1.0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.09066666666666667,
+                    "bezier_time_out": 0.0
+                  }
+                ]
+              },
+              {
+                "property": "scale_y",
+                "keyframes": [
+                  {
+                    "offset": 0.0,
+                    "value": 0.3,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": 0.0,
+                    "bezier_time_out": 0.0
+                  },
+                  {
+                    "offset": 0.7333333333333334,
+                    "value": 1.0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.308,
+                    "bezier_time_out": 0.08800000000000001
+                  },
+                  {
+                    "offset": 1.0,
+                    "value": 1.0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.09066666666666667,
+                    "bezier_time_out": 0.0
+                  }
+                ]
+              }
+            ],
+            "anchor_basis": "page",
+            "anchor_mode": "fixed",
+            "anchor_offset_x": 0.0,
+            "anchor_offset_y": 0.0
+          }
+        ],
+        "render_group": {
+          "mode": "page",
+          "expand_ratio_x": 2.0,
+          "expand_ratio_y": 2.0
+        },
+        "post_effects": [
+          {
+            "id": "effect-1",
+            "node_kind": "deep_glow",
+            "amount": 0.0,
+            "parameters": [
+              {
+                "name": "blendMode",
+                "values": [
+                  1.0
+                ]
+              },
+              {
+                "name": "blueOffset",
+                "values": [
+                  0.0
+                ]
+              },
+              {
+                "name": "ca",
+                "values": [
+                  0.0
+                ]
+              },
+              {
+                "name": "downSample",
+                "values": [
+                  0.6
+                ]
+              },
+              {
+                "name": "exposure",
+                "values": [
+                  1.05
+                ],
+                "keyframes": [
+                  {
+                    "offset": 0.0,
+                    "value": 1.05,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": 0.0,
+                    "bezier_time_out": 0.4106666666666667
+                  },
+                  {
+                    "offset": 0.9776666666666666,
+                    "value": 0.0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": 0.0,
+                    "bezier_time_out": 0.007333333333333333
+                  },
+                  {
+                    "offset": 1.0,
+                    "value": 0.0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": 0.0,
+                    "bezier_time_out": 0.0
+                  }
+                ]
+              },
+              {
+                "name": "gammaCorrect",
+                "values": [
+                  1.0
+                ]
+              },
+              {
+                "name": "gammaValue",
+                "values": [
+                  3.0
+                ]
+              },
+              {
+                "name": "glowFromAlpha",
+                "values": [
+                  0.6000000238418579
+                ]
+              },
+              {
+                "name": "glowIter",
+                "values": [
+                  4.0
+                ]
+              },
+              {
+                "name": "greenOffset",
+                "values": [
+                  0.0
+                ]
+              },
+              {
+                "name": "quality",
+                "values": [
+                  0.5
+                ]
+              },
+              {
+                "name": "radius",
+                "values": [
+                  600.0
+                ]
+              },
+              {
+                "name": "ratio",
+                "values": [
+                  1.0
+                ]
+              },
+              {
+                "name": "redOffset",
+                "values": [
+                  0.0
+                ]
+              },
+              {
+                "name": "rotate",
+                "values": [
+                  0.0
+                ]
+              },
+              {
+                "name": "sourceOpacity",
+                "values": [
+                  1.0
+                ]
+              },
+              {
+                "name": "stepsMult",
+                "values": [
+                  2.0
+                ]
+              },
+              {
+                "name": "tint",
+                "values": [
+                  1.0
+                ]
+              },
+              {
+                "name": "tintColor",
+                "values": [
+                  1.0,
+                  0.7357137203216553,
+                  0.2861829698085785,
+                  1.0
+                ]
+              },
+              {
+                "name": "tintMix",
+                "values": [
+                  1.0
+                ]
+              },
+              {
+                "name": "tintMode",
+                "values": [
+                  0.0
+                ]
+              },
+              {
+                "name": "kernelStrideBase",
+                "values": [
+                  0.001
+                ]
+              },
+              {
+                "name": "kernelStrideAspectPower",
+                "values": [
+                  0.0
+                ]
+              }
+            ],
+            "padding_px": 192
+          }
+        ],
+        "decorations": [
+          {
+            "id": "decoration-1",
+            "asset_id": "asset://assets/asset-001.json",
+            "anchor": "bbox_center",
+            "fit": "fit_width",
+            "extent_space": "text_local",
+            "inherit": "full",
+            "playback": "hold",
+            "expand_x": 1,
+            "expand_y": 1,
+            "pivot_x": 0,
+            "pivot_y": 0,
+            "relative_offset_x": 0.0,
+            "relative_offset_y": 0.0,
+            "scale_x": 1.0,
+            "scale_y": 1.0,
+            "opacity": 1,
+            "rotation_x_degrees": 0.0,
+            "rotation_y_degrees": 0.0,
+            "rotation_degrees": 0.0,
+            "relative_offset_x_keyframes": [
+              {
+                "offset": 0.0,
+                "value": 0.0
+              },
+              {
+                "offset": 1.0,
+                "value": 0.0
+              }
+            ],
+            "relative_offset_y_keyframes": [
+              {
+                "offset": 0.0,
+                "value": 0.0
+              },
+              {
+                "offset": 1.0,
+                "value": 0.0
+              }
+            ],
+            "opacity_keyframes": [
+              {
+                "offset": 0.0,
+                "value": 0.0,
+                "tangent_in": 0.0,
+                "tangent_out": 0.0,
+                "bezier": true,
+                "bezier_time_in": 0.0,
+                "bezier_time_out": 0.0
+              },
+              {
+                "offset": 0.111,
+                "value": 1.0,
+                "tangent_in": 0.0,
+                "tangent_out": 0.0,
+                "bezier": true,
+                "bezier_time_in": -0.04666666666666667,
+                "bezier_time_out": 0.2383333333333333
+              },
+              {
+                "offset": 0.8333333333333334,
+                "value": 1.0,
+                "tangent_in": 0.0,
+                "tangent_out": 0.0,
+                "bezier": true,
+                "bezier_time_in": -0.24566666666666667,
+                "bezier_time_out": 0.06999999999999999
+              },
+              {
+                "offset": 1.0,
+                "value": 0.0,
+                "tangent_in": 0.0,
+                "tangent_out": 0.0,
+                "bezier": true,
+                "bezier_time_in": 0.0,
+                "bezier_time_out": 0.0
+              }
+            ],
+            "asset_progress_keyframes": [
+              {
+                "offset": 0.0,
+                "value": 0.0,
+                "tangent_in": 0.0,
+                "tangent_out": 1.0,
+                "bezier": true,
+                "bezier_time_in": 0.0,
+                "bezier_time_out": 0.33
+              },
+              {
+                "offset": 1.0,
+                "value": 1.0,
+                "tangent_in": 1.0,
+                "tangent_out": 0.0,
+                "bezier": true,
+                "bezier_time_in": -0.34,
+                "bezier_time_out": 0.0
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "execution_graph": {
+      "nodes": [
+        {
+          "id": "layout",
+          "node_kind": "layout",
+          "capability": "layout_glyph_run"
+        },
+        {
+          "id": "media-video",
+          "node_kind": "media_input",
+          "capability": "media_video",
+          "input_ids": [],
+          "resource_ids": [
+            "assets/asset-000.mp4"
+          ]
+        },
+        {
+          "id": "selector-0",
+          "node_kind": "selector",
+          "capability": "selector_base",
+          "input_ids": [
+            "layout"
+          ]
+        },
+        {
+          "id": "operator-0",
+          "node_kind": "operator",
+          "capability": "operator_keyframe",
+          "input_ids": [
+            "selector-0"
+          ]
+        },
+        {
+          "id": "scene-prefab",
+          "node_kind": "scene",
+          "capability": "scene_prefab",
+          "input_ids": [
+            "operator-0"
+          ]
+        },
+        {
+          "id": "scene-mesh",
+          "node_kind": "scene",
+          "capability": "scene_mesh",
+          "input_ids": [
+            "scene-prefab"
+          ]
+        },
+        {
+          "id": "material-pass",
+          "node_kind": "material_pass",
+          "capability": "material_color_pass",
+          "input_ids": [
+            "scene-mesh"
+          ]
+        },
+        {
+          "id": "render-target",
+          "node_kind": "render_target",
+          "capability": "render_target_expanded",
+          "input_ids": [
+            "material-pass"
+          ]
+        },
+        {
+          "id": "effect-1",
+          "node_kind": "post_effect_pass",
+          "capability": "none",
+          "input_ids": [
+            "render-target"
+          ],
+          "post_effect_kind": "deep_glow"
+        },
+        {
+          "id": "media-composite",
+          "node_kind": "composite",
+          "capability": "composite_source_over",
+          "input_ids": [
+            "effect-1",
+            "media-video"
+          ]
+        }
+      ]
+    }
+  }
+}

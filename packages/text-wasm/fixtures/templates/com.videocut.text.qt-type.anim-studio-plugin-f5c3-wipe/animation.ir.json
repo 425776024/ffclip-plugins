@@ -1,0 +1,219 @@
+{
+  "format": "videocut.text-animation",
+  "animation": {
+    "layers": [
+      {
+        "id": "studio.layer.0",
+        "enabled": true,
+        "combine_mode": "replace",
+        "requires_timed_text": false,
+        "time_driver": {
+          "kind": "clip_local",
+          "start_offset_us": 0,
+          "duration_us": 3000000,
+          "playback": "hold"
+        },
+        "animators": [],
+        "post_effects": [
+          {
+            "id": "studio.post.0.0",
+            "node_kind": "cylindrical_scroll",
+            "amount": 0.0,
+            "padding_px": 0.0,
+            "input_ids": [],
+            "parameters": [
+              {
+                "name": "fov",
+                "values": [
+                  0.699999988079071
+                ]
+              },
+              {
+                "name": "intensity",
+                "values": [
+                  1
+                ]
+              },
+              {
+                "name": "itemCount",
+                "values": [
+                  10
+                ]
+              },
+              {
+                "name": "pauseStrength",
+                "values": [
+                  0.10000000149011612
+                ]
+              },
+              {
+                "name": "scrollProgress",
+                "values": [
+                  0
+                ],
+                "keyframes": [
+                  {
+                    "offset": 0,
+                    "value": 0,
+                    "tangent_in": 0.0,
+                    "tangent_out": 0,
+                    "bezier": true,
+                    "bezier_time_in": 0,
+                    "bezier_time_out": 0.33
+                  },
+                  {
+                    "offset": 1,
+                    "value": 0.1,
+                    "tangent_in": -0,
+                    "tangent_out": 0.0,
+                    "bezier": true,
+                    "bezier_time_in": -0.34,
+                    "bezier_time_out": 0
+                  }
+                ]
+              },
+              {
+                "name": "tunnelRadius",
+                "values": [
+                  0.6499999761581421
+                ]
+              }
+            ]
+          },
+          {
+            "id": "studio.post.0.1",
+            "node_kind": "linear_wipe",
+            "amount": 0.0,
+            "padding_px": 0.0,
+            "input_ids": [],
+            "parameters": [
+              {
+                "name": "feather",
+                "values": [
+                  0.20000000298023224
+                ]
+              },
+        {
+          "name": "progress",
+          "values": [
+            0.30000001192092896
+                ]
+              },
+              {
+                "name": "rotation",
+                "values": [
+                  0
+                ]
+              }
+            ]
+          },
+          {
+            "id": "studio.post.0.2",
+            "node_kind": "linear_wipe",
+            "amount": 0.0,
+            "padding_px": 0.0,
+            "input_ids": [],
+            "parameters": [
+              {
+                "name": "feather",
+                "values": [
+                  0.20000000298023224
+                ]
+              },
+        {
+          "name": "progress",
+          "values": [
+            0.30000001192092896
+                ]
+              },
+              {
+                "name": "rotation",
+                "values": [
+                  180
+                ]
+              }
+            ]
+          }
+        ],
+        "render_group": {
+          "expand_ratio_x": 1.5,
+          "expand_ratio_y": 2.0,
+          "mode": "page",
+          "offset": 0.0,
+          "priority": 0,
+          "random_seed": 50,
+          "random_sort": false,
+          "shape": "square"
+        }
+      }
+    ],
+    "execution_graph": {
+      "nodes": [
+        {
+          "id": "layout",
+          "node_kind": "layout",
+          "capability": "layout_glyph_run"
+        },
+        {
+          "id": "scene-prefab",
+          "node_kind": "scene",
+          "capability": "scene_prefab",
+          "input_ids": [
+            "layout"
+          ]
+        },
+        {
+          "id": "scene-mesh",
+          "node_kind": "scene",
+          "capability": "scene_mesh",
+          "input_ids": [
+            "scene-prefab"
+          ]
+        },
+        {
+          "id": "material-pass",
+          "node_kind": "material_pass",
+          "capability": "material_color_pass",
+          "input_ids": [
+            "scene-mesh"
+          ]
+        },
+        {
+          "id": "render-target",
+          "node_kind": "render_target",
+          "capability": "render_target_expanded",
+          "input_ids": [
+            "material-pass"
+          ]
+        },
+        {
+          "id": "studio.post.0.0",
+          "node_kind": "post_effect_pass",
+          "capability": "none",
+          "input_ids": [
+            "render-target"
+          ],
+          "post_effect_kind": "cylindrical_scroll"
+        },
+        {
+          "id": "studio.post.0.1",
+          "node_kind": "post_effect_pass",
+          "capability": "none",
+          "input_ids": [
+            "studio.post.0.0"
+          ],
+          "post_effect_kind": "linear_wipe"
+        },
+        {
+          "id": "studio.post.0.2",
+          "node_kind": "post_effect_pass",
+          "capability": "none",
+          "input_ids": [
+            "studio.post.0.1"
+          ],
+          "post_effect_kind": "linear_wipe"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,22 @@
+
+    uniform shader inputTexture;
+    uniform float2 direction;
+    uniform float sampleStep;
+    uniform float opacity;
+    half4 main(float2 position) {
+      if (sampleStep <= 0.0) {
+        return half4(float4(inputTexture.eval(position)) * opacity);
+      }
+      float4 color = float4(inputTexture.eval(position));
+      float weightSum = 1.0;
+      for (int index = 1; index <= 16; ++index) {
+        float coordinate = float(index);
+        float weight = exp(-(coordinate * coordinate) / (2.0 * 5.5 * 5.5));
+        float2 offset = direction * sampleStep * coordinate;
+        color += float4(inputTexture.eval(position + offset)) * weight;
+        color += float4(inputTexture.eval(position - offset)) * weight;
+        weightSum += weight * 2.0;
+      }
+      return half4((color / weightSum) * opacity);
+    }
+  

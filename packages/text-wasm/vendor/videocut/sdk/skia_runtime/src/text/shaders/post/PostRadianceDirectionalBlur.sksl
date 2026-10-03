@@ -1,0 +1,95 @@
+
+    uniform shader inputTexture;
+    uniform float2 textureSize;
+    uniform float sampleCount;
+    uniform float sigma;
+    uniform float spaceDither;
+    uniform float2 sampleStep;
+    uniform float borderType;
+    uniform float exposure;
+
+    float gaussian(float distanceValue) {
+      return exp(((-0.5 * distanceValue) * distanceValue) /
+                 (sigma * sigma));
+    }
+
+    float hashNoise(float2 qtUv) {
+      float3 value = fract(float3(
+          (qtUv * textureSize).xyx) *
+          0.103100001811981201171875);
+      value += float3(dot(
+          value, value.yzx + float3(33.3300018310546875)));
+      return fract(fract((value.x + value.y) * value.z)) * 2.0 - 1.0;
+    }
+
+    float mirrorCoordinate(float value) {
+      value = abs(value);
+      return abs(floor(ceil(value) * 0.5) * 2.0 - value);
+    }
+
+    float validQt(float2 qtUv) {
+      return step(0.0, qtUv.x) * step(qtUv.x, 1.0) *
+             step(0.0, qtUv.y) * step(qtUv.y, 1.0);
+    }
+
+    float4 sampleQt(float2 qtUv) {
+      return float4(inputTexture.eval(
+          float2(qtUv.x, 1.0 - qtUv.y) * textureSize));
+    }
+
+    float4 main(float2 xy) {
+      float2 skUv = xy / textureSize;
+      float2 qtUv = float2(skUv.x, 1.0 - skUv.y);
+      if (sampleCount <
+          0.00000999999974737875163555145263671875) {
+        return sampleQt(qtUv);
+      }
+      float centerWeight = gaussian(0.0);
+      float normalization = centerWeight;
+      float4 accumulated = sampleQt(qtUv) * centerWeight;
+      float2 sampleOrigin = qtUv;
+      if (spaceDither >
+          0.00000999999974737875163555145263671875) {
+        sampleOrigin += sampleStep * (spaceDither * hashNoise(qtUv));
+      }
+      for (int index = 1; index <= 1024; ++index) {
+        float sampleIndex = float(index);
+        if (sampleIndex > sampleCount) {
+          break;
+        }
+        float2 delta = sampleStep * sampleIndex;
+        float weight = gaussian(length(delta));
+        float2 minusUv = sampleOrigin - delta;
+        if (validQt(minusUv) < 0.5) {
+          if (borderType < 0.5) {
+            normalization += weight;
+          } else if (borderType < 1.5) {
+            minusUv = float2(mirrorCoordinate(minusUv.x),
+                             mirrorCoordinate(minusUv.y));
+            accumulated += sampleQt(minusUv) * weight;
+            normalization += weight;
+          }
+        } else {
+          accumulated += sampleQt(minusUv) * weight;
+          normalization += weight;
+        }
+        float2 plusUv = sampleOrigin + delta;
+        if (validQt(plusUv) < 0.5) {
+          if (borderType < 0.5) {
+            normalization += weight;
+          } else if (borderType < 1.5) {
+            plusUv = float2(mirrorCoordinate(plusUv.x),
+                            mirrorCoordinate(plusUv.y));
+            accumulated += sampleQt(plusUv) * weight;
+            normalization += weight;
+          }
+        } else {
+          accumulated += sampleQt(plusUv) * weight;
+          normalization += weight;
+        }
+      }
+      float4 color = accumulated / float4(normalization);
+      color.rgb *= exposure;
+      return clamp(color, float4(0.0), float4(1.0));
+    }
+  

@@ -1,0 +1,486 @@
+{
+  "format": "videocut.text-template",
+  "id": "builtin.text.qt-type.flower-scene-06",
+  "display": {
+    "name_key": "mediaTextTemplateQtTypeFlowerScene06",
+    "fallback_name": "Qt Flower Scene 06",
+    "category": "flower_preset",
+    "tags": [
+      "flower",
+      "qt-type",
+      "scene"
+    ]
+  },
+  "placement": {
+    "default_duration_ticks": 600000,
+    "reference_width": 1920,
+    "reference_height": 1080
+  },
+  "bindings": [
+    {
+      "id": "content",
+      "kind": "plain_text",
+      "default": "Text",
+      "target": {
+        "paragraph_id": "paragraph-main",
+        "run_id": "run-main"
+      },
+      "content_slot_id": "content"
+    }
+  ],
+  "rules": [
+    {
+      "channel": "typography",
+      "mode": "replace",
+      "content_slot_id": "content",
+      "target_layer_id": "",
+      "semantic_role": ""
+    },
+    {
+      "channel": "glyph.fill",
+      "mode": "replace",
+      "content_slot_id": "content",
+      "target_layer_id": "",
+      "semantic_role": ""
+    },
+    {
+      "channel": "glyph.strokes",
+      "mode": "replace",
+      "content_slot_id": "content",
+      "target_layer_id": "",
+      "semantic_role": ""
+    },
+    {
+      "channel": "glyph.shadows",
+      "mode": "replace",
+      "content_slot_id": "content",
+      "target_layer_id": "",
+      "semantic_role": ""
+    },
+    {
+      "channel": "glyph.glows",
+      "mode": "replace",
+      "content_slot_id": "content",
+      "target_layer_id": "",
+      "semantic_role": ""
+    },
+    {
+      "channel": "layout",
+      "mode": "replace",
+      "content_slot_id": "content",
+      "target_layer_id": "",
+      "semantic_role": ""
+    },
+    {
+      "channel": "sdf.material",
+      "mode": "replace",
+      "content_slot_id": "content",
+      "target_layer_id": "",
+      "semantic_role": ""
+    }
+  ],
+  "document": {
+    "layout_box": {
+      "x": 260,
+      "y": 223.66267,
+      "width": 1400,
+      "height": 420,
+      "vertical_alignment": "center",
+      "clip_overflow": false,
+      "sizing_mode": "auto_height",
+      "minimum_width": 0.0,
+      "minimum_height": 0.0,
+      "minimum_fit_font_size": 1.0,
+      "maximum_fit_font_size": 4096.0,
+      "padding": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "pixel_snap": false
+    },
+    "writing_mode": "horizontal",
+    "content_slots": [
+      {
+        "slot_id": "content",
+        "semantic_role": "primary",
+        "paragraph_ids": [
+          "paragraph-main"
+        ],
+        "run_ids": [
+          "run-main"
+        ]
+      }
+    ],
+    "paragraphs": [
+      {
+        "id": "paragraph-main",
+        "style": {
+          "alignment": "center",
+          "direction": "auto",
+          "locale": "und",
+          "line_height": 1.0,
+          "max_lines": 2,
+          "overflow": "visible",
+          "wrap": "word"
+        },
+        "runs": [
+          {
+            "id": "run-main",
+            "text_binding": "content",
+            "locale": "und",
+            "style": {
+              "font": {
+                "primary": {
+                  "kind": "builtin",
+                  "family": "Inter",
+                  "postscript_name": "Inter-Regular",
+                  "weight": 400,
+                  "width": 5,
+                  "slant": "upright",
+                  "face_index": 0,
+                  "variation_axes": [],
+                  "asset_id": "builtin.font.inter.variable.v1",
+                  "platform": "",
+                  "face_fingerprint": "",
+                  "allow_system_glyph_fallback": false
+                },
+                "fallbacks": [
+                  {
+                    "kind": "builtin",
+                    "family": "Source Han Sans SC Medium",
+                    "postscript_name": "SourceHanSansSC-Medium",
+                    "weight": 500,
+                    "width": 5,
+                    "slant": "upright",
+                    "face_index": 0,
+                    "variation_axes": [],
+                    "asset_id": "builtin.font.reference-cjk.source-han-sans-sc-medium.v1",
+                    "platform": "",
+                    "face_fingerprint": "",
+                    "allow_system_glyph_fallback": false
+                  }
+                ],
+                "family": "Inter",
+                "postscript_name": "Inter-Regular",
+                "weight": 400,
+                "width": 5,
+                "slant": "upright",
+                "face_index": 0,
+                "variation_axes": [],
+                "features": [],
+                "allow_system_glyph_fallback": false
+              },
+              "font_size": 411.1111,
+              "letter_spacing": 0,
+              "word_spacing": 0.0,
+              "baseline_shift": 0.0,
+              "materials": {
+                "layers": [
+                  {
+                    "layer_id": "scene-material-00",
+                    "z_order": 0,
+                    "blend": "source_over",
+                    "material": {
+                      "kind": "literal",
+                      "material": {
+                        "kind": "solid",
+                        "color": [
+                          0.0000009999999974752427,
+                          0,
+                          0,
+                          1
+                        ]
+                      }
+                    },
+                    "offset_polar": {
+                      "radius_normalized": 0.07137345522642136,
+                      "angle_radians": -0.9272952079772949
+                    },
+                    "offset_x": 24.666666455939872,
+                    "offset_y": 32.88888792106847,
+                    "type": "shadow",
+                    "shadow_kind": "outer",
+                    "blur_radius": 0.0,
+                    "spread": 8.599999487400055,
+                    "smoothing": "feather",
+                    "round_mask_intensity": 0
+                  },
+                  {
+                    "layer_id": "scene-material-01",
+                    "z_order": 1,
+                    "blend": "source_over",
+                    "material": {
+                      "kind": "literal",
+                      "material": {
+                        "kind": "solid",
+                        "color": [
+                          0.0000009999999974752427,
+                          0,
+                          0,
+                          1
+                        ]
+                      }
+                    },
+                    "offset_polar": {
+                      "radius_normalized": 0,
+                      "angle_radians": 0
+                    },
+                    "offset_x": 0.0,
+                    "offset_y": 0.0,
+                    "type": "stroke",
+                    "width": 68.79999589920044,
+                    "signed_start_width": 0.0,
+                    "blur_radius": 0.0,
+                    "spread": 0
+                  },
+                  {
+                    "layer_id": "scene-material-02",
+                    "z_order": 2,
+                    "blend": "source_over",
+                    "material": {
+                      "kind": "literal",
+                      "material": {
+                        "kind": "linear_gradient",
+                        "stops": [
+                          {
+                            "offset": 0.0,
+                            "color": [
+                              1.0,
+                              1.0,
+                              1.0,
+                              1.0
+                            ]
+                          },
+                          {
+                            "offset": 0.06666666666666667,
+                            "color": [
+                              1.0,
+                              1.0,
+                              1.0,
+                              1.0
+                            ]
+                          },
+                          {
+                            "offset": 0.13333333333333333,
+                            "color": [
+                              1.0,
+                              1.0,
+                              1.0,
+                              1.0
+                            ]
+                          },
+                          {
+                            "offset": 0.2,
+                            "color": [
+                              1.0,
+                              0.9882352941176471,
+                              0.9882352941176471,
+                              1.0
+                            ]
+                          },
+                          {
+                            "offset": 0.26666666666666666,
+                            "color": [
+                              1.0,
+                              0.9490196078431372,
+                              0.9490196078431372,
+                              1.0
+                            ]
+                          },
+                          {
+                            "offset": 0.3333333333333333,
+                            "color": [
+                              1.0,
+                              0.9173228346456692,
+                              0.9173228346456692,
+                              0.996078431372549
+                            ]
+                          },
+                          {
+                            "offset": 0.4,
+                            "color": [
+                              1.0,
+                              0.8784313725490196,
+                              0.8784313725490196,
+                              1.0
+                            ]
+                          },
+                          {
+                            "offset": 0.4666666666666667,
+                            "color": [
+                              1.0,
+                              0.8392156862745098,
+                              0.8392156862745098,
+                              1.0
+                            ]
+                          },
+                          {
+                            "offset": 0.5333333333333333,
+                            "color": [
+                              1.0,
+                              0.803921568627451,
+                              0.803921568627451,
+                              1.0
+                            ]
+                          },
+                          {
+                            "offset": 0.6,
+                            "color": [
+                              1.0,
+                              0.7647058823529411,
+                              0.7647058823529411,
+                              1.0
+                            ]
+                          },
+                          {
+                            "offset": 0.6666666666666666,
+                            "color": [
+                              1.0,
+                              0.7294117647058823,
+                              0.7294117647058823,
+                              1.0
+                            ]
+                          },
+                          {
+                            "offset": 0.7333333333333333,
+                            "color": [
+                              1.0,
+                              0.6941176470588235,
+                              0.6941176470588235,
+                              1.0
+                            ]
+                          },
+                          {
+                            "offset": 0.8,
+                            "color": [
+                              1.0,
+                              0.6549019607843137,
+                              0.6549019607843137,
+                              1.0
+                            ]
+                          },
+                          {
+                            "offset": 0.8666666666666667,
+                            "color": [
+                              1.0,
+                              0.6470588235294118,
+                              0.6470588235294118,
+                              1.0
+                            ]
+                          },
+                          {
+                            "offset": 0.9333333333333333,
+                            "color": [
+                              1.0,
+                              0.6470588235294118,
+                              0.6470588235294118,
+                              1.0
+                            ]
+                          },
+                          {
+                            "offset": 1.0,
+                            "color": [
+                              1.0,
+                              0.6470588235294118,
+                              0.6470588235294118,
+                              1.0
+                            ]
+                          }
+                        ],
+                        "start": [
+                          0.5868240931822685,
+                          0.0075961242607073265
+                        ],
+                        "end": [
+                          0.41317590681773153,
+                          0.9924038757392927
+                        ],
+                        "spread": "clamp",
+                        "sampling": "rgba8_lut_256",
+                        "coordinates": {
+                          "space": "grapheme",
+                          "outset": 172.0,
+                          "scale": 1
+                        }
+                      }
+                    },
+                    "offset_polar": {
+                      "radius_normalized": 0,
+                      "angle_radians": 0
+                    },
+                    "offset_x": 0.0,
+                    "offset_y": 0.0,
+                    "type": "fill"
+                  }
+                ]
+              },
+              "background": {
+                "enabled": false,
+                "color": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "padding": {
+                  "left": 0,
+                  "top": 0,
+                  "right": 0,
+                  "bottom": 0
+                },
+                "corner_radius": 0
+              },
+              "decoration": {
+                "underline": {
+                  "enabled": false
+                },
+                "strike_through": {
+                  "enabled": false
+                }
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "appearance": {
+    "backdrops": {
+      "layers": []
+    },
+    "sdf_material": {
+      "enabled": true,
+      "source_design_width": 720.0,
+      "source_design_height": 1280.0,
+      "distance_range": 172.0,
+      "raster_distance_range": 30,
+      "smoothing_scale": 0.6,
+      "source_creation_component": "sdf_text"
+    },
+    "bend": {
+      "enabled": false,
+      "amount": 0.0
+    },
+    "path": {
+      "enabled": false,
+      "geometry_id": "",
+      "commands": [],
+      "start_offset": 0.0,
+      "baseline_offset": 0.0,
+      "overflow": "clip",
+      "loop": false,
+      "rotate_to_tangent": true,
+      "keep_upright": true
+    },
+    "visual_extent": {
+      "allow_control_overflow": true,
+      "maximum_extent_width": 1840,
+      "maximum_extent_height": 900
+    },
+    "global_alpha": 1.0
+  },
+  "decorations": [],
+  "resources": []
+}

@@ -1,0 +1,3878 @@
+{
+  "schemaVersion": 1,
+  "scope": "Local browser render acceptance; fixed-quality comparison against the frozen pre-cache-upgrade npm package, not the original web editor or desktop editor.",
+  "sources": {
+    "fixedQualityAB": {
+      "path": ".local/architecture-qa/render-results/fixed-quality-ab-final.json",
+      "sha256": "e9b805518f835eb320330211e8036433011c8d60fceffcbb6f4ebd61fe371ac1"
+    },
+    "hd60": {
+      "path": ".local/architecture-qa/render-results/hd60-final.json",
+      "sha256": "611252c369e82556cf0e940684cd822ebea2869fe6e005f41b91ae814ba21f13"
+    },
+    "webgpu40": {
+      "path": ".local/architecture-qa/render-results/browser-report-complete-1790696658989.json",
+      "sha256": "8c556e013d0efac83081b95140643b6b827f7e435bc7b54c2d8e259f24c0b242"
+    },
+    "canvas2d5": {
+      "path": ".local/architecture-qa/render-results/browser-report-complete-1790696716403.json",
+      "sha256": "3fbd65f19371321c07e6da8a57f410f81db7bb2112a97b0eb664298700e5910e"
+    },
+    "isolatedParity12": {
+      "path": ".local/architecture-qa/render-results/browser-report-complete-1790697262386.json",
+      "sha256": "a8ed15b5a16cc0e213d681919a1118d6f593ffa91bc538a3f5e301573e2fadc9"
+    }
+  },
+  "reports": {
+    "fixedQualityAB": {
+      "phase": "complete",
+      "scope": "Pre-cache-upgrade npm package versus current; not historical Electron",
+      "size": [
+        1280,
+        720
+      ],
+      "autoQuality": false,
+      "baselineSha256": "a4256b70c42232f3274b8d9ed8da7afdeb233e7754995a88a55a322a488af49c",
+      "results": [
+        {
+          "name": "baseline",
+          "round": 0,
+          "coldMs": 81.69999992847443,
+          "repeat": {
+            "count": 40,
+            "median": 3.200000047683716,
+            "p95": 6.200000047683716,
+            "max": 8.399999976158142
+          },
+          "move": {
+            "count": 40,
+            "median": 2.799999952316284,
+            "p95": 3.799999952316284,
+            "max": 3.899999976158142
+          },
+          "repeatRoundTrip": {
+            "count": 40,
+            "median": 3.4000000953674316,
+            "p95": 6.399999976158142,
+            "max": 8.700000047683716
+          },
+          "final": {
+            "backend": "webgpu",
+            "time": 0,
+            "width": 1280,
+            "height": 720,
+            "frameMs": 2.6999999284744263,
+            "uploadCount": 0,
+            "uploadCacheHits": 2,
+            "textureBytes": 44610948,
+            "textureBudget": 536870912,
+            "bounds": [
+              {
+                "id": "item-b13d63e1-8a88-47b2-a7ee-0ad2adfcd567",
+                "locked": false,
+                "x": 263,
+                "y": 130,
+                "width": 832,
+                "height": 468
+              },
+              {
+                "id": "item-127277e8-fe66-41e7-934e-6bc254d1cacb",
+                "locked": false,
+                "x": 187.32803344726562,
+                "y": 320,
+                "width": 905.3439331054688,
+                "height": 80
+              }
+            ],
+            "media": [
+              {
+                "itemId": "item-b13d63e1-8a88-47b2-a7ee-0ad2adfcd567",
+                "kind": "image",
+                "currentTime": 0,
+                "decodedTimestamp": 0,
+                "readyState": 4,
+                "decodedFrames": 81,
+                "error": null
+              },
+              {
+                "itemId": "item-127277e8-fe66-41e7-934e-6bc254d1cacb",
+                "kind": "text",
+                "currentTime": 0,
+                "decodedTimestamp": null,
+                "readyState": 4,
+                "decodedFrames": 81,
+                "error": null
+              }
+            ]
+          }
+        },
+        {
+          "name": "current",
+          "round": 0,
+          "coldMs": 68.19999992847443,
+          "repeat": {
+            "count": 40,
+            "median": 0,
+            "p95": 0.10000002384185791,
+            "max": 0.10000002384185791
+          },
+          "move": {
+            "count": 40,
+            "median": 0.7999999523162842,
+            "p95": 2,
+            "max": 2.100000023841858
+          },
+          "repeatRoundTrip": {
+            "count": 40,
+            "median": 0.10000002384185791,
+            "p95": 0.10000002384185791,
+            "max": 0.2999999523162842
+          },
+          "final": {
+            "backend": "webgpu",
+            "time": 0,
+            "width": 1280,
+            "height": 720,
+            "frameMs": 0.5999999046325684,
+            "uploadCount": 0,
+            "uploadCacheHits": 2,
+            "effectHits": 7,
+            "layerHits": 2,
+            "compositeHits": 1,
+            "transitionHits": 0,
+            "gpuPasses": 4,
+            "evictions": 0,
+            "textureBytes": 40405380,
+            "resourceBytes": 40407044,
+            "peakResourceBytes": 40407044,
+            "externalTextureBytes": 0,
+            "workingSetBytes": 40405892,
+            "textureBudget": 536870912,
+            "pipelineCount": 2,
+            "graphBuilds": 1,
+            "textLayoutCount": 0,
+            "bounds": [
+              {
+                "id": "item-b13d63e1-8a88-47b2-a7ee-0ad2adfcd567",
+                "locked": false,
+                "x": 263,
+                "y": 130,
+                "width": 832,
+                "height": 468
+              },
+              {
+                "id": "item-127277e8-fe66-41e7-934e-6bc254d1cacb",
+                "locked": false,
+                "x": 187.32803344726562,
+                "y": 320,
+                "width": 905.3439331054688,
+                "height": 80
+              }
+            ],
+            "media": [
+              {
+                "itemId": "item-b13d63e1-8a88-47b2-a7ee-0ad2adfcd567",
+                "kind": "image",
+                "currentTime": 0,
+                "decodedTimestamp": 0,
+                "readyState": 4,
+                "decodedFrames": 40,
+                "error": null
+              },
+              {
+                "itemId": "item-127277e8-fe66-41e7-934e-6bc254d1cacb",
+                "kind": "text",
+                "currentTime": 0,
+                "decodedTimestamp": null,
+                "readyState": 4,
+                "decodedFrames": 40,
+                "error": null
+              }
+            ]
+          }
+        },
+        {
+          "name": "current",
+          "round": 1,
+          "coldMs": 80.20000004768372,
+          "repeat": {
+            "count": 40,
+            "median": 0,
+            "p95": 0.10000002384185791,
+            "max": 0.10000002384185791
+          },
+          "move": {
+            "count": 40,
+            "median": 0.8999999761581421,
+            "p95": 1.600000023841858,
+            "max": 1.6999999284744263
+          },
+          "repeatRoundTrip": {
+            "count": 40,
+            "median": 0.10000002384185791,
+            "p95": 0.20000004768371582,
+            "max": 0.20000004768371582
+          },
+          "final": {
+            "backend": "webgpu",
+            "time": 0,
+            "width": 1280,
+            "height": 720,
+            "frameMs": 0.7999999523162842,
+            "uploadCount": 0,
+            "uploadCacheHits": 2,
+            "effectHits": 7,
+            "layerHits": 2,
+            "compositeHits": 1,
+            "transitionHits": 0,
+            "gpuPasses": 4,
+            "evictions": 0,
+            "textureBytes": 40405380,
+            "resourceBytes": 40407044,
+            "peakResourceBytes": 40407044,
+            "externalTextureBytes": 0,
+            "workingSetBytes": 40405892,
+            "textureBudget": 536870912,
+            "pipelineCount": 2,
+            "graphBuilds": 1,
+            "textLayoutCount": 0,
+            "bounds": [
+              {
+                "id": "item-b13d63e1-8a88-47b2-a7ee-0ad2adfcd567",
+                "locked": false,
+                "x": 263,
+                "y": 130,
+                "width": 832,
+                "height": 468
+              },
+              {
+                "id": "item-127277e8-fe66-41e7-934e-6bc254d1cacb",
+                "locked": false,
+                "x": 187.32803344726562,
+                "y": 320,
+                "width": 905.3439331054688,
+                "height": 80
+              }
+            ],
+            "media": [
+              {
+                "itemId": "item-b13d63e1-8a88-47b2-a7ee-0ad2adfcd567",
+                "kind": "image",
+                "currentTime": 0,
+                "decodedTimestamp": 0,
+                "readyState": 4,
+                "decodedFrames": 40,
+                "error": null
+              },
+              {
+                "itemId": "item-127277e8-fe66-41e7-934e-6bc254d1cacb",
+                "kind": "text",
+                "currentTime": 0,
+                "decodedTimestamp": null,
+                "readyState": 4,
+                "decodedFrames": 40,
+                "error": null
+              }
+            ]
+          }
+        },
+        {
+          "name": "baseline",
+          "round": 1,
+          "coldMs": 83.60000002384186,
+          "repeat": {
+            "count": 40,
+            "median": 3.5,
+            "p95": 5.200000047683716,
+            "max": 5.600000023841858
+          },
+          "move": {
+            "count": 40,
+            "median": 2.700000047683716,
+            "p95": 3.700000047683716,
+            "max": 3.700000047683716
+          },
+          "repeatRoundTrip": {
+            "count": 40,
+            "median": 3.600000023841858,
+            "p95": 5.5,
+            "max": 5.799999952316284
+          },
+          "final": {
+            "backend": "webgpu",
+            "time": 0,
+            "width": 1280,
+            "height": 720,
+            "frameMs": 2.5,
+            "uploadCount": 0,
+            "uploadCacheHits": 2,
+            "textureBytes": 44610948,
+            "textureBudget": 536870912,
+            "bounds": [
+              {
+                "id": "item-b13d63e1-8a88-47b2-a7ee-0ad2adfcd567",
+                "locked": false,
+                "x": 263,
+                "y": 130,
+                "width": 832,
+                "height": 468
+              },
+              {
+                "id": "item-127277e8-fe66-41e7-934e-6bc254d1cacb",
+                "locked": false,
+                "x": 187.32803344726562,
+                "y": 320,
+                "width": 905.3439331054688,
+                "height": 80
+              }
+            ],
+            "media": [
+              {
+                "itemId": "item-b13d63e1-8a88-47b2-a7ee-0ad2adfcd567",
+                "kind": "image",
+                "currentTime": 0,
+                "decodedTimestamp": 0,
+                "readyState": 4,
+                "decodedFrames": 81,
+                "error": null
+              },
+              {
+                "itemId": "item-127277e8-fe66-41e7-934e-6bc254d1cacb",
+                "kind": "text",
+                "currentTime": 0,
+                "decodedTimestamp": null,
+                "readyState": 4,
+                "decodedFrames": 81,
+                "error": null
+              }
+            ]
+          }
+        },
+        {
+          "name": "baseline",
+          "round": 2,
+          "coldMs": 67,
+          "repeat": {
+            "count": 40,
+            "median": 2.700000047683716,
+            "p95": 4.299999952316284,
+            "max": 4.799999952316284
+          },
+          "move": {
+            "count": 40,
+            "median": 2.399999976158142,
+            "p95": 2.600000023841858,
+            "max": 2.700000047683716
+          },
+          "repeatRoundTrip": {
+            "count": 40,
+            "median": 2.799999952316284,
+            "p95": 4.899999976158142,
+            "max": 5.800000071525574
+          },
+          "final": {
+            "backend": "webgpu",
+            "time": 0,
+            "width": 1280,
+            "height": 720,
+            "frameMs": 2.3000000715255737,
+            "uploadCount": 0,
+            "uploadCacheHits": 2,
+            "textureBytes": 44610948,
+            "textureBudget": 536870912,
+            "bounds": [
+              {
+                "id": "item-b13d63e1-8a88-47b2-a7ee-0ad2adfcd567",
+                "locked": false,
+                "x": 263,
+                "y": 130,
+                "width": 832,
+                "height": 468
+              },
+              {
+                "id": "item-127277e8-fe66-41e7-934e-6bc254d1cacb",
+                "locked": false,
+                "x": 187.32803344726562,
+                "y": 320,
+                "width": 905.3439331054688,
+                "height": 80
+              }
+            ],
+            "media": [
+              {
+                "itemId": "item-b13d63e1-8a88-47b2-a7ee-0ad2adfcd567",
+                "kind": "image",
+                "currentTime": 0,
+                "decodedTimestamp": 0,
+                "readyState": 4,
+                "decodedFrames": 81,
+                "error": null
+              },
+              {
+                "itemId": "item-127277e8-fe66-41e7-934e-6bc254d1cacb",
+                "kind": "text",
+                "currentTime": 0,
+                "decodedTimestamp": null,
+                "readyState": 4,
+                "decodedFrames": 81,
+                "error": null
+              }
+            ]
+          }
+        },
+        {
+          "name": "current",
+          "round": 2,
+          "coldMs": 64.69999992847443,
+          "repeat": {
+            "count": 40,
+            "median": 0,
+            "p95": 0.10000002384185791,
+            "max": 0.10000002384185791
+          },
+          "move": {
+            "count": 40,
+            "median": 0.7000000476837158,
+            "p95": 1.6999999284744263,
+            "max": 1.7000000476837158
+          },
+          "repeatRoundTrip": {
+            "count": 40,
+            "median": 0.10000002384185791,
+            "p95": 0.20000004768371582,
+            "max": 0.20000004768371582
+          },
+          "final": {
+            "backend": "webgpu",
+            "time": 0,
+            "width": 1280,
+            "height": 720,
+            "frameMs": 1.6999999284744263,
+            "uploadCount": 0,
+            "uploadCacheHits": 2,
+            "effectHits": 7,
+            "layerHits": 2,
+            "compositeHits": 1,
+            "transitionHits": 0,
+            "gpuPasses": 4,
+            "evictions": 0,
+            "textureBytes": 40405380,
+            "resourceBytes": 40407044,
+            "peakResourceBytes": 40407044,
+            "externalTextureBytes": 0,
+            "workingSetBytes": 40405892,
+            "textureBudget": 536870912,
+            "pipelineCount": 2,
+            "graphBuilds": 1,
+            "textLayoutCount": 0,
+            "bounds": [
+              {
+                "id": "item-b13d63e1-8a88-47b2-a7ee-0ad2adfcd567",
+                "locked": false,
+                "x": 263,
+                "y": 130,
+                "width": 832,
+                "height": 468
+              },
+              {
+                "id": "item-127277e8-fe66-41e7-934e-6bc254d1cacb",
+                "locked": false,
+                "x": 187.32803344726562,
+                "y": 320,
+                "width": 905.3439331054688,
+                "height": 80
+              }
+            ],
+            "media": [
+              {
+                "itemId": "item-b13d63e1-8a88-47b2-a7ee-0ad2adfcd567",
+                "kind": "image",
+                "currentTime": 0,
+                "decodedTimestamp": 0,
+                "readyState": 4,
+                "decodedFrames": 40,
+                "error": null
+              },
+              {
+                "itemId": "item-127277e8-fe66-41e7-934e-6bc254d1cacb",
+                "kind": "text",
+                "currentTime": 0,
+                "decodedTimestamp": null,
+                "readyState": 4,
+                "decodedFrames": 40,
+                "error": null
+              }
+            ]
+          }
+        },
+        {
+          "name": "current",
+          "round": 3,
+          "coldMs": 74.89999997615814,
+          "repeat": {
+            "count": 40,
+            "median": 0,
+            "p95": 0.10000002384185791,
+            "max": 0.10000002384185791
+          },
+          "move": {
+            "count": 40,
+            "median": 0.7999999523162842,
+            "p95": 1.7000000476837158,
+            "max": 2.200000047683716
+          },
+          "repeatRoundTrip": {
+            "count": 40,
+            "median": 0.10000002384185791,
+            "p95": 0.20000004768371582,
+            "max": 0.2999999523162842
+          },
+          "final": {
+            "backend": "webgpu",
+            "time": 0,
+            "width": 1280,
+            "height": 720,
+            "frameMs": 0.6999999284744263,
+            "uploadCount": 0,
+            "uploadCacheHits": 2,
+            "effectHits": 7,
+            "layerHits": 2,
+            "compositeHits": 1,
+            "transitionHits": 0,
+            "gpuPasses": 4,
+            "evictions": 0,
+            "textureBytes": 40405380,
+            "resourceBytes": 40407044,
+            "peakResourceBytes": 40407044,
+            "externalTextureBytes": 0,
+            "workingSetBytes": 40405892,
+            "textureBudget": 536870912,
+            "pipelineCount": 2,
+            "graphBuilds": 1,
+            "textLayoutCount": 0,
+            "bounds": [
+              {
+                "id": "item-b13d63e1-8a88-47b2-a7ee-0ad2adfcd567",
+                "locked": false,
+                "x": 263,
+                "y": 130,
+                "width": 832,
+                "height": 468
+              },
+              {
+                "id": "item-127277e8-fe66-41e7-934e-6bc254d1cacb",
+                "locked": false,
+                "x": 187.32803344726562,
+                "y": 320,
+                "width": 905.3439331054688,
+                "height": 80
+              }
+            ],
+            "media": [
+              {
+                "itemId": "item-b13d63e1-8a88-47b2-a7ee-0ad2adfcd567",
+                "kind": "image",
+                "currentTime": 0,
+                "decodedTimestamp": 0,
+                "readyState": 4,
+                "decodedFrames": 40,
+                "error": null
+              },
+              {
+                "itemId": "item-127277e8-fe66-41e7-934e-6bc254d1cacb",
+                "kind": "text",
+                "currentTime": 0,
+                "decodedTimestamp": null,
+                "readyState": 4,
+                "decodedFrames": 40,
+                "error": null
+              }
+            ]
+          }
+        },
+        {
+          "name": "baseline",
+          "round": 3,
+          "coldMs": 75.39999997615814,
+          "repeat": {
+            "count": 40,
+            "median": 2.6999999284744263,
+            "p95": 4.300000071525574,
+            "max": 5.899999976158142
+          },
+          "move": {
+            "count": 40,
+            "median": 2.899999976158142,
+            "p95": 4.800000071525574,
+            "max": 4.899999976158142
+          },
+          "repeatRoundTrip": {
+            "count": 40,
+            "median": 2.799999952316284,
+            "p95": 4.5,
+            "max": 6.100000023841858
+          },
+          "final": {
+            "backend": "webgpu",
+            "time": 0,
+            "width": 1280,
+            "height": 720,
+            "frameMs": 2.899999976158142,
+            "uploadCount": 0,
+            "uploadCacheHits": 2,
+            "textureBytes": 44610948,
+            "textureBudget": 536870912,
+            "bounds": [
+              {
+                "id": "item-b13d63e1-8a88-47b2-a7ee-0ad2adfcd567",
+                "locked": false,
+                "x": 263,
+                "y": 130,
+                "width": 832,
+                "height": 468
+              },
+              {
+                "id": "item-127277e8-fe66-41e7-934e-6bc254d1cacb",
+                "locked": false,
+                "x": 187.32803344726562,
+                "y": 320,
+                "width": 905.3439331054688,
+                "height": 80
+              }
+            ],
+            "media": [
+              {
+                "itemId": "item-b13d63e1-8a88-47b2-a7ee-0ad2adfcd567",
+                "kind": "image",
+                "currentTime": 0,
+                "decodedTimestamp": 0,
+                "readyState": 4,
+                "decodedFrames": 81,
+                "error": null
+              },
+              {
+                "itemId": "item-127277e8-fe66-41e7-934e-6bc254d1cacb",
+                "kind": "text",
+                "currentTime": 0,
+                "decodedTimestamp": null,
+                "readyState": 4,
+                "decodedFrames": 81,
+                "error": null
+              }
+            ]
+          }
+        }
+      ],
+      "capture": "detached-worker-offscreen-canvas",
+      "started": "2026-09-29T23:37:56.966Z",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36",
+      "pixelComparison": {
+        "meanByteError": 0,
+        "maxByteError": 0,
+        "litA": 819477,
+        "litB": 819477
+      },
+      "completed": "2026-09-29T23:37:59.189Z"
+    },
+    "hd60": {
+      "phase": "complete",
+      "suite": "HD60",
+      "results": [
+        {
+          "requested": 1,
+          "actualPTS": 0.9676333333333333,
+          "mae": 0.8747255979938272,
+          "resourceBytes": 108861636,
+          "workingSetBytes": 108861636,
+          "textureBudget": 536870912
+        },
+        {
+          "requested": 15,
+          "actualPTS": 14.981633333333333,
+          "mae": 0.8541964056069958,
+          "resourceBytes": 125257476,
+          "workingSetBytes": 107747076,
+          "textureBudget": 536870912
+        },
+        {
+          "requested": 29.9,
+          "actualPTS": 29.896533333333334,
+          "mae": 0.764994212962963,
+          "resourceBytes": 187166724,
+          "workingSetBytes": 168734724,
+          "textureBudget": 536870912
+        },
+        {
+          "requested": 30.1,
+          "actualPTS": 30.096733333333333,
+          "mae": 0.6826427469135803,
+          "resourceBytes": 188088324,
+          "workingSetBytes": 168734724,
+          "textureBudget": 536870912
+        },
+        {
+          "requested": 45,
+          "actualPTS": 44.97826666666667,
+          "mae": 0.6081838348765433,
+          "resourceBytes": 189009924,
+          "workingSetBytes": 135412864,
+          "textureBudget": 536870912
+        },
+        {
+          "requested": 59.9,
+          "actualPTS": 59.893166666666666,
+          "mae": 0.5658828446502058,
+          "resourceBytes": 189931524,
+          "workingSetBytes": 135412864,
+          "textureBudget": 536870912
+        }
+      ],
+      "started": "2026-09-29T16:00:18.335Z",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36",
+      "project": {
+        "size": {
+          "width": 1920,
+          "height": 1080
+        },
+        "frameRate": {
+          "numerator": 30000,
+          "denominator": 1001
+        },
+        "duration": 60,
+        "clips": 4
+      },
+      "progress": [
+        {
+          "elapsed": 15931.900000095367,
+          "phase": "rendering",
+          "completed": 6,
+          "total": 1799
+        },
+        {
+          "elapsed": 16932.900000095367,
+          "phase": "rendering",
+          "completed": 31,
+          "total": 1799
+        },
+        {
+          "elapsed": 17931.900000095367,
+          "phase": "rendering",
+          "completed": 66,
+          "total": 1799
+        },
+        {
+          "elapsed": 18931.900000095367,
+          "phase": "rendering",
+          "completed": 206,
+          "total": 1799
+        },
+        {
+          "elapsed": 19930.600000023842,
+          "phase": "rendering",
+          "completed": 446,
+          "total": 1799
+        },
+        {
+          "elapsed": 20931,
+          "phase": "rendering",
+          "completed": 681,
+          "total": 1799
+        },
+        {
+          "elapsed": 21931.800000071526,
+          "phase": "rendering",
+          "completed": 896,
+          "total": 1799
+        },
+        {
+          "elapsed": 22930.800000071526,
+          "phase": "rendering",
+          "completed": 1091,
+          "total": 1799
+        },
+        {
+          "elapsed": 23929.300000071526,
+          "phase": "rendering",
+          "completed": 1291,
+          "total": 1799
+        },
+        {
+          "elapsed": 24932.300000071526,
+          "phase": "rendering",
+          "completed": 1476,
+          "total": 1799
+        },
+        {
+          "elapsed": 25931.700000047684,
+          "phase": "rendering",
+          "completed": 1666,
+          "total": 1799
+        }
+      ],
+      "export": {
+        "path": "/Users/jxinfa/WebstormProjects/videocut/.local/architecture-qa/render-results/1080p60s_browser_acceptance-1790697618437-711fef.mp4",
+        "version": 0,
+        "size": 65328459,
+        "format": "mp4",
+        "jobId": "abcb1c9a276ca31ce8828b5c7546bbf960ce1844",
+        "encoding": "browser",
+        "frames": 1799,
+        "wallMs": 11706.399999976158,
+        "status": {
+          "id": "abcb1c9a276ca31ce8828b5c7546bbf960ce1844",
+          "version": 0,
+          "phase": "complete",
+          "completed": 1799,
+          "total": 1799,
+          "jobId": "abcb1c9a276ca31ce8828b5c7546bbf960ce1844",
+          "encoding": "browser",
+          "path": "/Users/jxinfa/WebstormProjects/videocut/.local/architecture-qa/render-results/1080p60s_browser_acceptance-1790697618437-711fef.mp4",
+          "size": 65328459,
+          "format": "mp4",
+          "frames": 1799
+        }
+      },
+      "completed": "2026-09-29T16:00:30.981Z"
+    },
+    "webgpu40": {
+      "started": "2026-09-29T15:44:08.056Z",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36",
+      "fixture": "/Users/jxinfa/WebstormProjects/videocut/.local/architecture-qa",
+      "phase": "complete",
+      "results": [
+        {
+          "name": "font-load-retry",
+          "injected": 1,
+          "initialError": "Error: 无法读取本机系统字体",
+          "backend": "webgpu",
+          "bounds": [
+            {
+              "id": "item-e50e62a7-289f-4b3b-a591-059ced2c6b0a",
+              "locked": false,
+              "x": -19.775970458984375,
+              "y": 140,
+              "width": 679.5519409179688,
+              "height": 80.00000000000003
+            }
+          ],
+          "brightPixels": 11454,
+          "passed": true
+        },
+        {
+          "name": "dispose-before-ready",
+          "readyError": "Error: 渲染器已关闭",
+          "renderError": "Error: 渲染器已关闭",
+          "passed": true
+        },
+        {
+          "name": "cache-final-reuse",
+          "cold": {
+            "backend": "webgpu",
+            "time": 0,
+            "width": 640,
+            "height": 360,
+            "frameMs": 80.80000007152557,
+            "uploadCount": 2,
+            "uploadCacheHits": 0,
+            "effectHits": 0,
+            "layerHits": 0,
+            "compositeHits": 0,
+            "transitionHits": 0,
+            "gpuPasses": 13,
+            "evictions": 0,
+            "textureBytes": 15893380,
+            "resourceBytes": 15895044,
+            "peakResourceBytes": 15895044,
+            "externalTextureBytes": 0,
+            "workingSetBytes": 15895044,
+            "textureBudget": 536870912,
+            "pipelineCount": 2,
+            "graphBuilds": 1,
+            "textLayoutCount": 1,
+            "bounds": [
+              {
+                "id": "item-01374204-3634-46e1-aa20-2a46a5cbb0c3",
+                "locked": false,
+                "x": 0,
+                "y": 0,
+                "width": 640,
+                "height": 360
+              },
+              {
+                "id": "item-65e88430-c1af-4d84-90df-3131e44bcb78",
+                "locked": false,
+                "x": 214.4400177001953,
+                "y": 155,
+                "width": 211.11996459960938,
+                "height": 50
+              }
+            ],
+            "media": [
+              {
+                "itemId": "item-01374204-3634-46e1-aa20-2a46a5cbb0c3",
+                "kind": "image",
+                "currentTime": 0,
+                "decodedTimestamp": 0,
+                "readyState": 4,
+                "decodedFrames": 1,
+                "error": null
+              },
+              {
+                "itemId": "item-65e88430-c1af-4d84-90df-3131e44bcb78",
+                "kind": "text",
+                "currentTime": 0,
+                "decodedTimestamp": null,
+                "readyState": 4,
+                "decodedFrames": 1,
+                "error": null
+              }
+            ]
+          },
+          "repeat": {
+            "backend": "webgpu",
+            "time": 0,
+            "width": 640,
+            "height": 360,
+            "frameMs": 0.2999999523162842,
+            "uploadCount": 0,
+            "uploadCacheHits": 0,
+            "effectHits": 0,
+            "layerHits": 0,
+            "compositeHits": 1,
+            "transitionHits": 0,
+            "gpuPasses": 0,
+            "evictions": 0,
+            "textureBytes": 15893380,
+            "resourceBytes": 15895044,
+            "peakResourceBytes": 15895044,
+            "externalTextureBytes": 0,
+            "workingSetBytes": 15895044,
+            "textureBudget": 536870912,
+            "pipelineCount": 2,
+            "graphBuilds": 1,
+            "textLayoutCount": 0,
+            "bounds": [
+              {
+                "id": "item-01374204-3634-46e1-aa20-2a46a5cbb0c3",
+                "locked": false,
+                "x": 0,
+                "y": 0,
+                "width": 640,
+                "height": 360
+              },
+              {
+                "id": "item-65e88430-c1af-4d84-90df-3131e44bcb78",
+                "locked": false,
+                "x": 214.4400177001953,
+                "y": 155,
+                "width": 211.11996459960938,
+                "height": 50
+              }
+            ],
+            "media": [
+              {
+                "itemId": "item-01374204-3634-46e1-aa20-2a46a5cbb0c3",
+                "kind": "image",
+                "currentTime": 0,
+                "decodedTimestamp": 0,
+                "readyState": 4,
+                "decodedFrames": 1,
+                "error": null
+              },
+              {
+                "itemId": "item-65e88430-c1af-4d84-90df-3131e44bcb78",
+                "kind": "text",
+                "currentTime": 0,
+                "decodedTimestamp": null,
+                "readyState": 4,
+                "decodedFrames": 1,
+                "error": null
+              }
+            ]
+          },
+          "passed": true
+        },
+        {
+          "name": "cache-audio-edit",
+          "audioOnly": {
+            "backend": "webgpu",
+            "time": 0,
+            "width": 640,
+            "height": 360,
+            "frameMs": 0,
+            "uploadCount": 0,
+            "uploadCacheHits": 0,
+            "effectHits": 0,
+            "layerHits": 0,
+            "compositeHits": 1,
+            "transitionHits": 0,
+            "gpuPasses": 0,
+            "evictions": 0,
+            "textureBytes": 15893380,
+            "resourceBytes": 15895044,
+            "peakResourceBytes": 15895044,
+            "externalTextureBytes": 0,
+            "workingSetBytes": 15895044,
+            "textureBudget": 536870912,
+            "pipelineCount": 2,
+            "graphBuilds": 1,
+            "textLayoutCount": 0,
+            "bounds": [
+              {
+                "id": "item-01374204-3634-46e1-aa20-2a46a5cbb0c3",
+                "locked": false,
+                "x": 0,
+                "y": 0,
+                "width": 640,
+                "height": 360
+              },
+              {
+                "id": "item-65e88430-c1af-4d84-90df-3131e44bcb78",
+                "locked": false,
+                "x": 214.4400177001953,
+                "y": 155,
+                "width": 211.11996459960938,
+                "height": 50
+              }
+            ],
+            "media": [
+              {
+                "itemId": "item-01374204-3634-46e1-aa20-2a46a5cbb0c3",
+                "kind": "image",
+                "currentTime": 0,
+                "decodedTimestamp": 0,
+                "readyState": 4,
+                "decodedFrames": 1,
+                "error": null
+              },
+              {
+                "itemId": "item-65e88430-c1af-4d84-90df-3131e44bcb78",
+                "kind": "text",
+                "currentTime": 0,
+                "decodedTimestamp": null,
+                "readyState": 4,
+                "decodedFrames": 1,
+                "error": null
+              }
+            ]
+          },
+          "passed": true
+        },
+        {
+          "name": "cache-move-effects",
+          "moved": {
+            "backend": "webgpu",
+            "time": 0,
+            "width": 640,
+            "height": 360,
+            "frameMs": 2.6999999284744263,
+            "uploadCount": 0,
+            "uploadCacheHits": 2,
+            "effectHits": 7,
+            "layerHits": 2,
+            "compositeHits": 1,
+            "transitionHits": 0,
+            "gpuPasses": 4,
+            "evictions": 0,
+            "textureBytes": 15893380,
+            "resourceBytes": 15895044,
+            "peakResourceBytes": 15895044,
+            "externalTextureBytes": 0,
+            "workingSetBytes": 15893892,
+            "textureBudget": 536870912,
+            "pipelineCount": 2,
+            "graphBuilds": 1,
+            "textLayoutCount": 0,
+            "bounds": [
+              {
+                "id": "item-01374204-3634-46e1-aa20-2a46a5cbb0c3",
+                "locked": false,
+                "x": 23,
+                "y": -7,
+                "width": 640,
+                "height": 360
+              },
+              {
+                "id": "item-65e88430-c1af-4d84-90df-3131e44bcb78",
+                "locked": false,
+                "x": 214.4400177001953,
+                "y": 155,
+                "width": 211.11996459960938,
+                "height": 50
+              }
+            ],
+            "media": [
+              {
+                "itemId": "item-01374204-3634-46e1-aa20-2a46a5cbb0c3",
+                "kind": "image",
+                "currentTime": 0,
+                "decodedTimestamp": 0,
+                "readyState": 4,
+                "decodedFrames": 2,
+                "error": null
+              },
+              {
+                "itemId": "item-65e88430-c1af-4d84-90df-3131e44bcb78",
+                "kind": "text",
+                "currentTime": 0,
+                "decodedTimestamp": null,
+                "readyState": 4,
+                "decodedFrames": 2,
+                "error": null
+              }
+            ]
+          },
+          "differingBytes": 0,
+          "passed": true
+        },
+        {
+          "name": "cache-effect-parameter",
+          "parameter": {
+            "backend": "webgpu",
+            "time": 0,
+            "width": 640,
+            "height": 360,
+            "frameMs": 3.8000000715255737,
+            "uploadCount": 0,
+            "uploadCacheHits": 2,
+            "effectHits": 5,
+            "layerHits": 2,
+            "compositeHits": 1,
+            "transitionHits": 0,
+            "gpuPasses": 6,
+            "evictions": 0,
+            "textureBytes": 15893380,
+            "resourceBytes": 16816644,
+            "peakResourceBytes": 33633288,
+            "externalTextureBytes": 0,
+            "workingSetBytes": 15894148,
+            "textureBudget": 536870912,
+            "pipelineCount": 2,
+            "graphBuilds": 1,
+            "textLayoutCount": 0,
+            "bounds": [
+              {
+                "id": "item-01374204-3634-46e1-aa20-2a46a5cbb0c3",
+                "locked": false,
+                "x": 23,
+                "y": -7,
+                "width": 640,
+                "height": 360
+              },
+              {
+                "id": "item-65e88430-c1af-4d84-90df-3131e44bcb78",
+                "locked": false,
+                "x": 214.4400177001953,
+                "y": 155,
+                "width": 211.11996459960938,
+                "height": 50
+              }
+            ],
+            "media": [
+              {
+                "itemId": "item-01374204-3634-46e1-aa20-2a46a5cbb0c3",
+                "kind": "image",
+                "currentTime": 0,
+                "decodedTimestamp": 0,
+                "readyState": 4,
+                "decodedFrames": 3,
+                "error": null
+              },
+              {
+                "itemId": "item-65e88430-c1af-4d84-90df-3131e44bcb78",
+                "kind": "text",
+                "currentTime": 0,
+                "decodedTimestamp": null,
+                "readyState": 4,
+                "decodedFrames": 3,
+                "error": null
+              }
+            ]
+          },
+          "passed": true
+        },
+        {
+          "name": "cache-text-layout",
+          "layout": {
+            "backend": "webgpu",
+            "time": 0,
+            "width": 640,
+            "height": 360,
+            "frameMs": 1.100000023841858,
+            "uploadCount": 0,
+            "uploadCacheHits": 2,
+            "effectHits": 7,
+            "layerHits": 2,
+            "compositeHits": 2,
+            "transitionHits": 0,
+            "gpuPasses": 3,
+            "evictions": 0,
+            "textureBytes": 15893380,
+            "resourceBytes": 16816644,
+            "peakResourceBytes": 33633288,
+            "externalTextureBytes": 0,
+            "workingSetBytes": 15893764,
+            "textureBudget": 536870912,
+            "pipelineCount": 2,
+            "graphBuilds": 1,
+            "textLayoutCount": 0,
+            "bounds": [
+              {
+                "id": "item-01374204-3634-46e1-aa20-2a46a5cbb0c3",
+                "locked": false,
+                "x": 23,
+                "y": -7,
+                "width": 640,
+                "height": 360
+              },
+              {
+                "id": "item-65e88430-c1af-4d84-90df-3131e44bcb78",
+                "locked": false,
+                "x": 264.4400177001953,
+                "y": 155,
+                "width": 211.11996459960938,
+                "height": 50
+              }
+            ],
+            "media": [
+              {
+                "itemId": "item-01374204-3634-46e1-aa20-2a46a5cbb0c3",
+                "kind": "image",
+                "currentTime": 0,
+                "decodedTimestamp": 0,
+                "readyState": 4,
+                "decodedFrames": 4,
+                "error": null
+              },
+              {
+                "itemId": "item-65e88430-c1af-4d84-90df-3131e44bcb78",
+                "kind": "text",
+                "currentTime": 0,
+                "decodedTimestamp": null,
+                "readyState": 4,
+                "decodedFrames": 4,
+                "error": null
+              }
+            ]
+          },
+          "passed": true
+        },
+        {
+          "name": "cache-source-identity",
+          "replaced": {
+            "backend": "webgpu",
+            "time": 0,
+            "width": 640,
+            "height": 360,
+            "frameMs": 10.700000047683716,
+            "uploadCount": 1,
+            "uploadCacheHits": 1,
+            "effectHits": 0,
+            "layerHits": 1,
+            "compositeHits": 1,
+            "transitionHits": 0,
+            "gpuPasses": 12,
+            "evictions": 0,
+            "textureBytes": 16123780,
+            "resourceBytes": 17047044,
+            "peakResourceBytes": 33633288,
+            "externalTextureBytes": 0,
+            "workingSetBytes": 15894916,
+            "textureBudget": 536870912,
+            "pipelineCount": 2,
+            "graphBuilds": 1,
+            "textLayoutCount": 0,
+            "bounds": [
+              {
+                "id": "item-01374204-3634-46e1-aa20-2a46a5cbb0c3",
+                "locked": false,
+                "x": 23,
+                "y": -7,
+                "width": 640,
+                "height": 360
+              },
+              {
+                "id": "item-65e88430-c1af-4d84-90df-3131e44bcb78",
+                "locked": false,
+                "x": 264.4400177001953,
+                "y": 155,
+                "width": 211.11996459960938,
+                "height": 50
+              }
+            ],
+            "media": [
+              {
+                "itemId": "item-01374204-3634-46e1-aa20-2a46a5cbb0c3",
+                "kind": "image",
+                "currentTime": 0,
+                "decodedTimestamp": 0,
+                "readyState": 4,
+                "decodedFrames": 5,
+                "error": null
+              },
+              {
+                "itemId": "item-65e88430-c1af-4d84-90df-3131e44bcb78",
+                "kind": "text",
+                "currentTime": 0,
+                "decodedTimestamp": null,
+                "readyState": 4,
+                "decodedFrames": 5,
+                "error": null
+              }
+            ]
+          },
+          "passed": true
+        },
+        {
+          "name": "cache-cancel-preserves-final",
+          "cancellation": "AbortError: 操作已取消",
+          "passed": true
+        },
+        {
+          "name": "cache-budget-lru",
+          "evictions": 4,
+          "last": {
+            "backend": "webgpu",
+            "time": 0,
+            "width": 640,
+            "height": 360,
+            "frameMs": 0.40000009536743164,
+            "uploadCount": 0,
+            "uploadCacheHits": 1,
+            "effectHits": 0,
+            "layerHits": 0,
+            "compositeHits": 2,
+            "transitionHits": 0,
+            "gpuPasses": 1,
+            "evictions": 3,
+            "textureBytes": 7603200,
+            "resourceBytes": 7603328,
+            "peakResourceBytes": 33633288,
+            "externalTextureBytes": 0,
+            "workingSetBytes": 2995328,
+            "textureBudget": 8388608,
+            "pipelineCount": 2,
+            "graphBuilds": 8,
+            "textLayoutCount": 0,
+            "bounds": [
+              {
+                "id": "item-6babbac5-5497-450f-aff7-fe4c181a2c37",
+                "locked": false,
+                "x": 0,
+                "y": 0,
+                "width": 640,
+                "height": 360
+              }
+            ],
+            "media": [
+              {
+                "itemId": "item-6babbac5-5497-450f-aff7-fe4c181a2c37",
+                "kind": "image",
+                "currentTime": 0,
+                "decodedTimestamp": 0,
+                "readyState": 4,
+                "decodedFrames": 8,
+                "error": null
+              }
+            ]
+          },
+          "passed": true
+        },
+        {
+          "name": "cache-budget-quality",
+          "attempts": [
+            {
+              "extent": {
+                "width": 640,
+                "height": 360
+              },
+              "error": "RenderBudgetError: 当前画面需要至少 0.9 MiB GPU 工作集，预算为 0.5 MiB。",
+              "code": "RENDER_BUDGET"
+            },
+            {
+              "extent": {
+                "width": 480,
+                "height": 270
+              },
+              "error": "RenderBudgetError: 当前画面需要至少 0.6 MiB GPU 工作集，预算为 0.5 MiB。",
+              "code": "RENDER_BUDGET"
+            },
+            {
+              "extent": {
+                "width": 320,
+                "height": 180
+              },
+              "error": "RenderBudgetError: 当前画面需要至少 0.7 MiB GPU 工作集，预算为 0.5 MiB。",
+              "code": "RENDER_BUDGET"
+            },
+            {
+              "extent": {
+                "width": 240,
+                "height": 135
+              },
+              "passed": true
+            }
+          ],
+          "recovered": {
+            "backend": "webgpu",
+            "time": 0,
+            "width": 240,
+            "height": 135,
+            "frameMs": 5.600000023841858,
+            "uploadCount": 1,
+            "uploadCacheHits": 0,
+            "effectHits": 0,
+            "layerHits": 0,
+            "compositeHits": 0,
+            "transitionHits": 0,
+            "gpuPasses": 3,
+            "evictions": 0,
+            "textureBytes": 479040,
+            "resourceBytes": 479424,
+            "peakResourceBytes": 33633288,
+            "externalTextureBytes": 0,
+            "workingSetBytes": 421824,
+            "textureBudget": 524288,
+            "pipelineCount": 2,
+            "graphBuilds": 9,
+            "textLayoutCount": 0,
+            "bounds": [
+              {
+                "id": "item-8e6c1c49-13b2-4bb3-844b-bdf24638f737",
+                "locked": false,
+                "x": 0,
+                "y": 0,
+                "width": 640,
+                "height": 360
+              }
+            ],
+            "media": [
+              {
+                "itemId": "item-8e6c1c49-13b2-4bb3-844b-bdf24638f737",
+                "kind": "image",
+                "currentTime": 0,
+                "decodedTimestamp": 0,
+                "readyState": 4,
+                "decodedFrames": 9,
+                "error": null
+              }
+            ]
+          },
+          "passed": true
+        },
+        {
+          "name": "cache-paused-detail",
+          "scale": 1,
+          "detail": {
+            "backend": "webgpu",
+            "time": 0,
+            "width": 640,
+            "height": 360,
+            "frameMs": 2,
+            "uploadCount": 1,
+            "uploadCacheHits": 0,
+            "effectHits": 0,
+            "layerHits": 0,
+            "compositeHits": 0,
+            "transitionHits": 0,
+            "gpuPasses": 3,
+            "evictions": 0,
+            "textureBytes": 3085440,
+            "resourceBytes": 3085824,
+            "peakResourceBytes": 33633288,
+            "externalTextureBytes": 0,
+            "workingSetBytes": 2995584,
+            "textureBudget": 8388608,
+            "pipelineCount": 2,
+            "graphBuilds": 9,
+            "textLayoutCount": 0,
+            "bounds": [
+              {
+                "id": "item-8e6c1c49-13b2-4bb3-844b-bdf24638f737",
+                "locked": false,
+                "x": 0,
+                "y": 0,
+                "width": 640,
+                "height": 360
+              }
+            ],
+            "media": [
+              {
+                "itemId": "item-8e6c1c49-13b2-4bb3-844b-bdf24638f737",
+                "kind": "image",
+                "currentTime": 0,
+                "decodedTimestamp": 0,
+                "readyState": 4,
+                "decodedFrames": 10,
+                "error": null
+              }
+            ]
+          },
+          "passed": true
+        },
+        {
+          "name": "cache-failed-resize-preserves-display",
+          "failedResize": "RENDER_BUDGET",
+          "displayedSize": [
+            640,
+            360
+          ],
+          "restored": {
+            "backend": "webgpu",
+            "time": 0,
+            "width": 640,
+            "height": 360,
+            "frameMs": 1.7000000476837158,
+            "uploadCount": 1,
+            "uploadCacheHits": 0,
+            "effectHits": 0,
+            "layerHits": 0,
+            "compositeHits": 0,
+            "transitionHits": 0,
+            "gpuPasses": 3,
+            "evictions": 0,
+            "textureBytes": 3052800,
+            "resourceBytes": 3053184,
+            "peakResourceBytes": 33633288,
+            "externalTextureBytes": 0,
+            "workingSetBytes": 2995584,
+            "textureBudget": 8388608,
+            "pipelineCount": 2,
+            "graphBuilds": 9,
+            "textLayoutCount": 0,
+            "bounds": [
+              {
+                "id": "item-8e6c1c49-13b2-4bb3-844b-bdf24638f737",
+                "locked": false,
+                "x": 0,
+                "y": 0,
+                "width": 640,
+                "height": 360
+              }
+            ],
+            "media": [
+              {
+                "itemId": "item-8e6c1c49-13b2-4bb3-844b-bdf24638f737",
+                "kind": "image",
+                "currentTime": 0,
+                "decodedTimestamp": 0,
+                "readyState": 4,
+                "decodedFrames": 11,
+                "error": null
+              }
+            ]
+          },
+          "passed": true
+        },
+        {
+          "name": "blur",
+          "format": "mp4",
+          "path": "/Users/jxinfa/WebstormProjects/videocut/.local/architecture-qa/render-results/QA_blur-1790696648525-75b40c.mp4",
+          "encoding": "browser",
+          "frames": 18,
+          "time": 0.2,
+          "decodedTimestamp": 0.2,
+          "mae": 0.7838758680555555,
+          "rmse": 1.585004144024259,
+          "psnr": 44.13019556814608,
+          "p99": 6,
+          "nonBlack": 230303,
+          "previewMs": 14.900000095367432,
+          "totalMs": 351,
+          "passed": true
+        },
+        {
+          "name": "glow",
+          "format": "mp4",
+          "path": "/Users/jxinfa/WebstormProjects/videocut/.local/architecture-qa/render-results/QA_glow-1790696648909-b0baee.mp4",
+          "encoding": "browser",
+          "frames": 18,
+          "time": 0.2,
+          "decodedTimestamp": 0.2,
+          "mae": 1.4314554398148147,
+          "rmse": 3.7365027159492734,
+          "psnr": 36.68149756332616,
+          "p99": 18,
+          "nonBlack": 230400,
+          "previewMs": 15.199999928474426,
+          "totalMs": 362.3000000715256,
+          "passed": true
+        },
+        {
+          "name": "lut",
+          "format": "mp4",
+          "path": "/Users/jxinfa/WebstormProjects/videocut/.local/architecture-qa/render-results/QA_lut-1790696649287-7da927.mp4",
+          "encoding": "browser",
+          "frames": 18,
+          "time": 0.2,
+          "decodedTimestamp": 0.2,
+          "mae": 1.8314670138888889,
+          "rmse": 5.673596406209694,
+          "psnr": 33.05363483210905,
+          "p99": 32,
+          "nonBlack": 228785,
+          "previewMs": 19.399999976158142,
+          "totalMs": 300.10000002384186,
+          "passed": true
+        },
+        {
+          "name": "dissolve",
+          "format": "mp4",
+          "path": "/Users/jxinfa/WebstormProjects/videocut/.local/architecture-qa/render-results/QA_dissolve-1790696649621-3a7c29.mp4",
+          "encoding": "browser",
+          "frames": 24,
+          "time": 0.4,
+          "decodedTimestamp": 0.4,
+          "mae": 1.4647265625,
+          "rmse": 4.28851337095623,
+          "psnr": 35.484668239032466,
+          "p99": 21,
+          "nonBlack": 227743,
+          "previewMs": 45.39999997615814,
+          "totalMs": 328.39999997615814,
+          "passed": true
+        },
+        {
+          "name": "fade",
+          "format": "mp4",
+          "path": "/Users/jxinfa/WebstormProjects/videocut/.local/architecture-qa/render-results/QA_fade-1790696649968-172c98.mp4",
+          "encoding": "browser",
+          "frames": 24,
+          "time": 0.3,
+          "decodedTimestamp": 0.3,
+          "mae": 0.8435763888888889,
+          "rmse": 2.655608037893756,
+          "psnr": 39.64752411902012,
+          "p99": 13,
+          "nonBlack": 227002,
+          "previewMs": 34.10000002384186,
+          "totalMs": 329.89999997615814,
+          "passed": true
+        },
+        {
+          "name": "wipe",
+          "format": "mp4",
+          "path": "/Users/jxinfa/WebstormProjects/videocut/.local/architecture-qa/render-results/QA_wipe-1790696650322-50a5bc.mp4",
+          "encoding": "browser",
+          "frames": 24,
+          "time": 0.4,
+          "decodedTimestamp": 0.4,
+          "mae": 1.4424348958333333,
+          "rmse": 4.742158335913128,
+          "psnr": 34.611282597846014,
+          "p99": 24,
+          "nonBlack": 227441,
+          "previewMs": 34.39999997615814,
+          "totalMs": 338.7000000476837,
+          "passed": true
+        },
+        {
+          "name": "slide",
+          "format": "mp4",
+          "path": "/Users/jxinfa/WebstormProjects/videocut/.local/architecture-qa/render-results/QA_slide-1790696650685-fd0ab4.mp4",
+          "encoding": "browser",
+          "frames": 24,
+          "time": 0.4,
+          "decodedTimestamp": 0.4,
+          "mae": 1.7359563078703704,
+          "rmse": 6.14475896918275,
+          "psnr": 32.360706565309876,
+          "p99": 27,
+          "nonBlack": 227260,
+          "previewMs": 34.5,
+          "totalMs": 350.1999999284744,
+          "passed": true
+        },
+        {
+          "name": "studio-glow",
+          "format": "mp4",
+          "path": "/Users/jxinfa/WebstormProjects/videocut/.local/architecture-qa/render-results/QA_studio-glow-1790696651248-be5e80.mp4",
+          "encoding": "browser",
+          "frames": 18,
+          "time": 0.3,
+          "decodedTimestamp": 0.3,
+          "mae": 0.48044560185185187,
+          "rmse": 1.7970236452204744,
+          "psnr": 43.03972777689233,
+          "p99": 8,
+          "nonBlack": 42535,
+          "previewMs": 223.5,
+          "totalMs": 650.6000000238419,
+          "passed": true
+        },
+        {
+          "name": "studio-radial",
+          "format": "mp4",
+          "path": "/Users/jxinfa/WebstormProjects/videocut/.local/architecture-qa/render-results/QA_studio-radial-1790696651816-c24781.mp4",
+          "encoding": "browser",
+          "frames": 18,
+          "time": 0.3,
+          "decodedTimestamp": 0.3,
+          "mae": 0.5292621527777778,
+          "rmse": 1.1844050799952348,
+          "psnr": 46.6607983798731,
+          "p99": 5,
+          "nonBlack": 66810,
+          "previewMs": 138.70000004768372,
+          "totalMs": 546,
+          "passed": true
+        },
+        {
+          "name": "pattern-flower",
+          "format": "mp4",
+          "path": "/Users/jxinfa/WebstormProjects/videocut/.local/architecture-qa/render-results/QA_pattern-flower-1790696652463-8dff47.mp4",
+          "encoding": "browser",
+          "frames": 18,
+          "time": 0.3,
+          "decodedTimestamp": 0.3,
+          "mae": 0.7564684606481481,
+          "rmse": 3.6067574583586746,
+          "psnr": 36.988464837931836,
+          "p99": 19,
+          "nonBlack": 28506,
+          "previewMs": 201.89999997615814,
+          "totalMs": 1278.0999999046326,
+          "passed": true
+        },
+        {
+          "name": "layered-flower",
+          "format": "mp4",
+          "path": "/Users/jxinfa/WebstormProjects/videocut/.local/architecture-qa/render-results/QA_layered-flower-1790696653663-eedf4b.mp4",
+          "encoding": "browser",
+          "frames": 18,
+          "time": 0.3,
+          "decodedTimestamp": 0.3,
+          "mae": 1.1118446180555555,
+          "rmse": 3.6118068907686225,
+          "psnr": 36.97631316408647,
+          "p99": 19,
+          "nonBlack": 48764,
+          "previewMs": 111.29999995231628,
+          "totalMs": 574.5,
+          "passed": true
+        },
+        {
+          "name": "cube",
+          "format": "mp4",
+          "path": "/Users/jxinfa/WebstormProjects/videocut/.local/architecture-qa/render-results/QA_cube-1790696654288-312538.mp4",
+          "encoding": "browser",
+          "frames": 18,
+          "time": 0.3,
+          "decodedTimestamp": 0.3,
+          "mae": 0.05263454861111111,
+          "rmse": 0.5910611631727389,
+          "psnr": 52.69815512628227,
+          "p99": 1,
+          "nonBlack": 6912,
+          "previewMs": 131.70000004768372,
+          "totalMs": 759,
+          "passed": true
+        },
+        {
+          "name": "printer",
+          "format": "mp4",
+          "path": "/Users/jxinfa/WebstormProjects/videocut/.local/architecture-qa/render-results/QA_printer-1790696655040-1532de.mp4",
+          "encoding": "browser",
+          "frames": 18,
+          "time": 0.3,
+          "decodedTimestamp": 0.3,
+          "mae": 0.05677951388888889,
+          "rmse": 0.4057635977046515,
+          "psnr": 55.96534195754815,
+          "p99": 2,
+          "nonBlack": 15170,
+          "previewMs": 99,
+          "totalMs": 485.90000009536743,
+          "passed": true
+        },
+        {
+          "name": "blend-normal",
+          "format": "mp4",
+          "path": "/Users/jxinfa/WebstormProjects/videocut/.local/architecture-qa/render-results/QA_blend-normal-1790696655469-8638a5.mp4",
+          "encoding": "browser",
+          "frames": 18,
+          "time": 0.2,
+          "decodedTimestamp": 0.2,
+          "mae": 1.8038700810185184,
+          "rmse": 6.204527286922564,
+          "psnr": 32.27662963090909,
+          "p99": 32,
+          "nonBlack": 227333,
+          "previewMs": 18.399999976158142,
+          "totalMs": 263.10000002384186,
+          "passed": true
+        },
+        {
+          "name": "blend-multiply",
+          "format": "mp4",
+          "path": "/Users/jxinfa/WebstormProjects/videocut/.local/architecture-qa/render-results/QA_blend-multiply-1790696655732-60b799.mp4",
+          "encoding": "browser",
+          "frames": 18,
+          "time": 0.2,
+          "decodedTimestamp": 0.2,
+          "mae": 1.7930700231481482,
+          "rmse": 5.2970308550762315,
+          "psnr": 33.65015355472336,
+          "p99": 28,
+          "nonBlack": 227333,
+          "previewMs": 14.299999952316284,
+          "totalMs": 286.2999999523163,
+          "passed": true
+        },
+        {
+          "name": "blend-screen",
+          "format": "mp4",
+          "path": "/Users/jxinfa/WebstormProjects/videocut/.local/architecture-qa/render-results/QA_blend-screen-1790696656058-8e23df.mp4",
+          "encoding": "browser",
+          "frames": 18,
+          "time": 0.2,
+          "decodedTimestamp": 0.2,
+          "mae": 1.7443055555555556,
+          "rmse": 5.105680614476099,
+          "psnr": 33.96973072759083,
+          "p99": 27,
+          "nonBlack": 227333,
+          "previewMs": 16.799999952316284,
+          "totalMs": 267.60000002384186,
+          "passed": true
+        },
+        {
+          "name": "blend-overlay",
+          "format": "mp4",
+          "path": "/Users/jxinfa/WebstormProjects/videocut/.local/architecture-qa/render-results/QA_blend-overlay-1790696656335-c642bf.mp4",
+          "encoding": "browser",
+          "frames": 18,
+          "time": 0.2,
+          "decodedTimestamp": 0.2,
+          "mae": 1.619509548611111,
+          "rmse": 5.446375658408075,
+          "psnr": 33.40865174723718,
+          "p99": 28,
+          "nonBlack": 227333,
+          "previewMs": 18.600000023841858,
+          "totalMs": 264.6999999284744,
+          "passed": true
+        },
+        {
+          "name": "blend-darken",
+          "format": "mp4",
+          "path": "/Users/jxinfa/WebstormProjects/videocut/.local/architecture-qa/render-results/QA_blend-darken-1790696656630-dc4001.mp4",
+          "encoding": "browser",
+          "frames": 18,
+          "time": 0.2,
+          "decodedTimestamp": 0.2,
+          "mae": 1.7971629050925926,
+          "rmse": 5.341582298042337,
+          "psnr": 33.57740512908622,
+          "p99": 28,
+          "nonBlack": 227333,
+          "previewMs": 14.599999904632568,
+          "totalMs": 260.89999997615814,
+          "passed": true
+        },
+        {
+          "name": "blend-lighten",
+          "format": "mp4",
+          "path": "/Users/jxinfa/WebstormProjects/videocut/.local/architecture-qa/render-results/QA_blend-lighten-1790696656903-98e08c.mp4",
+          "encoding": "browser",
+          "frames": 18,
+          "time": 0.2,
+          "decodedTimestamp": 0.2,
+          "mae": 1.7377647569444445,
+          "rmse": 5.136636940888464,
+          "psnr": 33.9172261939037,
+          "p99": 27,
+          "nonBlack": 227333,
+          "previewMs": 19,
+          "totalMs": 270.5,
+          "passed": true
+        },
+        {
+          "name": "stereo-webm",
+          "format": "webm",
+          "path": "/Users/jxinfa/WebstormProjects/videocut/.local/architecture-qa/render-results/QA_stereo-webm-1790696657200-e5a874.webm",
+          "encoding": "browser",
+          "frames": 18,
+          "time": 0.2,
+          "decodedTimestamp": 0.2,
+          "mae": 1.2524204282407407,
+          "rmse": 4.464414498803805,
+          "psnr": 35.135513410759536,
+          "p99": 25,
+          "nonBlack": 202332,
+          "previewMs": 4.899999976158142,
+          "totalMs": 277,
+          "passed": true
+        },
+        {
+          "name": "video-with-pcm",
+          "format": "mp4",
+          "path": "/Users/jxinfa/WebstormProjects/videocut/.local/architecture-qa/render-results/QA_video-with-pcm-1790696657496-dbef9d.mp4",
+          "encoding": "video-with-pcm",
+          "frames": 18,
+          "time": 0.2,
+          "decodedTimestamp": 0.2,
+          "audio": {
+            "channels": 2,
+            "sampleRate": 48000,
+            "duration": 0.6,
+            "samples": 28800,
+            "leftRms": 0.21210904798569588,
+            "rightRms": 0.2121090481033308,
+            "correlation": -0.9999999997595983,
+            "passed": true
+          },
+          "mae": 1.5996180555555555,
+          "rmse": 4.887673756028564,
+          "psnr": 34.348759413109825,
+          "p99": 27,
+          "nonBlack": 230400,
+          "previewMs": 21.200000047683716,
+          "totalMs": 469.89999997615814,
+          "passed": true
+        },
+        {
+          "name": "frames-with-pcm",
+          "format": "mp4",
+          "path": "/Users/jxinfa/WebstormProjects/videocut/.local/architecture-qa/render-results/QA_frames-with-pcm-1790696658007-31b60c.mp4",
+          "encoding": "frames-with-pcm",
+          "frames": 18,
+          "time": 0.2,
+          "decodedTimestamp": 0.2,
+          "audio": {
+            "channels": 2,
+            "sampleRate": 48000,
+            "duration": 0.6,
+            "samples": 28800,
+            "leftRms": 0.21210904798569588,
+            "rightRms": 0.2121090481033308,
+            "correlation": -0.9999999997595983,
+            "passed": true
+          },
+          "mae": 1.7316637731481481,
+          "rmse": 4.926316742102411,
+          "psnr": 34.28035697333558,
+          "p99": 25,
+          "nonBlack": 230400,
+          "previewMs": 21.700000047683716,
+          "totalMs": 476.7000000476837,
+          "passed": true
+        },
+        {
+          "name": "upload-cache",
+          "cold": {
+            "uploads": 1,
+            "hits": 0
+          },
+          "moved": {
+            "uploads": 0,
+            "hits": 1
+          },
+          "advanced": {
+            "uploads": 1,
+            "hits": 0
+          },
+          "textureBytes": 4608000,
+          "passed": true
+        },
+        {
+          "name": "superseded-frame",
+          "observed": [
+            {
+              "type": "ready"
+            },
+            {
+              "type": "cancelled",
+              "generation": 1
+            },
+            {
+              "type": "frame",
+              "generation": 2,
+              "time": 36000
+            }
+          ],
+          "passed": true
+        },
+        {
+          "name": "cancel-export",
+          "progressBeforeCancel": 1,
+          "error": "AbortError: 用户取消导出",
+          "serverError": "VideoCutError: 用户取消导出",
+          "status": "error",
+          "passed": true
+        },
+        {
+          "name": "device-loss",
+          "error": "Error: Device was destroyed.",
+          "passed": true
+        },
+        {
+          "name": "device-recovery",
+          "backend": "webgpu",
+          "passed": true
+        }
+      ],
+      "logs": [],
+      "visualPackageCoverage": [
+        {
+          "id": "blur",
+          "kind": "effect",
+          "passed": true
+        },
+        {
+          "id": "glow",
+          "kind": "effect",
+          "passed": true
+        },
+        {
+          "id": "lut",
+          "kind": "effect",
+          "passed": true
+        },
+        {
+          "id": "dissolve",
+          "kind": "transition",
+          "passed": true
+        },
+        {
+          "id": "fade",
+          "kind": "transition",
+          "passed": true
+        },
+        {
+          "id": "wipe",
+          "kind": "transition",
+          "passed": true
+        },
+        {
+          "id": "slide",
+          "kind": "transition",
+          "passed": true
+        }
+      ],
+      "completed": "2026-09-29T15:44:18.972Z"
+    },
+    "canvas2d5": {
+      "kind": "render-canvas2d",
+      "phase": "complete",
+      "results": [
+        {
+          "name": "canvas2d-media-text-transform-blend",
+          "backend": "canvas2d",
+          "bounds": 3,
+          "width": 640,
+          "height": 360,
+          "passed": true
+        },
+        {
+          "name": "canvas2d-browser-export-decode",
+          "configuration": {
+            "encoding": "browser",
+            "hasAudio": false
+          },
+          "receipt": {
+            "size": 100266,
+            "frames": 18,
+            "audioFrames": 0,
+            "format": "webm",
+            "encoding": "browser"
+          },
+          "bytes": 100266,
+          "timestamp": 0.2,
+          "mae": 2.0088237847222223,
+          "p99": 31,
+          "nonBlack": 227333,
+          "passed": true
+        },
+        {
+          "name": "canvas2d-reject-effect",
+          "error": "Error: 特效需要 WebGPU；当前浏览器仅支持基础画布绘制",
+          "passed": true
+        },
+        {
+          "name": "canvas2d-reject-transition",
+          "error": "Error: 转场需要 WebGPU；当前浏览器仅支持基础画布绘制",
+          "passed": true
+        },
+        {
+          "name": "canvas2d-reject-complex-template",
+          "error": "Error: These complex templates require WebGPU",
+          "passed": true
+        }
+      ],
+      "logs": [],
+      "started": "2026-09-29T15:45:15.999Z",
+      "progress": {
+        "completed": 18,
+        "total": 18,
+        "phase": "finalizing"
+      },
+      "completed": "2026-09-29T15:45:16.402Z"
+    },
+    "isolatedParity12": {
+      "phase": "complete",
+      "scope": "Pre-cache-upgrade npm package versus current; not historical Electron",
+      "size": [
+        1280,
+        720
+      ],
+      "autoQuality": false,
+      "baselineSha256": "a4256b70c42232f3274b8d9ed8da7afdeb233e7754995a88a55a322a488af49c",
+      "results": [
+        {
+          "name": "none",
+          "position": 0,
+          "meanByteError": 0,
+          "maxByteError": 0,
+          "litA": 644820,
+          "litB": 644820,
+          "changed": 0,
+          "bounds": [
+            1280,
+            720,
+            -1,
+            -1
+          ],
+          "draws": [
+            {
+              "backend": "webgpu",
+              "time": 0,
+              "width": 1280,
+              "height": 720,
+              "frameMs": 57.39999997615814,
+              "uploadCount": 2,
+              "uploadCacheHits": 0,
+              "textureBytes": 18662400,
+              "textureBudget": 536870912,
+              "bounds": [
+                {
+                  "id": "item-d0891847-2cce-4308-8bbc-efd602a920c8",
+                  "locked": false,
+                  "x": 224,
+                  "y": 126,
+                  "width": 832,
+                  "height": 468
+                },
+                {
+                  "id": "item-523b0619-76b5-4250-9cb1-be120911a4f0",
+                  "locked": false,
+                  "x": 187.32803344726562,
+                  "y": 320,
+                  "width": 905.3439331054688,
+                  "height": 80
+                }
+              ],
+              "media": [
+                {
+                  "itemId": "item-d0891847-2cce-4308-8bbc-efd602a920c8",
+                  "kind": "image",
+                  "currentTime": 0,
+                  "decodedTimestamp": 0,
+                  "readyState": 4,
+                  "decodedFrames": 1,
+                  "error": null
+                },
+                {
+                  "itemId": "item-523b0619-76b5-4250-9cb1-be120911a4f0",
+                  "kind": "text",
+                  "currentTime": 0,
+                  "decodedTimestamp": null,
+                  "readyState": 4,
+                  "decodedFrames": 1,
+                  "error": null
+                }
+              ]
+            },
+            {
+              "backend": "webgpu",
+              "time": 0,
+              "width": 1280,
+              "height": 720,
+              "frameMs": 58.90000009536743,
+              "uploadCount": 2,
+              "uploadCacheHits": 0,
+              "effectHits": 0,
+              "layerHits": 0,
+              "compositeHits": 0,
+              "transitionHits": 0,
+              "gpuPasses": 5,
+              "evictions": 0,
+              "textureBytes": 22348800,
+              "resourceBytes": 22349440,
+              "peakResourceBytes": 22349440,
+              "externalTextureBytes": 0,
+              "workingSetBytes": 22349440,
+              "textureBudget": 536870912,
+              "pipelineCount": 2,
+              "graphBuilds": 1,
+              "textLayoutCount": 1,
+              "bounds": [
+                {
+                  "id": "item-d0891847-2cce-4308-8bbc-efd602a920c8",
+                  "locked": false,
+                  "x": 224,
+                  "y": 126,
+                  "width": 832,
+                  "height": 468
+                },
+                {
+                  "id": "item-523b0619-76b5-4250-9cb1-be120911a4f0",
+                  "locked": false,
+                  "x": 187.32803344726562,
+                  "y": 320,
+                  "width": 905.3439331054688,
+                  "height": 80
+                }
+              ],
+              "media": [
+                {
+                  "itemId": "item-d0891847-2cce-4308-8bbc-efd602a920c8",
+                  "kind": "image",
+                  "currentTime": 0,
+                  "decodedTimestamp": 0,
+                  "readyState": 4,
+                  "decodedFrames": 1,
+                  "error": null
+                },
+                {
+                  "itemId": "item-523b0619-76b5-4250-9cb1-be120911a4f0",
+                  "kind": "text",
+                  "currentTime": 0,
+                  "decodedTimestamp": null,
+                  "readyState": 4,
+                  "decodedFrames": 1,
+                  "error": null
+                }
+              ]
+            }
+          ],
+          "presentation": [
+            {
+              "name": "baseline",
+              "meanByteError": 0,
+              "maxByteError": 0,
+              "litA": 644820,
+              "litB": 644820
+            },
+            {
+              "name": "current",
+              "meanByteError": 0,
+              "maxByteError": 0,
+              "litA": 644820,
+              "litB": 644820
+            }
+          ],
+          "passed": true
+        },
+        {
+          "name": "none",
+          "position": 39,
+          "meanByteError": 0,
+          "maxByteError": 0,
+          "litA": 644283,
+          "litB": 644283,
+          "changed": 0,
+          "bounds": [
+            1280,
+            720,
+            -1,
+            -1
+          ],
+          "draws": [
+            {
+              "backend": "webgpu",
+              "time": 0,
+              "width": 1280,
+              "height": 720,
+              "frameMs": 2,
+              "uploadCount": 0,
+              "uploadCacheHits": 2,
+              "textureBytes": 18662400,
+              "textureBudget": 536870912,
+              "bounds": [
+                {
+                  "id": "item-d0891847-2cce-4308-8bbc-efd602a920c8",
+                  "locked": false,
+                  "x": 263,
+                  "y": 130,
+                  "width": 832,
+                  "height": 468
+                },
+                {
+                  "id": "item-523b0619-76b5-4250-9cb1-be120911a4f0",
+                  "locked": false,
+                  "x": 187.32803344726562,
+                  "y": 320,
+                  "width": 905.3439331054688,
+                  "height": 80
+                }
+              ],
+              "media": [
+                {
+                  "itemId": "item-d0891847-2cce-4308-8bbc-efd602a920c8",
+                  "kind": "image",
+                  "currentTime": 0,
+                  "decodedTimestamp": 0,
+                  "readyState": 4,
+                  "decodedFrames": 2,
+                  "error": null
+                },
+                {
+                  "itemId": "item-523b0619-76b5-4250-9cb1-be120911a4f0",
+                  "kind": "text",
+                  "currentTime": 0,
+                  "decodedTimestamp": null,
+                  "readyState": 4,
+                  "decodedFrames": 2,
+                  "error": null
+                }
+              ]
+            },
+            {
+              "backend": "webgpu",
+              "time": 0,
+              "width": 1280,
+              "height": 720,
+              "frameMs": 2.9000000953674316,
+              "uploadCount": 0,
+              "uploadCacheHits": 2,
+              "effectHits": 0,
+              "layerHits": 1,
+              "compositeHits": 1,
+              "transitionHits": 0,
+              "gpuPasses": 4,
+              "evictions": 0,
+              "textureBytes": 22348800,
+              "resourceBytes": 22349440,
+              "peakResourceBytes": 22349440,
+              "externalTextureBytes": 0,
+              "workingSetBytes": 22349312,
+              "textureBudget": 536870912,
+              "pipelineCount": 2,
+              "graphBuilds": 1,
+              "textLayoutCount": 0,
+              "bounds": [
+                {
+                  "id": "item-d0891847-2cce-4308-8bbc-efd602a920c8",
+                  "locked": false,
+                  "x": 263,
+                  "y": 130,
+                  "width": 832,
+                  "height": 468
+                },
+                {
+                  "id": "item-523b0619-76b5-4250-9cb1-be120911a4f0",
+                  "locked": false,
+                  "x": 187.32803344726562,
+                  "y": 320,
+                  "width": 905.3439331054688,
+                  "height": 80
+                }
+              ],
+              "media": [
+                {
+                  "itemId": "item-d0891847-2cce-4308-8bbc-efd602a920c8",
+                  "kind": "image",
+                  "currentTime": 0,
+                  "decodedTimestamp": 0,
+                  "readyState": 4,
+                  "decodedFrames": 2,
+                  "error": null
+                },
+                {
+                  "itemId": "item-523b0619-76b5-4250-9cb1-be120911a4f0",
+                  "kind": "text",
+                  "currentTime": 0,
+                  "decodedTimestamp": null,
+                  "readyState": 4,
+                  "decodedFrames": 2,
+                  "error": null
+                }
+              ]
+            }
+          ],
+          "presentation": [
+            {
+              "name": "baseline",
+              "meanByteError": 0,
+              "maxByteError": 0,
+              "litA": 644283,
+              "litB": 644283
+            },
+            {
+              "name": "current",
+              "meanByteError": 0,
+              "maxByteError": 0,
+              "litA": 644283,
+              "litB": 644283
+            }
+          ],
+          "passed": true
+        },
+        {
+          "name": "blur",
+          "position": 0,
+          "meanByteError": 0,
+          "maxByteError": 0,
+          "litA": 735069,
+          "litB": 735069,
+          "changed": 0,
+          "bounds": [
+            1280,
+            720,
+            -1,
+            -1
+          ],
+          "draws": [
+            {
+              "backend": "webgpu",
+              "time": 0,
+              "width": 1280,
+              "height": 720,
+              "frameMs": 63.200000047683716,
+              "uploadCount": 2,
+              "uploadCacheHits": 0,
+              "textureBytes": 26035200,
+              "textureBudget": 536870912,
+              "bounds": [
+                {
+                  "id": "item-d0891847-2cce-4308-8bbc-efd602a920c8",
+                  "locked": false,
+                  "x": 224,
+                  "y": 126,
+                  "width": 832,
+                  "height": 468
+                },
+                {
+                  "id": "item-523b0619-76b5-4250-9cb1-be120911a4f0",
+                  "locked": false,
+                  "x": 187.32803344726562,
+                  "y": 320,
+                  "width": 905.3439331054688,
+                  "height": 80
+                }
+              ],
+              "media": [
+                {
+                  "itemId": "item-d0891847-2cce-4308-8bbc-efd602a920c8",
+                  "kind": "image",
+                  "currentTime": 0,
+                  "decodedTimestamp": 0,
+                  "readyState": 4,
+                  "decodedFrames": 1,
+                  "error": null
+                },
+                {
+                  "itemId": "item-523b0619-76b5-4250-9cb1-be120911a4f0",
+                  "kind": "text",
+                  "currentTime": 0,
+                  "decodedTimestamp": null,
+                  "readyState": 4,
+                  "decodedFrames": 1,
+                  "error": null
+                }
+              ]
+            },
+            {
+              "backend": "webgpu",
+              "time": 0,
+              "width": 1280,
+              "height": 720,
+              "frameMs": 65.60000002384186,
+              "uploadCount": 2,
+              "uploadCacheHits": 0,
+              "effectHits": 0,
+              "layerHits": 0,
+              "compositeHits": 0,
+              "transitionHits": 0,
+              "gpuPasses": 8,
+              "evictions": 0,
+              "textureBytes": 27402624,
+              "resourceBytes": 27403648,
+              "peakResourceBytes": 27403648,
+              "externalTextureBytes": 0,
+              "workingSetBytes": 27403648,
+              "textureBudget": 536870912,
+              "pipelineCount": 2,
+              "graphBuilds": 1,
+              "textLayoutCount": 1,
+              "bounds": [
+                {
+                  "id": "item-d0891847-2cce-4308-8bbc-efd602a920c8",
+                  "locked": false,
+                  "x": 224,
+                  "y": 126,
+                  "width": 832,
+                  "height": 468
+                },
+                {
+                  "id": "item-523b0619-76b5-4250-9cb1-be120911a4f0",
+                  "locked": false,
+                  "x": 187.32803344726562,
+                  "y": 320,
+                  "width": 905.3439331054688,
+                  "height": 80
+                }
+              ],
+              "media": [
+                {
+                  "itemId": "item-d0891847-2cce-4308-8bbc-efd602a920c8",
+                  "kind": "image",
+                  "currentTime": 0,
+                  "decodedTimestamp": 0,
+                  "readyState": 4,
+                  "decodedFrames": 1,
+                  "error": null
+                },
+                {
+                  "itemId": "item-523b0619-76b5-4250-9cb1-be120911a4f0",
+                  "kind": "text",
+                  "currentTime": 0,
+                  "decodedTimestamp": null,
+                  "readyState": 4,
+                  "decodedFrames": 1,
+                  "error": null
+                }
+              ]
+            }
+          ],
+          "presentation": [
+            {
+              "name": "baseline",
+              "meanByteError": 0,
+              "maxByteError": 0,
+              "litA": 735069,
+              "litB": 735069
+            },
+            {
+              "name": "current",
+              "meanByteError": 0,
+              "maxByteError": 0,
+              "litA": 735069,
+              "litB": 735069
+            }
+          ],
+          "passed": true
+        },
+        {
+          "name": "blur",
+          "position": 39,
+          "meanByteError": 0,
+          "maxByteError": 0,
+          "litA": 733580,
+          "litB": 733580,
+          "changed": 0,
+          "bounds": [
+            1280,
+            720,
+            -1,
+            -1
+          ],
+          "draws": [
+            {
+              "backend": "webgpu",
+              "time": 0,
+              "width": 1280,
+              "height": 720,
+              "frameMs": 5,
+              "uploadCount": 0,
+              "uploadCacheHits": 2,
+              "textureBytes": 26035200,
+              "textureBudget": 536870912,
+              "bounds": [
+                {
+                  "id": "item-d0891847-2cce-4308-8bbc-efd602a920c8",
+                  "locked": false,
+                  "x": 263,
+                  "y": 130,
+                  "width": 832,
+                  "height": 468
+                },
+                {
+                  "id": "item-523b0619-76b5-4250-9cb1-be120911a4f0",
+                  "locked": false,
+                  "x": 187.32803344726562,
+                  "y": 320,
+                  "width": 905.3439331054688,
+                  "height": 80
+                }
+              ],
+              "media": [
+                {
+                  "itemId": "item-d0891847-2cce-4308-8bbc-efd602a920c8",
+                  "kind": "image",
+                  "currentTime": 0,
+                  "decodedTimestamp": 0,
+                  "readyState": 4,
+                  "decodedFrames": 2,
+                  "error": null
+                },
+                {
+                  "itemId": "item-523b0619-76b5-4250-9cb1-be120911a4f0",
+                  "kind": "text",
+                  "currentTime": 0,
+                  "decodedTimestamp": null,
+                  "readyState": 4,
+                  "decodedFrames": 2,
+                  "error": null
+                }
+              ]
+            },
+            {
+              "backend": "webgpu",
+              "time": 0,
+              "width": 1280,
+              "height": 720,
+              "frameMs": 3.799999952316284,
+              "uploadCount": 0,
+              "uploadCacheHits": 2,
+              "effectHits": 2,
+              "layerHits": 2,
+              "compositeHits": 1,
+              "transitionHits": 0,
+              "gpuPasses": 4,
+              "evictions": 0,
+              "textureBytes": 27402624,
+              "resourceBytes": 27403648,
+              "peakResourceBytes": 27403648,
+              "externalTextureBytes": 0,
+              "workingSetBytes": 27403136,
+              "textureBudget": 536870912,
+              "pipelineCount": 2,
+              "graphBuilds": 1,
+              "textLayoutCount": 0,
+              "bounds": [
+                {
+                  "id": "item-d0891847-2cce-4308-8bbc-efd602a920c8",
+                  "locked": false,
+                  "x": 263,
+                  "y": 130,
+                  "width": 832,
+                  "height": 468
+                },
+                {
+                  "id": "item-523b0619-76b5-4250-9cb1-be120911a4f0",
+                  "locked": false,
+                  "x": 187.32803344726562,
+                  "y": 320,
+                  "width": 905.3439331054688,
+                  "height": 80
+                }
+              ],
+              "media": [
+                {
+                  "itemId": "item-d0891847-2cce-4308-8bbc-efd602a920c8",
+                  "kind": "image",
+                  "currentTime": 0,
+                  "decodedTimestamp": 0,
+                  "readyState": 4,
+                  "decodedFrames": 2,
+                  "error": null
+                },
+                {
+                  "itemId": "item-523b0619-76b5-4250-9cb1-be120911a4f0",
+                  "kind": "text",
+                  "currentTime": 0,
+                  "decodedTimestamp": null,
+                  "readyState": 4,
+                  "decodedFrames": 2,
+                  "error": null
+                }
+              ]
+            }
+          ],
+          "presentation": [
+            {
+              "name": "baseline",
+              "meanByteError": 0,
+              "maxByteError": 0,
+              "litA": 733580,
+              "litB": 733580
+            },
+            {
+              "name": "current",
+              "meanByteError": 0,
+              "maxByteError": 0,
+              "litA": 733580,
+              "litB": 733580
+            }
+          ],
+          "passed": true
+        },
+        {
+          "name": "glow",
+          "position": 0,
+          "meanByteError": 0,
+          "maxByteError": 0,
+          "litA": 859498,
+          "litB": 859498,
+          "changed": 0,
+          "bounds": [
+            1280,
+            720,
+            -1,
+            -1
+          ],
+          "draws": [
+            {
+              "backend": "webgpu",
+              "time": 0,
+              "width": 1280,
+              "height": 720,
+              "frameMs": 64.29999995231628,
+              "uploadCount": 2,
+              "uploadCacheHits": 0,
+              "textureBytes": 33408000,
+              "textureBudget": 536870912,
+              "bounds": [
+                {
+                  "id": "item-d0891847-2cce-4308-8bbc-efd602a920c8",
+                  "locked": false,
+                  "x": 224,
+                  "y": 126,
+                  "width": 832,
+                  "height": 468
+                },
+                {
+                  "id": "item-523b0619-76b5-4250-9cb1-be120911a4f0",
+                  "locked": false,
+                  "x": 187.32803344726562,
+                  "y": 320,
+                  "width": 905.3439331054688,
+                  "height": 80
+                }
+              ],
+              "media": [
+                {
+                  "itemId": "item-d0891847-2cce-4308-8bbc-efd602a920c8",
+                  "kind": "image",
+                  "currentTime": 0,
+                  "decodedTimestamp": 0,
+                  "readyState": 4,
+                  "decodedFrames": 1,
+                  "error": null
+                },
+                {
+                  "itemId": "item-523b0619-76b5-4250-9cb1-be120911a4f0",
+                  "kind": "text",
+                  "currentTime": 0,
+                  "decodedTimestamp": null,
+                  "readyState": 4,
+                  "decodedFrames": 1,
+                  "error": null
+                }
+              ]
+            },
+            {
+              "backend": "webgpu",
+              "time": 0,
+              "width": 1280,
+              "height": 720,
+              "frameMs": 62.299999952316284,
+              "uploadCount": 2,
+              "uploadCacheHits": 0,
+              "effectHits": 0,
+              "layerHits": 0,
+              "compositeHits": 0,
+              "transitionHits": 0,
+              "gpuPasses": 10,
+              "evictions": 0,
+              "textureBytes": 32816640,
+              "resourceBytes": 32817920,
+              "peakResourceBytes": 32817920,
+              "externalTextureBytes": 0,
+              "workingSetBytes": 32817920,
+              "textureBudget": 536870912,
+              "pipelineCount": 2,
+              "graphBuilds": 1,
+              "textLayoutCount": 1,
+              "bounds": [
+                {
+                  "id": "item-d0891847-2cce-4308-8bbc-efd602a920c8",
+                  "locked": false,
+                  "x": 224,
+                  "y": 126,
+                  "width": 832,
+                  "height": 468
+                },
+                {
+                  "id": "item-523b0619-76b5-4250-9cb1-be120911a4f0",
+                  "locked": false,
+                  "x": 187.32803344726562,
+                  "y": 320,
+                  "width": 905.3439331054688,
+                  "height": 80
+                }
+              ],
+              "media": [
+                {
+                  "itemId": "item-d0891847-2cce-4308-8bbc-efd602a920c8",
+                  "kind": "image",
+                  "currentTime": 0,
+                  "decodedTimestamp": 0,
+                  "readyState": 4,
+                  "decodedFrames": 1,
+                  "error": null
+                },
+                {
+                  "itemId": "item-523b0619-76b5-4250-9cb1-be120911a4f0",
+                  "kind": "text",
+                  "currentTime": 0,
+                  "decodedTimestamp": null,
+                  "readyState": 4,
+                  "decodedFrames": 1,
+                  "error": null
+                }
+              ]
+            }
+          ],
+          "presentation": [
+            {
+              "name": "baseline",
+              "meanByteError": 0,
+              "maxByteError": 0,
+              "litA": 859498,
+              "litB": 859498
+            },
+            {
+              "name": "current",
+              "meanByteError": 0,
+              "maxByteError": 0,
+              "litA": 859498,
+              "litB": 859498
+            }
+          ],
+          "passed": true
+        },
+        {
+          "name": "glow",
+          "position": 39,
+          "meanByteError": 0,
+          "maxByteError": 0,
+          "litA": 859646,
+          "litB": 859646,
+          "changed": 0,
+          "bounds": [
+            1280,
+            720,
+            -1,
+            -1
+          ],
+          "draws": [
+            {
+              "backend": "webgpu",
+              "time": 0,
+              "width": 1280,
+              "height": 720,
+              "frameMs": 7.399999976158142,
+              "uploadCount": 0,
+              "uploadCacheHits": 2,
+              "textureBytes": 33408000,
+              "textureBudget": 536870912,
+              "bounds": [
+                {
+                  "id": "item-d0891847-2cce-4308-8bbc-efd602a920c8",
+                  "locked": false,
+                  "x": 263,
+                  "y": 130,
+                  "width": 832,
+                  "height": 468
+                },
+                {
+                  "id": "item-523b0619-76b5-4250-9cb1-be120911a4f0",
+                  "locked": false,
+                  "x": 187.32803344726562,
+                  "y": 320,
+                  "width": 905.3439331054688,
+                  "height": 80
+                }
+              ],
+              "media": [
+                {
+                  "itemId": "item-d0891847-2cce-4308-8bbc-efd602a920c8",
+                  "kind": "image",
+                  "currentTime": 0,
+                  "decodedTimestamp": 0,
+                  "readyState": 4,
+                  "decodedFrames": 2,
+                  "error": null
+                },
+                {
+                  "itemId": "item-523b0619-76b5-4250-9cb1-be120911a4f0",
+                  "kind": "text",
+                  "currentTime": 0,
+                  "decodedTimestamp": null,
+                  "readyState": 4,
+                  "decodedFrames": 2,
+                  "error": null
+                }
+              ]
+            },
+            {
+              "backend": "webgpu",
+              "time": 0,
+              "width": 1280,
+              "height": 720,
+              "frameMs": 1.8000000715255737,
+              "uploadCount": 0,
+              "uploadCacheHits": 2,
+              "effectHits": 4,
+              "layerHits": 2,
+              "compositeHits": 1,
+              "transitionHits": 0,
+              "gpuPasses": 4,
+              "evictions": 0,
+              "textureBytes": 32816640,
+              "resourceBytes": 32817920,
+              "peakResourceBytes": 32817920,
+              "externalTextureBytes": 0,
+              "workingSetBytes": 32817152,
+              "textureBudget": 536870912,
+              "pipelineCount": 2,
+              "graphBuilds": 1,
+              "textLayoutCount": 0,
+              "bounds": [
+                {
+                  "id": "item-d0891847-2cce-4308-8bbc-efd602a920c8",
+                  "locked": false,
+                  "x": 263,
+                  "y": 130,
+                  "width": 832,
+                  "height": 468
+                },
+                {
+                  "id": "item-523b0619-76b5-4250-9cb1-be120911a4f0",
+                  "locked": false,
+                  "x": 187.32803344726562,
+                  "y": 320,
+                  "width": 905.3439331054688,
+                  "height": 80
+                }
+              ],
+              "media": [
+                {
+                  "itemId": "item-d0891847-2cce-4308-8bbc-efd602a920c8",
+                  "kind": "image",
+                  "currentTime": 0,
+                  "decodedTimestamp": 0,
+                  "readyState": 4,
+                  "decodedFrames": 2,
+                  "error": null
+                },
+                {
+                  "itemId": "item-523b0619-76b5-4250-9cb1-be120911a4f0",
+                  "kind": "text",
+                  "currentTime": 0,
+                  "decodedTimestamp": null,
+                  "readyState": 4,
+                  "decodedFrames": 2,
+                  "error": null
+                }
+              ]
+            }
+          ],
+          "presentation": [
+            {
+              "name": "baseline",
+              "meanByteError": 0,
+              "maxByteError": 0,
+              "litA": 859646,
+              "litB": 859646
+            },
+            {
+              "name": "current",
+              "meanByteError": 0,
+              "maxByteError": 0,
+              "litA": 859646,
+              "litB": 859646
+            }
+          ],
+          "passed": true
+        },
+        {
+          "name": "lut",
+          "position": 0,
+          "meanByteError": 0,
+          "maxByteError": 0,
+          "litA": 643555,
+          "litB": 643555,
+          "changed": 0,
+          "bounds": [
+            1280,
+            720,
+            -1,
+            -1
+          ],
+          "draws": [
+            {
+              "backend": "webgpu",
+              "time": 0,
+              "width": 1280,
+              "height": 720,
+              "frameMs": 66.20000004768372,
+              "uploadCount": 2,
+              "uploadCacheHits": 0,
+              "textureBytes": 22492548,
+              "textureBudget": 536870912,
+              "bounds": [
+                {
+                  "id": "item-d0891847-2cce-4308-8bbc-efd602a920c8",
+                  "locked": false,
+                  "x": 224,
+                  "y": 126,
+                  "width": 832,
+                  "height": 468
+                },
+                {
+                  "id": "item-523b0619-76b5-4250-9cb1-be120911a4f0",
+                  "locked": false,
+                  "x": 187.32803344726562,
+                  "y": 320,
+                  "width": 905.3439331054688,
+                  "height": 80
+                }
+              ],
+              "media": [
+                {
+                  "itemId": "item-d0891847-2cce-4308-8bbc-efd602a920c8",
+                  "kind": "image",
+                  "currentTime": 0,
+                  "decodedTimestamp": 0,
+                  "readyState": 4,
+                  "decodedFrames": 1,
+                  "error": null
+                },
+                {
+                  "itemId": "item-523b0619-76b5-4250-9cb1-be120911a4f0",
+                  "kind": "text",
+                  "currentTime": 0,
+                  "decodedTimestamp": null,
+                  "readyState": 4,
+                  "decodedFrames": 1,
+                  "error": null
+                }
+              ]
+            },
+            {
+              "backend": "webgpu",
+              "time": 0,
+              "width": 1280,
+              "height": 720,
+              "frameMs": 65.5,
+              "uploadCount": 2,
+              "uploadCacheHits": 0,
+              "effectHits": 0,
+              "layerHits": 0,
+              "compositeHits": 0,
+              "transitionHits": 0,
+              "gpuPasses": 7,
+              "evictions": 0,
+              "textureBytes": 25607556,
+              "resourceBytes": 25608452,
+              "peakResourceBytes": 25608452,
+              "externalTextureBytes": 0,
+              "workingSetBytes": 25608452,
+              "textureBudget": 536870912,
+              "pipelineCount": 2,
+              "graphBuilds": 1,
+              "textLayoutCount": 1,
+              "bounds": [
+                {
+                  "id": "item-d0891847-2cce-4308-8bbc-efd602a920c8",
+                  "locked": false,
+                  "x": 224,
+                  "y": 126,
+                  "width": 832,
+                  "height": 468
+                },
+                {
+                  "id": "item-523b0619-76b5-4250-9cb1-be120911a4f0",
+                  "locked": false,
+                  "x": 187.32803344726562,
+                  "y": 320,
+                  "width": 905.3439331054688,
+                  "height": 80
+                }
+              ],
+              "media": [
+                {
+                  "itemId": "item-d0891847-2cce-4308-8bbc-efd602a920c8",
+                  "kind": "image",
+                  "currentTime": 0,
+                  "decodedTimestamp": 0,
+                  "readyState": 4,
+                  "decodedFrames": 1,
+                  "error": null
+                },
+                {
+                  "itemId": "item-523b0619-76b5-4250-9cb1-be120911a4f0",
+                  "kind": "text",
+                  "currentTime": 0,
+                  "decodedTimestamp": null,
+                  "readyState": 4,
+                  "decodedFrames": 1,
+                  "error": null
+                }
+              ]
+            }
+          ],
+          "presentation": [
+            {
+              "name": "baseline",
+              "meanByteError": 0,
+              "maxByteError": 0,
+              "litA": 643555,
+              "litB": 643555
+            },
+            {
+              "name": "current",
+              "meanByteError": 0,
+              "maxByteError": 0,
+              "litA": 643555,
+              "litB": 643555
+            }
+          ],
+          "passed": true
+        },
+        {
+          "name": "lut",
+          "position": 39,
+          "meanByteError": 0,
+          "maxByteError": 0,
+          "litA": 643022,
+          "litB": 643022,
+          "changed": 0,
+          "bounds": [
+            1280,
+            720,
+            -1,
+            -1
+          ],
+          "draws": [
+            {
+              "backend": "webgpu",
+              "time": 0,
+              "width": 1280,
+              "height": 720,
+              "frameMs": 1.600000023841858,
+              "uploadCount": 0,
+              "uploadCacheHits": 2,
+              "textureBytes": 22492548,
+              "textureBudget": 536870912,
+              "bounds": [
+                {
+                  "id": "item-d0891847-2cce-4308-8bbc-efd602a920c8",
+                  "locked": false,
+                  "x": 263,
+                  "y": 130,
+                  "width": 832,
+                  "height": 468
+                },
+                {
+                  "id": "item-523b0619-76b5-4250-9cb1-be120911a4f0",
+                  "locked": false,
+                  "x": 187.32803344726562,
+                  "y": 320,
+                  "width": 905.3439331054688,
+                  "height": 80
+                }
+              ],
+              "media": [
+                {
+                  "itemId": "item-d0891847-2cce-4308-8bbc-efd602a920c8",
+                  "kind": "image",
+                  "currentTime": 0,
+                  "decodedTimestamp": 0,
+                  "readyState": 4,
+                  "decodedFrames": 2,
+                  "error": null
+                },
+                {
+                  "itemId": "item-523b0619-76b5-4250-9cb1-be120911a4f0",
+                  "kind": "text",
+                  "currentTime": 0,
+                  "decodedTimestamp": null,
+                  "readyState": 4,
+                  "decodedFrames": 2,
+                  "error": null
+                }
+              ]
+            },
+            {
+              "backend": "webgpu",
+              "time": 0,
+              "width": 1280,
+              "height": 720,
+              "frameMs": 3.799999952316284,
+              "uploadCount": 0,
+              "uploadCacheHits": 2,
+              "effectHits": 1,
+              "layerHits": 2,
+              "compositeHits": 1,
+              "transitionHits": 0,
+              "gpuPasses": 4,
+              "evictions": 0,
+              "textureBytes": 25607556,
+              "resourceBytes": 25608452,
+              "peakResourceBytes": 25608452,
+              "externalTextureBytes": 0,
+              "workingSetBytes": 25608068,
+              "textureBudget": 536870912,
+              "pipelineCount": 2,
+              "graphBuilds": 1,
+              "textLayoutCount": 0,
+              "bounds": [
+                {
+                  "id": "item-d0891847-2cce-4308-8bbc-efd602a920c8",
+                  "locked": false,
+                  "x": 263,
+                  "y": 130,
+                  "width": 832,
+                  "height": 468
+                },
+                {
+                  "id": "item-523b0619-76b5-4250-9cb1-be120911a4f0",
+                  "locked": false,
+                  "x": 187.32803344726562,
+                  "y": 320,
+                  "width": 905.3439331054688,
+                  "height": 80
+                }
+              ],
+              "media": [
+                {
+                  "itemId": "item-d0891847-2cce-4308-8bbc-efd602a920c8",
+                  "kind": "image",
+                  "currentTime": 0,
+                  "decodedTimestamp": 0,
+                  "readyState": 4,
+                  "decodedFrames": 2,
+                  "error": null
+                },
+                {
+                  "itemId": "item-523b0619-76b5-4250-9cb1-be120911a4f0",
+                  "kind": "text",
+                  "currentTime": 0,
+                  "decodedTimestamp": null,
+                  "readyState": 4,
+                  "decodedFrames": 2,
+                  "error": null
+                }
+              ]
+            }
+          ],
+          "presentation": [
+            {
+              "name": "baseline",
+              "meanByteError": 0,
+              "maxByteError": 0,
+              "litA": 643022,
+              "litB": 643022
+            },
+            {
+              "name": "current",
+              "meanByteError": 0,
+              "maxByteError": 0,
+              "litA": 643022,
+              "litB": 643022
+            }
+          ],
+          "passed": true
+        },
+        {
+          "name": "blur-glow",
+          "position": 0,
+          "meanByteError": 0,
+          "maxByteError": 0,
+          "litA": 859335,
+          "litB": 859335,
+          "changed": 0,
+          "bounds": [
+            1280,
+            720,
+            -1,
+            -1
+          ],
+          "draws": [
+            {
+              "backend": "webgpu",
+              "time": 0,
+              "width": 1280,
+              "height": 720,
+              "frameMs": 66.29999995231628,
+              "uploadCount": 2,
+              "uploadCacheHits": 0,
+              "textureBytes": 40780800,
+              "textureBudget": 536870912,
+              "bounds": [
+                {
+                  "id": "item-d0891847-2cce-4308-8bbc-efd602a920c8",
+                  "locked": false,
+                  "x": 224,
+                  "y": 126,
+                  "width": 832,
+                  "height": 468
+                },
+                {
+                  "id": "item-523b0619-76b5-4250-9cb1-be120911a4f0",
+                  "locked": false,
+                  "x": 187.32803344726562,
+                  "y": 320,
+                  "width": 905.3439331054688,
+                  "height": 80
+                }
+              ],
+              "media": [
+                {
+                  "itemId": "item-d0891847-2cce-4308-8bbc-efd602a920c8",
+                  "kind": "image",
+                  "currentTime": 0,
+                  "decodedTimestamp": 0,
+                  "readyState": 4,
+                  "decodedFrames": 1,
+                  "error": null
+                },
+                {
+                  "itemId": "item-523b0619-76b5-4250-9cb1-be120911a4f0",
+                  "kind": "text",
+                  "currentTime": 0,
+                  "decodedTimestamp": null,
+                  "readyState": 4,
+                  "decodedFrames": 1,
+                  "error": null
+                }
+              ]
+            },
+            {
+              "backend": "webgpu",
+              "time": 0,
+              "width": 1280,
+              "height": 720,
+              "frameMs": 61.199999928474426,
+              "uploadCount": 2,
+              "uploadCacheHits": 0,
+              "effectHits": 0,
+              "layerHits": 0,
+              "compositeHits": 0,
+              "transitionHits": 0,
+              "gpuPasses": 12,
+              "evictions": 0,
+              "textureBytes": 38022528,
+              "resourceBytes": 38024064,
+              "peakResourceBytes": 38024064,
+              "externalTextureBytes": 0,
+              "workingSetBytes": 38024064,
+              "textureBudget": 536870912,
+              "pipelineCount": 2,
+              "graphBuilds": 1,
+              "textLayoutCount": 1,
+              "bounds": [
+                {
+                  "id": "item-d0891847-2cce-4308-8bbc-efd602a920c8",
+                  "locked": false,
+                  "x": 224,
+                  "y": 126,
+                  "width": 832,
+                  "height": 468
+                },
+                {
+                  "id": "item-523b0619-76b5-4250-9cb1-be120911a4f0",
+                  "locked": false,
+                  "x": 187.32803344726562,
+                  "y": 320,
+                  "width": 905.3439331054688,
+                  "height": 80
+                }
+              ],
+              "media": [
+                {
+                  "itemId": "item-d0891847-2cce-4308-8bbc-efd602a920c8",
+                  "kind": "image",
+                  "currentTime": 0,
+                  "decodedTimestamp": 0,
+                  "readyState": 4,
+                  "decodedFrames": 1,
+                  "error": null
+                },
+                {
+                  "itemId": "item-523b0619-76b5-4250-9cb1-be120911a4f0",
+                  "kind": "text",
+                  "currentTime": 0,
+                  "decodedTimestamp": null,
+                  "readyState": 4,
+                  "decodedFrames": 1,
+                  "error": null
+                }
+              ]
+            }
+          ],
+          "presentation": [
+            {
+              "name": "baseline",
+              "meanByteError": 0,
+              "maxByteError": 0,
+              "litA": 859335,
+              "litB": 859335
+            },
+            {
+              "name": "current",
+              "meanByteError": 0,
+              "maxByteError": 0,
+              "litA": 859335,
+              "litB": 859335
+            }
+          ],
+          "passed": true
+        },
+        {
+          "name": "blur-glow",
+          "position": 39,
+          "meanByteError": 0,
+          "maxByteError": 0,
+          "litA": 859383,
+          "litB": 859383,
+          "changed": 0,
+          "bounds": [
+            1280,
+            720,
+            -1,
+            -1
+          ],
+          "draws": [
+            {
+              "backend": "webgpu",
+              "time": 0,
+              "width": 1280,
+              "height": 720,
+              "frameMs": 10.5,
+              "uploadCount": 0,
+              "uploadCacheHits": 2,
+              "textureBytes": 40780800,
+              "textureBudget": 536870912,
+              "bounds": [
+                {
+                  "id": "item-d0891847-2cce-4308-8bbc-efd602a920c8",
+                  "locked": false,
+                  "x": 263,
+                  "y": 130,
+                  "width": 832,
+                  "height": 468
+                },
+                {
+                  "id": "item-523b0619-76b5-4250-9cb1-be120911a4f0",
+                  "locked": false,
+                  "x": 187.32803344726562,
+                  "y": 320,
+                  "width": 905.3439331054688,
+                  "height": 80
+                }
+              ],
+              "media": [
+                {
+                  "itemId": "item-d0891847-2cce-4308-8bbc-efd602a920c8",
+                  "kind": "image",
+                  "currentTime": 0,
+                  "decodedTimestamp": 0,
+                  "readyState": 4,
+                  "decodedFrames": 2,
+                  "error": null
+                },
+                {
+                  "itemId": "item-523b0619-76b5-4250-9cb1-be120911a4f0",
+                  "kind": "text",
+                  "currentTime": 0,
+                  "decodedTimestamp": null,
+                  "readyState": 4,
+                  "decodedFrames": 2,
+                  "error": null
+                }
+              ]
+            },
+            {
+              "backend": "webgpu",
+              "time": 0,
+              "width": 1280,
+              "height": 720,
+              "frameMs": 1.6999999284744263,
+              "uploadCount": 0,
+              "uploadCacheHits": 2,
+              "effectHits": 6,
+              "layerHits": 2,
+              "compositeHits": 1,
+              "transitionHits": 0,
+              "gpuPasses": 4,
+              "evictions": 0,
+              "textureBytes": 38022528,
+              "resourceBytes": 38024064,
+              "peakResourceBytes": 38024064,
+              "externalTextureBytes": 0,
+              "workingSetBytes": 38023040,
+              "textureBudget": 536870912,
+              "pipelineCount": 2,
+              "graphBuilds": 1,
+              "textLayoutCount": 0,
+              "bounds": [
+                {
+                  "id": "item-d0891847-2cce-4308-8bbc-efd602a920c8",
+                  "locked": false,
+                  "x": 263,
+                  "y": 130,
+                  "width": 832,
+                  "height": 468
+                },
+                {
+                  "id": "item-523b0619-76b5-4250-9cb1-be120911a4f0",
+                  "locked": false,
+                  "x": 187.32803344726562,
+                  "y": 320,
+                  "width": 905.3439331054688,
+                  "height": 80
+                }
+              ],
+              "media": [
+                {
+                  "itemId": "item-d0891847-2cce-4308-8bbc-efd602a920c8",
+                  "kind": "image",
+                  "currentTime": 0,
+                  "decodedTimestamp": 0,
+                  "readyState": 4,
+                  "decodedFrames": 2,
+                  "error": null
+                },
+                {
+                  "itemId": "item-523b0619-76b5-4250-9cb1-be120911a4f0",
+                  "kind": "text",
+                  "currentTime": 0,
+                  "decodedTimestamp": null,
+                  "readyState": 4,
+                  "decodedFrames": 2,
+                  "error": null
+                }
+              ]
+            }
+          ],
+          "presentation": [
+            {
+              "name": "baseline",
+              "meanByteError": 0,
+              "maxByteError": 0,
+              "litA": 859383,
+              "litB": 859383
+            },
+            {
+              "name": "current",
+              "meanByteError": 0,
+              "maxByteError": 0,
+              "litA": 859383,
+              "litB": 859383
+            }
+          ],
+          "passed": true
+        },
+        {
+          "name": "blur-glow-lut",
+          "position": 0,
+          "meanByteError": 0,
+          "maxByteError": 0,
+          "litA": 819953,
+          "litB": 819953,
+          "changed": 0,
+          "bounds": [
+            1280,
+            720,
+            -1,
+            -1
+          ],
+          "draws": [
+            {
+              "backend": "webgpu",
+              "time": 0,
+              "width": 1280,
+              "height": 720,
+              "frameMs": 71.40000009536743,
+              "uploadCount": 2,
+              "uploadCacheHits": 0,
+              "textureBytes": 44610948,
+              "textureBudget": 536870912,
+              "bounds": [
+                {
+                  "id": "item-d0891847-2cce-4308-8bbc-efd602a920c8",
+                  "locked": false,
+                  "x": 224,
+                  "y": 126,
+                  "width": 832,
+                  "height": 468
+                },
+                {
+                  "id": "item-523b0619-76b5-4250-9cb1-be120911a4f0",
+                  "locked": false,
+                  "x": 187.32803344726562,
+                  "y": 320,
+                  "width": 905.3439331054688,
+                  "height": 80
+                }
+              ],
+              "media": [
+                {
+                  "itemId": "item-d0891847-2cce-4308-8bbc-efd602a920c8",
+                  "kind": "image",
+                  "currentTime": 0,
+                  "decodedTimestamp": 0,
+                  "readyState": 4,
+                  "decodedFrames": 1,
+                  "error": null
+                },
+                {
+                  "itemId": "item-523b0619-76b5-4250-9cb1-be120911a4f0",
+                  "kind": "text",
+                  "currentTime": 0,
+                  "decodedTimestamp": null,
+                  "readyState": 4,
+                  "decodedFrames": 1,
+                  "error": null
+                }
+              ]
+            },
+            {
+              "backend": "webgpu",
+              "time": 0,
+              "width": 1280,
+              "height": 720,
+              "frameMs": 71.5,
+              "uploadCount": 2,
+              "uploadCacheHits": 0,
+              "effectHits": 0,
+              "layerHits": 0,
+              "compositeHits": 0,
+              "transitionHits": 0,
+              "gpuPasses": 13,
+              "evictions": 0,
+              "textureBytes": 40405380,
+              "resourceBytes": 40407044,
+              "peakResourceBytes": 40407044,
+              "externalTextureBytes": 0,
+              "workingSetBytes": 40407044,
+              "textureBudget": 536870912,
+              "pipelineCount": 2,
+              "graphBuilds": 1,
+              "textLayoutCount": 1,
+              "bounds": [
+                {
+                  "id": "item-d0891847-2cce-4308-8bbc-efd602a920c8",
+                  "locked": false,
+                  "x": 224,
+                  "y": 126,
+                  "width": 832,
+                  "height": 468
+                },
+                {
+                  "id": "item-523b0619-76b5-4250-9cb1-be120911a4f0",
+                  "locked": false,
+                  "x": 187.32803344726562,
+                  "y": 320,
+                  "width": 905.3439331054688,
+                  "height": 80
+                }
+              ],
+              "media": [
+                {
+                  "itemId": "item-d0891847-2cce-4308-8bbc-efd602a920c8",
+                  "kind": "image",
+                  "currentTime": 0,
+                  "decodedTimestamp": 0,
+                  "readyState": 4,
+                  "decodedFrames": 1,
+                  "error": null
+                },
+                {
+                  "itemId": "item-523b0619-76b5-4250-9cb1-be120911a4f0",
+                  "kind": "text",
+                  "currentTime": 0,
+                  "decodedTimestamp": null,
+                  "readyState": 4,
+                  "decodedFrames": 1,
+                  "error": null
+                }
+              ]
+            }
+          ],
+          "presentation": [
+            {
+              "name": "baseline",
+              "meanByteError": 0,
+              "maxByteError": 0,
+              "litA": 819953,
+              "litB": 819953
+            },
+            {
+              "name": "current",
+              "meanByteError": 0,
+              "maxByteError": 0,
+              "litA": 819953,
+              "litB": 819953
+            }
+          ],
+          "passed": true
+        },
+        {
+          "name": "blur-glow-lut",
+          "position": 39,
+          "meanByteError": 0,
+          "maxByteError": 0,
+          "litA": 819477,
+          "litB": 819477,
+          "changed": 0,
+          "bounds": [
+            1280,
+            720,
+            -1,
+            -1
+          ],
+          "draws": [
+            {
+              "backend": "webgpu",
+              "time": 0,
+              "width": 1280,
+              "height": 720,
+              "frameMs": 12.399999976158142,
+              "uploadCount": 0,
+              "uploadCacheHits": 2,
+              "textureBytes": 44610948,
+              "textureBudget": 536870912,
+              "bounds": [
+                {
+                  "id": "item-d0891847-2cce-4308-8bbc-efd602a920c8",
+                  "locked": false,
+                  "x": 263,
+                  "y": 130,
+                  "width": 832,
+                  "height": 468
+                },
+                {
+                  "id": "item-523b0619-76b5-4250-9cb1-be120911a4f0",
+                  "locked": false,
+                  "x": 187.32803344726562,
+                  "y": 320,
+                  "width": 905.3439331054688,
+                  "height": 80
+                }
+              ],
+              "media": [
+                {
+                  "itemId": "item-d0891847-2cce-4308-8bbc-efd602a920c8",
+                  "kind": "image",
+                  "currentTime": 0,
+                  "decodedTimestamp": 0,
+                  "readyState": 4,
+                  "decodedFrames": 2,
+                  "error": null
+                },
+                {
+                  "itemId": "item-523b0619-76b5-4250-9cb1-be120911a4f0",
+                  "kind": "text",
+                  "currentTime": 0,
+                  "decodedTimestamp": null,
+                  "readyState": 4,
+                  "decodedFrames": 2,
+                  "error": null
+                }
+              ]
+            },
+            {
+              "backend": "webgpu",
+              "time": 0,
+              "width": 1280,
+              "height": 720,
+              "frameMs": 1.6999999284744263,
+              "uploadCount": 0,
+              "uploadCacheHits": 2,
+              "effectHits": 7,
+              "layerHits": 2,
+              "compositeHits": 1,
+              "transitionHits": 0,
+              "gpuPasses": 4,
+              "evictions": 0,
+              "textureBytes": 40405380,
+              "resourceBytes": 40407044,
+              "peakResourceBytes": 40407044,
+              "externalTextureBytes": 0,
+              "workingSetBytes": 40405892,
+              "textureBudget": 536870912,
+              "pipelineCount": 2,
+              "graphBuilds": 1,
+              "textLayoutCount": 0,
+              "bounds": [
+                {
+                  "id": "item-d0891847-2cce-4308-8bbc-efd602a920c8",
+                  "locked": false,
+                  "x": 263,
+                  "y": 130,
+                  "width": 832,
+                  "height": 468
+                },
+                {
+                  "id": "item-523b0619-76b5-4250-9cb1-be120911a4f0",
+                  "locked": false,
+                  "x": 187.32803344726562,
+                  "y": 320,
+                  "width": 905.3439331054688,
+                  "height": 80
+                }
+              ],
+              "media": [
+                {
+                  "itemId": "item-d0891847-2cce-4308-8bbc-efd602a920c8",
+                  "kind": "image",
+                  "currentTime": 0,
+                  "decodedTimestamp": 0,
+                  "readyState": 4,
+                  "decodedFrames": 2,
+                  "error": null
+                },
+                {
+                  "itemId": "item-523b0619-76b5-4250-9cb1-be120911a4f0",
+                  "kind": "text",
+                  "currentTime": 0,
+                  "decodedTimestamp": null,
+                  "readyState": 4,
+                  "decodedFrames": 2,
+                  "error": null
+                }
+              ]
+            }
+          ],
+          "presentation": [
+            {
+              "name": "baseline",
+              "meanByteError": 0,
+              "maxByteError": 0,
+              "litA": 819477,
+              "litB": 819477
+            },
+            {
+              "name": "current",
+              "meanByteError": 0,
+              "maxByteError": 0,
+              "litA": 819477,
+              "litB": 819477
+            }
+          ],
+          "passed": true
+        }
+      ],
+      "kind": "render-parity-diagnosis",
+      "started": "2026-09-29T15:54:18.630Z",
+      "completed": "2026-09-29T15:54:22.383Z"
+    }
+  },
+  "baseline": {
+    "manifest": {
+      "capturedAt": "2026-09-29T15:05:51.604Z",
+      "scope": "Before remaining cache/history/adaptive-quality implementation; not the historical Electron application",
+      "packageSha256": "a4256b70c42232f3274b8d9ed8da7afdeb233e7754995a88a55a322a488af49c",
+      "size": 7482862
+    },
+    "workerPath": ".local/architecture-baseline/package/dist/web/assets/worker-C3JgJ-tK.js",
+    "workerSha256": "9384afcaa8e36c60fb4f4313cfc58d7dbdcb6332e98df5e3e5b95f1b7fcc2c61"
+  }
+}

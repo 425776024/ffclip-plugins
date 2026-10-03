@@ -1,0 +1,48 @@
+{
+  "name": "@videocut/text-wasm",
+  "version": "0.4.1",
+  "description": "Standalone VideoCut C++ text composition and Skia renderer for WebAssembly",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    "./composition": {
+      "types": "./dist/browser-composition.d.mts",
+      "import": "./dist/browser-composition.mjs"
+    },
+    ".": {
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs"
+    },
+    "./videocut-text.wasm": "./dist/videocut-text.wasm",
+    "./webgpu": {
+      "types": "./dist/webgpu.d.mts",
+      "import": "./dist/webgpu.mjs"
+    },
+    "./templates": {
+      "types": "./dist/recipes.d.mts",
+      "import": "./dist/recipes.mjs"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "NOTICE.md",
+    "LICENSES"
+  ],
+  "scripts": {
+    "setup": "node scripts/setup.mjs",
+    "build": "node scripts/build.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "audit": "node scripts/audit.mjs",
+    "test:gpu:reference": "node scripts/gpu-reference.mjs",
+    "test:performance:prepare": "node scripts/prepare-performance.mjs",
+    "test:performance:raster": "node scripts/compare-raster.mjs",
+    "demo": "node scripts/serve.mjs",
+    "prepack": "node scripts/check-dist.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/425776024/ffclip-plugins.git",
+    "directory": "packages/text-wasm"
+  }
+}

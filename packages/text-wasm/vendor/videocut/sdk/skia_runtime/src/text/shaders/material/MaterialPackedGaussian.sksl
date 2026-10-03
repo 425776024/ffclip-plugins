@@ -1,0 +1,64 @@
+
+    uniform shader inputTexture;
+    uniform float sampleCount;
+    uniform float2 sampleStep;
+    uniform float sigma;
+    uniform float gamma;
+    uniform float alphaInput;
+
+    float gaussianWeight(float value, float deviation) {
+      return 0.39894 * exp(-0.5 * value * value /
+                          (deviation * deviation)) / deviation;
+    }
+
+    float4 linearSample(float2 position) {
+      float4 color = float4(inputTexture.eval(position));
+      if (alphaInput >= 0.5)
+        color = float4(color.a);
+      return pow(max(color, float4(0.0)), float4(gamma));
+    }
+
+    half4 main(float2 position) {
+      float count = sampleCount;
+      float deviation = sigma;
+      float centerWeight = gaussianWeight(0.0, deviation);
+      float4 accumulated = float4(0.0);
+      float4 weights = float4(centerWeight);
+      float4 center = linearSample(position) * centerWeight;
+      float4 radii = float4(count * 0.125, count * 0.25,
+                            count * 0.5, count);
+      for (int index = 1; index <= 1024; ++index) {
+        float coordinate = float(index);
+        if (coordinate > count) break;
+        float4 left = linearSample(
+            position - sampleStep * coordinate);
+        float4 right = linearSample(
+            position + sampleStep * coordinate);
+        float4 pair = left + right;
+        if (coordinate <= radii.x) {
+          float weight = gaussianWeight(
+              coordinate / radii.x * 16.0, deviation);
+          accumulated.x += pair.x * weight;
+          weights.x += weight * 2.0;
+        }
+        if (coordinate <= radii.y) {
+          float weight = gaussianWeight(
+              coordinate / radii.y * 16.0, deviation);
+          accumulated.y += pair.y * weight;
+          weights.y += weight * 2.0;
+        }
+        if (coordinate <= radii.z) {
+          float weight = gaussianWeight(
+              coordinate / radii.z * 16.0, deviation);
+          accumulated.z += pair.z * weight;
+          weights.z += weight * 2.0;
+        }
+        float weight = gaussianWeight(
+            coordinate / radii.w * 16.0, deviation);
+        accumulated.w += pair.w * weight;
+        weights.w += weight * 2.0;
+      }
+      return half4(pow((accumulated + center) / weights,
+                       float4(1.0 / gamma)));
+    }
+  

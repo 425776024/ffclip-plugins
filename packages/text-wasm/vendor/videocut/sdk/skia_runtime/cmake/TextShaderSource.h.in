@@ -1,0 +1,6 @@
+// Generated from @shader_relative@. Edit the shader source, not this file.
+#pragma once
+
+namespace videocut::skia_runtime::internal::shader_sources {
+inline constexpr char @shader_name@[] = R"vcut_shader(@shader_source@)vcut_shader";
+} // namespace videocut::skia_runtime::internal::shader_sources

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh-CN">
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VideoCut 连续拖针性能</title>
+  <style>
+    body {
+      margin: 24px !important;
+      background: #10151b;
+      color: #dce7f3;
+      font: 14px system-ui !important;
+    }
+    button {
+      padding: 10px 18px;
+      margin: 8px 10px 12px 0;
+    }
+    #fixture {
+      width: min(1000px, 90vw);
+    }
+    #fixture .preview-stage {
+      position: relative;
+      width: 480px;
+      max-width: 100%;
+    }
+    #fixture .timeline-scroll {
+      height: 340px;
+      margin-top: 15px;
+    }
+    pre {
+      white-space: pre-wrap;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+  </style>
+  <h1>混合时间轴 · 拖针与独立播放测量</h1>
+  <p>
+    同一视频、原生花字及 1080p 透明 HTML 动画。60Hz
+    合成指针输入，测量拖动过程中持续出帧及松手后的精确定位。播放单独创建新预览工作线程，完整准备后采样
+    5000ms；暖播放再执行六次左右拖针。工程 30Hz
+    绝对时钟，记录请求与呈现的唯一帧时间；全程保持相同分辨率。
+  </p>
+  <button id="run">测量 8 秒连续拖针</button
+  ><button id="play">测量 5 秒新渲染器播放</button>
+  <button id="play-warm">测量 5 秒拖针后暖播放</button>
+  <button id="play-ready">准备后等待 600ms，再测量 5 秒播放</button>
+  <button id="download">下载 JSON 报告</button>
+  <div id="fixture"></div>
+  <pre id="status">准备中…</pre>
+  <script id="raw-report" type="application/json"></script>
+  <script type="module" src="./browser-scrub.ts"></script>
+</html>

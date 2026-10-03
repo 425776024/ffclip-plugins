@@ -1,0 +1,561 @@
+
+    uniform shader inputTexture;
+    uniform float2 textureSize;
+    uniform float mode;
+    uniform float progress;
+    uniform float4 p0;
+    uniform float4 p1;
+    uniform float4 p2;
+
+    float randomValue(float2 p) {
+      return fract(sin(dot(p, float2(12.9898, 78.233))) * 43758.5453);
+    }
+
+    float pluginRandom(float2 p) {
+      return fract(sin(dot(p, float2(12.9898, 78.233))) * 43758.5453123);
+    }
+
+    float3 srgbToLinear(float3 c) {
+      float3 lo = c / 12.92;
+      float3 hi = pow((c + 0.055) / 1.055, float3(2.4));
+      return mix(hi, lo, step(c, float3(0.04045)));
+    }
+
+    float3 linearToSrgb(float3 c) {
+      float3 lo = c * 12.92;
+      float3 hi = 1.055 * pow(max(c, float3(0.0)), float3(1.0 / 2.4)) -
+                   0.055;
+      return mix(hi, lo, step(c, float3(0.0031308)));
+    }
+
+    float3 pluginPermute(float3 x) {
+      return mod(((x * 34.0) + 1.0) * x, 289.0);
+    }
+
+    float pluginSimplexNoise(float2 v) {
+      float4 C = float4(0.211324865405187, 0.366025403784439,
+                        -0.577350269189626, 0.024390243902439);
+      float2 i = floor(v + dot(v, C.yy));
+      float2 x0 = v - i + dot(i, C.xx);
+      float2 i1 = x0.x > x0.y ? float2(1.0, 0.0)
+                              : float2(0.0, 1.0);
+      float4 x12 = x0.xyxy + C.xxzz;
+      x12.xy -= i1;
+      i = mod(i, 289.0);
+      float3 p = pluginPermute(
+          pluginPermute(i.y + float3(0.0, i1.y, 1.0)) +
+          i.x + float3(0.0, i1.x, 1.0));
+      float3 m = max(
+          0.5 - float3(dot(x0, x0), dot(x12.xy, x12.xy),
+                       dot(x12.zw, x12.zw)),
+          0.0);
+      m = m * m;
+      m = m * m;
+      float3 x = 2.0 * fract(p * C.www) - 1.0;
+      float3 h = abs(x) - 0.5;
+      float3 ox = floor(x + 0.5);
+      float3 a0 = x - ox;
+      m *= 1.79284291400159 -
+           0.85373472095314 * (a0 * a0 + h * h);
+      float3 g;
+      g.x = a0.x * x0.x + h.x * x0.y;
+      g.yz = a0.yz * x12.xz + h.yz * x12.yw;
+      return 130.0 * dot(m, g);
+    }
+
+    float4 sampleInput(float2 point) {
+      if (point.x < 0.0 || point.y < 0.0 ||
+          point.x >= textureSize.x || point.y >= textureSize.y) {
+        return float4(0.0);
+      }
+      return float4(inputTexture.eval(point));
+    }
+
+    float4 samplePlugin(float2 uv) {
+      return float4(inputTexture.eval(
+          float2(uv.x, 1.0 - uv.y) * textureSize));
+    }
+
+    float2 rotatePlugin(float2 uv, float2 pivot, float angle,
+                        float aspect) {
+      float2 point = uv - pivot;
+      point.x *= aspect;
+      float cosine = cos(angle);
+      float sine = sin(angle);
+      float2 rotated = float2(point.x * cosine - point.y * sine,
+                              point.x * sine + point.y * cosine);
+      rotated.x /= aspect;
+      return rotated + pivot;
+    }
+
+    float4 main(float2 xy) {
+      float4 source = sampleInput(xy);
+      if (mode < 0.5) {
+        if (abs(p0.y) <= 0.000001)
+          return source;
+        float radius = p0.x * abs(p0.y);
+        float choke = p0.y;
+        float alpha = choke >= 0.0 ? 1.0 : 0.0;
+        float4 selected = source;
+        for (int y = -6; y <= 6; ++y) {
+          for (int x = -6; x <= 6; ++x) {
+            float2 offset = float2(float(x), float(y));
+            if (length(offset) <= radius) {
+              float4 candidate = sampleInput(xy + offset);
+              if (choke >= 0.0) {
+                alpha = min(alpha, candidate.a);
+              } else if (candidate.a > alpha) {
+                alpha = candidate.a;
+                selected = candidate;
+              }
+            }
+          }
+        }
+        float softness = p0.z;
+        float threshold = p0.w;
+        alpha = smoothstep(threshold - softness, threshold + softness, alpha);
+        float4 colorSource = choke >= 0.0 ? source : selected;
+        float scale = colorSource.a > 0.000001
+            ? alpha / colorSource.a : 0.0;
+        return float4(colorSource.rgb * scale, alpha);
+      }
+
+      if (mode < 2.5) {
+        if (mode < 1.5 && p2.w >= 0.5) {
+          float2 qtUv = float2(xy.x / textureSize.x,
+                               1.0 - xy.y / textureSize.y);
+          float aspect = textureSize.x / textureSize.y;
+          float adjustedRadius =
+              p0.z * pow(1.600000023841858, aspect - 1.0);
+          float2 centeredUv = qtUv - p0.xy;
+          centeredUv.x *= aspect;
+          float radialDistance = length(centeredUv);
+          float radialSquared = radialDistance * radialDistance;
+          float distortedDistance = radialDistance *
+              (1.0 + ((-p0.w) * 203.087493896484375 /
+                      pow(adjustedRadius, 2.0)) * radialSquared);
+          float polarAngle = atan(centeredUv.x, centeredUv.y);
+          float2 mappedUv = float2(sin(polarAngle) * distortedDistance,
+                                   cos(polarAngle) * distortedDistance);
+          mappedUv.x /= aspect;
+          mappedUv += p0.xy;
+          float valid = step(0.0, mappedUv.x) * step(mappedUv.x, 1.0) *
+                        step(0.0, mappedUv.y) * step(mappedUv.y, 1.0);
+          float edge = 1.0 - smoothstep(
+              adjustedRadius * 0.00700000021606684 -
+                  0.00100000004749745,
+              adjustedRadius * 0.00700000021606684 +
+                  0.00100000004749745,
+              radialDistance);
+          return samplePlugin(mappedUv) * valid * edge;
+        }
+        float2 center = p0.xy * textureSize;
+        float2 halfSize = max(textureSize * 0.5, float2(1.0));
+        float2 delta = (xy - center) / halfSize;
+        if (mode < 1.5) {
+          float angle = radians(p1.w);
+          float sine = sin(-angle);
+          float cosine = cos(-angle);
+          delta = float2(delta.x * cosine - delta.y * sine,
+                         delta.x * sine + delta.y * cosine);
+        }
+        float radius2 = dot(delta, delta);
+        float strength = 0.0;
+        float extent = 1.0;
+        if (mode < 1.5) {
+          strength = p0.w + p1.x + tan(radians(p1.y) * 0.5);
+          if (p1.z >= 0.5)
+            strength = -strength;
+          extent = p0.z;
+        } else {
+          strength = tan(radians(p0.z) * 0.5);
+          if (p0.w >= 0.5)
+            strength = -strength;
+          float radialTerm = p1.x >= 0.5 ? sqrt(radius2) : radius2;
+          float optimalScale = p1.y >= 0.5
+              ? 1.0 / (1.0 + abs(strength)) : 1.0;
+          float resizeScale = p1.z >= 0.5
+              ? 1.0 + abs(strength) : 1.0;
+          return sampleInput(center + delta *
+              (1.0 + strength * radialTerm) * optimalScale * resizeScale *
+              halfSize);
+        }
+        float factor = 1.0 + strength * radius2 / extent;
+        float angle = radians(p1.w);
+        float sine = sin(angle);
+        float cosine = cos(angle);
+        float2 restored = float2(
+            delta.x * cosine - delta.y * sine,
+            delta.x * sine + delta.y * cosine);
+        return sampleInput(center + restored * factor * halfSize);
+      }
+
+      if (mode < 3.5) {
+        float2 center = p1.xy * textureSize;
+        float2 scale = p1.zw;
+        float2 point = (xy - center) / scale;
+        float rz = radians(p0.z);
+        float sine = sin(-rz);
+        float cosine = cos(-rz);
+        point = float2(point.x * cosine - point.y * sine,
+                       point.x * sine + point.y * cosine);
+        float perspective = p0.w +
+            tan(radians(p2.z) * 0.5) / p2.w;
+        float rx = radians(p0.x);
+        float ry = radians(p0.y);
+        float2 vanishing = (p2.xy - float2(0.5)) * textureSize;
+        float denominator = 1.0 + perspective *
+            ((point.x - vanishing.x) * sin(ry) -
+             (point.y - vanishing.y) * sin(rx)) /
+            max(textureSize.x, textureSize.y);
+        if (abs(denominator) < 0.05)
+          denominator = denominator < 0.0 ? -0.05 : 0.05;
+        point = float2(point.x / cos(ry), point.y / cos(rx)) /
+                denominator;
+        point *= scale;
+        return sampleInput(center + point);
+      }
+
+      if (mode < 4.5) {
+        if (p2.y >= 0.5) {
+          float2 qtUv = float2(xy.x / textureSize.x,
+                               1.0 - xy.y / textureSize.y);
+          float intensity = p0.x;
+          float4 originalColor = samplePlugin(qtUv);
+          if (intensity <= 0.001)
+            return originalColor;
+          float timeProxy = intensity * 100.0;
+          float blockCount = 20.0 + p0.z;
+          float blockIndex = floor(qtUv.y * blockCount);
+          float blockNoise =
+              pluginRandom(float2(blockIndex, floor(timeProxy)));
+          float distortionOffset = 0.0;
+          if (blockNoise > 0.6) {
+            float randomOffset =
+                (pluginRandom(float2(blockIndex, floor(timeProxy) + 7.0)) -
+                 0.5) * 2.0;
+            distortionOffset =
+                randomOffset * p1.x * 0.001 * intensity;
+          }
+          float2 distortedUv = qtUv;
+          distortedUv.x += distortionOffset / p1.y;
+          float rgbOffset = p0.w * 0.001 * intensity;
+          float2 redOffset = float2(rgbOffset / p1.y, 0.0);
+          float2 blueOffset = float2(-rgbOffset / p1.y, 0.0);
+          float4 redSample = samplePlugin(distortedUv + redOffset);
+          float4 greenSample = samplePlugin(distortedUv);
+          float4 blueSample = samplePlugin(distortedUv + blueOffset);
+          float3 finalRgb =
+              float3(redSample.r, greenSample.g, blueSample.b);
+          float finalAlpha =
+              max(redSample.a, max(greenSample.a, blueSample.a));
+          if (finalAlpha > 0.05) {
+            float pixelNoise = pluginRandom(
+                distortedUv * float2(150.0, 50.0) + float2(timeProxy));
+            float noiseStrength = p0.y * intensity;
+            if (pixelNoise > 0.9)
+              finalRgb += float3(noiseStrength * 0.6);
+            else if (pixelNoise < 0.1)
+              finalRgb -= float3(noiseStrength * 0.6);
+            if (pluginRandom(float2(pixelNoise, timeProxy)) > 0.8) {
+              finalRgb *= float3(1.0 + noiseStrength,
+                                 1.0 - noiseStrength * 0.5, 1.0);
+            }
+          }
+          float4 effectColor =
+              float4(clamp(finalRgb, float3(0.0), float3(1.0)), finalAlpha);
+          return mix(originalColor, effectColor, intensity);
+        }
+        float amount = p0.x;
+        float intensity = p2.x;
+        if (abs(amount) <= 0.000001 || intensity <= 0.000001)
+          return source;
+        float blockSize = p0.y;
+        float chroma = p0.z * intensity;
+        float tick = floor((progress * p1.x + p1.y) * p1.w);
+        float block = floor(xy.y / blockSize);
+        float shift = (randomValue(float2(block + p0.w, tick)) - 0.5) *
+                      amount * intensity;
+        float2 shifted = float2(xy.x + shift, xy.y);
+        float4 base = sampleInput(shifted);
+        float red = sampleInput(shifted + float2(chroma, 0.0)).r;
+        float blue = sampleInput(shifted - float2(chroma, 0.0)).b;
+        float scan = 1.0 - p1.z * intensity *
+                     (0.5 + 0.5 * sin(xy.y * 3.14159265));
+        return float4(red, base.g, blue, base.a) * scan;
+      }
+
+      if (mode < 5.5) {
+        if (p2.y >= 0.5) {
+          float2 qtUv = float2(xy.x / textureSize.x,
+                               1.0 - xy.y / textureSize.y);
+          float intensity = p0.x;
+          float4 origin = samplePlugin(qtUv);
+          if (intensity <= 0.001)
+            return origin;
+          float pulse = 0.5 + 0.5 * sin(qtUv.y * p0.w * 20.0);
+          float blurAmount =
+              mix(p0.z, p0.y, pulse) * intensity * 0.05;
+          if (blurAmount < 0.0001)
+            return origin;
+          float4 finalColor = float4(0.0);
+          float totalWeight = 0.0;
+          for (int index = -6; index <= 6; ++index) {
+            float tapProgress = float(index) / 6.0;
+            float weight = 1.0 - abs(tapProgress);
+            finalColor += samplePlugin(
+                qtUv + float2(tapProgress * blurAmount, 0.0)) * weight;
+            totalWeight += weight;
+          }
+          return totalWeight > 0.0 ? finalColor / totalWeight : origin;
+        }
+        float amount = p2.x;
+        float intensity = p1.w;
+        if (amount <= 0.000001 || intensity <= 0.000001)
+          return source;
+        float angle = radians(p0.x);
+        float radius = p0.y * amount * intensity *
+            (1.0 + p0.w *
+             sin(progress * p1.z * 6.2831853 + p1.x));
+        float sampleCount = floor(p0.z + 0.5);
+        float2 direction = float2(cos(angle), sin(angle));
+        float4 accumulated = float4(0.0);
+        float weight = 0.0;
+        for (int index = 0; index < 16; ++index) {
+          if (float(index) < sampleCount) {
+            float coordinate = sampleCount <= 1.0
+                ? 0.0
+                : float(index) / (sampleCount - 1.0) - 0.5;
+            accumulated += sampleInput(xy + direction * radius * coordinate);
+            weight += 1.0;
+          }
+        }
+        float4 effected = accumulated / max(weight, 1.0) * p1.y;
+        return mix(source, effected, intensity);
+      }
+
+      float2 uv = float2(xy.x / textureSize.x,
+                         1.0 - xy.y / textureSize.y);
+
+      if (mode < 6.5) {
+        float4 originalColor = samplePlugin(uv);
+        originalColor.rgb = srgbToLinear(originalColor.rgb);
+        float ratio = p0.y;
+        float2 outlineUv = uv - float2(p1.y, p1.z / ratio);
+        float maximumAlpha = 0.0;
+        float scaledSize = p0.z / 1000.0;
+        for (int index = 0; index < 16; ++index) {
+          float angle = float(index) * 6.283185307 / 16.0;
+          float2 offset = float2(cos(angle), sin(angle)) * scaledSize;
+          offset.x *= p0.w;
+          offset.y *= p1.x / ratio;
+          maximumAlpha = max(maximumAlpha,
+                             samplePlugin(outlineUv + offset).a);
+        }
+        float centerAlpha = samplePlugin(outlineUv).a;
+        float outlineAlpha = clamp(maximumAlpha - centerAlpha, 0.0, 1.0);
+        float4 outlineColor = float4(p1.w, p2.x, p2.y, p2.z);
+        float3 linearOutline = srgbToLinear(outlineColor.rgb);
+        float3 blendedRgb = mix(originalColor.rgb, linearOutline,
+                                outlineAlpha * outlineColor.a);
+        float blendedAlpha =
+            max(originalColor.a, outlineAlpha * outlineColor.a);
+        float4 finalColor = mix(
+            originalColor, float4(blendedRgb, blendedAlpha), p0.x);
+        finalColor.rgb = linearToSrgb(finalColor.rgb);
+        return finalColor;
+      }
+
+      if (mode < 7.5) {
+        float4 texel = samplePlugin(uv);
+        texel.rgb = srgbToLinear(texel.rgb);
+        float2 centered = uv - 0.5;
+        float cosine = cos(p0.z);
+        float sine = sin(p0.z);
+        float2 rotated = float2(
+            centered.x * cosine - centered.y * sine,
+            centered.x * sine + centered.y * cosine);
+        rotated += float2(0.5 + p0.w, 0.5 + p2.x);
+        float segment = mod(rotated.x + rotated.y, p0.y * 2.0);
+        float4 effected = texel;
+        if (texel.a > 0.0) {
+          if (segment < p0.y)
+            effected = mix(texel, p1, p0.x);
+          else
+            effected = mix(texel, float4(texel.rgb, 0.0), p0.x);
+        }
+        effected.rgb = linearToSrgb(effected.rgb);
+        return effected;
+      }
+
+      if (mode < 8.5) {
+        float minimumPoint = min(p0.z, p0.w) / 100.0;
+        float maximumPoint = max(p0.z, p0.w) / 100.0;
+        float currentX = uv.x * 2.0 - 1.0;
+        float weight = 0.0;
+        if (currentX >= minimumPoint && currentX <= maximumPoint) {
+          float center = (minimumPoint + maximumPoint) * 0.5;
+          float halfWidth = (maximumPoint - minimumPoint) * 0.5;
+          if (halfWidth > 0.0001)
+            weight = 1.0 - abs(currentX - center) / halfWidth;
+        }
+        float offset = weight * (p1.x / 100.0) * 0.5 * p0.x;
+        float2 sampleUv = uv;
+        float4 result = float4(0.0);
+        if (uv.y > 0.5) {
+          sampleUv.y = uv.y - offset;
+          if (sampleUv.y >= 0.5)
+            result = samplePlugin(sampleUv);
+        } else {
+          sampleUv.y = uv.y + offset;
+          if (sampleUv.y <= 0.5)
+            result = samplePlugin(sampleUv);
+        }
+        return result;
+      }
+
+      if (mode < 9.5) {
+        float4 originalColor = samplePlugin(uv);
+        float knifeProgress = p0.z / 100.0;
+        float drop = p0.w / 100.0;
+        float slant = radians(p1.x);
+        float cutLineY = 0.5 + (uv.x - 0.5) * tan(slant);
+        float4 effectColor = originalColor;
+        if (uv.x < knifeProgress && uv.y < cutLineY) {
+          float dropOffsetY = drop * 0.5;
+          float rotationAngle = -drop * 0.2;
+          float pivotY = 0.5 - 0.5 * tan(slant);
+          float2 sourceUv = rotatePlugin(
+              uv, float2(0.0, pivotY), -rotationAngle, p0.y);
+          sourceUv.y += dropOffsetY;
+          if (sourceUv.x < 0.0 || sourceUv.x > 1.0 ||
+              sourceUv.y < 0.0 || sourceUv.y > 1.0) {
+            effectColor = float4(0.0);
+          } else {
+            float sourceCutY =
+                0.5 + (sourceUv.x - 0.5) * tan(slant);
+            effectColor = sourceUv.y > sourceCutY
+                ? float4(0.0) : samplePlugin(sourceUv);
+          }
+        }
+        return mix(originalColor, effectColor, p0.x);
+      }
+
+      if (mode < 10.5) {
+        float4 original = samplePlugin(uv);
+        float blockScale = clamp(p0.w / 100.0, 0.0, 1.0);
+        float blockCount = mix(200.0, 5.0, blockScale);
+        float blockId = floor(uv.y * blockCount);
+        float randomOffset =
+            (pluginRandom(float2(blockId, p1.x)) - 0.5) * 2.0;
+        if (abs(randomOffset) < 0.7)
+          randomOffset = 0.0;
+        float maximumDistance = clamp(p0.z / 100.0, 0.0, 1.0) * 0.5;
+        float2 distorted = uv - float2(randomOffset * maximumDistance * p0.x,
+                                       0.0);
+        float4 pixelColor = samplePlugin(distorted);
+        float2 grid = float2(100.0 * p0.y, 100.0);
+        float2 cell = fract(distorted * grid);
+        float distanceFromCenter = distance(cell, float2(0.5));
+        float dotMask =
+            1.0 - smoothstep(0.35, 0.45, distanceFromCenter);
+        float3 finalColor =
+            mix(original.rgb, pixelColor.rgb * dotMask, p0.x);
+        return float4(finalColor, original.a);
+      }
+
+      if (mode < 11.5) {
+        float4 originalColor = samplePlugin(uv);
+        float period = 10.0;
+        float time = mod(p0.z, period);
+        float loopProgress = time / period;
+        float2 scrollA = float2(0.0, -time * p0.w);
+        float2 scrollB = float2(0.0, -(time - period) * p0.w);
+        float2 noiseUv = float2(uv.x * p0.y, uv.y);
+        float noiseA = pluginSimplexNoise(noiseUv * p1.x + scrollA);
+        float noiseB = pluginSimplexNoise(noiseUv * p1.x + scrollB);
+        float noise = mix(noiseA, noiseB, loopProgress);
+        float strength = p0.x * 0.05;
+        float2 distorted =
+            uv + float2(noise * strength, noise * strength * 2.0);
+        float distortedAlpha = 0.0;
+        if (distorted.x >= 0.0 && distorted.x <= 1.0 &&
+            distorted.y >= 0.0 && distorted.y <= 1.0)
+          distortedAlpha = samplePlugin(distorted).a;
+        float flameMask = smoothstep(
+            0.0, 1.0, max(0.0, distortedAlpha - originalColor.a));
+        float4 flameOutput = float4(p1.y, p1.z, p1.w, p2.x) * flameMask;
+        return mix(flameOutput, originalColor, originalColor.a);
+      }
+
+      if (mode < 12.5) {
+        float4 original = samplePlugin(uv);
+        float2 point = uv * 2.0 - 1.0;
+        float3 rayDirection =
+            normalize(float3(point.x * p0.y, point.y, p1.y));
+        float denominator = sqrt(rayDirection.y * rayDirection.y +
+                                 rayDirection.z * rayDirection.z);
+        if (denominator < 0.0001)
+          return original;
+        float rayLength = p1.x / denominator;
+        float3 hit = rayDirection * rayLength;
+        float mappedU = hit.x * 0.5 + 0.5;
+        float mappedV = atan(hit.y, hit.z) / 6.283185307 + 0.5;
+        float totalPhase = p0.z * p0.w;
+        float phaseIndex = floor(totalPhase);
+        float phaseFraction = fract(totalPhase);
+        float adjustedFraction = smoothstep(
+            p1.z * 0.5, 1.0 - p1.z * 0.5, phaseFraction);
+        mappedV += (phaseIndex + adjustedFraction) / p0.w;
+        mappedV = fract(mappedV * p0.w);
+        float4 effected = samplePlugin(float2(mappedU, mappedV));
+        effected.rgb *= 1.0 / (1.0 + rayLength * rayLength * 0.1);
+        return mix(original, effected, p0.x);
+      }
+
+      if (mode < 13.5) {
+        float seam = 1.0 - clamp(p0.x, 0.001, 0.999);
+        float finalY = uv.y + sin(uv.x * p0.w * 6.28318) * p0.z;
+        float finalX = uv.x < seam
+            ? uv.x / seam : (uv.x - seam) / (1.0 - seam);
+        if (finalY < 0.0 || finalY > 1.0)
+          return float4(0.0);
+        return samplePlugin(float2(finalX, finalY));
+      }
+
+      float4 effectColor = float4(0.0);
+      for (int index = 20; index >= 0; --index) {
+        float layerIndex = float(index);
+        if (layerIndex <= p0.z) {
+          float layerProgress = p0.x - layerIndex * p0.w;
+          if (layerProgress >= 0.0) {
+            layerProgress = clamp(layerProgress, 0.0, 1.0);
+            float yOffset = mix(0.5, 0.0, pow(layerProgress, 0.8));
+            float startScale = 1.0 - p1.x * 0.9;
+            float currentScale = mix(
+                startScale, 1.0, pow(layerProgress, p1.y));
+            float2 drawCenter = float2(0.5, 0.5 + yOffset);
+            float2 localUv = (uv - drawCenter) / currentScale + 0.5;
+            if (localUv.x >= 0.0 && localUv.x <= 1.0 &&
+                localUv.y >= 0.0 && localUv.y <= 1.0) {
+              float4 texel = samplePlugin(localUv);
+              float alpha = texel.a;
+              if (index == 0) {
+                effectColor = mix(effectColor, texel, alpha);
+              } else {
+                float isOutline = step(0.1, alpha) * step(alpha, 0.9);
+                float4 outline = float4(p1.z, p1.w, p2.x, 1.0);
+                effectColor = mix(effectColor, outline,
+                                  p2.y * isOutline);
+              }
+            }
+          }
+        }
+      }
+      // The bound Template_096f Metal fragment publishes the echo composite
+      // directly. Its GLES variant additionally fades to the original input
+      // as spacing reaches zero; that transition is absent on the reference
+      // Metal path and discards the accumulated coverage at the end.
+      return effectColor;
+    }
+  

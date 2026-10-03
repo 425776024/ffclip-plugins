@@ -1,0 +1,44 @@
+
+    uniform shader inputTexture;
+    uniform float2 textureSize;
+    uniform float2 center;
+    uniform float2 fovScale;
+    uniform float2 distortParameters;
+    uniform float inverseLensDistortion;
+    uniform float fillBorders;
+
+    float mirrorCoordinate(float value) {
+      value = abs(value);
+      return abs(floor(ceil(value) / 2.0) * 2.0 - value);
+    }
+
+    float4 sampleQt(float2 uv) {
+      return float4(inputTexture.eval(
+          float2(uv.x, 1.0 - uv.y) * textureSize));
+    }
+
+    float4 main(float2 xy) {
+      float2 uv = float2(xy.x / textureSize.x,
+                         1.0 - xy.y / textureSize.y);
+      float2 delta = uv - center;
+      float scaledX = delta.x * fovScale.x;
+      float scaledY = delta.y * fovScale.y;
+      float radiusSquared = scaledX * scaledX + scaledY * scaledY;
+      float radius = sqrt(radiusSquared);
+      float distortionScale = inverseLensDistortion < 0.5
+          ? 1.0 / (1.0 - distortParameters.x * radius -
+                   distortParameters.y * radiusSquared)
+          : 1.0 / (1.0 + distortParameters.x * radius +
+                   distortParameters.y * radiusSquared);
+      float2 mappedUv = delta * distortionScale + center;
+      if (fillBorders >= 0.5) {
+        mappedUv = float2(mirrorCoordinate(mappedUv.x),
+                          mirrorCoordinate(mappedUv.y));
+        return sampleQt(mappedUv);
+      }
+      if (distortionScale > 0.0 && mappedUv.x >= 0.0 &&
+          mappedUv.x <= 1.0 && mappedUv.y >= 0.0 && mappedUv.y <= 1.0)
+        return sampleQt(mappedUv);
+      return float4(0.0);
+    }
+  

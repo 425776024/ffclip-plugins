@@ -1,0 +1,188 @@
+// Text reveal/distortion and the following block-copy composite share the
+// source's simplex field. All animation values are supplied by the typed IR.
+uniform shader inputTexture;
+uniform float2 textureSize;
+uniform float2 viewportSize;
+uniform float2 textSize;
+uniform float2 modelOffset;
+uniform float progress;
+uniform float progress1;
+uniform float noiseRange;
+uniform float border;
+uniform float noiseStrength;
+uniform float passIndex;
+
+float4 sampleSource(float2 uv) {
+    return float4(inputTexture.eval(float2(uv.x, 1.0 - uv.y) * textureSize));
+}
+
+float3 gradient33(float3 p) {
+    p = fract(p * float3(234.51, 254.64, 214.57));
+    p += dot(p, p.yzx + 28.21);
+    return fract(p.zyx * (p.xzy + p.yxz)) * 2.0 - 1.0;
+}
+
+float simplex3(float3 p) {
+    float3 cell = floor(p + dot(p, float3(0.3333333)));
+    float3 x = p - cell + dot(cell, float3(0.1666667));
+    float3 e = step(float3(0.0), x - x.yzx);
+    float3 i1 = e * (1.0 - e.zxy);
+    float3 i2 = 1.0 - e.zxy * (1.0 - e);
+    float3 x1 = x - i1 + 0.1666667;
+    float3 x2 = x - i2 + 2.0 * 0.1666667;
+    float3 x3 = x - 1.0 + 3.0 * 0.1666667;
+    float4 weights = max(0.6 - float4(dot(x, x), dot(x1, x1),
+                                     dot(x2, x2), dot(x3, x3)), 0.0);
+    float4 values = float4(dot(gradient33(cell), x),
+                          dot(gradient33(cell + i1), x1),
+                          dot(gradient33(cell + i2), x2),
+                          dot(gradient33(cell + 1.0), x3));
+    weights *= weights;
+    weights *= weights;
+    values *= weights;
+    return dot(values, float4(52.0));
+}
+
+float fractal(float3 point, float frequency, int octaves, float persistence) {
+    float value = 0.0;
+    float amplitude = 1.0;
+    float normalization = 0.0;
+    for (int octave = 0; octave < 8; ++octave) {
+        if (octave >= octaves) break;
+        normalization += amplitude;
+        value += simplex3(point * frequency) * amplitude;
+        frequency *= 2.0;
+        amplitude *= persistence;
+    }
+    return value / normalization;
+}
+
+float contrastNoise(float2 uv, float frequency, int octaves, float contrast) {
+    float n = fractal(float3(uv, 0.0), frequency, octaves, 0.7) * 0.5 + 0.5;
+    return clamp((n - 0.5) * contrast + 0.5, 0.0, 1.0);
+}
+
+float animatedCut(float2 uv, float frequency, float rangeScale, float strengthScale) {
+    float3 point = float3(uv, 0.0) - float3(progress1, 0.0, progress1 * 10.0);
+    float n = fractal(point, frequency, 8, 0.7) * 0.5 + 0.5;
+    n = (n - 0.5) * 400.0 + 0.5;
+    float strength = clamp((progress1 - 0.95) / 0.05 * 0.6, 0.0, 0.6);
+    return clamp(n - noiseRange * rangeScale *
+                 (1.0 + pow(strength, 2.0) * strengthScale), 0.0, 1.0);
+}
+
+float revealMask(float2 uv, float offsetY, float noiseOffset) {
+    uv += float2(0.0, offsetY);
+    float2 aspect = textSize / max(textSize.x, textSize.y);
+    float2 p = (uv - 0.5) * aspect;
+    float angle = radians(-18.0);
+    // Match the source's column-major mat2, including its rotation direction.
+    p = float2(cos(angle) * p.x + sin(angle) * p.y,
+               -sin(angle) * p.x + cos(angle) * p.y);
+    uv = p / aspect + 0.5;
+    float2 noiseUv = (uv - 0.5) * aspect + 0.5;
+    float n = fractal(float3(noiseUv * float2(2.0, 1.5) +
+                             float2(0.0, noiseOffset), 0.0), 5.0, 6, 0.5);
+    float flag = step(0.0, uv.y);
+    float y = (uv.y - (0.5 - border)) / (2.0 * border);
+    return clamp(((n * noiseStrength + y - 0.5) * 16.0 + 0.5) * flag, 0.0, 1.0);
+}
+
+float displacementCurve(float x) {
+    float z = (x - 1.0) * (x - 1.0);
+    float w = pow(1.0 - x * x, 11.0);
+    float m = clamp((x - 0.1) * 4.0 + 0.5, 0.0, 1.0);
+    m = 3.0 * m * m - 2.0 * m * m * m;
+    return z * m + w * (1.0 - m);
+}
+
+float hash31(float3 p, float3 seed) {
+    p = fract(p * seed);
+    p += dot(p, p + (seed.x + seed.y + seed.x) * 0.02);
+    return fract(p.x * p.y * p.z);
+}
+
+float hash21(float2 p) {
+    return fract(sin(p.x * 100.0 + p.y * 168.0) * 2368.0);
+}
+
+float2 blockCell(float2 uv, float seed) {
+    float2 id = floor(uv);
+    float2 fraction = fract(uv);
+    float2 result = id;
+    float maximumScale = 0.0;
+    for (int index = -1; index < 2; ++index) {
+        float2 cell = id + float2(index);
+        float scale = hash31(float3(cell.yy, seed), float3(233.12, 829.23, 482.21)) * 0.5 + 1.0;
+        if (abs(fraction.y - float(index) - 0.5) * 2.0 < scale && maximumScale < scale) {
+            maximumScale = scale;
+            result.y = cell.y;
+        }
+    }
+    float shiftedX = uv.x + hash21(result.yy + seed * 100.0 + 100.0);
+    id = float2(floor(shiftedX), result.y);
+    fraction.x = fract(shiftedX);
+    result.x = id.x;
+    maximumScale = 0.0;
+    for (int index = -1; index < 2; ++index) {
+        float2 cell = id + float2(index, 0);
+        float scale = hash31(float3(cell, seed + 2.0), float3(198.12, 769.23, 642.21)) * 0.5 + 1.0;
+        if (abs(fraction.x - float(index) - 0.5) * 2.0 < scale && maximumScale < scale) {
+            maximumScale = scale;
+            result.x = cell.x;
+        }
+    }
+    float n = hash31(float3(result, seed + 1.0), float3(881.12, 389.23, 780.21));
+    float ratio = clamp((max(viewportSize.x / viewportSize.y, 1.0) - 1.0) * 0.05 + 1.0, 0.8, 1.2);
+    return float2(step(0.6 * ratio, n), hash21(result + 200.0) * 0.3 + 0.5);
+}
+
+half4 main(float2 position) {
+    float2 sourceUv = float2(position.x / textureSize.x, 1.0 - position.y / textureSize.y);
+    if (passIndex > 0.5) {
+        float p = smoothstep(0.2, 0.58, progress);
+        float2 uv = sourceUv - modelOffset * 0.5 * float2(viewportSize.y / viewportSize.x, 1.0);
+        uv = (uv - 0.5) * viewportSize / max(viewportSize.x, viewportSize.y) + 0.5;
+        float2 first = blockCell((uv - float2(p * 0.25, 0.0)) * float2(4.0, 12.0), p + 2.0);
+        float2 second = blockCell((1.0 - (uv - float2(p * 0.25, 0.0))) * float2(4.0, 12.0) +
+                                  float2(12.4, 514.3), p + 2.0);
+        float firstOffset = first.y / 6.0 * (1.0 - p);
+        float secondOffset = second.y / 6.0 * (1.0 - p);
+        float firstNoise = 1.0 - contrastNoise(uv - float2(firstOffset, 0.0), 20.0, 6, 4.0) * first.x;
+        float secondNoise = 1.0 - contrastNoise(uv - float2(secondOffset, 0.0), 20.0, 6, 4.0) * second.x;
+        float4 firstColor = sampleSource(sourceUv - float2(firstOffset, 0.0)) * first.x;
+        float4 secondColor = sampleSource(sourceUv - float2(secondOffset, 0.0)) * second.x;
+        float4 copies = secondColor * secondNoise + firstColor * firstNoise * (1.0 - secondColor.a * secondNoise);
+        float4 source = sampleSource(sourceUv);
+        return half4(source + copies * (1.0 - source.a));
+    }
+
+    float2 uv = (sourceUv - 0.5) * textSize / max(textSize.x, textSize.y) * float2(1.0, 1.3) + 0.5;
+    float cp = clamp(progress, 0.0, 1.0);
+    float cp1 = clamp(progress1, 0.0, 1.0);
+    float textOffset = -min(3.2 * min(pow(cp, 0.3), 1.0) - 3.0, 0.0) * textSize.y / textSize.x;
+    float noiseOffset = -1.25 * cp;
+    float maskOffset = mix(-0.1 * textSize.x / textSize.y - 0.6,
+                           0.1 * textSize.x / textSize.y + 1.2, pow(cp, 1.2));
+    float mask = revealMask(sourceUv, maskOffset, cp);
+    float n1 = contrastNoise(uv - float2(noiseOffset, 0.0), 16.0, 4, -1.6);
+    float n2 = contrastNoise(uv - float2(noiseOffset, 0.0), 32.0, 4, 0.75);
+    float n4 = contrastNoise(uv, 48.0, 6, 3.0);
+    float2 cutUv = uv - float2(textOffset, 0.0);
+    float n5 = animatedCut(cutUv, 16.0, 1.0, 1.5) * contrastNoise(cutUv, 48.0, 6, 3.0);
+    float n51 = animatedCut(cutUv, 6.0, 0.8, 2.125) * contrastNoise(cutUv, 48.0, 6, 2.0);
+    float p = pow(displacementCurve(cp1), 0.15);
+    float2 warp = float2(mix(0.003, -0.2, p) * 0.75 * textSize.y / textSize.x,
+                         mix(0.003, 0.05, p) * 0.75);
+    float strength = pow(clamp((1.0 - cp1) / 0.5, 0.0, 1.0), 1.2);
+    float2 shifted = sourceUv - float2(textOffset, 0.0);
+    float4 original = sampleSource(shifted);
+    float2 warped = shifted - warp * (n2 * 2.0 - 1.0) * (1.0 - original.a) * mask * strength;
+    float4 firstColor = sampleSource(warped);
+    mask = revealMask(sourceUv - warp * (n2 * 2.0 - 1.0) * (1.0 - mask) * strength, maskOffset, cp);
+    firstColor *= (1.0 - n4 * pow(clamp((1.0 - cp1) / 0.2 * 0.2 + 0.8, 0.8, 1.0), 1.2)) * mask;
+    float4 secondColor = sampleSource(shifted - float2(warp.x * strength, 0.0) * (n1 * 2.0 - 1.0) * original.a) * mask;
+    float4 result = (firstColor * original.a + secondColor * (1.0 - firstColor.a) * (1.0 - n51) * (1.0 - n5)) *
+                    step(0.0, sourceUv.y) * step(sourceUv.y, 1.0) * step(0.02, progress);
+    return half4(mix(result, sampleSource(sourceUv), smoothstep(0.99, 1.0, progress)));
+}

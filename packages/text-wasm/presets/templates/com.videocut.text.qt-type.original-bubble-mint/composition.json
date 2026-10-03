@@ -1,0 +1,334 @@
+{
+  "format": "videocut.text-template",
+  "id": "builtin.text.qt-type.original-bubble-mint",
+  "display": {
+    "name_key": "bubble-mint",
+    "fallback_name": "薄荷对话",
+    "category": "bubble_preset",
+    "tags": [
+      "bubble",
+      "qt-type"
+    ]
+  },
+  "placement": {
+    "default_duration_ticks": 600000,
+    "reference_width": 1920,
+    "reference_height": 1080
+  },
+  "bindings": [
+    {
+      "id": "content",
+      "kind": "plain_text",
+      "default": "你好",
+      "target": {
+        "paragraph_id": "paragraph-main",
+        "run_id": "run-main"
+      },
+      "content_slot_id": "content"
+    }
+  ],
+  "rules": [
+    {
+      "channel": "bubble",
+      "mode": "replace",
+      "content_slot_id": "content",
+      "target_layer_id": "",
+      "semantic_role": ""
+    }
+  ],
+  "document": {
+    "layout_box": {
+      "x": 260,
+      "y": 242.66267,
+      "width": 1400,
+      "height": 376,
+      "vertical_alignment": "center",
+      "clip_overflow": false,
+      "sizing_mode": "fit_text",
+      "minimum_width": 0,
+      "minimum_height": 0,
+      "minimum_fit_font_size": 1,
+      "maximum_fit_font_size": 4096,
+      "fit_measurement_outsets": {
+        "left": 0,
+        "top": 0.55555556,
+        "right": 0,
+        "bottom": 0.55555556
+      },
+      "fit_origin_x": 548.888875,
+      "padding": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "pixel_snap": false
+    },
+    "writing_mode": "horizontal",
+    "content_slots": [
+      {
+        "slot_id": "content",
+        "semantic_role": "primary",
+        "paragraph_ids": [
+          "paragraph-main"
+        ],
+        "run_ids": [
+          "run-main"
+        ]
+      }
+    ],
+    "paragraphs": [
+      {
+        "id": "paragraph-main",
+        "style": {
+          "alignment": "center",
+          "direction": "auto",
+          "locale": "und",
+          "line_height": 1,
+          "max_lines": 2,
+          "overflow": "visible",
+          "wrap": "word"
+        },
+        "runs": [
+          {
+            "id": "run-main",
+            "text_binding": "content",
+            "locale": "und",
+            "style": {
+              "font": {
+                "primary": {
+                  "kind": "builtin",
+                  "family": "Inter",
+                  "postscript_name": "Inter-Regular",
+                  "weight": 400,
+                  "width": 5,
+                  "slant": "upright",
+                  "face_index": 0,
+                  "variation_axes": [],
+                  "asset_id": "builtin.font.inter.variable.v1",
+                  "platform": "",
+                  "face_fingerprint": "",
+                  "allow_system_glyph_fallback": false
+                },
+                "fallbacks": [
+                  {
+                    "kind": "builtin",
+                    "family": "Source Han Sans SC Medium",
+                    "postscript_name": "SourceHanSansSC-Medium",
+                    "weight": 500,
+                    "width": 5,
+                    "slant": "upright",
+                    "face_index": 0,
+                    "variation_axes": [],
+                    "asset_id": "builtin.font.reference-cjk.source-han-sans-sc-medium.v1",
+                    "platform": "",
+                    "face_fingerprint": "",
+                    "allow_system_glyph_fallback": false
+                  }
+                ],
+                "family": "Inter",
+                "postscript_name": "Inter-Regular",
+                "weight": 400,
+                "width": 5,
+                "slant": "upright",
+                "face_index": 0,
+                "variation_axes": [],
+                "features": [],
+                "allow_system_glyph_fallback": false
+              },
+              "font_size": 411.1111,
+              "letter_spacing": 0,
+              "word_spacing": 0,
+              "baseline_shift": 0,
+              "materials": {
+                "layers": [
+                  {
+                    "type": "fill",
+                    "layer_id": "glyph.primaryFill",
+                    "z_order": 0,
+                    "blend": "source_over",
+                    "material": {
+                      "kind": "editable_slot",
+                      "semantic_role": "glyph.primaryFill",
+                      "fallback": {
+                        "kind": "solid",
+                        "color": [
+                          0.12549019607843137,
+                          0.28627450980392155,
+                          0.26666666666666666,
+                          1
+                        ]
+                      }
+                    }
+                  }
+                ]
+              },
+              "background": {
+                "enabled": false,
+                "color": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "padding": {
+                  "left": 0,
+                  "top": 0,
+                  "right": 0,
+                  "bottom": 0
+                },
+                "corner_radius": 0
+              },
+              "decoration": {
+                "underline": {
+                  "enabled": false
+                },
+                "strike_through": {
+                  "enabled": false
+                }
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "appearance": {
+    "backdrops": {
+      "layers": [
+        {
+          "layer_id": "bubble.primary",
+          "channel": "bubble",
+          "enabled": true,
+          "source": {
+            "kind": "nine_slice",
+            "asset": {
+              "source_kind": "builtin",
+              "asset_id": "asset://assets/asset-000.png",
+              "media_type": "image/png",
+              "color_space": "srgb",
+              "orientation": "up"
+            },
+            "cap_insets": {
+              "left": 36,
+              "top": 13,
+              "right": 36,
+              "bottom": 13
+            },
+            "content_insets": {
+              "left": 96,
+              "top": 34.666666666666664,
+              "right": 96,
+              "bottom": 34.666666666666664
+            },
+            "minimum_content_width": 822.22225,
+            "minimum_content_height": 411.1111,
+            "stretch_mode": "nine_slice",
+            "fallback_color": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "material_override": {
+            "kind": "editable_slot",
+            "semantic_role": "backdrop.primaryFill",
+            "fallback": {
+              "kind": "texture",
+              "texture": {
+                "source_kind": "builtin",
+                "asset_id": "asset://assets/asset-000.png",
+                "media_type": "image/png",
+                "color_space": "srgb",
+                "orientation": "up"
+              },
+              "fit": "stretch",
+              "mapping": "scope_bounds",
+              "coordinates": {
+                "space": "layout_box",
+                "outset": 0,
+                "scale": 1
+              },
+              "scale": 1,
+              "rotation_degrees": 0,
+              "offset_x": 0,
+              "offset_y": 0,
+              "flip_x": false,
+              "flip_y": false,
+              "atlas_columns": 1,
+              "atlas_rows": 1,
+              "opacity": 1,
+              "source_alpha": false,
+              "underlay_color": null
+            },
+            "replacement_mask": {
+              "source_kind": "builtin",
+              "asset_id": "asset://assets/asset-000.png",
+              "media_type": "image/png",
+              "color_space": "srgb",
+              "orientation": "up"
+            }
+          },
+          "padding": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0
+          },
+          "fit": "ink_bounds",
+          "transform": {
+            "offset_x": 0,
+            "offset_y": 0,
+            "scale_x": 1,
+            "scale_y": 1,
+            "rotation_degrees": 0,
+            "opacity": 1
+          },
+          "z_order": -100,
+          "animation_clips": []
+        }
+      ]
+    },
+    "sdf_material": {
+      "enabled": true,
+      "source_creation_component": "sdf_text",
+      "source_design_width": 720,
+      "source_design_height": 1280,
+      "distance_range": 172,
+      "raster_distance_range": 30,
+      "smoothing_scale": 0.6
+    },
+    "bend": {
+      "enabled": false,
+      "amount": 0
+    },
+    "path": {
+      "enabled": false,
+      "geometry_id": "",
+      "commands": [],
+      "start_offset": 0,
+      "baseline_offset": 0,
+      "overflow": "clip",
+      "loop": false,
+      "rotate_to_tangent": true,
+      "keep_upright": true
+    },
+    "visual_extent": {
+      "allow_control_overflow": true,
+      "maximum_extent_width": 1840,
+      "maximum_extent_height": 900
+    },
+    "global_alpha": 1
+  },
+  "decorations": [],
+  "resources": [
+    {
+      "resource_id": "assets/asset-000.png",
+      "kind": "texture",
+      "ownership": "builtin",
+      "asset_id": "asset://assets/asset-000.png",
+      "media_type": "image/png"
+    }
+  ]
+}

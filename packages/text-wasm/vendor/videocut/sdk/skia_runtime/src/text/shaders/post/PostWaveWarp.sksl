@@ -1,0 +1,146 @@
+
+    uniform shader inputTexture;
+    uniform float4 effectBounds;
+    uniform float waveType;
+    uniform float amplitude;
+    uniform float fixedType;
+    uniform float wavelength;
+    uniform float phase;
+    uniform float2 waveDirection;
+    uniform float antiAliasing;
+
+    float waveValue(float position) {
+      if (waveType < 0.5) {
+        return sin(6.283185482025146484375 * position);
+      }
+      if (waveType < 1.5) {
+        return step(position, 0.5);
+      }
+      if (waveType < 2.5) {
+        return mix(-1.0, 1.0,
+                   1.0 - abs(0.5 - position) * 2.0);
+      }
+      if (waveType < 3.5) {
+        return mix(-1.0, 1.0, position);
+      }
+      if (waveType < 4.5) {
+        float value = mix(1.0, -1.0, fract(position + position));
+        float semicircle = sqrt(max(0.0, 1.0 - value * value));
+        return mix(semicircle, -semicircle, step(0.5, position));
+      }
+      if (waveType < 5.5) {
+        float value = mix(1.0, -1.0, position);
+        return mix(1.0, -1.0,
+                   sqrt(max(0.0, 1.0 - value * value)));
+      }
+      if (waveType < 6.5) {
+        float value = mix(1.0, -1.0, fract(position + position));
+        float semicircle = sqrt(max(0.0, 1.0 - value * value));
+        return mix(semicircle - 1.0, 1.0 - semicircle,
+                   step(position, 0.5));
+      }
+      if (waveType < 7.5) {
+        float quantized = floor(position * 200.0) / 200.0;
+        float value = quantized * 1000.0;
+        return cos(value * 0.5) * cos(value * 0.13) *
+               sin((value + 10.0) * 0.3);
+      }
+      float value = 3.1415927410125732421875 * position * 30.0;
+      return cos(value * 0.5) * cos(value * 0.13) *
+             sin((value + 10.0) * 0.3);
+    }
+
+    float remap01(float start, float end, float value) {
+      return clamp((value - start) / (end - start), 0.0, 1.0);
+    }
+
+    float2 applyFixedEdge(float2 original, float2 warped) {
+      float2 size = effectBounds.zw;
+      float edge = amplitude * 1.2000000476837158203125;
+      if (fixedType < 0.5) {
+        return warped;
+      }
+      if (fixedType < 1.5) {
+        float2 startWeight = clamp(original / float2(edge), 0.0, 1.0);
+        float2 endWeight = clamp((size - original) / float2(edge), 0.0, 1.0);
+        float weight = min(min(startWeight.x, startWeight.y),
+                           min(endWeight.x, endWeight.y));
+        return mix(original, warped, weight);
+      }
+      if (fixedType < 2.5) {
+        float radius = min(size.x, size.y) * 0.4;
+        float weight = remap01(0.0, radius,
+                               length(original - size * 0.5));
+        return mix(original, warped, weight * weight);
+      }
+      if (fixedType < 3.5) {
+        return mix(original, warped,
+                   remap01(0.0, edge, original.x));
+      }
+      if (fixedType < 4.5) {
+        return mix(original, warped,
+                   remap01(0.0, edge, original.y));
+      }
+      if (fixedType < 5.5) {
+        return mix(original, warped,
+                   remap01(size.x, size.x - edge, original.x));
+      }
+      if (fixedType < 6.5) {
+        return mix(original, warped,
+                   remap01(size.y, size.y - edge, original.y));
+      }
+      if (fixedType < 7.5) {
+        float weight = min(remap01(0.0, edge, original.x),
+                           remap01(size.x, size.x - edge, original.x));
+        return mix(original, warped, weight);
+      }
+      float weight = min(remap01(0.0, edge, original.y),
+                         remap01(size.y, size.y - edge, original.y));
+      return mix(original, warped, weight);
+    }
+
+    half4 sampleInput(float2 local) {
+      float2 valid = step(float2(0.0), local) *
+                     step(local, effectBounds.zw);
+      return inputTexture.eval(local) * half(valid.x * valid.y);
+    }
+
+    half4 sampleWarp(float2 local) {
+      float pixelScale = min(effectBounds.z, effectBounds.w) *
+                         0.00200000009499490261077880859375;
+      float wavePosition = fract(dot(local, waveDirection) /
+                                 (wavelength * pixelScale) + phase);
+      float2 displacementDirection =
+          float2(-waveDirection.y, waveDirection.x);
+      float2 warped = local - displacementDirection *
+          (waveValue(wavePosition) * amplitude * pixelScale);
+      return sampleInput(applyFixedEdge(local, warped));
+    }
+
+    half4 main(float2 xy) {
+      float2 local = xy - effectBounds.xy;
+      if (antiAliasing < 0.5) {
+        return sampleWarp(local);
+      }
+      half4 color = sampleWarp(local);
+      if (antiAliasing < 1.5) {
+        float2 offset = float2(0.4, 0.3);
+        for (int index = 0; index < 4; ++index) {
+          color += sampleWarp(local + offset);
+          offset = float2(-offset.y, offset.x);
+        }
+        return color / 5.0;
+      }
+      float2 offset = float2(0.32, 0.24);
+      for (int index = 0; index < 4; ++index) {
+        color += sampleWarp(local + offset);
+        offset = float2(-offset.y, offset.x);
+      }
+      offset = float2(0.39, 0.52);
+      for (int index = 0; index < 4; ++index) {
+        color += sampleWarp(local + offset);
+        offset = float2(-offset.y, offset.x);
+      }
+      return color / 9.0;
+    }
+  

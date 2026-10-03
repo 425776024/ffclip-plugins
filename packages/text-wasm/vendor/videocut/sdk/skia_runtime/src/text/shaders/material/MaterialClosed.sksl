@@ -1,0 +1,100 @@
+
+    uniform shader inputTexture;
+    uniform float2 textureSize;
+    uniform float operation;
+    uniform float projectionCanvasHeight;
+    uniform float2 viewportSize;
+    uniform float4 scalars0;
+    uniform float4 scalars1;
+    uniform float2 vector1;
+    uniform float2 vector3;
+    uniform float4 color2;
+
+    float4 sampleSource(float2 position) {
+      return float4(inputTexture.eval(
+          clamp(position, float2(0.0), textureSize)));
+    }
+
+    float4 over(float4 top, float4 bottom) {
+      return top + bottom * (1.0 - top.a);
+    }
+
+    half4 main(float2 position) {
+      float4 source = sampleSource(position);
+
+      if (operation < 6.5) {
+        float radians = scalars0.w * 0.017453292519943295;
+        float2 axis = float2(cos(radians), sin(radians));
+        float diagonal = max(1.0, length(textureSize));
+        float coordinate = dot(position - textureSize * 0.5, axis) +
+                           diagonal * 0.5;
+        float center = clamp(scalars0.x, 0.0, 1.0) * diagonal;
+        float width = max(0.0001, scalars0.y);
+        float band = 1.0 - smoothstep(width * 0.25, width,
+                                     abs(coordinate - center));
+        float sweepAlpha = source.a * band * color2.a * max(0.0, scalars1.x);
+        float4 sweep = float4(color2.rgb * sweepAlpha, sweepAlpha);
+        return half4(over(sweep, source));
+      }
+
+      if (operation < 7.5) {
+        float progress = clamp(scalars0.x, 0.0, 1.0);
+        float cut = progress * textureSize.x;
+        float distanceValue = position.x - cut;
+        float visible = step(position.x, cut);
+        float glowAlpha = exp(-abs(distanceValue) /
+                              max(1.0, textureSize.x * 0.02)) *
+                          max(0.0, scalars0.y) * color2.a;
+        float4 base = source * visible;
+        float4 glow = float4(color2.rgb * glowAlpha, glowAlpha) * source.a;
+        return half4(over(glow, base));
+      }
+
+      if (operation < 18.5) {
+        float amount = scalars0.x * scalars0.z;
+        float2 centerUv = vector1 + vector3 * 0.5;
+        float2 center = float2(centerUv.x, 1.0 - centerUv.y) * textureSize;
+        float count = scalars1.y;
+        float4 accumulated = source;
+        for (int tap = 1; tap <= 64; ++tap) {
+          if (float(tap) > count) break;
+          float zoom = 1.0 + float(tap) / 720.0 * amount;
+          float2 delta = position - center;
+          accumulated += sampleSource(center + delta * zoom);
+          accumulated += sampleSource(center + delta / zoom);
+        }
+        return half4(accumulated / (2.0 * count + 1.0) *
+                     clamp(scalars1.x, 0.0, 1.0));
+      }
+
+      if (operation < 21.5) {
+        float angle = scalars0.x * 0.017453292519943295;
+        float fov = clamp(abs(scalars0.z), 1.0, 179.0) *
+                    0.017453292519943295;
+        float cosine = cos(angle);
+        float sine = sin(angle);
+        float2 center = textureSize * 0.5;
+        float2 delta = position - center;
+        float parentAngle = scalars0.y * 0.017453292519943295;
+        float cz = cos(parentAngle);
+        float sz = sin(parentAngle);
+        delta = float2(cz * delta.x - sz * delta.y,
+                       sz * delta.x + cz * delta.y);
+        // Invert the source perspective plane, including the sign of its
+        // rotated face. Parent XY scale does not scale the model's depth.
+        float depth = projectionCanvasHeight * 0.5 / tan(fov * 0.5);
+        bool rotateY = scalars1.z >= 0.5;
+        float denominator = rotateY
+            ? cosine + delta.x * sine / depth
+            : cosine - delta.y * sine / depth;
+        if (abs(denominator) < 0.000001 ||
+            cosine / denominator <= 0.0) return half4(0.0);
+        float2 samplePosition = (rotateY
+            ? float2(delta.x, delta.y * cosine)
+            : float2(delta.x * cosine, delta.y)) / denominator + center;
+        return half4(sampleSource(samplePosition) *
+                     clamp(scalars1.x, 0.0, 1.0));
+      }
+
+      return half4(0.0);
+    }

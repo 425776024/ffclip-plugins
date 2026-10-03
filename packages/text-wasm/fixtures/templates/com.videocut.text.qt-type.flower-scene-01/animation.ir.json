@@ -1,0 +1,127 @@
+{
+  "format": "videocut.text-animation",
+  "animation": {
+    "layers": [],
+    "execution_graph": {
+      "nodes": [
+        {
+          "id": "layout",
+          "node_kind": "layout",
+          "capability": "layout_glyph_run"
+        },
+        {
+          "id": "scene-prefab",
+          "node_kind": "scene",
+          "capability": "scene_prefab",
+          "input_ids": [
+            "layout"
+          ],
+          "children": [
+            {
+              "id": "scene-mesh",
+              "node_kind": "scene",
+              "capability": "scene_mesh",
+              "input_ids": [
+                "scene-prefab"
+              ]
+            },
+            {
+              "id": "effect-material-1",
+              "node_kind": "scene",
+              "capability": "scene_entity",
+              "input_ids": [
+                "scene-mesh"
+              ],
+              "children": [
+                {
+                  "id": "effect-material-1-color",
+                  "node_kind": "material_pass",
+                  "capability": "material_color_pass",
+                  "input_ids": [
+                    "effect-material-1"
+                  ]
+                },
+                {
+                  "id": "effect-material-1-depth",
+                  "node_kind": "material_pass",
+                  "capability": "material_depth_pass",
+                  "input_ids": [
+                    "effect-material-1-color"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "effect-material-2",
+              "node_kind": "scene",
+              "capability": "scene_entity",
+              "input_ids": [
+                "effect-material-1-depth"
+              ],
+              "children": [
+                {
+                  "id": "effect-material-2-color",
+                  "node_kind": "material_pass",
+                  "capability": "material_color_pass",
+                  "input_ids": [
+                    "effect-material-2"
+                  ]
+                },
+                {
+                  "id": "effect-material-2-depth",
+                  "node_kind": "material_pass",
+                  "capability": "material_depth_pass",
+                  "input_ids": [
+                    "effect-material-2-color"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "effect-material-3",
+              "node_kind": "scene",
+              "capability": "scene_entity",
+              "input_ids": [
+                "effect-material-2-depth"
+              ],
+              "children": [
+                {
+                  "id": "effect-material-3-color",
+                  "node_kind": "material_pass",
+                  "capability": "material_color_pass",
+                  "input_ids": [
+                    "effect-material-3"
+                  ]
+                },
+                {
+                  "id": "effect-material-3-depth",
+                  "node_kind": "material_pass",
+                  "capability": "material_depth_pass",
+                  "input_ids": [
+                    "effect-material-3-color"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "scene-render-target",
+          "node_kind": "render_target",
+          "capability": "render_target_offscreen",
+          "input_ids": [
+            "effect-material-3-depth"
+          ]
+        },
+        {
+          "id": "composite",
+          "node_kind": "composite",
+          "capability": "composite_source_over",
+          "input_ids": [
+            "scene-render-target"
+          ]
+        }
+      ]
+    }
+  }
+}
