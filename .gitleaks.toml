@@ -1,0 +1,13 @@
+title = "VideoCut secret scanning"
+
+[extend]
+useDefault = true
+
+[[rules]]
+id = "generic-api-key"
+[[rules.allowlists]]
+description = "BaseApi source SHA256 in the pinned source inventory"
+condition = "AND"
+paths = ['''^packages/text-wasm/vendor/SOURCE\.json$''']
+regexTarget = "line"
+regexes = ['''^\s*"sdk/base/include/videocut/base/BaseApi\.h":\s*"[a-f0-9]{64}",?$''']
