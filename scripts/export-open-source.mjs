@@ -44,7 +44,7 @@ async function copy(relative) {
 for (const relative of inputs) await copy(relative);
 if (product === 'ffvideo-plugins') {
   const pkg = JSON.parse(await readFile(join(output, 'package.json'), 'utf8'));
-  const tooling = { name: 'ffvideo-plugins', private: true, version: '0.2.0', type: 'module', license: 'MIT',
+  const tooling = { name: 'ffvideo-plugins', private: true, version: JSON.parse(await readFile(join(root, 'ffvideo/package.json'), 'utf8')).version, type: 'module', license: 'MIT',
     repository: { type: 'git', url: 'git+https://github.com/425776024/ffvideo-plugins.git' },
     engines: pkg.engines,
     scripts: { build: 'npm --prefix ffvideo run build', dev: 'npm --prefix ffvideo run dev',
