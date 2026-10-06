@@ -1,6 +1,6 @@
 {
   "name": "videocut-local",
-  "version": "0.2.11",
+  "version": "0.2.12",
   "description": "Edit local video with live previews, animated titles and MP4/WebM export.",
   "author": {
     "name": "VideoCut"

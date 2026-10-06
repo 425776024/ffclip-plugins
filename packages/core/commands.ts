@@ -58,17 +58,28 @@ export type KeyframeProperty =
   | 'audio.gainLinear'
   | `effects.${string}.amount`;
 export type Interpolation = 'linear' | 'hold' | 'easeIn' | 'easeOut' | 'easeInOut';
-export type EffectParameterPatch = {
+export type EffectParameterPatch = Record<string, number | string> & {
   radius?: number;
   strength?: number;
   amount?: number;
-  preset?: 'warm' | 'cool' | 'cinema';
+  preset?: string;
 };
 export type EffectArguments =
+  | {
+      templateId: 'color-grade' | 'detail' | 'looks' | 'custom-lut';
+      parameters?: Record<string, number | string>;
+    }
   | { templateId: 'blur'; parameters?: { radius?: number } }
   | { templateId: 'glow'; parameters?: { radius?: number; strength?: number } }
   | { templateId: 'lut'; parameters?: { preset?: 'warm' | 'cool' | 'cinema'; amount?: number } };
 export type TransitionArguments =
+  | {
+      templateId: Exclude<
+        import('./types.js').TransitionInstance['templateId'],
+        'dissolve' | 'fade' | 'wipe' | 'slide'
+      >;
+      parameters?: { direction?: 'left' | 'right' | 'up' | 'down'; easing?: Interpolation };
+    }
   | { templateId: 'dissolve'; parameters?: Record<string, never> }
   | { templateId: 'fade'; parameters?: { color?: '#000000' | '#ffffff' } }
   | { templateId: 'wipe' | 'slide'; parameters?: { direction?: 'left' | 'right' | 'up' | 'down' } };
@@ -179,5 +190,9 @@ export type EditorCommand =
       action: 'update_transition';
       transitionId: string;
       durationSeconds?: number;
-      parameters?: { color?: '#000000' | '#ffffff'; direction?: 'left' | 'right' | 'up' | 'down' };
+      parameters?: {
+        color?: '#000000' | '#ffffff';
+        direction?: 'left' | 'right' | 'up' | 'down';
+        easing?: Interpolation;
+      };
     };

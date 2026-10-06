@@ -1,3 +1,4 @@
+import { RESTORED_EFFECTS, parseCurve, parseCube } from './color.mjs';
 import { clone, identity, ticks, validateProject } from './project.mjs';
 
 const numeric = (label, min, max, defaultValue, unit = '', keyframe = true) => ({
@@ -43,28 +44,60 @@ const propertyDefinitions = {
   'audio.muted': { type: 'boolean', label: '静音', default: false, keyframe: false },
   'audio.fadeIn': numeric('淡入', 0, 10368000000, 0, 'ticks', false),
   'audio.fadeOut': numeric('淡出', 0, 10368000000, 0, 'ticks', false),
-  'text.content': { type: 'text', label: '文字内容', default: '默认文字', maxLength: 10000, keyframe: false },
+  'text.content': {
+    type: 'text',
+    label: '文字内容',
+    default: '默认文字',
+    maxLength: 10000,
+    keyframe: false
+  },
   'text.fontSize': numeric('字号', 4, 1000, 64, 'px', false),
-  'text.color': { type: 'color', label: '文字颜色', default: '#ffffff', pattern: '^#[0-9a-fA-F]{6}$', keyframe: false },
+  'text.color': {
+    type: 'color',
+    label: '文字颜色',
+    default: '#ffffff',
+    pattern: '^#[0-9a-fA-F]{6}$',
+    keyframe: false
+  },
   'time.start': numeric('时间轴入点', 0, 10368000000, 0, 'ticks', false),
   'time.duration': numeric('片段时长', 1, 10368000000, 120000, 'ticks', false),
   'time.sourceIn': numeric('素材入点', 0, 10368000000, 0, 'ticks', false),
   'time.speed': numeric('播放速度', 0.1, 10, 1, '×', false)
 };
 /** @type {Readonly<Record<string, import('./types.js').PropertyDescriptor>>} */
-export const PROPERTY_DESCRIPTORS = Object.freeze(Object.fromEntries(
-  Object.entries(propertyDefinitions).map(([path, descriptor]) => [path, {
-    ...descriptor,
-    owner: path.startsWith('audio.') ? 'audio' : path.startsWith('visual.') ? 'visual' :
-      path.startsWith('text.') ? (path === 'text.content' ? 'text' : 'plainText') :
-        ['time.sourceIn', 'time.speed'].includes(path) ? 'media' : 'item',
-    impact: path.startsWith('audio.') ? ['audio'] : path.startsWith('time.') ? ['media', 'layout', 'effect', 'composite', 'audio'] :
-      path.startsWith('text.') ? ['layout', 'effect', 'composite'] :
-        ['visual.opacity', 'visual.blendMode'].includes(path) ? ['composite'] : ['layout', 'composite']
-  }])
-));
+export const PROPERTY_DESCRIPTORS = Object.freeze(
+  Object.fromEntries(
+    Object.entries(propertyDefinitions).map(([path, descriptor]) => [
+      path,
+      {
+        ...descriptor,
+        owner: path.startsWith('audio.')
+          ? 'audio'
+          : path.startsWith('visual.')
+            ? 'visual'
+            : path.startsWith('text.')
+              ? path === 'text.content'
+                ? 'text'
+                : 'plainText'
+              : ['time.sourceIn', 'time.speed'].includes(path)
+                ? 'media'
+                : 'item',
+        impact: path.startsWith('audio.')
+          ? ['audio']
+          : path.startsWith('time.')
+            ? ['media', 'layout', 'effect', 'composite', 'audio']
+            : path.startsWith('text.')
+              ? ['layout', 'effect', 'composite']
+              : ['visual.opacity', 'visual.blendMode'].includes(path)
+                ? ['composite']
+                : ['layout', 'composite']
+      }
+    ])
+  )
+);
 /** @type {readonly import('./types.js').EffectTemplate[]} */
 export const EFFECT_TEMPLATES = Object.freeze([
+  ...RESTORED_EFFECTS,
   {
     id: 'blur',
     name: '高斯模糊',
@@ -110,7 +143,45 @@ export const TRANSITION_TEMPLATES = Object.freeze([
     parameters: {
       direction: { type: 'enum', values: ['left', 'right', 'up', 'down'], default: 'left' }
     }
-  }
+  },
+  ...Object.entries({
+    push: '推送',
+    zoom: '缩放',
+    blur: '模糊过渡',
+    fan: '扇形展开',
+    circle: '圆形扩散',
+    diamond: '菱形展开',
+    clock: '时钟扫描',
+    pageCurl: '翻页卷曲',
+    blinds: '百叶窗',
+    flash: '闪光',
+    stripeWipe: '条纹擦除',
+    checkerboard: '棋盘格',
+    flip: '翻转',
+    beam: '光束扫描',
+    tear: '撕裂',
+    pixelate: '像素化',
+    rgbSplit: 'RGB 分离'
+  }).map(([id, name]) => ({
+    id,
+    name,
+    parameters: {
+      direction: {
+        type: 'enum',
+        label: '方向',
+        values: ['left', 'right', 'up', 'down'],
+        default: 'left',
+        keyframe: false
+      },
+      easing: {
+        type: 'enum',
+        label: '缓动',
+        values: ['linear', 'easeIn', 'easeOut', 'easeInOut'],
+        default: 'easeInOut',
+        keyframe: false
+      }
+    }
+  }))
 ]);
 /** @type {(object: unknown,path: string) => unknown} */
 export function readPath(object, path) {
@@ -150,7 +221,9 @@ function descriptorForProperty(clip, property) {
   const parameters = EFFECT_TEMPLATES.find(
     (template) => template.id === effect?.templateId
   )?.parameters;
-  return parameters && Object.hasOwn(parameters, parameter) ? { ...parameters[parameter], owner: 'visual', impact: ['effect', 'composite'] } : undefined;
+  return parameters && Object.hasOwn(parameters, parameter)
+    ? { ...parameters[parameter], owner: 'visual', impact: ['effect', 'composite'] }
+    : undefined;
 }
 /** Includes only properties admitted by the current native effect catalog. */
 /** @type {(item: import('./types.js').Item,property: string) => import('./types.js').PropertyDescriptor | undefined} */
@@ -169,13 +242,22 @@ export function isPropertyApplicable(project, item, property) {
       (item.clip.type === 'video' &&
         project.assets.some((asset) => asset.id === item.clip.assetId && asset.hasAudio))
     );
-  if (property.startsWith('text.')) return item.clip.type === 'text' && (property === 'text.content' || !item.clip.text.template);
-  if (property.startsWith('time.')) return !['time.sourceIn', 'time.speed'].includes(property) || ['video', 'audio', 'html-clip'].includes(item.clip.type);
+  if (property.startsWith('text.'))
+    return item.clip.type === 'text' && (property === 'text.content' || !item.clip.text.template);
+  if (property.startsWith('time.'))
+    return (
+      !['time.sourceIn', 'time.speed'].includes(property) ||
+      ['video', 'audio', 'html-clip'].includes(item.clip.type)
+    );
   return false;
 }
 /** One closure for model commands and their timeline interaction projections. */
 /** @type {(project: import('./types.js').Project,itemIds: string[],options?: { expand?: boolean; groups?: boolean; links?: boolean }) => string[]} */
-export function selectionClosure(project, ids, { expand = true, groups = true, links = true } = {}) {
+export function selectionClosure(
+  project,
+  ids,
+  { expand = true, groups = true, links = true } = {}
+) {
   if (!Array.isArray(ids) || !ids.length || new Set(ids).size !== ids.length)
     throw new Error('选择片段无效');
   const known = new Set(
@@ -187,8 +269,8 @@ export function selectionClosure(project, ids, { expand = true, groups = true, l
     while (changed) {
       changed = false;
       for (const relation of [
-        ...(groups ? project.timeline.groups ?? [] : []),
-        ...(links ? project.timeline.links ?? [] : [])
+        ...(groups ? (project.timeline.groups ?? []) : []),
+        ...(links ? (project.timeline.links ?? []) : [])
       ])
         if (relation.itemIds.some((id) => result.has(id)))
           for (const id of relation.itemIds)
@@ -213,9 +295,15 @@ export function validateProperty(property, value, clip) {
 export function descriptorInputSchema(descriptor, { seconds: useSeconds = false } = {}) {
   const scale = useSeconds && descriptor.unit === 'ticks' ? 120000 : 1;
   return {
-    type: ['enum', 'text', 'color'].includes(descriptor.type) ? 'string' : descriptor.step === 1 ? 'integer' : descriptor.type,
+    type: ['enum', 'text', 'color'].includes(descriptor.type)
+      ? 'string'
+      : descriptor.step === 1
+        ? 'integer'
+        : descriptor.type,
     ...(descriptor.values ? { enum: descriptor.values } : {}),
-    ...(descriptor.min === undefined ? {} : { minimum: descriptor.min / scale, maximum: descriptor.max / scale }),
+    ...(descriptor.min === undefined
+      ? {}
+      : { minimum: descriptor.min / scale, maximum: descriptor.max / scale }),
     ...(descriptor.maxLength ? { maxLength: descriptor.maxLength } : {}),
     ...(descriptor.pattern ? { pattern: descriptor.pattern } : {}),
     description: `${descriptor.label}${descriptor.unit ? ` (${useSeconds && descriptor.unit === 'ticks' ? 'seconds' : descriptor.unit})` : ''}`
@@ -235,8 +323,14 @@ function validateValue(d, value, name) {
     throw new Error(`属性范围无效：${name}`);
   if (d.type === 'boolean' && typeof value !== 'boolean') throw new Error(`布尔属性无效：${name}`);
   if (d.type === 'enum' && !d.values.includes(value)) throw new Error(`枚举属性无效：${name}`);
-  if (['text', 'color'].includes(d.type) && (typeof value !== 'string' || !value.trim() || value.includes('\0') ||
-      (d.maxLength && value.length > d.maxLength) || (d.pattern && !new RegExp(d.pattern).test(value))))
+  if (
+    ['text', 'color'].includes(d.type) &&
+    (typeof value !== 'string' ||
+      !value.trim() ||
+      value.includes('\0') ||
+      (d.maxLength && value.length > d.maxLength) ||
+      (d.pattern && !new RegExp(d.pattern).test(value)))
+  )
     throw new Error(`文字属性无效：${name}`);
 }
 /** @type {(template: import('./types.js').EffectTemplate) => Record<string, number | boolean | string>} */
@@ -250,7 +344,11 @@ export function enrichClip(clip) {
   clip.visual ??= {};
   clip.audio ??= {};
   for (const [path, descriptor] of Object.entries(PROPERTY_DESCRIPTORS))
-    if ((path.startsWith('visual.') || path.startsWith('audio.')) && readPath(clip, path) === undefined) writePath(clip, path, descriptor.default);
+    if (
+      (path.startsWith('visual.') || path.startsWith('audio.')) &&
+      readPath(clip, path) === undefined
+    )
+      writePath(clip, path, descriptor.default);
   clip.retime ??= { version: 1, mode: 'constant', constantRatePpm: 1000000 };
   clip.automation ??= {};
   clip.effects ??= [];
@@ -276,8 +374,13 @@ export const HTML_MAX_PIXELS = 8388608;
  */
 export function validateHtmlContent(content) {
   keys(content, ['html', 'width', 'height', 'duration', 'transparent', 'variables'], 'HTML 动画');
-  if (typeof content.html !== 'string' || !content.html.trim() || content.html.includes('\0') ||
-      content.html.length > HTML_MAX_BYTES || new TextEncoder().encode(content.html).length > HTML_MAX_BYTES)
+  if (
+    typeof content.html !== 'string' ||
+    !content.html.trim() ||
+    content.html.includes('\0') ||
+    content.html.length > HTML_MAX_BYTES ||
+    new TextEncoder().encode(content.html).length > HTML_MAX_BYTES
+  )
     throw new Error('HTML 动画内容无效或超过 1 MiB');
   if (/<\s*(?:audio|video)(?=[\s/>])/i.test(content.html))
     throw new Error('HTML 动画不能包含 audio/video 媒体元素，请使用现有音视频轨道');
@@ -291,11 +394,16 @@ export function validateHtmlContent(content) {
     keys(content.variables, Object.keys(content.variables ?? {}), 'HTML 动画变量');
     if (Object.keys(content.variables).length > 100) throw new Error('HTML 动画变量最多 100 个');
     for (const [name, value] of Object.entries(content.variables)) {
-      if (!/^[a-zA-Z_][a-zA-Z0-9_.-]{0,79}$/.test(name) || ['__proto__', 'prototype', 'constructor'].includes(name))
+      if (
+        !/^[a-zA-Z_][a-zA-Z0-9_.-]{0,79}$/.test(name) ||
+        ['__proto__', 'prototype', 'constructor'].includes(name)
+      )
         throw new Error('HTML 动画变量名称无效');
-      if (!['string', 'number', 'boolean'].includes(typeof value) ||
-          (typeof value === 'number' && !Number.isFinite(value)) ||
-          (typeof value === 'string' && (value.length > 10000 || value.includes('\0'))))
+      if (
+        !['string', 'number', 'boolean'].includes(typeof value) ||
+        (typeof value === 'number' && !Number.isFinite(value)) ||
+        (typeof value === 'string' && (value.length > 10000 || value.includes('\0')))
+      )
         throw new Error('HTML 动画变量必须是有界文字、有限数字或布尔值');
     }
   }
@@ -396,8 +504,17 @@ export function validateExtensions(project, seen) {
       );
       keys(clip.audio, ['gainLinear', 'muted', 'fadeIn', 'fadeOut'], '音频属性');
       if (clip.text) {
-        keys(clip.text, ['content', 'fontSize', 'color', 'fontFamily', 'font', 'template', 'layoutWidth'], '文字');
-        if (clip.text.layoutWidth !== undefined && (!Number.isFinite(clip.text.layoutWidth) || clip.text.layoutWidth < 1 || clip.text.layoutWidth > 65536))
+        keys(
+          clip.text,
+          ['content', 'fontSize', 'color', 'fontFamily', 'font', 'template', 'layoutWidth'],
+          '文字'
+        );
+        if (
+          clip.text.layoutWidth !== undefined &&
+          (!Number.isFinite(clip.text.layoutWidth) ||
+            clip.text.layoutWidth < 1 ||
+            clip.text.layoutWidth > 65536)
+        )
           throw new Error('文字框宽度必须为 1–65536');
         if (clip.text.font) {
           if (clip.text.template) throw new Error('文字模板使用自身字体，不能指定基础文字字体');
@@ -442,7 +559,11 @@ export function validateExtensions(project, seen) {
             throw new Error('系统字体身份无效');
         } else if (clip.text.font !== undefined) throw new Error('系统字体身份无效');
         if (clip.text.template)
-          keys(clip.text.template, ['id', 'version', 'packageDigest', 'resourceBase', 'recipe', 'style'], '文字模板');
+          keys(
+            clip.text.template,
+            ['id', 'version', 'packageDigest', 'resourceBase', 'recipe', 'style'],
+            '文字模板'
+          );
         if (clip.text.template?.recipe !== undefined)
           keys(clip.text.template.recipe, ['base', 'backdrop', 'animation'], '文字模板配方');
         if (clip.text.template?.style !== undefined) {
@@ -597,7 +718,8 @@ export function validateExtensions(project, seen) {
     for (const { item } of [from, to])
       if (['video', 'html-clip'].includes(item.clip.type)) {
         const asset = project.assets.find((a) => a.id === item.clip.assetId);
-        const sourceDuration = item.clip.type === 'html-clip' ? item.clip.html.duration : asset.duration;
+        const sourceDuration =
+          item.clip.type === 'html-clip' ? item.clip.html.duration : asset.duration;
         const start = mapTimelineToSource(item, window.begin, { clamp: false });
         const end = mapTimelineToSource(item, window.end, { clamp: false });
         if (start < 0 || end > sourceDuration) throw new Error('转场需要足够的素材前后余量');
@@ -610,6 +732,10 @@ function validateTemplate(instance, catalog) {
   keys(instance.parameters, Object.keys(template.parameters), '模板参数');
   for (const [key, descriptor] of Object.entries(template.parameters))
     validateValue(descriptor, instance.parameters[key], key);
+  if (instance.templateId === 'color-grade')
+    for (const channel of ['rgb', 'red', 'green', 'blue'])
+      parseCurve(instance.parameters['curve' + channel]);
+  if (instance.templateId === 'custom-lut') parseCube(instance.parameters.cube);
 }
 /** @type {(item: import('./types.js').Item,time: number,options?: { clamp?: boolean }) => number} */
 export function mapTimelineToSource(item, time, { clamp = true } = {}) {

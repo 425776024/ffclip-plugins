@@ -7,7 +7,6 @@ import {
   ticks,
   findItem,
   sampleProperty,
-  getPropertyDescriptor,
   isPropertyApplicable,
   PROPERTY_DESCRIPTORS,
   EFFECT_TEMPLATES,
@@ -26,6 +25,8 @@ import { propertyCommand, keyframeCommand, keyframeProperty } from './property-c
 import type { HtmlContent } from './html-presets';
 import HtmlPropertyFields from './HtmlPropertyFields.vue';
 import TextProperties from './TextProperties.vue';
+import EffectParameters from './EffectParameters.vue';
+import KeyframeButtons from './KeyframeButtons.vue';
 import { parseHtmlProperties, applyHtmlProperties, type HtmlProperty } from './html-properties';
 const props = defineProps<{
   project: Project;
@@ -47,6 +48,7 @@ const emit = defineEmits<{
   source: [begin: number];
   canvas: [width: number, height: number];
   fps: [value: number];
+  seek: [time: number];
 }>();
 const optionLabels: Record<string, string> = {
   contain: '适应',
@@ -68,7 +70,10 @@ const transitionColor = ref<'#000000' | '#ffffff'>('#000000'),
 const tab = ref('canvas'),
   interpolation = ref<Interpolation>('linear'),
   transition = ref<TransitionArguments['templateId']>('dissolve'),
-  transitionDuration = ref(1);
+  transitionDuration = ref(1),
+  transitionEasing = ref<Interpolation>('easeInOut');
+const textSections = { style: '样式', templates: '花字', bubble: '文字气泡', animation: '动画' };
+const textSection = ref<keyof typeof textSections>('style');
 const selection = computed(() =>
   props.project.timeline.tracks
     .flatMap((t) => t.items)
@@ -289,13 +294,13 @@ function textValue(key: 'content' | 'fontSize' | 'color') {
 }
 function display(path: string, d: PropertyDescriptor) {
   const v = value(path);
-  return v === undefined
-    ? ''
-    : d.unit === 'ticks'
-      ? seconds(Number(v))
-      : typeof v === 'boolean'
-        ? String(v)
-        : v;
+  if (v === undefined) return '';
+  const displayed = d.unit === 'ticks' ? seconds(Number(v)) : v;
+  return typeof displayed === 'number'
+    ? Number(displayed.toFixed(d.unit === 'px' ? 2 : 3))
+    : typeof displayed === 'boolean'
+      ? String(displayed)
+      : displayed;
 }
 function edit(path: string, d: PropertyDescriptor, event: Event) {
   const raw =
@@ -354,37 +359,37 @@ function reset(path: string, d: PropertyDescriptor) {
   );
 }
 function keyframe(path: string) {
+  const targets = applicable(path);
+  const allAtKeyframe = targets.every((item) =>
+    item.clip.automation?.[path]?.keyframes.some((frame) => frame.time === local(item))
+  );
   emit(
     'commands',
-    applicable(path).map((item): EditorCommand => {
+    targets.flatMap((item): EditorCommand[] => {
       const frame = item.clip.automation?.[path]?.keyframes.find((k) => k.time === local(item));
-      return frame
-        ? {
-            action: 'remove_keyframe',
-            itemId: item.id,
-            property: keyframeProperty(item, path),
-            keyframeId: frame.id
-          }
-        : keyframeCommand(
-            item,
-            path,
-            sampleProperty(item, path, local(item)),
-            seconds(local(item)),
-            interpolation.value
-          );
+      return allAtKeyframe && frame
+        ? [
+            {
+              action: 'remove_keyframe',
+              itemId: item.id,
+              property: keyframeProperty(item, path),
+              keyframeId: frame.id
+            }
+          ]
+        : frame
+          ? []
+          : [
+              keyframeCommand(
+                item,
+                path,
+                sampleProperty(item, path, local(item)),
+                seconds(local(item)),
+                interpolation.value
+              )
+            ];
     })
   );
 }
-function animated(path: string) {
-  return selection.value.some((item) => item.clip.automation?.[path]?.keyframes.length);
-}
-const keys = computed(() =>
-  props.item
-    ? Object.entries(props.item.clip.automation ?? {}).flatMap(([property, b]) =>
-        b.keyframes.map((k) => ({ ...k, property }))
-      )
-    : []
-);
 type ItemCommand = Extract<EditorCommand, { itemId: string }>;
 type WithoutItem<T> = T extends unknown ? Omit<T, 'itemId'> : never;
 function one(command: WithoutItem<ItemCommand>) {
@@ -399,8 +404,8 @@ function removeKeyframe(property: string, keyframeId: string) {
     });
 }
 function addEffect(templateId: string) {
-  if (templateId === 'blur' || templateId === 'glow' || templateId === 'lut')
-    one({ action: 'add_effect', templateId });
+  if (EFFECT_TEMPLATES.some((t) => t.id === templateId))
+    one({ action: 'add_effect', templateId } as WithoutItem<ItemCommand>);
 }
 function addTransition() {
   if (!props.item || !nextItem.value) return;
@@ -410,19 +415,16 @@ function addTransition() {
     toItemId: nextItem.value.id,
     durationSeconds: transitionDuration.value
   };
-  if (transition.value === 'fade')
-    emit('command', {
-      ...common,
-      templateId: 'fade',
-      parameters: { color: transitionColor.value }
-    });
-  else if (transition.value === 'wipe' || transition.value === 'slide')
-    emit('command', {
-      ...common,
-      templateId: transition.value,
-      parameters: { direction: transitionDirection.value }
-    });
-  else emit('command', { ...common, templateId: 'dissolve' });
+  const definition = TRANSITION_TEMPLATES.find((t) => t.id === transition.value)!;
+  emit('command', {
+    ...common,
+    templateId: transition.value,
+    parameters: {
+      ...(definition.parameters.color ? { color: transitionColor.value } : {}),
+      ...(definition.parameters.direction ? { direction: transitionDirection.value } : {}),
+      ...(definition.parameters.easing ? { easing: transitionEasing.value } : {})
+    }
+  } as EditorCommand);
 }
 const nextItem = computed(() => {
   if (!props.item) return null;
@@ -501,6 +503,23 @@ function speed(event: Event) {
         :key="key"
         :class="{ active: tab === key }"
         @click="tab = key"
+      >
+        {{ tr(label) }}
+      </button>
+    </nav>
+    <nav
+      v-if="item?.clip.text && tab === 'text'"
+      class="text-property-tabs inspector-subtabs"
+      :aria-label="tr('文字编辑分类')"
+    >
+      <button
+        v-for="(label, key) in textSections"
+        :key="key"
+        :class="{ active: textSection === key }"
+        :aria-pressed="textSection === key"
+        :title="tr(label)"
+        :disabled="disabled"
+        @click="textSection = key"
       >
         {{ tr(label) }}
       </button>
@@ -597,9 +616,14 @@ function speed(event: Event) {
         </div>
         <div class="group-heading">
           <span>{{ tr('{label}属性', { label: tr(tabs[tab as keyof typeof tabs]) }) }}</span
-          ><small>{{ tr('◇ 关键帧') }}</small>
+          ><small v-if="['visual', 'audio'].includes(tab)">{{ tr('◇ 关键帧') }}</small>
         </div>
-        <div v-for="[path, d] in descriptors" :key="path" class="property-row descriptor-row">
+        <div
+          v-for="[path, d] in descriptors"
+          :key="path"
+          class="property-row descriptor-row"
+          :class="{ 'property-text-row': d.type === 'text' }"
+        >
           <label :for="path"
             >{{ tr(d.label)
             }}<small v-if="path === 'time.start' && selection.length > 1">{{
@@ -665,18 +689,18 @@ function speed(event: Event) {
               @change="edit(path, d, $event)"
             /><span>{{ d.unit === 'ticks' ? 's' : d.unit }}</span>
           </div>
-          <button
-            v-if="d.keyframe"
-            class="keyframe-button"
-            :class="{ active: animated(path) }"
-            :title="tr(`${d.label}：在播放头添加/移除关键帧`)"
-            @click="keyframe(path)"
-          >
-            ◇
-          </button>
           <button class="small-reset" :title="tr(`重置${d.label}和关键帧`)" @click="reset(path, d)">
             <Icon name="reset" :size="13" />
           </button>
+          <KeyframeButtons
+            v-if="d.keyframe"
+            :items="applicable(path)"
+            :property="path"
+            :label="d.label || path"
+            :time="time"
+            @toggle="keyframe(path)"
+            @seek="emit('seek', $event)"
+          />
         </div>
         <label v-if="tab === 'visual' || tab === 'audio'" class="property-row"
           ><span>{{ tr('关键帧插值') }}</span
@@ -688,19 +712,11 @@ function speed(event: Event) {
             <option value="easeInOut">{{ tr('缓入缓出') }}</option>
           </select></label
         >
-        <div v-if="keys.length" class="keyframe-list">
-          <div v-for="k in keys" :key="k.id" class="property-row">
-            <span
-              >{{ tr(getPropertyDescriptor(item, k.property)?.label) }} ·
-              {{ seconds(k.time).toFixed(3) }}s</span
-            ><small>{{ k.value }}</small
-            ><button :title="tr('删除关键帧')" @click="removeKeyframe(k.property, k.id)">×</button>
-          </div>
-        </div>
       </template>
       <TextProperties
         v-if="item?.clip.text && tab === 'text'"
         :items="textSelection"
+        :section="textSection"
         @commands="emit('commands', $event)"
         @error="emit('error', $event)"
       />
@@ -754,36 +770,15 @@ function speed(event: Event) {
               ×
             </button>
           </div>
-          <label
-            v-for="(d, key) in EFFECT_TEMPLATES.find((e) => e.id === effect.templateId)?.parameters"
-            :key="key"
-            class="property-row"
-            ><span>{{ tr(d.label || key) }}</span
-            ><select
-              v-if="d.type === 'enum'"
-              :value="effect.parameters[key]"
-              @change="effectParameter(effect.id, String(key), string($event))"
-            >
-              <option v-for="v in d.values" :key="v" :value="v">
-                {{ tr(optionLabels[v] || v) }}
-              </option></select
-            ><input
-              v-else
-              type="number"
-              :min="d.min"
-              :max="d.max"
-              :step="effect.templateId === 'blur' ? 1 : 0.1"
-              :value="sampleProperty(item, `effects.${effect.id}.${key}`, local(item))"
-              @change="effectParameter(effect.id, String(key), number($event))"
-            /><button
-              v-if="d.keyframe"
-              :class="{ active: item.clip.automation?.[`effects.${effect.id}.${key}`] }"
-              :title="tr(`${d.label}关键帧`)"
-              @click.prevent="effectKeyframe(effect.id, String(key))"
-            >
-              ◇
-            </button></label
-          >
+          <EffectParameters
+            :effect="effect"
+            :item="item"
+            :time="time"
+            @change="(key, value) => effectParameter(effect.id, key, value)"
+            @keyframe="effectKeyframe(effect.id, $event)"
+            @seek="emit('seek', $event)"
+            @error="emit('error', $event)"
+          />
         </div>
         <div class="group-heading">
           <span>{{ tr('相邻片段转场') }}</span>
@@ -807,7 +802,9 @@ function speed(event: Event) {
             <option value="#ffffff">{{ tr('白色') }}</option>
           </select></label
         >
-        <label v-if="transition === 'wipe' || transition === 'slide'" class="property-row"
+        <label
+          v-if="TRANSITION_TEMPLATES.find((t) => t.id === transition)?.parameters.direction"
+          class="property-row"
           ><span>{{ tr('方向') }}</span
           ><select v-model="transitionDirection">
             <option value="left">{{ tr('向左') }}</option>
@@ -816,14 +813,25 @@ function speed(event: Event) {
             <option value="down">{{ tr('向下') }}</option>
           </select></label
         >
+        <label
+          v-if="TRANSITION_TEMPLATES.find((t) => t.id === transition)?.parameters.easing"
+          class="property-row"
+          ><span>{{ tr('缓动') }}</span
+          ><select v-model="transitionEasing">
+            <option value="linear">{{ tr('线性') }}</option>
+            <option value="easeIn">{{ tr('缓入') }}</option>
+            <option value="easeOut">{{ tr('缓出') }}</option>
+            <option value="easeInOut">{{ tr('缓入缓出') }}</option>
+          </select></label
+        >
         <button class="subtle-button" :disabled="!nextItem" @click="addTransition">
           {{ tr('添加到下一个片段') }}
         </button>
         <div class="text-edit-hint">
           {{ tr('需要同轨相邻片段，并在剪辑点两侧保留足够素材余量。') }}
         </div>
-        <div v-for="t in transitions" :key="t.id" class="property-row">
-          <span
+        <div v-for="t in transitions" :key="t.id" class="transition-instance">
+          <span class="transition-instance-title"
             >{{ tr(TRANSITION_TEMPLATES.find((p) => p.id === t.templateId)?.name) }} ·
             {{ seconds(t.duration) }}s</span
           >
@@ -857,7 +865,7 @@ function speed(event: Event) {
             <option value="#ffffff">{{ tr('白色') }}</option>
           </select>
           <select
-            v-if="t.templateId === 'wipe' || t.templateId === 'slide'"
+            v-if="TRANSITION_TEMPLATES.find((p) => p.id === t.templateId)?.parameters.direction"
             :aria-label="tr('转场方向')"
             :value="t.parameters.direction"
             @change="
@@ -872,6 +880,23 @@ function speed(event: Event) {
             <option value="right">{{ tr('向右') }}</option>
             <option value="up">{{ tr('向上') }}</option>
             <option value="down">{{ tr('向下') }}</option>
+          </select>
+          <select
+            v-if="TRANSITION_TEMPLATES.find((p) => p.id === t.templateId)?.parameters.easing"
+            :aria-label="tr('缓动')"
+            :value="t.parameters.easing"
+            @change="
+              emit('command', {
+                action: 'update_transition',
+                transitionId: t.id,
+                parameters: { easing: string($event) as Interpolation }
+              })
+            "
+          >
+            <option value="linear">{{ tr('线性') }}</option>
+            <option value="easeIn">{{ tr('缓入') }}</option>
+            <option value="easeOut">{{ tr('缓出') }}</option>
+            <option value="easeInOut">{{ tr('缓入缓出') }}</option>
           </select>
           <button @click="emit('command', { action: 'remove_transition', transitionId: t.id })">
             {{ tr('移除') }}

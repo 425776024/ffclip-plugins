@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useI18n } from './i18n';
 const { tr } = useI18n();
-import { computed, onBeforeUnmount, onMounted, ref, shallowRef, nextTick } from 'vue';
+import { computed, onBeforeUnmount, onMounted, ref, shallowRef, nextTick, watch } from 'vue';
 import {
   VideoCutClient,
   type Snapshot,
@@ -36,6 +36,7 @@ import TextLibrary from './TextLibrary.vue';
 import HtmlLibrary from './HtmlLibrary.vue';
 import type { HtmlContent } from './html-presets';
 import EffectLibrary from './EffectLibrary.vue';
+import { visualPackage } from '../../packages/render/catalog';
 import { propertyCommand, keyframeCommand } from './property-command';
 import { renderTemplateExport } from './template-export';
 import { createSerialQueue } from './serial-queue.mjs';
@@ -173,7 +174,16 @@ const roots = ref<string[]>([]),
   listing = ref<FileListing | null>(null);
 const selected = ref(''),
   panel = ref('media');
-const shortcuts = ref(false);
+const shortcuts = ref(false),
+  credits = ref(false);
+let creditsPreviousFocus: HTMLElement | null = null;
+watch(credits, async (visible) => {
+  if (visible) {
+    creditsPreviousFocus = document.activeElement as HTMLElement;
+    await nextTick();
+    document.querySelector<HTMLButtonElement>('.credits-dialog button')?.focus();
+  } else creditsPreviousFocus?.focus();
+});
 const busy = ref(false),
   editing = ref(false),
   connected = ref(false),
@@ -257,13 +267,20 @@ const transitionTarget = computed(() => {
 });
 function applyVisualPackage(kind: 'effect' | 'transition', id: string) {
   if (kind === 'effect') {
-    if (!EFFECT_TEMPLATES.some((entry) => entry.id === id)) return;
+    const pack = visualPackage('effect', id);
     command(
-      effectTargets.value.map((item) => ({
-        action: 'add_effect',
-        itemId: item.id,
-        templateId: id as EffectInstance['templateId']
-      }))
+      effectTargets.value.map(
+        (item) =>
+          ({
+            action: 'add_effect',
+            itemId: item.id,
+            templateId: pack.template.id as EffectInstance['templateId'],
+            parameters:
+              pack.template.id === 'looks'
+                ? { preset: String(pack.template.parameters.preset.default) }
+                : undefined
+          }) as EditorCommand
+      )
     );
   } else if (transitionTarget.value && TRANSITION_TEMPLATES.some((entry) => entry.id === id)) {
     command([
@@ -921,6 +938,7 @@ function paste(event: ClipboardEvent) {
     textEditingTarget(event.target) ||
     showOpen.value ||
     shortcuts.value ||
+    credits.value ||
     document.querySelector('dialog[open]')
   )
     return;
@@ -934,6 +952,7 @@ function keyboard(event: KeyboardEvent) {
     textEditingTarget(event.target) ||
     showOpen.value ||
     shortcuts.value ||
+    credits.value ||
     document.querySelector('dialog[open]')
   )
     return;
@@ -1019,7 +1038,9 @@ onBeforeUnmount(() => {
         <SoftwareUpdateDialog
           v-if="connected"
           :client="client"
-          :blocked="busy || playing || editing || resizingPanels || showOpen || shortcuts"
+          :blocked="
+            busy || playing || editing || resizingPanels || showOpen || shortcuts || credits
+          "
           @install="playing = false"
         />
         <button
@@ -1116,7 +1137,10 @@ onBeforeUnmount(() => {
               { id: 'text', label: '文字', icon: 'text' },
               { id: 'html', label: '动画', icon: 'layers' },
               { id: 'audio', label: '音频', icon: 'music' },
-              { id: 'image', label: '图片', icon: 'image' }
+              { id: 'image', label: '图片', icon: 'image' },
+              { id: 'filters', label: '滤镜', icon: 'sliders' },
+              { id: 'effects', label: '特效', icon: 'layers' },
+              { id: 'transitions', label: '转场', icon: 'right' }
             ]"
             :key="entry.id"
             :class="{ active: panel === entry.id }"
@@ -1142,6 +1166,9 @@ onBeforeUnmount(() => {
           <button :title="tr('键盘快捷键')" @click="shortcuts = !shortcuts">
             <Icon name="info" :size="21" /><span>{{ tr('帮助') }}</span>
           </button>
+          <button :title="tr('开源声明')" @click="credits = true">
+            <Icon name="info" :size="21" /><span>{{ tr('开源') }}</span>
+          </button>
         </div>
       </nav>
       <section ref="workspaceElement" class="workspace">
@@ -1153,10 +1180,13 @@ onBeforeUnmount(() => {
         />
         <HtmlLibrary v-else-if="panel === 'html'" :busy="busy" @insert="insertHtml" />
         <EffectLibrary
-          v-else-if="panel === 'effects' || panel === 'transitions'"
-          :kind="panel === 'effects' ? 'effect' : 'transition'"
+          v-else-if="panel === 'filters' || panel === 'effects' || panel === 'transitions'"
+          :kind="panel === 'transitions' ? 'transition' : 'effect'"
+          :category-filter="panel === 'filters' ? '调色' : panel === 'effects' ? '光影' : undefined"
           :busy="busy"
-          :can-apply="panel === 'effects' ? effectTargets.length > 0 : Boolean(transitionTarget)"
+          :can-apply="
+            panel === 'transitions' ? Boolean(transitionTarget) : effectTargets.length > 0
+          "
           @apply="applyVisualPackage"
         />
         <TtsPanel
@@ -1324,6 +1354,7 @@ onBeforeUnmount(() => {
           @command="onCommand"
           @commands="command"
           @error="showError"
+          @seek="seek"
           @visual="(changes) => selectedCommand('set_transform', changes)"
           @audio="(changes) => selectedCommand('set_audio', changes)"
           @move="(begin) => moveSelection(selected, begin)"
@@ -1542,6 +1573,40 @@ onBeforeUnmount(() => {
           style="width: 100%"
         /><button class="primary" type="submit">{{ tr('打开作品') }}</button>
       </form>
+    </div>
+    <div v-if="credits" class="dialog-backdrop" @click.self="credits = false">
+      <section
+        class="help-dialog panel credits-dialog"
+        role="dialog"
+        aria-modal="true"
+        :aria-label="tr('开源声明')"
+        tabindex="-1"
+        @keydown.esc="credits = false"
+      >
+        <div class="panel-heading">
+          <strong>{{ tr('开源声明') }}</strong
+          ><button autofocus :aria-label="tr('关闭')" @click="credits = false">
+            <Icon name="close" />
+          </button>
+        </div>
+        <p>
+          {{
+            tr('本项目早期浏览器音视频实现引用并改编了 WebAV 开源项目，感谢作者风痕及社区贡献者。')
+          }}
+        </p>
+        <p>
+          <a href="https://github.com/WebAV-Tech/WebAV" target="_blank" rel="noopener noreferrer"
+            >WebAV · MIT License</a
+          ><br />Copyright © 2023 风痕
+        </p>
+        <p>
+          {{
+            tr(
+              '当前浏览器媒体引擎使用 Mediabunny（MPL-2.0）；动画使用 GSAP。完整声明与许可证随安装包提供。'
+            )
+          }}
+        </p>
+      </section>
     </div>
     <div v-if="shortcuts" class="dialog-backdrop" @click.self="shortcuts = false">
       <section class="help-dialog panel">

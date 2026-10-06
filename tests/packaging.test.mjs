@@ -320,7 +320,9 @@ test('release guard blocks added source, modified bundles, maps, symlinks and wi
     'plugins',
     'package.json',
     'README.md',
-    'LICENSE'
+    'LICENSE',
+    'THIRD_PARTY_NOTICES.md',
+    'licenses/WebAV-MIT.txt'
   ]) {
     await mkdir(join(fixture, path, '..'), { recursive: true });
     await cp(join(root, path), join(fixture, path), { recursive: true });

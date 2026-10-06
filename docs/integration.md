@@ -18,7 +18,7 @@ codex plugin list --marketplace personal --json
 
 安装目录仅包含 `runtime/dist/` 中合并压缩后的页面、CLI、服务、客户端与 API 类型声明，以及包元数据和必要插件配置。不依赖源码 checkout 或运行时下载 npm 依赖。生成的 `.mcp.json` 使用 `command: "node"`、`cwd: "."` 和相对 CLI 路径；Codex 将工作目录解析为安装后的插件目录，因此可搬动或复制到缓存目录。需要 Node 22+，配置的素材目录必须可访问。语音合成需要打开支持 WASM 的浏览器；FFmpeg/FFprobe 仅用于显式启用的媒体回退路径。
 
-npm tarball 不包含任何构建脚本。构建 npm 包和独立 Codex 插件必须在私有源码仓库执行；接收者直接安装 tarball 或插件目录即可。不要把源码仓库整体作为公开插件仓库，只分发 `build:plugin` 输出目录。打包脚本只复制明确列出的构建文件；更新时使用全新临时目录组装后替换旧生成目录，避免历史源码或 source map 残留。未知的已有目录会被拒绝覆盖。
+npm tarball 不包含构建脚本。需要自行构建时，可从 [公开插件源码仓库](https://github.com/425776024/ffclip-plugins) 获取源码；接收者也可直接安装 npm 包或发布页中的插件安装包。公开仓库由当前插件源码导出，不包含官网源码、私有 Git 历史、本地素材或凭据。插件打包脚本只复制明确列出的构建文件；更新时使用全新临时目录组装后替换旧生成目录，避免历史源码或 source map 残留。未知的已有目录会被拒绝覆盖。
 
 更新本地源码后重新运行打包命令，然后使用 Codex `plugin-creator` 的 `update_plugin_cachebuster.py` 更新安装目录清单版本，再 `codex plugin add videocut-local@personal`，避免命中旧缓存。新对话会加载更新后的 skill 和工具；当前对话不会热加载新工具。
 

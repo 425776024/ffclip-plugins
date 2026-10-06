@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed } from 'vue';
 import { TEXT_TEMPLATES, type Item, type EditorCommand } from '../../packages/core/project.mjs';
 import {
   recipes,
@@ -11,7 +11,10 @@ import { useI18n } from './i18n';
 import Icon from './Icon.vue';
 
 const { tr } = useI18n();
-const props = defineProps<{ items: Item[] }>();
+const props = defineProps<{
+  items: Item[];
+  section: 'style' | 'templates' | 'bubble' | 'animation';
+}>();
 const emit = defineEmits<{ commands: [commands: EditorCommand[]]; error: [error: unknown] }>();
 type Template = NonNullable<NonNullable<Item['clip']['text']>['template']>;
 type Style = NonNullable<Template['style']>;
@@ -25,12 +28,13 @@ const swatches = [
   '#69a7ff',
   '#b58cff'
 ];
-const section = ref('style');
-const sections = { style: '样式', templates: '花字', bubble: '文字气泡', animation: '动画' };
 const templates = computed(() =>
   TEXT_TEMPLATES.filter(
-    (preset) => preset.category === (section.value === 'templates' ? 'flower' : section.value)
+    (preset) => preset.category === (props.section === 'templates' ? 'flower' : props.section)
   )
+);
+const stylePresets = computed(() =>
+  TEXT_TEMPLATES.filter((preset) => preset.category === 'flower')
 );
 const texts = computed(() =>
   props.items.flatMap((item) => (item.clip.text ? [item.clip.text] : []))
@@ -174,18 +178,20 @@ function selectAnimation(value: string) {
 
 <template>
   <div class="text-properties">
-    <nav class="text-property-tabs" :aria-label="tr('文字编辑分类')">
-      <button
-        v-for="(label, key) in sections"
-        :key="key"
-        :class="{ active: section === key }"
-        :aria-pressed="section === key"
-        @click="section = key"
-      >
-        {{ tr(label) }}
-      </button>
-    </nav>
     <template v-if="section === 'style'">
+      <div class="group-heading">
+        <span>{{ tr('预设样式') }}</span
+        ><button :title="tr('基础文字')" @click="selectPreset('basic')">
+          <Icon name="reset" :size="13" />
+        </button>
+      </div>
+      <TextTemplateGallery
+        :templates="stylePresets"
+        action="apply"
+        carousel
+        :selected="presetId"
+        @select="selectPreset"
+      />
       <div class="property-row text-style-row">
         <label for="text-layout-width">{{ tr('文字框宽度') }}</label>
         <div class="unit-field">
@@ -314,6 +320,7 @@ function selectAnimation(value: string) {
       <TextTemplateGallery
         :templates="templates"
         action="apply"
+        carousel
         :selected="presetId"
         @select="selectPreset"
       />
@@ -367,6 +374,7 @@ function selectAnimation(value: string) {
       <TextTemplateGallery
         :templates="templates"
         action="apply"
+        carousel
         :selected="animation"
         @select="selectPreset"
       />

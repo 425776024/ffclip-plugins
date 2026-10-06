@@ -14,7 +14,7 @@ try {
 await mkdir(output, { recursive: true });
 const common = ['packages', 'src', 'scripts', 'native', '.gitignore', '.editorconfig',
   '.prettierrc.yaml', '.prettierignore', 'package.json', 'pnpm-lock.yaml',
-  'tsconfig.json', 'LICENSE', 'THIRD_PARTY_NOTICES.md', '.gitleaks.toml'];
+  'tsconfig.json', 'LICENSE', 'THIRD_PARTY_NOTICES.md', 'licenses', '.gitleaks.toml'];
 const inputs = product === 'ffclip-plugins'
   ? [...common, 'bin', 'plugins', 'tests', 'docs', '.github', 'index.html', 'vite.config.ts', 'README.md', 'README-zh.md', 'publish-npm.command']
   : [...common, 'ffvideo', 'bin/open-preview.mjs'];

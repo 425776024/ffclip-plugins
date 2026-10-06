@@ -11,6 +11,8 @@ export async function checkPackage(packageRoot = root) {
     'package.json',
     'README.md',
     'LICENSE',
+    'THIRD_PARTY_NOTICES.md',
+    'licenses/WebAV-MIT.txt',
     ...pluginFiles.map((path) => `plugins/videocut-local/${path}`)
   ].sort();
   for (const path of expected) await readRegular(join(packageRoot, path));

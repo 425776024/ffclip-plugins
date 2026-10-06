@@ -40,6 +40,8 @@ await bundle({
 await buildTypes(dist);
 await chmod(join(dist, 'bin/videocut.mjs'), 0o755);
 await mkdir(join(dist, 'licenses'), { recursive: true });
+await copyFile(join(root, 'licenses/WebAV-MIT.txt'), join(dist, 'licenses/WebAV-MIT.txt'));
+await copyFile(join(root, 'THIRD_PARTY_NOTICES.md'), join(dist, 'licenses/THIRD_PARTY_NOTICES.md'));
 await copyFile(join(root, 'node_modules/gsap/dist/gsap.min.js'), join(dist, 'gsap-runtime.js'));
 // The installed browser supplies Chromium. Only the offline animation library is shipped.
 const gsapRuntime = await readFile(join(dist, 'gsap-runtime.js'), 'utf8');
@@ -57,7 +59,7 @@ await copyFile(
 );
 await writeFile(
   join(dist, 'licenses/NOTICE.txt'),
-  'Mediabunny 1.61.0 (MPL-2.0) is included unmodified in browser/media bundles. Source: https://github.com/Vanilagy/mediabunny/tree/v1.61.0 . Source archive: https://registry.npmjs.org/mediabunny/-/mediabunny-1.61.0.tgz . No Mediabunny FFmpeg extensions are included.\n'
+  'WebAV: the early VideoCut browser implementation incorporated and adapted WebAV (MIT, Copyright (c) 2023 风痕). Source: https://github.com/WebAV-Tech/WebAV . Full license: WebAV-MIT.txt . See THIRD_PARTY_NOTICES.md.\n\nMediabunny 1.61.0 (MPL-2.0) is included unmodified in browser/media bundles. Source: https://github.com/Vanilagy/mediabunny/tree/v1.61.0 . Source archive: https://registry.npmjs.org/mediabunny/-/mediabunny-1.61.0.tgz . No Mediabunny FFmpeg extensions are included.\n'
 );
 await writeFile(
   join(dist, 'licenses/NOTICE.txt'),

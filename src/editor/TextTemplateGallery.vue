@@ -4,6 +4,7 @@ import type { TEXT_TEMPLATES } from '../../packages/core/project.mjs';
 import { templatePoster } from './text-renderer';
 import { useI18n } from './i18n';
 import Icon from './Icon.vue';
+import HorizontalCardStrip from './HorizontalCardStrip.vue';
 
 const props = withDefaults(
   defineProps<{
@@ -11,6 +12,7 @@ const props = withDefaults(
     busy?: boolean;
     action?: 'add' | 'apply';
     selected?: string;
+    carousel?: boolean;
   }>(),
   { busy: false, action: 'add' }
 );
@@ -47,7 +49,13 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div class="text-presets template-presets text-template-gallery">
+  <component
+    :is="carousel ? HorizontalCardStrip : 'div'"
+    :label="tr('预设样式')"
+    :class="
+      carousel ? 'text-template-carousel' : 'text-presets template-presets text-template-gallery'
+    "
+  >
     <div v-for="preset in templates" :key="preset.id" class="template-card">
       <button
         class="text-preset"
@@ -87,5 +95,5 @@ onBeforeUnmount(() => {
         {{ tr('重试预览') }}
       </button>
     </div>
-  </div>
+  </component>
 </template>

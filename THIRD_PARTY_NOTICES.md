@@ -10,3 +10,11 @@ The MIT license applies to the original VideoCut and ffvideo code and authored t
 - ffvideo retrieved media: retain per-asset author, source and license records, including export credits.
 
 The official website source in the private `ffclip/` directory is excluded from this repository and from this MIT grant.
+
+## WebAV acknowledgment / WebAV 开源声明
+
+VideoCut's early browser video implementation incorporated and adapted the [WebAV](https://github.com/WebAV-Tech/WebAV) open-source project, including its browser audio/video clipping, composition and related utilities. We thank WebAV author 风痕 and its contributors. The historical vendored source is retained in this repository's Git history at `src/renderer/src/WebAV/`.
+
+VideoCut 早期浏览器音视频实现引用并改编了 WebAV 的片段处理、合成与相关工具代码，感谢作者风痕及社区贡献者。历史引用源码保留在本仓库 Git 历史的 `src/renderer/src/WebAV/` 目录中。
+
+WebAV is licensed under the MIT License, Copyright (c) 2023 风痕. Its original copyright and permission notice are preserved in [licenses/WebAV-MIT.txt](licenses/WebAV-MIT.txt) and included with distributions. Current browser media decoding and encoding use Mediabunny, whose MPL-2.0 notices are retained separately.

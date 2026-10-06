@@ -5,3 +5,5 @@ export interface SharedGpu {
 }
 export function sharedGpu(): Promise<SharedGpu | null>;
 export function createGpuCompositor(canvas: HTMLCanvasElement | OffscreenCanvas, options?: {textureBudgetBytes?:number}): Promise<any>;
+
+export const TRANSITION_STYLES: readonly string[];

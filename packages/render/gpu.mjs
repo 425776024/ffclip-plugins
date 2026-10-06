@@ -1,5 +1,28 @@
 import { RenderResourceCache, RenderMemoryPool, RenderBudgetError } from './resource-cache';
 import { localEffectGeometry, renderIdentity } from './graph';
+export const TRANSITION_STYLES = [
+  'cross_dissolve',
+  'fade_color',
+  'wipe',
+  'slide',
+  'push',
+  'zoom',
+  'blur',
+  'fan',
+  'circle',
+  'diamond',
+  'clock',
+  'pageCurl',
+  'blinds',
+  'flash',
+  'stripeWipe',
+  'checkerboard',
+  'flip',
+  'beam',
+  'tear',
+  'pixelate',
+  'rgbSplit'
+];
 // Shared per execution context. Preview/export/template players borrow this device;
 // disposing a composition releases only its own textures and buffers.
 let shared;
@@ -74,8 +97,35 @@ fn inside(uv:vec2f)->bool { return all(uv>=vec2f(0)) && all(uv<=vec2f(1)); }
    if(style==1u){let color=vec4f(p.b.rgb*p.b.a,p.b.a);return select(mix(sample1(uv),color,smoothstep(0.,.5,t)),mix(color,sample2(uv),smoothstep(.5,1.,t)),t>=.5);}
    var v=uv.x;if(dir==1u){v=1-uv.x;}if(dir==2u){v=uv.y;}if(dir==3u){v=1-uv.y;}
    if(style==2u){return mix(sample1(uv),sample2(uv),1-smoothstep(t-p.c.x,t+p.c.x,v));}
-   if(style==3u){var axis=vec2f(1,0);if(dir==1u){axis=vec2f(-1,0);}if(dir==2u){axis=vec2f(0,1);}if(dir==3u){axis=vec2f(0,-1);}let b=uv+axis*(1-t);let a=uv-axis*t;if(inside(b)){return sample2(b);}if(inside(a)){return sample1(a);}return mix(sample1(uv),sample2(uv),t);}
-   return mix(sample1(uv),sample2(uv),t);
+   if(style==3u || style==4u){var axis=vec2f(1,0);if(dir==1u){axis=vec2f(-1,0);}if(dir==2u){axis=vec2f(0,1);}if(dir==3u){axis=vec2f(0,-1);}let b=uv+axis*(1-t);let a=uv-axis*t;if(inside(b)){return sample2(b);}if(inside(a)){return sample1(a);}return mix(sample1(uv),sample2(uv),t);}
+   let q=uv-vec2f(.5);let peak=sin(t*3.14159265);let aa=max(p.c.x,.001);
+   if(style==5u){let a=sample1(q/(1+t*.8)+.5);let b=sample2(q/(.6+.4*t)+.5);return mix(a,b,smoothstep(.2,.8,t));}
+   if(style==6u){var a=vec4f(0);var b=vec4f(0);for(var x:i32=-1;x<=1;x++){for(var y:i32=-1;y<=1;y++){let delta=vec2f(f32(x),f32(y))*peak*.035;a+=sample1(uv+delta)/9.;b+=sample2(uv+delta)/9.;}}return mix(a,b,t);}
+   var mask=t;
+   let angle=(atan2(q.y,q.x)+3.14159265)/6.2831853;
+   if(style==7u){mask=1-smoothstep(t-aa,t+aa,abs(atan2(q.y,q.x))/3.14159265);}
+   if(style==8u){mask=1-smoothstep(t*.72-aa,t*.72+aa,length(q));}
+   if(style==9u){mask=1-smoothstep(t-aa,t+aa,abs(q.x)+abs(q.y));}
+   if(style==10u){mask=1-smoothstep(t-aa,t+aa,angle);}
+   if(style==11u){let edge=1-t;let folded=vec2f(edge+(edge-uv.x)*.6,uv.y);let shadow=1-.5*exp(-abs(uv.x-edge)*45.);return select(sample1(uv)*vec4f(vec3f(shadow),1),sample2(uv),uv.x>edge);}
+   if(style==12u){mask=1-smoothstep(t-aa,t+aa,fract(v*10.));}
+   if(style==13u){return mix(mix(sample1(uv),sample2(uv),t),vec4f(1),pow(peak,6.)*.95);}
+   if(style==14u){mask=1-smoothstep(t-aa,t+aa,fract(v*12.+floor(uv.y*12.)*.07));}
+   if(style==15u){let cell=floor(uv*vec2f(12,8));let rank=fract(sin(dot(cell,vec2f(12.9898,78.233)))*43758.5453);mask=smoothstep(rank-.07,rank+.07,t);}
+   if(style==16u){let scale=max(.015,abs(1-2*t));var axis=vec2f(q.x/scale,q.y);if(dir>=2u){axis=vec2f(q.x,q.y/scale);}let coord=axis+.5;if(!inside(coord)){return vec4f(0);}return select(sample1(coord),sample2(coord),t>=.5);}
+   if(style==17u){let edge=abs(v-t);let base=mix(sample1(uv),sample2(uv),1-smoothstep(t-aa,t+aa,v));let light=exp(-edge*80.)*peak;return vec4f(min(vec3f(1),base.rgb+vec3f(light)),max(base.a,light));}
+   if(style==18u){let edge=v+.07*sin(uv.y*70.)+.035*sin(uv.y*157.);mask=1-smoothstep(t-aa,t+aa,edge);}
+   if(style==19u){let blocks=max(4.,180.-peak*176.);let coord=(floor(uv*blocks)+.5)/blocks;return mix(sample1(coord),sample2(coord),t);}
+   if(style==20u){let d=vec2f(peak*.035,0);let a=vec4f(sample1(uv+d).r,sample1(uv).g,sample1(uv-d).b,sample1(uv).a);let b=vec4f(sample2(uv-d).r,sample2(uv).g,sample2(uv+d).b,sample2(uv).a);return mix(a,b,t);}
+   return mix(sample1(uv),sample2(uv),mask);
+ }
+ if(mode==8u){
+   let c=sample1(uv);let px=1./vec2f(textureDimensions(first));
+   let around=(sample1(uv+vec2f(px.x,0))+sample1(uv-vec2f(px.x,0))+sample1(uv+vec2f(0,px.y))+sample1(uv-vec2f(0,px.y)))*.25;
+   var rgb=(c.rgb+(c.rgb-around.rgb)*p.a.y*2.)/max(c.a,.000001);
+   let noise=(fract(sin(dot(floor(uv/px),vec2f(12.9898,78.233)))*43758.5453)-.5)*p.a.z*.3;
+   rgb=(rgb+noise)*(1-p.a.w*smoothstep(.2,.72,length(uv-.5))*.85);
+   return vec4f(clamp(rgb,vec3f(0),vec3f(1))*c.a,c.a);
  }
  return vec4f(1,0,1,1);
 }`;
@@ -116,7 +166,7 @@ export async function createGpuCompositor(canvas, options = {}) {
     if (disposed || failed) throw new Error(failed || 'Compositor disposed');
   };
   async function pipeline(targetFormat) {
-    const key = 'scene-v2:' + targetFormat;
+    const key = 'scene-v3:' + targetFormat;
     if (!gpu.pipelines.has(key)) {
       const promise = (async () => {
         const module = device.createShaderModule({ code: shader });
@@ -525,7 +575,18 @@ export async function createGpuCompositor(canvas, options = {}) {
             w,
             h
           );
-        } else if (id === 'lut') {
+        } else if (id === 'detail') {
+          t = cachedPass(
+            'effect',
+            fx,
+            8,
+            t,
+            null,
+            [Number(p.sharpness) / 100, Number(p.noise) / 100, Number(p.vignette) / 100],
+            w,
+            h
+          );
+        } else if (['lut', 'looks', 'color-grade', 'custom-lut'].includes(id)) {
           if (!effect.lut) throw new Error('LUT资源未准备');
           t = cachedPass(
             'effect',
@@ -573,12 +634,15 @@ export async function createGpuCompositor(canvas, options = {}) {
       return t;
     },
     transition(from, to, tr, key) {
-      const index = ['cross_dissolve', 'fade_color', 'wipe', 'slide'].indexOf(
-        tr.style || tr.kind || 'cross_dissolve'
-      );
+      const index = TRANSITION_STYLES.indexOf(tr.style || tr.kind || 'cross_dissolve');
       if (index < 0) throw new Error('不支持的转场');
+      let progress = tr.progress;
+      const easing = tr.parameters?.easing;
+      if (easing === 'easeIn') progress *= progress;
+      if (easing === 'easeOut') progress = 1 - (1 - progress) ** 2;
+      if (easing === 'easeInOut') progress = progress * progress * (3 - 2 * progress);
       return cachedPass('transition', key, 7, from, to, [
-        tr.progress,
+        progress,
         index,
         Math.max(0, ['right', 'left', 'down', 'up'].indexOf(tr.direction || 'right')),
         ...(tr.color || [0, 0, 0, 1]),

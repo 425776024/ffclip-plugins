@@ -2,6 +2,7 @@ import { duration, type Project } from '../core/project.mjs';
 import { sharedMediaEngine } from '../media/browser';
 import { createTemplatePlayer, ensureCanvasFonts, type TemplatePlayer } from './text';
 import { frameTime, layerGeometry, makeLut } from './plan.mjs';
+import { makeColorLut } from './color-lut.mjs';
 import { createGpuCompositor } from './gpu.mjs';
 import { SceneGraph, visualFrameIdentity, renderIdentity } from './graph';
 import { HtmlFrameClient, type HtmlFrameRequest } from './html';
@@ -694,13 +695,25 @@ export class SceneRenderer {
           index = 0;
         const draw = (layer: any) => {
           const effects = layer.effects.map((fx: any) => {
-            if (fx.templateId !== 'lut') return fx;
+            if (!['lut', 'looks', 'color-grade', 'custom-lut'].includes(fx.templateId)) return fx;
             const preset = fx.parameters.preset || 'warm';
-            if (!this.luts.has(preset)) this.luts.set(preset, makeLut(preset));
-            const lut = this.luts.get(preset);
+            const key =
+              fx.templateId === 'lut'
+                ? preset
+                : renderIdentity([
+                    fx.templateId,
+                    Object.fromEntries(
+                      Object.entries(fx.parameters).filter(([key]) => key !== 'amount')
+                    )
+                  ]);
+            if (!this.luts.has(key)) {
+              this.luts.set(key, fx.templateId === 'lut' ? makeLut(preset) : makeColorLut(fx));
+              if (this.luts.size > 12) this.luts.delete(this.luts.keys().next().value!);
+            }
+            const lut = this.luts.get(key);
             return {
               ...fx,
-              lut: { size: lut.size, texture: this.gpu.lut(lut.data, lut.size, preset) }
+              lut: { size: lut.size, texture: this.gpu.lut(lut.data, lut.size, key) }
             };
           });
           const inputKey = 'input:' + renderIdentity(layer.uploadIdentity);

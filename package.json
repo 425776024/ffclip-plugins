@@ -1,6 +1,6 @@
 {
   "name": "@ffclip-com/videocut",
-  "version": "0.2.11",
+  "version": "0.2.12",
   "description": "Local video editing with agent tools, live browser previews and MP4/WebM export",
   "type": "module",
   "license": "MIT",
@@ -32,7 +32,9 @@
     "plugins/videocut-local/skills/video-editing/SKILL.md",
     "plugins/videocut-local/skills/initialize-demo",
     "plugins/videocut-local/skills/motion-templates",
-    "plugins/videocut-local/skills/visual-understanding"
+    "plugins/videocut-local/skills/visual-understanding",
+    "THIRD_PARTY_NOTICES.md",
+    "licenses/WebAV-MIT.txt"
   ],
   "scripts": {
     "dev": "node scripts/dev.mjs",

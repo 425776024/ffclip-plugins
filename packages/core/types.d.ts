@@ -183,7 +183,7 @@ export interface AutomationBinding {
 }
 export interface EffectInstance {
     id: string;
-    templateId: 'blur' | 'glow' | 'lut';
+    templateId: 'blur' | 'glow' | 'lut' | 'color-grade' | 'detail' | 'looks' | 'custom-lut';
     enabled: boolean;
     parameters: Record<string, number | string>;
 }
@@ -191,7 +191,7 @@ export interface TransitionInstance {
     id: string;
     fromItemId: string;
     toItemId: string;
-    templateId: 'dissolve' | 'fade' | 'wipe' | 'slide';
+    templateId: 'dissolve' | 'fade' | 'wipe' | 'slide' | 'push' | 'zoom' | 'blur' | 'fan' | 'circle' | 'diamond' | 'clock' | 'pageCurl' | 'blinds' | 'flash' | 'stripeWipe' | 'checkerboard' | 'flip' | 'beam' | 'tear' | 'pixelate' | 'rgbSplit';
     duration: number;
     parameters: Record<string, number | string>;
 }
