@@ -14,16 +14,7 @@ npm install -g @ffclip-com/videocut@latest && videocut-web --demo --open --port 
 
 [Chinese](README-zh.md) · [Website](https://ffclip.com)
 
-![VideoCut 0.2.12: editable demo, text presets and aligned property panels](docs/images/videocut-editor.png)
-
-<details>
-<summary>Filters, keyframe buttons and transitions</summary>
-
-![Filter presets and previous, add/remove, next keyframe buttons](docs/images/videocut-keyframes.png)
-
-![Transition library and clip properties](docs/images/videocut-transitions.png)
-
-</details>
+![VideoCut 0.2.12: text presets, filters, keyframes and transitions in a looping preview](docs/images/videocut-ui.gif)
 
 Edit local videos with an AI assistant. Preview, captions, animation and export in one timeline.
 

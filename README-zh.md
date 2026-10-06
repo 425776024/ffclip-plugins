@@ -14,16 +14,7 @@ npm install -g @ffclip-com/videocut@latest && videocut-web --demo --open --port 
 
 [英文](README.md) · [官网](https://ffclip.com)
 
-![VideoCut 0.2.12 实际运行：可编辑作品、文字预设与整齐的属性面板](docs/images/videocut-editor.png)
-
-<details>
-<summary>查看滤镜、关键帧按钮与转场面板</summary>
-
-![滤镜预设与上一个、添加或删除、下一个关键帧按钮](docs/images/videocut-keyframes.png)
-
-![转场资源库与片段属性](docs/images/videocut-transitions.png)
-
-</details>
+![VideoCut 0.2.12：循环展示文字预设、滤镜、关键帧与转场面板](docs/images/videocut-ui.gif)
 
 让 AI 助手帮你剪视频，实时预览，加字幕、动画并导出。
 
