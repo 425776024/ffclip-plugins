@@ -8,13 +8,7 @@
 Install the latest official npm package @ffclip-com/videocut. Set it up for this assistant, preserve my existing settings, and open the built-in editable demo in my browser. Use Node.js 22 or newer. If a new tool connection needs a restart, open the demo with the CLI first.
 ```
 
-```sh
-npm install -g @ffclip-com/videocut@latest && videocut-web --demo --open --port 0
-```
-
-Requires Node.js 22+ and Chrome or Edge. The bundled demo needs no media selection or model downloads. Ask your assistant to trim a clip, add a title, or export a video.
-
-<details>
+<details open>
 <summary>See the editor: text, filters, keyframes and transitions</summary>
 
 ![VideoCut 0.2.13: text presets, filters, keyframes and the About dialog in a looping preview](docs/images/videocut-ui.gif)
