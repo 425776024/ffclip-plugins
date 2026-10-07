@@ -25,7 +25,9 @@ npm install -g @ffclip-com/videocut@latest && videocut-web --demo --open --port 
 ### HTML 动画 · 产品开场
 
 ```text
-用 VideoCut 做一个 6 秒、16:9 的 HTML 产品开场：奶油白背景、珊瑚红点缀，标题“From idea.”和“To video.”依次上移浮现。右侧三张卡片错位展开、轻轻悬浮，圆形徽章缓慢旋转。保留可编辑的标题和动画，打开预览并导出 MP4。
+用 VideoCut 做一个 6 秒、16:9 的 HTML 产品开场：奶油白背景、珊瑚红点缀，
+标题“From idea.”和“To video.”依次上移浮现。右侧三张卡片错位展开、轻轻悬浮，
+圆形徽章缓慢旋转。保留可编辑的标题和动画，打开预览并导出 MP4。
 ```
 
 https://github.com/user-attachments/assets/60a8880e-c636-435c-9dcd-6c2b287854ac
@@ -37,7 +39,10 @@ https://github.com/user-attachments/assets/60a8880e-c636-435c-9dcd-6c2b287854ac
 ### 数据动画 · 让数字动起来
 
 ```text
-用 VideoCut 做一个 6 秒的 HTML 数据动画：深绿背景、浅绿柱状图，标题“Small steps. Big momentum.”。Q1 到 Q4 的柱子依次长高，数字从 0 增长到 24%、48%、72%、96%，左侧大数字停在 96%。明确标注为演示数据，数值可编辑，打开预览并导出 MP4。
+用 VideoCut 做一个 6 秒的 HTML 数据动画：深绿背景、浅绿柱状图，
+标题“Small steps. Big momentum.”。Q1 到 Q4 的柱子依次长高，
+数字从 0 增长到 24%、48%、72%、96%，左侧大数字停在 96%。明确标注为演示数据，
+数值可编辑，打开预览并导出 MP4。
 ```
 
 https://github.com/user-attachments/assets/7e8fb040-f794-4732-9f98-5d83c013ec94
@@ -49,7 +54,10 @@ https://github.com/user-attachments/assets/7e8fb040-f794-4732-9f98-5d83c013ec94
 ### 本地配音 · 文案变成有声短片
 
 ```text
-用 VideoCut 的本地中文女声 zf_001，以正常语速朗读：“给灵感一个声音。把文字变成配音，让字幕跟随节奏。现在，开始你的创作。”制作约 10 秒的短片：米白和橄榄绿配色，标题“让灵感，成为作品。”，圆形声波随实际音频起伏。生成字幕，按原稿校正文字和分句；配音与字幕保留独立轨道，打开预览并导出带声音的 MP4。
+用 VideoCut 的本地中文女声 zf_001，以正常语速朗读：“给灵感一个声音。把文字变成配音，
+让字幕跟随节奏。现在，开始你的创作。”制作约 10 秒的短片：米白和橄榄绿配色，标题“让灵感，
+成为作品。”，圆形声波随实际音频起伏。生成字幕，按原稿校正文字和分句；配音与字幕保留独立轨道，
+打开预览并导出带声音的 MP4。
 ```
 
 https://github.com/user-attachments/assets/0da34d26-bc46-474d-856a-34a61aef828e
