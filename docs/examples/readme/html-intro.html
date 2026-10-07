@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>From idea to video</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#f3f0e7;color:#24251f;font-family:Arial,Helvetica,sans-serif}
+.stage{position:absolute;width:1280px;height:720px;transform-origin:top left;overflow:hidden}
+.top{position:absolute;left:64px;right:64px;top:44px;display:flex;justify-content:space-between;font-size:18px;letter-spacing:2px;font-weight:700}.brand{display:flex;align-items:center;gap:12px}.dot{width:14px;height:14px;background:#e75237;border-radius:50%}.issue{color:#77796b;font-size:14px}
+.rule{position:absolute;left:64px;top:90px;width:1152px;height:1px;background:#cccbbf}
+.eyebrow{position:absolute;left:64px;top:147px;font-size:16px;letter-spacing:3px;color:#757866}
+.line{position:absolute;left:58px;font-size:108px;line-height:1;font-weight:800;letter-spacing:-7px}.l1{top:192px}.l2{top:302px;color:#e75237}
+.description{position:absolute;left:66px;top:447px;width:520px;font-size:25px;line-height:1.5;color:#666b5b}
+.art{position:absolute;left:740px;top:175px;width:410px;height:360px}
+.frame{position:absolute;width:330px;height:235px;left:38px;top:63px;border:2px solid #24251f;border-radius:18px;background:#e2e6d4;transform-origin:50% 50%}.back{background:#e75237}.front{background:#faf8f1;box-shadow:0 16px 0 #24251f0c;padding:27px}
+.frame-label{font-size:14px;letter-spacing:2px;color:#838572}.play{position:absolute;left:130px;top:78px;width:76px;height:76px;background:#e75237;border-radius:50%;display:grid;place-items:center}.triangle{width:0;height:0;border-top:16px solid transparent;border-bottom:16px solid transparent;border-left:25px solid #fff;margin-left:6px}
+.frame-footer{position:absolute;left:27px;right:27px;bottom:24px;display:flex;justify-content:space-between;font-size:14px;font-weight:700}.orbit{position:absolute;left:288px;top:0;width:80px;height:80px;border:1px solid #24251f;border-radius:50%;display:grid;place-items:center;font-size:43px;background:#d1dbb5}.cross{position:absolute;left:4px;top:324px;font-size:60px;line-height:1;color:#6f8050}
+.bottom{position:absolute;left:64px;right:64px;top:600px;border-top:1px solid #cccbbf;padding-top:22px;display:flex;gap:10px}.pill{border:1px solid #bfc2b1;border-radius:30px;padding:11px 20px;font-size:16px}.counter{margin-left:auto;font-size:14px;letter-spacing:2px;padding-top:13px;color:#747969}.progress{position:absolute;bottom:0;left:0;height:6px;background:#e75237;width:0}
+</style>
+</head>
+<body><main class="stage">
+<div class="top"><div class="brand"><span class="dot"></span>VIDEOCUT</div><span class="issue">MOTION STUDY / 01</span></div><div class="rule"></div>
+<div class="eyebrow">A LITTLE IDEA. A NEW BEGINNING.</div><div class="line l1">From idea.</div><div class="line l2">To video.</div><div class="description">A few words.<br>A world in motion.</div>
+<div class="art"><div class="frame back"></div><div class="frame middle"></div><div class="frame front"><div class="frame-label">YOUR NEXT STORY</div><div class="play"><div class="triangle"></div></div><div class="frame-footer"><span>MAKE IT MOVE</span><span>↗</span></div></div><div class="orbit">✳</div><div class="cross">+</div></div>
+<div class="bottom"><span class="pill">Editable titles</span><span class="pill">HTML motion</span><span class="pill">Your story</span><span class="counter">IDEA → FRAME → FILM</span></div><div class="progress"></div>
+</main><script>
+const vars=window.variables||{};
+document.querySelector('.l1').textContent=vars.title||'From idea.';
+document.querySelector('.l2').textContent=vars.subtitle||'To video.';
+const ease=x=>1-Math.pow(1-Math.max(0,Math.min(1,x)),3);
+window.tick=(t,context)=>{
+ document.querySelector('.stage').style.transform=`scale(${context.width/1280})`;
+ for(const [sel,delay] of [['.eyebrow',0],['.l1',.1],['.l2',.3],['.description',.6],['.bottom',.9]]){const p=ease((t-delay)/.8),el=document.querySelector(sel);el.style.opacity=.08+.92*p;el.style.transform=`translateY(${(1-p)*40}px)`;}
+ const p=ease(t/1.2),float=Math.sin(t*Math.PI/3)*8;
+ document.querySelector('.back').style.transform=`translate(${-35*p}px,${-28*p+float}px) rotate(${-13*p}deg)`;
+ document.querySelector('.middle').style.transform=`translate(${23*p}px,${-10*p+float}px) rotate(${10*p}deg)`;
+ document.querySelector('.front').style.transform=`translateY(${float+(1-p)*70}px) rotate(${-2*p}deg)`;
+ document.querySelector('.orbit').style.transform=`rotate(${t*30}deg) scale(${.5+.5*p})`;
+ document.querySelector('.cross').style.transform=`rotate(${-t*22}deg)`;
+ document.querySelector('.progress').style.width=`${Math.min(1,t/context.duration)*100}%`;
+};
+</script></body></html>

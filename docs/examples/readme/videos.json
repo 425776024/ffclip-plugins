@@ -1,0 +1,35 @@
+[
+  {
+    "name": "html-intro",
+    "url": "https://github.com/user-attachments/assets/60a8880e-c636-435c-9dcd-6c2b287854ac",
+    "sha256": "203c0661241e0773795df759171923af177a38fc8bb090cfb483109bc1a45209",
+    "bytes": 822629,
+    "durationSeconds": 6,
+    "width": 1280,
+    "height": 720,
+    "fps": 24,
+    "audio": false
+  },
+  {
+    "name": "html-chart",
+    "url": "https://github.com/user-attachments/assets/7e8fb040-f794-4732-9f98-5d83c013ec94",
+    "sha256": "8999e7ff9ee85a1a5d08df2ccd27eca27ff052381af083f372529bfa2aef7019",
+    "bytes": 198372,
+    "durationSeconds": 6,
+    "width": 1280,
+    "height": 720,
+    "fps": 24,
+    "audio": false
+  },
+  {
+    "name": "voiceover",
+    "url": "https://github.com/user-attachments/assets/0da34d26-bc46-474d-856a-34a61aef828e",
+    "sha256": "2d6d3384a788a1aaefd346eb0899e26007194af95ee7c08380ba7998ec1262ba",
+    "bytes": 548564,
+    "durationSeconds": 10,
+    "width": 1280,
+    "height": 720,
+    "fps": 24,
+    "audio": true
+  }
+]

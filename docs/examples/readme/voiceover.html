@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><title>给灵感一个声音</title><style>
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#eeeade;color:#25332a;font-family:"PingFang SC","Microsoft YaHei",Arial,sans-serif}.stage{position:absolute;width:1280px;height:720px;transform-origin:top left}.top{position:absolute;left:64px;right:64px;top:45px;display:flex;justify-content:space-between;font-size:16px;letter-spacing:2px}.badge{border:1px solid #b5baa8;border-radius:24px;padding:8px 16px;margin-top:-7px;font-size:13px}.rule{position:absolute;left:64px;top:94px;width:1152px;height:1px;background:#c6c9b9}.eyebrow{position:absolute;left:66px;top:154px;font-size:16px;color:#66725e;letter-spacing:4px}h1{position:absolute;left:58px;top:200px;margin:0;font-size:79px;line-height:1.35;font-weight:600;letter-spacing:-3px}h1 span{color:#7b8755}.note{position:absolute;left:66px;top:445px;color:#747d67;font-size:21px;letter-spacing:2px}.disc{position:absolute;left:795px;top:163px;width:302px;height:302px;border-radius:50%;border:1px solid #a6b395;display:grid;place-items:center;background:#e0e4d1}.inner{width:238px;height:238px;border-radius:50%;background:#293f31;position:relative;display:flex;align-items:center;justify-content:center;gap:6px}.wave{width:6px;border-radius:4px;background:#e7ecb7;height:10px}.ring{position:absolute;inset:-17px;border:1px solid #bac3a8;border-radius:50%}.orbit{position:absolute;left:134px;top:-25px;width:30px;height:30px;background:#d17845;border:6px solid #eeeade;border-radius:50%;transform-origin:15px 176px}.label{position:absolute;left:801px;top:505px;width:290px;text-align:center;font-size:14px;letter-spacing:3px;color:#68795f}.caption-well{position:absolute;left:64px;top:574px;width:1152px;height:90px;background:#faf8f0;border:1px solid #d1d4c2;border-radius:16px}.progress{position:absolute;left:64px;top:682px;height:3px;background:#7b8755}
+</style></head><body><main class="stage"><div class="top"><span>VIDEOCUT / VOICE STUDIO</span><span class="badge">本地配音 · 可编辑字幕</span></div><div class="rule"></div><div class="eyebrow">WORDS BECOME A VOICE</div><h1>让灵感，<br><span>成为作品。</span></h1><div class="note">写下文案，听见你的故事。</div><div class="disc"><div class="ring"></div><div class="inner"></div><div class="orbit"></div></div><div class="label">中文女声 / KOKORO</div><div class="caption-well"></div><div class="progress"></div></main><script>
+const vars=window.variables||{},waveform=JSON.parse(vars.waveform||'[]'),inner=document.querySelector('.inner');
+for(let i=0;i<21;i++){const bar=document.createElement('i');bar.className='wave';inner.appendChild(bar);}
+const bars=[...document.querySelectorAll('.wave')],ease=x=>1-Math.pow(1-Math.max(0,Math.min(1,x)),3);
+window.tick=(t,context)=>{
+ document.querySelector('.stage').style.transform=`scale(${context.width/1280})`;
+ const index=Math.floor(t*30),amp=waveform[index]||0;
+ bars.forEach((el,i)=>{const shape=Math.pow(Math.sin((i+1)*Math.PI/22),1.3);el.style.height=`${8+150*shape*amp*(.65+.35*Math.sin(i*.8+t*17)**2)}px`;});
+ document.querySelector('.orbit').style.transform=`rotate(${t*25}deg)`;
+ document.querySelector('.disc').style.transform=`scale(${.92+.08*ease(t/.8)})`;
+ document.querySelector('h1').style.transform=`translateY(${(1-ease(t/.8))*25}px)`;
+ document.querySelector('.progress').style.width=`${Math.min(1,t/context.duration)*1152}px`;
+};
+</script></body></html>
