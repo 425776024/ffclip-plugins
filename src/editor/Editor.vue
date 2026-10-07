@@ -46,6 +46,7 @@ import { AsrJobCoordinator } from './asr-jobs';
 import { VisionJobCoordinator } from './vision-jobs';
 import VisionSetupDialog from './VisionSetupDialog.vue';
 import SoftwareUpdateDialog from './SoftwareUpdateDialog.vue';
+import AboutDialog from './AboutDialog.vue';
 import ExportDialog from './ExportDialog.vue';
 import type { TtsJob } from '../../packages/client/types';
 const copyrightNotice = `© ${new Date().getFullYear()} FFClip`;
@@ -175,6 +176,7 @@ const roots = ref<string[]>([]),
 const selected = ref(''),
   panel = ref('media');
 const shortcuts = ref(false),
+  about = ref(false),
   credits = ref(false);
 let creditsPreviousFocus: HTMLElement | null = null;
 watch(credits, async (visible) => {
@@ -1039,7 +1041,14 @@ onBeforeUnmount(() => {
           v-if="connected"
           :client="client"
           :blocked="
-            busy || playing || editing || resizingPanels || showOpen || shortcuts || credits
+            busy ||
+            playing ||
+            editing ||
+            resizingPanels ||
+            showOpen ||
+            shortcuts ||
+            about ||
+            credits
           "
           @install="playing = false"
         />
@@ -1154,15 +1163,9 @@ onBeforeUnmount(() => {
           </button>
         </div>
         <div class="rail-bottom">
-          <a
-            class="rail-website"
-            href="https://ffclip.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            :title="tr('ffclip 官网（在新标签页打开）')"
-          >
-            <Icon name="link" :size="21" /><span>ffclip.com</span>
-          </a>
+          <button :title="tr('关于 ffclip')" @click="about = true">
+            <Icon name="info" :size="21" /><span>{{ tr('关于') }}</span>
+          </button>
           <button :title="tr('键盘快捷键')" @click="shortcuts = !shortcuts">
             <Icon name="info" :size="21" /><span>{{ tr('帮助') }}</span>
           </button>
@@ -1608,6 +1611,7 @@ onBeforeUnmount(() => {
         </p>
       </section>
     </div>
+    <AboutDialog v-if="about" @close="about = false" />
     <div v-if="shortcuts" class="dialog-backdrop" @click.self="shortcuts = false">
       <section class="help-dialog panel">
         <div class="panel-heading">

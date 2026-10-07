@@ -371,32 +371,6 @@ fieldset {
   border-top: 1px solid #ffffff06;
   padding-top: 5px;
 }
-.rail-website {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 3px;
-  width: 100%;
-  height: 48px;
-  border-radius: 4px;
-  color: #87898d;
-  font-size: 8px;
-  white-space: nowrap;
-  text-decoration: none;
-}
-.rail-website > svg {
-  width: 18px;
-  height: 18px;
-}
-.rail-website:hover {
-  background: #ffffff0c;
-  color: #fff;
-}
-.rail-website:focus-visible {
-  outline: 1px solid var(--accent);
-  outline-offset: 2px;
-}
 .workspace {
   grid-column: 2;
   grid-row: 1;
@@ -1696,6 +1670,117 @@ fieldset {
   background: #283732;
   padding: 5px 7px;
   border-radius: 4px;
+}
+.about-dialog {
+  width: 560px;
+  max-width: calc(100vw - 32px);
+  max-height: calc(100dvh - 32px);
+  padding: 0;
+  color: #dedfe1;
+}
+.about-dialog[open] {
+  display: flex;
+  flex-direction: column;
+}
+.about-dialog::backdrop {
+  background: #0009;
+}
+.about-dialog .panel-heading {
+  height: 40px;
+}
+.about-body {
+  min-height: 0;
+  overflow-y: auto;
+  padding: 18px;
+  display: grid;
+  gap: 16px;
+  font-size: 12px;
+}
+.about-contacts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+.about-contact {
+  min-width: 0;
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--input);
+}
+.about-qr-image {
+  display: flex;
+  height: 246px;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+}
+.about-qr-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.about-contact figcaption {
+  display: grid;
+  justify-items: center;
+  gap: 5px;
+  padding: 12px 8px;
+  text-align: center;
+  line-height: 1.4;
+}
+.about-contact figcaption span {
+  color: #a0a5aa;
+  font-size: 11px;
+}
+.about-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 14px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: #dedfe1;
+  background: var(--input);
+  text-decoration: none;
+}
+.about-link > svg {
+  color: var(--accent);
+}
+.about-link-label {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+}
+.about-link-label > span {
+  color: #a0a5aa;
+  font-size: 11px;
+}
+.about-link-action {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--accent);
+}
+.about-link:hover {
+  border-color: var(--accent);
+  background: #34d1bf0b;
+}
+.about-link:focus-visible,
+.about-qr-image:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: -2px;
+}
+@media (max-width: 480px) {
+  .about-contacts {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .about-body {
+    padding: 14px;
+    gap: 12px;
+  }
 }
 @media (min-width: 1700px) {
   :root {

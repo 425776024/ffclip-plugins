@@ -2,6 +2,7 @@ import { textAssetFiles } from './text-assets.mjs';
 import { ttsAssetFiles } from './tts-assets.mjs';
 import { asrAssetFiles } from './asr-assets.mjs';
 import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
 import { lstat, readdir, readFile } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -101,6 +102,14 @@ export function assertArtifact(path, bytes) {
   if (/^dist\/web\/assets\/html-poster-[A-Za-z0-9_-]+\.png$/.test(path)) {
     if (bytes.subarray(0, 8).toString('hex') !== '89504e470d0a1a0a')
       throw new Error(`Invalid animation poster: ${path}`);
+    return;
+  }
+  const contactImage = /^dist\/web\/assets\/(wechat-(?:official-)?qr)-[A-Za-z0-9_-]+\.jpg$/.exec(path);
+  if (contactImage) {
+    // Keep the supplied QR bytes intact, including the original trailing metadata.
+    const original = readFileSync(join(root, 'src/editor/assets/contact', contactImage[1] + '.jpg'));
+    if (bytes[0] !== 0xff || bytes[1] !== 0xd8 || digest(bytes) !== digest(original))
+      throw new Error(`Invalid contact QR image: ${path}`);
     return;
   }
   if (!runtimeFiles.includes(path) && !/^dist\/web\/assets\/[A-Za-z0-9_-]+\.(?:js|css)$/.test(path))

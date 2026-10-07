@@ -14,7 +14,7 @@ npm install -g @ffclip-com/videocut@latest && videocut-web --demo --open --port 
 
 [Chinese](README-zh.md) · [Website](https://ffclip.com)
 
-![VideoCut 0.2.12: text presets, filters, keyframes and transitions in a looping preview](docs/images/videocut-ui.gif)
+![VideoCut 0.2.13: text presets, filters, keyframes and the About dialog in a looping preview](docs/images/videocut-ui.gif)
 
 Edit local videos with an AI assistant. Preview, captions, animation and export in one timeline.
 
@@ -22,6 +22,8 @@ Edit local videos with an AI assistant. Preview, captions, animation and export 
 - Add captions, animated titles and local voiceovers.
 - Apply filters and transitions with editable property controls and keyframes.
 - Preview changes live and export MP4 or WebM.
+
+The About dialog includes the official website, WeChat QR codes and the creator’s Bilibili profile. The editor automatically checks for new releases; choosing Update saves the complete project before installing the latest official package. Restart the ffclip service or MCP connection to use the installed version.
 
 Requires Node.js 22+ and Chrome or Edge. The bundled demo needs no media selection or model downloads. Ask your assistant to trim a clip, add a title, or export a video.
 

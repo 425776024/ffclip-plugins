@@ -112,7 +112,7 @@ run.onclick = async () => {
       'Export folder accessibility label'
     );
     await click('.export-button');
-    await click('.rail-bottom button');
+    await click('.rail-bottom button[title="Keyboard shortcuts"]');
     assert(
       document.querySelector('.help-dialog strong')?.textContent === 'Keyboard shortcuts',
       'Help label'
