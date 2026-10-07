@@ -2,7 +2,9 @@
 
 Edit videos, create HTML motion graphics and generate local voiceovers with your AI assistant. Keep every change on an editable timeline.
 
-## Copy this into your AI assistant
+## Quick Start
+
+<sub>Copy this into your AI assistant</sub>
 
 ```text
 Install the latest official npm package @ffclip-com/videocut. Set it up for this assistant, preserve my existing settings, and open the built-in editable demo in my browser. Use Node.js 22 or newer. If a new tool connection needs a restart, open the demo with the CLI first.
