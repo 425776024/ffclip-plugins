@@ -18,6 +18,21 @@ npm install -g @ffclip-com/videocut@latest && videocut-web --demo --open --port 
 
 Requires Node.js 22+ and Chrome or Edge. The bundled demo needs no media selection or model downloads. Ask your assistant to trim a clip, add a title, or export a video.
 
+<details>
+<summary>See the editor: text, filters, keyframes and transitions</summary>
+
+![VideoCut 0.2.13: text presets, filters, keyframes and the About dialog in a looping preview](docs/images/videocut-ui.gif)
+
+Trim and arrange clips, adjust captions, effects and keyframes, preview live, and export MP4 or WebM.
+
+The About dialog includes the official website, WeChat QR codes and the creator’s Bilibili profile. The editor automatically checks for new releases; choosing Update saves the complete project before installing the latest official package. Restart the ffclip service or MCP connection to use the installed version.
+
+</details>
+
+[Usage guide](docs/usage-en.md) · [MIT](LICENSE) · [Third-party notices](THIRD_PARTY_NOTICES.md)
+
+VideoCut’s early browser video implementation incorporated and adapted [WebAV](https://github.com/WebAV-Tech/WebAV) (MIT, Copyright © 2023 风痕). Thanks to its author and contributors. See [third-party acknowledgment](THIRD_PARTY_NOTICES.md).
+
 ## Start with a prompt. Make it yours.
 
 These videos were exported by VideoCut and play directly below. After setup, send a prompt to your assistant and customize the words, colors or data for your own version.
@@ -72,18 +87,3 @@ Keep going: `Replace the narration with an English product introduction using af
 Voiceover and speech recognition download their models on first use, then process locally. The sample uses Chinese narration; its captions were corrected against the script.
 
 [Download all three editable projects](docs/examples/readme/showcase-projects.zip) · [Opening the examples](docs/examples/readme/README.md)
-
-<details>
-<summary>See the editor: text, filters, keyframes and transitions</summary>
-
-![VideoCut 0.2.13: text presets, filters, keyframes and the About dialog in a looping preview](docs/images/videocut-ui.gif)
-
-Trim and arrange clips, adjust captions, effects and keyframes, preview live, and export MP4 or WebM.
-
-The About dialog includes the official website, WeChat QR codes and the creator’s Bilibili profile. The editor automatically checks for new releases; choosing Update saves the complete project before installing the latest official package. Restart the ffclip service or MCP connection to use the installed version.
-
-</details>
-
-[Usage guide](docs/usage-en.md) · [MIT](LICENSE) · [Third-party notices](THIRD_PARTY_NOTICES.md)
-
-VideoCut’s early browser video implementation incorporated and adapted [WebAV](https://github.com/WebAV-Tech/WebAV) (MIT, Copyright © 2023 风痕). Thanks to its author and contributors. See [third-party acknowledgment](THIRD_PARTY_NOTICES.md).

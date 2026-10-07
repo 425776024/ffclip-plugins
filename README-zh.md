@@ -18,6 +18,21 @@ npm install -g @ffclip-com/videocut@latest && videocut-web --demo --open --port 
 
 需要 Node.js 22+ 和 Chrome 或 Edge。内置作品无需选素材、无需下载模型。打开后可直接播放，也可以对助手说：“把标题改成我的旅行，然后导出视频。”
 
+<details>
+<summary>查看编辑器：文字、滤镜、关键帧与转场</summary>
+
+![VideoCut 0.2.13：循环展示文字预设、滤镜、关键帧和关于弹窗](docs/images/videocut-ui.gif)
+
+在时间轴上裁剪和排列视频，调整字幕、效果与关键帧，实时预览并导出 MP4 或 WebM。
+
+左侧“关于”包含官网、微信二维码和作者 B 站主页。编辑器会自动检查新版本，点击“自动更新”后先保存完整作品，再安装官方最新包；安装完成后重启 ffclip 服务或 MCP 连接即可使用新版本。
+
+</details>
+
+[使用说明](docs/usage-zh.md) · [MIT 许可证](LICENSE) · [第三方声明](THIRD_PARTY_NOTICES.md)
+
+本项目早期浏览器音视频实现引用并改编了 [WebAV](https://github.com/WebAV-Tech/WebAV) 开源项目（MIT，Copyright © 2023 风痕），感谢作者及社区贡献者。详见 [开源声明与许可证](THIRD_PARTY_NOTICES.md)。
+
 ## 复制提示词，做出自己的作品
 
 下面均为 VideoCut 实际导出的 MP4，可直接播放。安装连接后，把提示词发给助手即可开始创作；换掉文案、颜色和数据，就是你的版本。
@@ -69,18 +84,3 @@ https://github.com/user-attachments/assets/0da34d26-bc46-474d-856a-34a61aef828e
 配音和语音识别首次使用需要下载模型，之后在本地处理。示例字幕已按原稿校正。
 
 [下载三个可编辑工程](docs/examples/readme/showcase-projects.zip) · [打开方式与示例说明](docs/examples/readme/README-zh.md)
-
-<details>
-<summary>查看编辑器：文字、滤镜、关键帧与转场</summary>
-
-![VideoCut 0.2.13：循环展示文字预设、滤镜、关键帧和关于弹窗](docs/images/videocut-ui.gif)
-
-在时间轴上裁剪和排列视频，调整字幕、效果与关键帧，实时预览并导出 MP4 或 WebM。
-
-左侧“关于”包含官网、微信二维码和作者 B 站主页。编辑器会自动检查新版本，点击“自动更新”后先保存完整作品，再安装官方最新包；安装完成后重启 ffclip 服务或 MCP 连接即可使用新版本。
-
-</details>
-
-[使用说明](docs/usage-zh.md) · [MIT 许可证](LICENSE) · [第三方声明](THIRD_PARTY_NOTICES.md)
-
-本项目早期浏览器音视频实现引用并改编了 [WebAV](https://github.com/WebAV-Tech/WebAV) 开源项目（MIT，Copyright © 2023 风痕），感谢作者及社区贡献者。详见 [开源声明与许可证](THIRD_PARTY_NOTICES.md)。
