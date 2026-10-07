@@ -1,6 +1,4 @@
-# VideoCut
-
-让 AI 帮你剪视频、制作 HTML 动画和本地配音，所有修改都留在可编辑时间轴上。
+[英文](README.md) · [官网](https://ffclip.com)
 
 ## 快速开始
 
@@ -10,13 +8,9 @@
 请从 npm 安装最新版 @ffclip-com/videocut，接入当前助手，保留已有配置，并在浏览器打开内置可编辑示例。需要 Node.js 22 或更新版本。如果新工具需要重启才能连接，先用命令行打开示例让我体验。
 ```
 
-## 或复制这一行到终端
-
 ```sh
 npm install -g @ffclip-com/videocut@latest && videocut-web --demo --open --port 0
 ```
-
-[英文](README.md) · [官网](https://ffclip.com)
 
 需要 Node.js 22+ 和 Chrome 或 Edge。内置作品无需选素材、无需下载模型。打开后可直接播放，也可以对助手说：“把标题改成我的旅行，然后导出视频。”
 
