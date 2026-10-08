@@ -154,9 +154,9 @@ export function visualFrameIdentity(plan: any, mediaUrl: (id: string) => string)
     value.visual,
     value.effects,
     value.item.clip.text || null,
-    value.item.clip.html || null,
-    value.item.clip.html
-      ? htmlSourceTime(value.item.clip.html, value.sourceTime)
+    value.item.clip.pagx || value.item.clip.html || null,
+    (value.item.clip.pagx || value.item.clip.html)
+      ? htmlSourceTime(value.item.clip.pagx || value.item.clip.html, value.sourceTime)
       : value.asset?.kind === 'video' || value.item.clip.text?.template
         ? value.sourceTime
         : null

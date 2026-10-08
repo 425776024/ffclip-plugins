@@ -59,6 +59,14 @@ Try asking your agent to:
 - "Create editable captions from this clip."
 - "Add background music and export an MP4."
 
+## PAGX animation
+
+The animation library contains 10 native PAGX templates. Add one to the timeline, select the clip, then edit its text, fonts, colors and shapes in the inspector. Edits support undo and complete-project saving.
+
+HTML authored through the assistant follows the bundled official PAGX Skill and converts to PAGX by default. If conversion is incomplete, the original HTML stays editable and uses screenshot rendering. Existing HTML projects still open normally.
+
+The **About** dialog links to the website, WeChat QR codes and the creator’s Bilibili profile. See also the [WeChat introduction (Chinese)](https://mp.weixin.qq.com/s/MKfMipfXc2xv_B3-mVYq6w).
+
 ## Save and reopen
 
 Choose **Export → Save complete project** to save a `.vcutweb` folder containing the project and its media. Keep the entire folder together when moving or sharing it.

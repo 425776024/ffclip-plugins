@@ -378,8 +378,8 @@ function drag(
   const geometry = layerGeometry(
     props.project,
     evaluated,
-    item.clip.html?.width || asset?.width || props.project.canvas.width,
-    item.clip.html?.height || asset?.height || props.project.canvas.height,
+    item.clip.pagx?.width || item.clip.html?.width || asset?.width || props.project.canvas.width,
+    item.clip.pagx?.height || item.clip.html?.height || asset?.height || props.project.canvas.height,
     props.project.canvas.width,
     props.project.canvas.height,
     !!item.clip.text

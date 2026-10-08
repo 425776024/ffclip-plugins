@@ -1,3 +1,4 @@
+import { pagxRuntimeAssets } from './scripts/pagx-assets.mjs';
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import { textTemplateAssets } from './scripts/text-assets.mjs';
@@ -5,7 +6,7 @@ import { ttsRuntimeAssets } from './scripts/tts-assets.mjs';
 import { asrRuntimeAssets } from './scripts/asr-assets.mjs';
 
 export default defineConfig({
-  plugins: [vue(), textTemplateAssets(), ttsRuntimeAssets(), asrRuntimeAssets()],
+  plugins: [vue(), textTemplateAssets(), ttsRuntimeAssets(), asrRuntimeAssets(), pagxRuntimeAssets()],
   publicDir: false,
   worker: { format: 'es' },
   build: { target: 'es2022', outDir: 'dist/web', sourcemap: false, minify: 'esbuild' },

@@ -3,7 +3,7 @@ name: initialize-demo
 description: Initialize VideoCut or ffclip after installation and visibly open its built-in cinematic project with animated gradient text, editable keyframes, continuous narration and captions. Use for a website setup prompt, onboarding or a request to show the built-in example.
 ---
 
-Create the built-in 18-second cinematic example and display its live editing preview. Its five tracks contain an original coastal picture, deterministic HTML with staggered text entrances and moving gradients, native gradient flower titles, a continuous narration WAV and timed captions. The picture and titles include editable position, scale and opacity keyframes. No user's media, AI inference or model downloads are needed.
+Create the built-in 18-second cinematic example and display its live editing preview. Its five tracks contain an original coastal picture, native PAGX with chapter entrances and editable graphic text, native gradient flower titles, a continuous narration WAV and timed captions. The picture and titles include editable position, scale and opacity keyframes. No user's media, AI inference or model downloads are needed.
 
 Call `initialize_demo` with `locale: "zh"` for Chinese or `locale: "en"` for English, matching the user's requested content language. Supply `name` only when useful. This creates a fresh independent session. Keep the returned `id` for subsequent edits and open its exact `previewUrl` automatically using the host's visible browser or preview tools. Do not replace an existing user project or stop after returning a URL. Leave the preview open so the user can inspect the animation, titles, narration and subtitle tracks.
 

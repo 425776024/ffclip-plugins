@@ -56,6 +56,21 @@ export interface ConnectionInfo {
         alpha: boolean;
         clock: number;
     };
+    pagxClips?: {
+        available: boolean;
+        conversionAvailable: boolean;
+        defaultRenderer: string;
+        fallbackRenderer: string;
+        experimental: boolean;
+        renderer: string;
+        license: string;
+        enterpriseRequired: boolean;
+        converterRevision: string;
+        maxConversionSeconds: number;
+        supported: string[];
+        unsupported: string[];
+        videoExport: string;
+    };
 }
 export interface SoftwareUpdateStatus {
     packageName: string;
@@ -301,3 +316,21 @@ export interface TtsJob {
     error?: string;
     previewUrl?: string;
 }
+export interface AnimationPreparation {
+    requested: 'pagx' | 'html';
+    renderer: 'pagx' | 'html';
+    fallback: boolean;
+    warnings: string[];
+    reason?: string;
+    requiresVisualReview?: boolean;
+}
+export type PreparedAnimation = {
+    name: string;
+    conversion: AnimationPreparation;
+} & ({
+    type: 'pagx-clip';
+    pagx: import('../core/types.js').PagxContent;
+} | {
+    type: 'html-clip';
+    html: import('../core/types.js').HtmlContent;
+});

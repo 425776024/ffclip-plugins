@@ -33,8 +33,8 @@ import Icon from './Icon.vue';
 import MediaLibrary from './MediaLibrary.vue';
 import Inspector from './Inspector.vue';
 import TextLibrary from './TextLibrary.vue';
-import HtmlLibrary from './HtmlLibrary.vue';
-import type { HtmlContent } from './html-presets';
+import AnimationLibrary from './AnimationLibrary.vue';
+import type { PagxContent } from '../../packages/core/types';
 import EffectLibrary from './EffectLibrary.vue';
 import { visualPackage } from '../../packages/render/catalog';
 import { propertyCommand, keyframeCommand } from './property-command';
@@ -544,7 +544,10 @@ async function sendCommand(
     adopt(result);
     const created = result.operations.find(
       (o: any) =>
-        o.itemId && ['add_asset', 'add_text', 'add_html_clip', 'duplicate_clips'].includes(o.action)
+        o.itemId &&
+        ['add_asset', 'add_text', 'add_html_clip', 'add_pagx_clip', 'duplicate_clips'].includes(
+          o.action
+        )
     );
     if (created?.itemId) select(created.itemId);
     const duplicated = result.operations.find((o) => o.action === 'duplicate_clips');
@@ -714,9 +717,9 @@ function insertText(content = tr('默认文字'), fontSize = 64, subtitle = fals
     { action: 'add_text', content, fontSize, startSeconds: seconds(Math.round(time.value)) }
   ]);
 }
-function insertHtml(html: HtmlContent, name: string) {
+function insertPagx(pagx: PagxContent, name: string) {
   playing.value = false;
-  command([{ action: 'add_html_clip', html, name, start: Math.round(time.value) }]);
+  void command([{ action: 'add_pagx_clip', pagx, name, start: Math.round(time.value) }]);
 }
 function insertTemplate(id: string) {
   const template = TEXT_TEMPLATES.find((t) => t.id === id);
@@ -870,9 +873,11 @@ async function exportTo(kind: 'native' | 'video' | 'web') {
   if (!snapshot.value || busy.value || (kind === 'video' && !total.value)) return;
   if (
     kind === 'native' &&
-    project.value?.timeline.tracks.some((track) => track.items.some((item) => item.clip.html))
+    project.value?.timeline.tracks.some((track) =>
+      track.items.some((item) => item.clip.html || item.clip.pagx)
+    )
   ) {
-    error.value = 'HTML 动画可以导出 MP4/WebM；当前 .vcut 格式尚未支持 HTML 片段。';
+    error.value = 'HTML/PAGX 动画可以导出 MP4/WebM；请用 .vcutweb 保存可编辑作品。';
     exportMenu.value = false;
     return;
   }
@@ -1181,7 +1186,7 @@ onBeforeUnmount(() => {
           @basic="insertText"
           @template="insertTemplate"
         />
-        <HtmlLibrary v-else-if="panel === 'html'" :busy="busy" @insert="insertHtml" />
+        <AnimationLibrary v-else-if="panel === 'html'" :busy="busy" @pagx="insertPagx" />
         <EffectLibrary
           v-else-if="panel === 'filters' || panel === 'effects' || panel === 'transitions'"
           :kind="panel === 'transitions' ? 'transition' : 'effect'"
@@ -1350,7 +1355,7 @@ onBeforeUnmount(() => {
           :project="project"
           :item="selectedItem"
           :disabled="busy || selectedLocked"
-          :commit-html="onCommand"
+          :commit-content="onCommand"
           @text="updateText"
           :selection="selectedIds"
           :time="time"

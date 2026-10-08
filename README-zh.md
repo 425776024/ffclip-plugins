@@ -1,76 +1,49 @@
-[英文](README.md) · [官网](https://ffclip.com) · [微信公众号文章](https://mp.weixin.qq.com/s/MKfMipfXc2xv_B3-mVYq6w)
+[English](README.md) · [官网](https://ffclip.com) · [使用说明](docs/usage-zh.md) · [微信公众号文章](https://mp.weixin.qq.com/s/MKfMipfXc2xv_B3-mVYq6w)
 
 ## 快速开始
 
 <sub>复制给 AI 助手，安装后直接体验</sub>
 
 ```text
-请从 npm 安装最新版 @ffclip-com/videocut，接入当前助手，保留已有配置，并在浏览器打开内置可编辑示例。需要 Node.js 22 或更新版本。如果新工具需要重启才能连接，先用命令行打开示例让我体验。
+请从 npm 安装最新版 @ffclip-com/videocut，接入当前助手，保留已有配置。
+打开内置可编辑示例，使用 Node.js 22 或更新版本；
+如果工具连接需要重启，先用命令行打开示例。
 ```
 
+**说出想法，让助手完成初剪；点选片段，继续精修。**
+
 <details open>
-<summary>查看编辑器：文字、滤镜、关键帧与转场</summary>
+<summary>播放演示：从对话到可编辑视频</summary>
 
-![VideoCut 0.2.13：循环展示文字预设、滤镜、关键帧和关于弹窗](docs/images/videocut-ui.gif)
-
-在时间轴上裁剪和排列视频，调整字幕、效果与关键帧，实时预览并导出 MP4 或 WebM。
-
-左侧“关于”包含官网、微信二维码和作者 B 站主页。编辑器会自动检查新版本，点击“自动更新”后先保存完整作品，再安装官方最新包；安装完成后重启 ffclip 服务或 MCP 连接即可使用新版本。
+https://github.com/user-attachments/assets/7bf4cec6-9cab-4b9d-bd9e-bc0d8e44d9be
 
 </details>
 
-[使用说明](docs/usage-zh.md) · [MIT 许可证](LICENSE) · [第三方声明](THIRD_PARTY_NOTICES.md)
+裁剪素材、生成本地配音和字幕，实时预览，导出 MP4 或 WebM；保存完整工程，随时继续编辑。
 
-本项目早期浏览器音视频实现引用并改编了 [WebAV](https://github.com/WebAV-Tech/WebAV) 开源项目（MIT，Copyright © 2023 风痕），感谢作者及社区贡献者。详见 [开源声明与许可证](THIRD_PARTY_NOTICES.md)。
+## 让画面动起来
 
-## 复制提示词，做出自己的作品
+**10 套原生 PAGX 模板**，包含大字切片、唱片上新、数字冲刺等场景。8 套全画幅、2 套透明叠加，均提供中英文版本。点击片段即可修改文字、颜色和图形，播放与导出无需逐帧浏览器截图。
 
-下面均为 VideoCut 实际导出的 MP4，可直接播放。安装连接后，把提示词发给助手即可开始创作；换掉文案、颜色和数据，就是你的版本。
+[![原生 PAGX 模板：出格开场、节拍上新、大字切片与冲刺数字](docs/images/pagx-templates-zh.webp)](docs/videos/pagx-motion.mp4)
 
-### HTML 动画 · 产品开场
+[播放实际动效 · 中英文](docs/videos/pagx-motion.mp4)
 
 ```text
-用 VideoCut 做一个 6 秒、16:9 的 HTML 产品开场：奶油白背景、珊瑚红点缀，
-标题“From idea.”和“To video.”依次上移浮现。右侧三张卡片错位展开、轻轻悬浮，
-圆形徽章缓慢旋转。保留可编辑的标题和动画，打开预览并导出 MP4。
+用 VideoCut 的“出格开场”PAGX 模板做一个 8 秒开场。
+两行标题分别改为“灵感”和“上场”，点缀色改为湖蓝。
+保留可编辑内容，打开预览并导出 MP4。
 ```
 
-https://github.com/user-attachments/assets/60a8880e-c636-435c-9dcd-6c2b287854ac
+[更多示例与可编辑工程](docs/examples/readme/README-zh.md) · [MIT 许可证](LICENSE) · [第三方声明](THIRD_PARTY_NOTICES.md)，含 [WebAV](https://github.com/WebAV-Tech/WebAV) 致谢。
 
-[HTML 源文件](docs/examples/readme/html-intro.html)
+## 让故事有声音
 
-继续改：`把标题换成“周末出发”，珊瑚红换成湖蓝色，保留卡片动画。`
-
-### 数据动画 · 让数字动起来
+下面是 VideoCut 实际导出的本地中文配音与字幕示例，播放后取消静音即可试听。生成新配音需先下载模型。
 
 ```text
-用 VideoCut 做一个 6 秒的 HTML 数据动画：深绿背景、浅绿柱状图，
-标题“Small steps. Big momentum.”。Q1 到 Q4 的柱子依次长高，
-数字从 0 增长到 24%、48%、72%、96%，左侧大数字停在 96%。明确标注为演示数据，
-数值可编辑，打开预览并导出 MP4。
-```
-
-https://github.com/user-attachments/assets/7e8fb040-f794-4732-9f98-5d83c013ec94
-
-[HTML 源文件](docs/examples/readme/html-chart.html)
-
-继续改：`把四个数值改成 18、42、65、88，标题换成“这一年的进步”。`
-
-### 本地配音 · 文案变成有声短片
-
-```text
-用 VideoCut 的本地中文女声 zf_001，以正常语速朗读：“给灵感一个声音。把文字变成配音，
-让字幕跟随节奏。现在，开始你的创作。”制作约 10 秒的短片：米白和橄榄绿配色，标题“让灵感，
-成为作品。”，圆形声波随实际音频起伏。生成字幕，按原稿校正文字和分句；配音与字幕保留独立轨道，
-打开预览并导出带声音的 MP4。
+把我的文案做成带配音和字幕的短片，配音与字幕保留独立可编辑轨道。
+打开预览，导出带声音的 MP4。
 ```
 
 https://github.com/user-attachments/assets/0da34d26-bc46-474d-856a-34a61aef828e
-
-点击播放并取消静音，即可听到本地生成的中文配音。
-
-继续改：`把配音文案换成我的产品介绍，重新生成配音和字幕，保留画面风格。`
-
-配音和语音识别首次使用需要下载模型，之后在本地处理。示例字幕已按原稿校正。
-
-[下载三个可编辑工程](docs/examples/readme/showcase-projects.zip) · [打开方式与示例说明](docs/examples/readme/README-zh.md)

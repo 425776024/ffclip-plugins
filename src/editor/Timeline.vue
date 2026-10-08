@@ -254,10 +254,10 @@ function drag(event: PointerEvent, item: Item, track: Track, mode: 'move' | 'lef
     const asset = props.project.assets.find((a) => a.id === item.clip.assetId);
     if (asset && asset.kind !== 'image')
       maximumEdge = Math.min(maximumEdge, end + (asset.duration - item.clip.source.end) / rate);
-    if (item.clip.html)
+    if (item.clip.html || item.clip.pagx)
       maximumEdge = Math.min(
         maximumEdge,
-        end + (item.clip.html.duration - item.clip.source.end) / rate
+        end + ((item.clip.html || item.clip.pagx)!.duration - item.clip.source.end) / rate
       );
   }
   let moved = false;
@@ -479,11 +479,11 @@ onBeforeUnmount(() => {
                 @pointerdown.stop="drag($event, item, track, 'left')"
               /><span class="clip-title"
                 ><Icon
-                  v-if="['text', 'audio', 'html-clip'].includes(item.clip.type)"
+                  v-if="['text', 'audio', 'html-clip', 'pagx-clip'].includes(item.clip.type)"
                   :name="
                     item.clip.type === 'text'
                       ? 'text'
-                      : item.clip.type === 'html-clip'
+                      : ['html-clip', 'pagx-clip'].includes(item.clip.type)
                         ? 'layers'
                         : 'music'
                   "
@@ -494,7 +494,7 @@ onBeforeUnmount(() => {
                 ></span
               >
               <ClipVisual
-                v-if="!['text', 'html-clip'].includes(item.clip.type)"
+                v-if="!['text', 'html-clip', 'pagx-clip'].includes(item.clip.type)"
                 :project="project"
                 :item="item"
                 :media-url="mediaUrl"
@@ -504,9 +504,9 @@ onBeforeUnmount(() => {
                 :height="height - 20"
               />
               <div
-                v-else-if="item.clip.html"
+                v-else-if="item.clip.html || item.clip.pagx"
                 class="html-clip-body"
-                :class="{ transparent: item.clip.html.transparent }"
+                :class="{ transparent: (item.clip.html || item.clip.pagx)?.transparent }"
               />
               <span
                 class="trim-handle right"

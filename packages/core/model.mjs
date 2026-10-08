@@ -1,3 +1,4 @@
+import { validatePagxContent } from './pagx.mjs';
 import { RESTORED_EFFECTS, parseCurve, parseCube } from './color.mjs';
 import { clone, identity, ticks, validateProject } from './project.mjs';
 
@@ -247,7 +248,7 @@ export function isPropertyApplicable(project, item, property) {
   if (property.startsWith('time.'))
     return (
       !['time.sourceIn', 'time.speed'].includes(property) ||
-      ['video', 'audio', 'html-clip'].includes(item.clip.type)
+      ['video', 'audio', 'html-clip', 'pagx-clip'].includes(item.clip.type)
     );
   return false;
 }
@@ -470,6 +471,7 @@ export function validateExtensions(project, seen) {
           'source',
           'text',
           'html',
+          'pagx',
           'visual',
           'audio',
           'retime',
@@ -482,6 +484,10 @@ export function validateExtensions(project, seen) {
         validateHtmlContent(clip.html);
         if (clip.text !== undefined) throw new Error('HTML 动画不能同时包含文字片段内容');
       } else if (clip.html !== undefined) throw new Error('只有 html-clip 可以包含 HTML 动画内容');
+      if (clip.type === 'pagx-clip') {
+        validatePagxContent(clip.pagx);
+        if (clip.text !== undefined || clip.html !== undefined) throw new Error('PAGX 片段不能混合其他源内容');
+      } else if (clip.pagx !== undefined) throw new Error('只有 pagx-clip 可以包含 PAGX');
       keys(clip.source, ['begin', 'end'], '素材范围');
       keys(
         clip.visual,
@@ -607,7 +613,7 @@ export function validateExtensions(project, seen) {
           Math.abs(rate * 1e6 - Math.round(rate * 1e6)) > 1e-6
         )
           throw new Error('速度必须为 0.1–10，最多六位小数');
-        if (!['video', 'audio', 'html-clip'].includes(clip.type) && rate !== 1)
+        if (!['video', 'audio', 'html-clip', 'pagx-clip'].includes(clip.type) && rate !== 1)
           throw new Error('只有视频、音频和 HTML 动画可以变速');
       }
       if (clip.automation !== undefined) {
@@ -716,10 +722,10 @@ export function validateExtensions(project, seen) {
     previous.push(window);
     windows.set(from.track.id, previous);
     for (const { item } of [from, to])
-      if (['video', 'html-clip'].includes(item.clip.type)) {
+      if (['video', 'html-clip', 'pagx-clip'].includes(item.clip.type)) {
         const asset = project.assets.find((a) => a.id === item.clip.assetId);
         const sourceDuration =
-          item.clip.type === 'html-clip' ? item.clip.html.duration : asset.duration;
+          item.clip.pagx?.duration ?? item.clip.html?.duration ?? asset.duration;
         const start = mapTimelineToSource(item, window.begin, { clamp: false });
         const end = mapTimelineToSource(item, window.end, { clamp: false });
         if (start < 0 || end > sourceDuration) throw new Error('转场需要足够的素材前后余量');

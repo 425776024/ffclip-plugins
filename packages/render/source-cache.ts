@@ -54,6 +54,7 @@ export function sourceFrameKey(
   mediaUrl: (id: string) => string
 ) {
   const { clip } = layer.item;
+  if (clip.pagx) return JSON.stringify(['pagx', clip.pagx, htmlSourceTime(clip.pagx, layer.sourceTime)]);
   if (clip.html)
     return JSON.stringify(['html', clip.html, htmlSourceTime(clip.html, layer.sourceTime)]);
   if (clip.text)

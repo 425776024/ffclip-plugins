@@ -1,3 +1,4 @@
+import { PAGX_TEMPLATES, createPagxTemplate } from '../pagx/templates.mjs';
 import {
   PROPERTY_DESCRIPTORS,
   propertyInputSchema,
@@ -51,6 +52,16 @@ export async function serveMcp(url, close) {
       }
     }),
     required: ['html', 'width', 'height', 'duration', 'transparent']
+  };
+  const pagxContent = {
+    ...object({
+      xml: { type: 'string', maxLength: 4194304 },
+      width: { type: 'integer', minimum: 1, maximum: 4096 },
+      height: { type: 'integer', minimum: 1, maximum: 4096 },
+      duration: { type: 'integer', minimum: 1, maximum: 10368000000 },
+      transparent: boolean
+    }),
+    required: ['xml', 'width', 'height', 'duration', 'transparent']
   };
   const textTemplate = {
     ...object({
@@ -124,6 +135,21 @@ export async function serveMcp(url, close) {
     operation('set_html_clip', { itemId: string, html: htmlContent, name: string }, [
       'itemId',
       'html'
+    ]),
+    operation(
+      'add_pagx_clip',
+      {
+        pagx: pagxContent,
+        name: string,
+        start: { type: 'integer' },
+        length: { type: 'integer' },
+        trackId: string
+      },
+      ['pagx']
+    ),
+    operation('set_pagx_clip', { itemId: string, pagx: pagxContent, name: string }, [
+      'itemId',
+      'pagx'
     ]),
     operation('undo', {}),
     operation('redo', {}),
@@ -606,13 +632,68 @@ export async function serveMcp(url, close) {
     {
       name: 'list_motion_templates',
       description:
-        'Read native flower template recipes, authorable components and their composition constraints, plus the HTML/GSAP/tick contract. Added backdrop/animation components require flower-style-03 or flower-style-38; other bases retain their original graph. Use before creating custom templates.',
+        'Read native flower template recipes, authorable components and their composition constraints, plus native PAGX templates and the HTML-to-PAGX authoring contract. Added backdrop/animation components require flower-style-03 or flower-style-38; other bases retain their original graph. Use before creating custom templates.',
       inputSchema: object({})
+    },
+    {
+      name: 'convert_html_to_pagx',
+      description:
+        'Convert self-contained HTML/CSS, GSAP, anime.js 3, or synchronous window.tick graphics into experimental editable PAGX. Browser evaluates only during conversion; playback/export uses open-source PAGX WASM and the VideoCut encoder, with no enterprise SDK. Supply inline html DTO OR authorized local path. Max 30 seconds, 500 DOM elements. 2D transform, opacity and paint channels are sampled at 60 Hz. Canvas/WebGL, 3D, async tick, interactive state machines and animated layout are unsupported. Review warnings and preview before replacing a clip. Returns pagx payload for add_pagx_clip; does not mutate a project. Time fields use 120000 Hz ticks.',
+      inputSchema: {
+        ...object({
+          html: htmlContent,
+          path: string,
+          name: string,
+          width: { type: 'integer' },
+          height: { type: 'integer' },
+          duration: { type: 'integer' },
+          transparent: boolean
+        }),
+        oneOf: [
+          { required: ['html'], not: { required: ['path'] } },
+          { required: ['path'], not: { required: ['html'] } }
+        ]
+      }
+    },
+    {
+      name: 'add_pagx_clip',
+      description:
+        'Add an editable PAGX graphic/animation to a video track using the open-source WASM renderer. Supply a built-in templateId (optional locale zh/en), pagx DTO OR authorized local .pagx path; relative image/font resources are embedded. One top-level absolute animation clock; nested timelines and state machines are rejected. Text and paint fields remain editable. Save in .vcutweb and render MP4/WebM with VideoCut. start, length and duration use integer 120000 Hz ticks.',
+      inputSchema: {
+        ...object({
+          id: string,
+          templateId: { enum: PAGX_TEMPLATES.map((t) => t.id) },
+          locale: { enum: ['zh', 'en'] },
+          pagx: pagxContent,
+          path: string,
+          name: string,
+          start: { type: 'integer' },
+          length: { type: 'integer' },
+          trackId: string,
+          duration: { type: 'integer' },
+          transparent: boolean
+        }),
+        required: ['id'],
+        oneOf: [
+          {
+            required: ['pagx'],
+            not: { anyOf: [{ required: ['path'] }, { required: ['templateId'] }] }
+          },
+          {
+            required: ['path'],
+            not: { anyOf: [{ required: ['pagx'] }, { required: ['templateId'] }] }
+          },
+          {
+            required: ['templateId'],
+            not: { anyOf: [{ required: ['pagx'] }, { required: ['path'] }] }
+          }
+        ]
+      }
     },
     {
       name: 'add_html_clip',
       description:
-        'Agent authoring/import entry point for editable animation templates on ordinary video tracks. Supply inline html payload OR authorized local path (local CSS/JS/images freeze into the clip). The editor exposes text/color/number/font values and primitive variables; expose script-controlled settings in html.variables. There is no user-facing HTML source or import form. GSAP is built in, tick receives seconds; start/length/duration use integer 120000 Hz ticks. Audio/video remain regular timeline clips. New tracks are topmost.',
+        'Author/import HTML graphics; defaults to conversion into editable PAGX. If conversion is unavailable or unsupported, keeps an HTML clip and returns conversion.fallback/reason. Set renderer=html only for an explicit HTML choice. Native PAGX templates can be added using add_pagx_clip(templateId). Supply inline html payload OR authorized local path (local CSS/JS/images freeze into the clip). The editor exposes text/color/number/font values and primitive variables; expose script-controlled settings in html.variables. There is no user-facing HTML source or import form. GSAP is built in, tick receives seconds; start/length/duration use integer 120000 Hz ticks. Audio/video remain regular timeline clips. New tracks are topmost.',
       inputSchema: {
         ...object({
           id: string,
@@ -626,7 +707,8 @@ export async function serveMcp(url, close) {
           height: { type: 'integer' },
           duration: { type: 'integer' },
           transparent: boolean,
-          variables: htmlContent.properties.variables
+          variables: htmlContent.properties.variables,
+          renderer: { enum: ['pagx', 'html'] }
         }),
         required: ['id'],
         oneOf: [
@@ -757,6 +839,10 @@ export async function serveMcp(url, close) {
         switch (message.params?.name) {
           case 'list_motion_templates':
             value = {
+              pagx: client.info.pagxClips,
+              templates: PAGX_TEMPLATES,
+              defaultAnimationRenderer: 'pagx',
+              htmlConversionFallback: 'html',
               native: TEXT_TEMPLATES,
               parts: TEMPLATE_PARTS,
               nativeComposition: TEMPLATE_COMPOSITION_RULES,
@@ -777,25 +863,27 @@ export async function serveMcp(url, close) {
               }
             };
             break;
-          case 'add_html_clip': {
-            if (Boolean(a.html) === Boolean(a.path))
-              throw new Error('请选择 html 内容或本地 path 中的一种');
-            const imported = a.path
-              ? await client.importHtml(a.path, {
-                  width: a.width,
-                  height: a.height,
-                  duration: a.duration,
-                  transparent: a.transparent,
-                  variables: a.variables
-                })
-              : { html: a.html, name: a.name };
+          case 'convert_html_to_pagx':
+            value = await client.convertHtmlToPagx(a);
+            break;
+          case 'add_pagx_clip': {
+            if ([a.pagx, a.path, a.templateId].filter(Boolean).length !== 1)
+              throw new Error('请选择模板、PAGX 内容或本地 path 中的一种');
+            const imported = a.templateId
+              ? createPagxTemplate(a.templateId, { locale: a.locale })
+              : a.path
+                ? await client.importPagx(a.path, {
+                    duration: a.duration,
+                    transparent: a.transparent
+                  })
+                : { pagx: a.pagx, name: a.name };
             const session = await client.getSession(a.id);
             value = await client.editSession(
               session.id,
               [
                 {
-                  action: 'add_html_clip',
-                  html: imported.html,
+                  action: 'add_pagx_clip',
+                  pagx: imported.pagx,
                   name: a.name || imported.name,
                   start: a.start,
                   length: a.length,
@@ -804,6 +892,29 @@ export async function serveMcp(url, close) {
               ],
               session.version
             );
+            break;
+          }
+          case 'add_html_clip': {
+            const prepared = await client.prepareAnimation(a);
+            const session = await client.getSession(a.id);
+            const operation =
+              prepared.type === 'pagx-clip'
+                ? { action: 'add_pagx_clip', pagx: prepared.pagx }
+                : { action: 'add_html_clip', html: prepared.html };
+            value = await client.editSession(
+              session.id,
+              [
+                {
+                  ...operation,
+                  name: a.name || prepared.name,
+                  start: a.start,
+                  length: a.length,
+                  trackId: a.trackId
+                }
+              ],
+              session.version
+            );
+            value.conversion = prepared.conversion;
             break;
           }
           case 'open_project':

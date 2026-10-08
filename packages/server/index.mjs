@@ -1,7 +1,11 @@
 /** @typedef {import('./types.js').ServerOptions} ServerOptions */
 import { prepareNativeTemplates, resolveNativeTextFonts } from './native-templates.mjs';
 import { createBrowserExportJob } from './template-export.mjs';
-import { HtmlVideoCache, nativeHtmlPlan, createNativeHtmlExportJob } from './native-html-export.mjs';
+import {
+  HtmlVideoCache,
+  nativeHtmlPlan,
+  createNativeHtmlExportJob
+} from './native-html-export.mjs';
 import { createServer } from 'node:http';
 import { createReadStream, existsSync } from 'node:fs';
 import {
@@ -24,6 +28,7 @@ import { systemFonts } from './system-fonts.mjs';
 import { HtmlFrameRenderer } from './html-renderer.mjs';
 import { validateHtmlContent } from '../core/project.mjs';
 import { importHtml } from './html-import.mjs';
+import { PagxConverter, importPagx } from './pagx.mjs';
 import { KokoroModelStore, defaultTtsModelDir } from './tts-models.mjs';
 import { createTtsRoutes } from './tts.mjs';
 import { WhisperModelStore, defaultAsrModelDir } from './asr-models.mjs';
@@ -79,6 +84,7 @@ export async function startServer({
   // Keep old names reserved so a saved link never attaches to a different cut.
   const previewPaths = new Map();
   const htmlFrames = new HtmlFrameRenderer();
+  const pagxConverter = new PagxConverter();
   const htmlVideos = new HtmlVideoCache();
   const ttsModels = new KokoroModelStore({ directory: ttsModelDir });
   const asrModels = new WhisperModelStore({ directory: asrModelDir });
@@ -412,7 +418,8 @@ export async function startServer({
           roots,
           nativeExport: existsSync(nativeBridge),
           previewControl: true,
-          htmlClips: await htmlFrames.capabilities()
+          htmlClips: await htmlFrames.capabilities(),
+          pagxClips: await pagxConverter.capabilities()
         });
       // A same-origin font service exposes only opaque IDs discovered in standard
       // OS/user font directories. It never accepts a caller-supplied file path.
@@ -499,10 +506,18 @@ export async function startServer({
         if (req.method === 'DELETE') return json(res, 200, await ttsModels.cancel());
         return json(res, 405, { error: 'Method not allowed' });
       }
+      if (url.pathname === '/api/animations/prepare' && req.method === 'POST')
+        return json(res, 200, await pagxConverter.prepare(await body(req), allowed));
       if (url.pathname === '/api/html/import' && req.method === 'POST') {
         const data = await body(req);
         return json(res, 200, await importHtml(data.path, data, allowed));
       }
+      if (url.pathname === '/api/pagx/import' && req.method === 'POST') {
+        const data = await body(req);
+        return json(res, 200, await importPagx(data.path, data, allowed));
+      }
+      if (url.pathname === '/api/pagx/convert' && req.method === 'POST')
+        return json(res, 200, await pagxConverter.convert(await body(req), allowed));
       if (url.pathname === '/api/html-frames' && req.method === 'POST') {
         const data = await body(req);
         validateHtmlContent(data.html);
@@ -542,7 +557,7 @@ export async function startServer({
             !(
               entry.isFile() &&
               (mediaExtensions.has(extname(entry.name).toLowerCase()) ||
-                ['.html', '.htm'].includes(extname(entry.name).toLowerCase()))
+                ['.html', '.htm', '.pagx'].includes(extname(entry.name).toLowerCase()))
             )
           )
             continue;
@@ -766,7 +781,8 @@ export async function startServer({
         res.on('close', () => {
           clearInterval(timer);
           s.clients.delete(res);
-          if (!s.clients.size && !s.renderJob?.native) s.renderJob?.fail(new Error('渲染页面已关闭'));
+          if (!s.clients.size && !s.renderJob?.native)
+            s.renderJob?.fail(new Error('渲染页面已关闭'));
           if (!s.clients.size) s.ttsJob?.cancel();
           if (!s.clients.size) s.asrJob?.cancel();
           if (!s.clients.size) s.visionJob?.cancel();
@@ -898,7 +914,12 @@ export async function startServer({
             };
             let nativeReady = false;
             if (htmlRenderer && nativeHtmlPlan(project, data.format || 'mp4')) {
-              nativeReady = await access(htmlRenderer).then(() => run(ffmpeg, ['-version'], { timeout: 1500, maxOutput: 128 * 1024 })).then(() => true, () => false);
+              nativeReady = await access(htmlRenderer)
+                .then(() => run(ffmpeg, ['-version'], { timeout: 1500, maxOutput: 128 * 1024 }))
+                .then(
+                  () => true,
+                  () => false
+                );
             }
             if (!nativeReady && !s.clients.size)
               return json(res, 409, {
@@ -906,21 +927,32 @@ export async function startServer({
                 previewUrl: snapshot(s).previewUrl,
                 code: 'BROWSER_REQUIRED'
               });
-            const job = nativeReady ? await createNativeHtmlExportJob(project, data.version, join(parent, `${name}-${stamp}`), progress, htmlRenderer, ffmpeg, htmlVideos) : await createBrowserExportJob(
-              project,
-              data.version,
-              join(parent, `${name}-${stamp}`),
-              data.format || 'mp4',
-              progress,
-              ffmpeg
-            );
+            const job = nativeReady
+              ? await createNativeHtmlExportJob(
+                  project,
+                  data.version,
+                  join(parent, `${name}-${stamp}`),
+                  progress,
+                  htmlRenderer,
+                  ffmpeg,
+                  htmlVideos
+                )
+              : await createBrowserExportJob(
+                  project,
+                  data.version,
+                  join(parent, `${name}-${stamp}`),
+                  data.format || 'mp4',
+                  progress,
+                  ffmpeg
+                );
             s.renderJob = job;
             const disconnected = () => {
               if (!res.writableEnded) job.fail(new Error('导出请求已断开'));
             };
             res.on('close', disconnected);
             try {
-              if (res.destroyed || (!job.native && !s.clients.size)) job.fail(new Error('导出网页或请求已断开'));
+              if (res.destroyed || (!job.native && !s.clients.size))
+                job.fail(new Error('导出网页或请求已断开'));
               else if (!job.native)
                 for (const listener of s.clients)
                   listener.write(
@@ -933,9 +965,13 @@ export async function startServer({
               await job.dispose();
             }
           }
-          if (project.timeline.tracks.some((track) => track.items.some((item) => item.clip.html)))
+          if (
+            project.timeline.tracks.some((track) =>
+              track.items.some((item) => item.clip.html || item.clip.pagx)
+            )
+          )
             throw new Error(
-              'HTML 动画可以导出 MP4/WebM；当前原生 .vcut 格式桥接器尚未支持 HTML 片段。'
+              'HTML/PAGX 动画可以导出 MP4/WebM；当前原生 .vcut 格式桥接器尚未支持 HTML 片段。'
             );
           await access(nativeBridge).catch(() => {
             throw new Error(
@@ -1085,6 +1121,7 @@ export async function startServer({
     token,
     initialSession,
     async close() {
+      pagxConverter.close();
       clearInterval(gc);
       await updates.close();
       for (const s of sessions.values()) {

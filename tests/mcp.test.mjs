@@ -268,6 +268,7 @@ test(
     const html = await tool('add_html_clip', {
       id: blank.id,
       name: 'Tick graphic',
+      renderer: 'html',
       html: {
         html: '<div id="title">HTML</div><script>window.tick=t=>document.getElementById("title").style.opacity=t;</script>',
         width: 320,

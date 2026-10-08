@@ -136,7 +136,18 @@ export type EditorCommand = {
     start?: number;
     length?: number;
     trackId?: string;
+} | {
+    action: 'add_pagx_clip';
+    pagx: import('./types.js').PagxContent;
+    name?: string;
+    start?: number;
+    length?: number;
+    trackId?: string;
 } | (ItemTarget & {
+    action: 'set_pagx_clip';
+    pagx: import('./types.js').PagxContent;
+    name?: string;
+}) | (ItemTarget & {
     action: 'set_html_clip';
     html: HtmlContent;
     name?: string;

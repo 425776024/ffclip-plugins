@@ -6,6 +6,8 @@ import { root, listFiles, assertArtifact, digest, verifyDist } from './release-f
 import { buildTypes } from './build-types.mjs';
 import { ttsAssetFiles } from './tts-assets.mjs';
 import { asrAssetFiles } from './asr-assets.mjs';
+import { pagxNativeFiles } from './pagx-assets.mjs';
+import { dirname } from 'node:path';
 
 const dist = join(root, 'dist');
 const existing = await lstat(dist).catch((error) => {
@@ -40,6 +42,12 @@ await bundle({
 await buildTypes(dist);
 await chmod(join(dist, 'bin/videocut.mjs'), 0o755);
 await mkdir(join(dist, 'licenses'), { recursive: true });
+await copyFile(join(root, 'node_modules/@xmldom/xmldom/LICENSE'), join(dist, 'licenses/xmldom-MIT.txt'));
+for (const [destination, source] of pagxNativeFiles) {
+  await mkdir(dirname(join(root, destination)), { recursive: true });
+  await copyFile(source, join(root, destination));
+  await chmod(join(root, destination), 0o755);
+}
 await copyFile(join(root, 'licenses/WebAV-MIT.txt'), join(dist, 'licenses/WebAV-MIT.txt'));
 await copyFile(join(root, 'THIRD_PARTY_NOTICES.md'), join(dist, 'licenses/THIRD_PARTY_NOTICES.md'));
 await copyFile(join(root, 'node_modules/gsap/dist/gsap.min.js'), join(dist, 'gsap-runtime.js'));

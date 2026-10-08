@@ -1,9 +1,10 @@
+import { createStarterPagx } from '../pagx/templates.mjs';
 import { readFile, realpath } from 'node:fs/promises';
 import { join } from 'node:path';
 import {
   createProject,
   addAsset,
-  addHtmlClip,
+  addPagxClip,
   addText,
   identity,
   ticks,
@@ -27,13 +28,13 @@ const content = {
       description1: '从一句话，到一段值得分享的故事。',
       description2: '画面、文字与声音，在此相遇。',
       description3: '本地预览 · 自由编辑 · 即刻出发',
-      animation: 'HTML 动画',
+      animation: 'PAGX 动画',
       titles: '可编辑花字',
       voiceover: '语音配音',
       captions: '逐句字幕',
       footer: '灵感没有终点，创作从这里开始。'
     },
-    tracks: ['HTML 动画', '连续旁白', '渐变花字', '逐句字幕', '海岸画面']
+    tracks: ['PAGX 动画', '连续旁白', '渐变花字', '逐句字幕', '海岸画面']
   },
   en: {
     name: 'ffclip · Ideas into stories',
@@ -50,14 +51,14 @@ const content = {
       description1: 'One prompt. A story worth sharing.',
       description2: 'Picture, words and sound come together.',
       description3: 'LOCAL PREVIEW · FREE TO EDIT · READY TO GO',
-      animation: 'HTML animation',
+      animation: 'PAGX animation',
       titles: 'Editable titles',
       voiceover: 'Voiceover',
       captions: 'Captions',
       footer: 'Ideas keep moving. Your story starts here.'
     },
     tracks: [
-      'HTML animation',
+      'PAGX animation',
       'Continuous voiceover',
       'Gradient titles',
       'Captions',
@@ -84,12 +85,10 @@ export async function createStarterProject(staticDir, { locale = 'zh', name } = 
   const copy = content[locale];
   const assetPath = await realpath(join(staticDir, 'starter', `narration-${locale}.wav`));
   const imagePath = await realpath(join(staticDir, 'starter', 'landscape.jpg'));
-  const [sourceHtml, timing, asset, picture, imageBytes] = await Promise.all([
-    readFile(join(staticDir, 'starter', 'starter.html'), 'utf8'),
+  const [timing, asset, picture] = await Promise.all([
     readFile(join(staticDir, 'starter', `captions-${locale}.json`), 'utf8'),
     probe(assetPath),
-    probe(imagePath),
-    readFile(imagePath)
+    probe(imagePath)
   ]);
   const project = createProject(name?.trim() || copy.name);
   project.canvas = { width: 1280, height: 720 };
@@ -112,17 +111,7 @@ export async function createStarterProject(staticDir, { locale = 'zh', name } = 
       [18, -24]
     ])
   };
-  addHtmlClip(project, {
-    name: copy.tracks[0],
-    html: {
-      html: sourceHtml.replace('__LANDSCAPE_DATA__', imageBytes.toString('base64')),
-      width: 1280,
-      height: 720,
-      duration: ticks(18),
-      transparent: true,
-      variables: { ...copy.variables, accent: '#a4e0d2', highlight: '#efc19a' }
-    }
-  });
+  addPagxClip(project, { name: copy.tracks[0], pagx: createStarterPagx(copy.variables) });
   const audio = addAsset(project, asset);
   audio.name = copy.tracks[1];
   project.timeline.tracks.at(-1).name = copy.tracks[1];

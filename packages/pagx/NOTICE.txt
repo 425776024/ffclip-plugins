@@ -1,0 +1,19 @@
+PAGX rendering uses Tencent libpag, Apache-2.0.
+Source: https://github.com/Tencent/libpag
+Runtime distribution: @libpag/pagx 0.4.47
+https://registry.npmjs.org/@libpag/pagx/-/pagx-0.4.47.tgz
+The JavaScript adapter accepts a host-owned OffscreenCanvas map and preserves the
+WebGL drawing buffer for incremental rendering between absolute seeks.
+The WebAssembly binary is unmodified. No fonts are bundled; embedded document fonts
+and the application's installed-system-font service supply font data.
+The host registers installed font faces under private in-memory family aliases
+to retain per-face weight selection; source font files and glyph data are unchanged.
+Official PAGX Skill: https://pag.io/pagx/skills/zh/
+Copied from the user-supplied official download; see skills/pagx in the plugin.
+
+HTML capture payload derived from tools/html-snapshot/lib at revision
+ec175d317dc70d171beed2d34af0eaef205d7710 (Apache-2.0).
+Regenerate with scripts/build-pagx-capture.mjs; per-input hashes are in capture.json.
+VideoCut adapts capture to one finite clock and registered GSAP/tick timelines.
+The optional native CLI is built unmodified from the same open-source revision,
+with PAG_USE_LIBAVC=OFF. No enterprise SDK, license key or commercial export API.

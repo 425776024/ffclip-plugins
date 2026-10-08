@@ -96,7 +96,7 @@ export async function buildPlugin({
     for (const path of paths) {
       const bytes = await readRegular(join(root, path));
       if (digest(bytes) !== hashes[path]) throw new Error(`Release changed during copy: ${path}`);
-      await put(`runtime/${path}`, bytes, path.endsWith('/videocut.mjs') ? 0o755 : undefined);
+      await put(`runtime/${path}`, bytes, path.endsWith('/videocut.mjs') || path.startsWith('dist/pagx-cli/') ? 0o755 : undefined);
     }
     const license = await readRegular(join(root, 'LICENSE'));
     await put('LICENSE', license);

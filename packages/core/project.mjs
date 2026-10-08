@@ -1,3 +1,12 @@
+import { validatePagxContent } from './pagx.mjs';
+export {
+  validatePagxContent,
+  createPagxContent,
+  pagxMetadata,
+  pagxFields,
+  setPagxField,
+  updatePagxContent
+} from './pagx.mjs';
 /** @typedef {import('./types.js').AssetKind} AssetKind */
 /** @typedef {import('./types.js').Asset} Asset */
 /** @typedef {import('./types.js').Item} Item */
@@ -248,6 +257,67 @@ export function addHtmlClip(
   return item;
 }
 
+/** PAGX is authored visual content on a normal video track, with its own source clock. */
+/** @type {(project: import('./types.js').Project,options: {
+    pagx: import('./types.js').PagxContent;
+    name?: string;
+    start?: number;
+    length?: number;
+    trackId?: string;
+    validate?: boolean;
+  }) => import('./types.js').Item} */
+export function addPagxClip(
+  project,
+  { pagx, name = 'PAGX 动画', start = 0, length, trackId, validate = true }
+) {
+  validatePagxContent(pagx);
+  length ??= pagx.duration;
+  if (
+    !Number.isSafeInteger(start) ||
+    start < 0 ||
+    !Number.isSafeInteger(length) ||
+    length < 1 ||
+    length > pagx.duration ||
+    start + length > ticks(86400)
+  )
+    throw new Error('PAGX 动画片段时间范围无效或超出动画时长');
+  let track = project.timeline.tracks.find((t) => t.id === trackId);
+  if (trackId !== undefined && (!track || track.type !== 'video' || track.locked))
+    throw new Error('PAGX 动画目标必须是存在且未锁定的视频轨道');
+  const item = {
+    id: identity('item'),
+    name,
+    enabled: true,
+    placement: { begin: start, end: start + length },
+    clip: {
+      id: identity('clip'),
+      type: 'pagx-clip',
+      assetId: '',
+      pagx: clone(pagx),
+      source: { begin: 0, end: length },
+      visual: { positionX: 0, positionY: 0, scaleX: 1, scaleY: 1, rotationDegrees: 0, opacity: 1 },
+      audio: { gainLinear: 1, muted: false }
+    }
+  };
+  enrichClip(item.clip);
+  if (!track) {
+    track = {
+      id: identity('track'),
+      name: 'PAGX 动画',
+      type: 'video',
+      visible: true,
+      muted: false,
+      locked: false,
+      items: []
+    };
+    project.timeline.tracks.unshift(track);
+  }
+  track.items.push(item);
+  track.items.sort((a, b) => a.placement.begin - b.placement.begin);
+  if (validate) validateProject(project);
+  return item;
+}
+
 /** @type {(project: import('./types.js').Project,id: string) => { track: import('./types.js').Track; item: import('./types.js').Item }} */
 export function findItem(project, id) {
   for (const track of project.timeline.tracks) {
@@ -454,6 +524,9 @@ export function validateProject(p) {
           text.fontFamily !== (text.font?.family ?? 'system')
         )
           fail('文字样式无效');
+      } else if (i.clip.type === 'pagx-clip') {
+        if (t.type !== 'video' || i.clip.assetId !== '') fail('PAGX 动画轨道无效');
+        validatePagxContent(i.clip.pagx);
       } else if (i.clip.type === 'html-clip') {
         if (t.type !== 'video' || i.clip.assetId !== '') fail('HTML 动画轨道无效');
         validateHtmlContent(i.clip.html);
@@ -478,6 +551,8 @@ export function validateProject(p) {
       )
         fail('素材时长与片段变速时长不一致');
       if (a && a.kind !== 'image' && i.clip.source.end > a.duration) fail('裁剪超出素材时长');
+      if (i.clip.type === 'pagx-clip' && i.clip.source.end > i.clip.pagx.duration)
+        fail('裁剪超出 PAGX 动画时长');
       if (i.clip.type === 'html-clip' && i.clip.source.end > i.clip.html.duration)
         fail('裁剪超出 HTML 动画时长');
       const v = i.clip.visual;

@@ -25,6 +25,14 @@ export function addHtmlClip(project: import("./types.js").Project, options: {
     trackId?: string;
     validate?: boolean;
 }): import("./types.js").Item;
+export function addPagxClip(project: import("./types.js").Project, options: {
+    pagx: import("./types.js").PagxContent;
+    name?: string;
+    start?: number;
+    length?: number;
+    trackId?: string;
+    validate?: boolean;
+}): import("./types.js").Item;
 export function findItem(project: import("./types.js").Project, id: string): {
     track: import("./types.js").Track;
     item: import("./types.js").Item;
@@ -77,5 +85,6 @@ export type EffectTemplate = import("./types.js").EffectTemplate;
 export type CommandResult = import("./types.js").CommandResult;
 export type FrameLayer = import("./types.js").FrameLayer;
 export type EditorCommand = import("./commands.js").EditorCommand;
+export { validatePagxContent, createPagxContent, pagxMetadata, pagxFields, setPagxField, updatePagxContent } from "./pagx.mjs";
 export { TEMPLATE_PARTS, TEMPLATE_COMPOSITION_RULES } from "../text-wasm/src/recipes.mjs";
 export { createProjectDraft, documentPatches, applyDocumentPatches } from "./immutable.mjs";

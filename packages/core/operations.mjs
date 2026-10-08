@@ -1,3 +1,4 @@
+import { addPagxClip, validatePagxContent } from './project.mjs';
 import {
   clone,
   findItem,
@@ -170,7 +171,7 @@ function expandRelatedOperations(project, operations) {
         throw new Error('关联分割点必须位于所有关联片段内部');
       } else if (
         op.action === 'set_speed' &&
-        !['video', 'audio', 'html-clip'].includes(target.clip.type)
+        !['video', 'audio', 'html-clip', 'pagx-clip'].includes(target.clip.type)
       ) {
         throw new Error('关联变速只能包含视频、音频和 HTML 动画片段');
       }
@@ -268,6 +269,8 @@ export function editTimeline(project, operations) {
         previousEnd = time(segment.end);
       }
       result.itemIds = itemIds;
+    } else if (op.action === 'add_pagx_clip') {
+      result.itemId = addPagxClip(next, { ...op, validate: false }).id;
     } else if (op.action === 'add_html_clip') {
       result.itemId = addHtmlClip(next, { ...op, validate: false }).id;
     } else if (
@@ -497,12 +500,12 @@ export function editTimeline(project, operations) {
               if (style?.color !== undefined) item.clip.text.color = style.color;
               if (style?.fontSize !== undefined) item.clip.text.fontSize = style.fontSize;
               delete item.clip.text.template;
-            }
-            else {
-              const style = op.template.style ?? item.clip.text.template?.style ?? {
-                ...(item.clip.text.color !== '#ffffff' ? { color: item.clip.text.color } : {}),
-                ...(item.clip.text.fontSize !== 64 ? { fontSize: item.clip.text.fontSize } : {})
-              };
+            } else {
+              const style = op.template.style ??
+                item.clip.text.template?.style ?? {
+                  ...(item.clip.text.color !== '#ffffff' ? { color: item.clip.text.color } : {}),
+                  ...(item.clip.text.fontSize !== 64 ? { fontSize: item.clip.text.fontSize } : {})
+                };
               item.clip.text.template = clone(op.template);
               if (Object.keys(style).length) item.clip.text.template.style = clone(style);
               // Plain-text defaults are not template overrides. Keep existing
@@ -514,13 +517,21 @@ export function editTimeline(project, operations) {
             }
           }
           if (op.templateStyle !== undefined) {
-            if (!item.clip.text.template || !op.templateStyle || typeof op.templateStyle !== 'object' || Array.isArray(op.templateStyle))
+            if (
+              !item.clip.text.template ||
+              !op.templateStyle ||
+              typeof op.templateStyle !== 'object' ||
+              Array.isArray(op.templateStyle)
+            )
               throw new Error('模板文字样式无效');
             const style = { ...item.clip.text.template.style };
             for (const [key, value] of Object.entries(op.templateStyle)) {
               if (!['color', 'fontSize'].includes(key)) throw new Error('模板文字样式属性无效');
               if (value === null) delete style[key];
-              else { validateProperty(`text.${key}`, value); style[key] = value; }
+              else {
+                validateProperty(`text.${key}`, value);
+                style[key] = value;
+              }
             }
             if (Object.keys(style).length) item.clip.text.template.style = style;
             else delete item.clip.text.template.style;
@@ -529,6 +540,12 @@ export function editTimeline(project, operations) {
           for (const key of ['content', 'fontSize', 'color'])
             if (op[key] !== undefined) item.clip.text[key] = op[key];
           item.name = item.clip.text.content.slice(0, 80) || '文字';
+          break;
+        case 'set_pagx_clip':
+          if (item.clip.type !== 'pagx-clip') throw new Error('这不是 PAGX 动画片段');
+          validatePagxContent(op.pagx);
+          item.clip.pagx = clone(op.pagx);
+          if (op.name !== undefined) item.name = op.name;
           break;
         case 'set_html_clip':
           if (item.clip.type !== 'html-clip') throw new Error('这不是 HTML 动画片段');
@@ -540,7 +557,7 @@ export function editTimeline(project, operations) {
           const ppm = op.constantRatePpm ?? Math.round(op.rate * 1e6);
           if (!Number.isSafeInteger(ppm) || ppm < 100000 || ppm > 10000000)
             throw new Error('速度必须为0.1–10');
-          if (!['video', 'audio', 'html-clip'].includes(item.clip.type))
+          if (!['video', 'audio', 'html-clip', 'pagx-clip'].includes(item.clip.type))
             throw new Error('只有视频、音频和 HTML 动画可以变速');
           const oldLength = item.placement.end - item.placement.begin;
           const length = Math.round(((item.clip.source.end - item.clip.source.begin) * 1e6) / ppm);
@@ -644,6 +661,7 @@ export function editTimeline(project, operations) {
     'add_text',
     'add_subtitles',
     'add_html_clip',
+    'add_pagx_clip',
     'move_clips',
     'move_clip',
     'duplicate_clips',

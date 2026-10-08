@@ -24,6 +24,7 @@ import type { Interpolation, TransitionArguments } from '../../packages/core/com
 import { propertyCommand, keyframeCommand, keyframeProperty } from './property-command';
 import type { HtmlContent } from './html-presets';
 import HtmlPropertyFields from './HtmlPropertyFields.vue';
+import PagxProperties from './PagxProperties.vue';
 import TextProperties from './TextProperties.vue';
 import EffectParameters from './EffectParameters.vue';
 import KeyframeButtons from './KeyframeButtons.vue';
@@ -34,7 +35,7 @@ const props = defineProps<{
   selection: string[];
   time: number;
   disabled: boolean;
-  commitHtml: (command: EditorCommand) => Promise<boolean>;
+  commitContent: (command: EditorCommand) => Promise<boolean>;
 }>();
 const emit = defineEmits<{
   error: [error: unknown];
@@ -86,11 +87,13 @@ const tabs = computed(() =>
       ? { audio: '音频', time: '时间', canvas: '画布' }
       : props.item.clip.type === 'text'
         ? { text: '文字', visual: '画面', effects: '特效', time: '时间', canvas: '画布' }
-        : props.item.clip.type === 'html-clip'
-          ? { html: '内容', visual: '画面', effects: '特效', time: '时间', canvas: '画布' }
-          : isPropertyApplicable(props.project, props.item, 'audio.gainLinear')
-            ? { visual: '画面', audio: '音频', time: '时间', effects: '特效', canvas: '画布' }
-            : { visual: '画面', time: '时间', effects: '特效', canvas: '画布' }
+        : props.item.clip.type === 'pagx-clip'
+          ? { pagx: '内容', visual: '画面', effects: '特效', time: '时间', canvas: '画布' }
+          : props.item.clip.type === 'html-clip'
+            ? { html: '内容', visual: '画面', effects: '特效', time: '时间', canvas: '画布' }
+            : isPropertyApplicable(props.project, props.item, 'audio.gainLinear')
+              ? { visual: '画面', audio: '音频', time: '时间', effects: '特效', canvas: '画布' }
+              : { visual: '画面', time: '时间', effects: '特效', canvas: '画布' }
 );
 const htmlProperties = ref<HtmlProperty[]>([]),
   htmlName = ref(''),
@@ -216,7 +219,7 @@ async function applyHtml(previousItem = false) {
     htmlApplying.value++;
     submission = { itemId: base.itemId, html: JSON.stringify(html), name, generation, signature };
     htmlPending.add(submission);
-    const applied = await props.commitHtml({
+    const applied = await props.commitContent({
       action: 'set_html_clip',
       itemId: base.itemId,
       html,
@@ -254,7 +257,11 @@ watch(
   () => props.item?.id,
   () => {
     if (!props.item) tab.value = 'canvas';
-    else if (tab.value === 'canvas' || !tabs.value[tab.value as keyof typeof tabs.value])
+    else if (
+      props.item.clip.pagx ||
+      tab.value === 'canvas' ||
+      !tabs.value[tab.value as keyof typeof tabs.value]
+    )
       tab.value = Object.keys(tabs.value)[0];
   }
 );
@@ -490,7 +497,7 @@ function speed(event: Event) {
   emit(
     'commands',
     selection.value
-      .filter((i) => ['video', 'audio', 'html-clip'].includes(i.clip.type))
+      .filter((i) => ['video', 'audio', 'html-clip', 'pagx-clip'].includes(i.clip.type))
       .map((i) => ({ action: 'set_speed', itemId: i.id, rate: number(event), ripple: true }))
   );
 }
@@ -528,6 +535,13 @@ function speed(event: Event) {
       <div v-if="selection.length > 1" class="text-edit-hint">
         {{ tr('已选择 {count} 个片段 · 不同值显示“混合”', { count: selection.length }) }}
       </div>
+      <PagxProperties
+        v-if="item?.clip.pagx && tab === 'pagx'"
+        :key="item.id"
+        :item="item"
+        :commit="commitContent"
+        :disabled="disabled"
+      />
       <template v-if="item?.clip.html && tab === 'html'">
         <div
           class="html-content-fields"
@@ -723,7 +737,7 @@ function speed(event: Event) {
       <div v-if="item && tab === 'time'" class="text-edit-hint">
         {{
           tr(
-            item.clip.html
+            item.clip.html || item.clip.pagx
               ? '裁剪与变速使用动画源时间；左右拖动播放头可以精确预览。'
               : '关联音画会同步裁剪和变速；恒速修改联动后续片段，音调随速度变化。'
           )

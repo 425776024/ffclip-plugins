@@ -48,7 +48,8 @@ test('starter creates independent editable timelines in both languages without u
           i.clip.automation['visual.positionY'].keyframes.length > 1
       )
     );
-    assert.ok(s.project.timeline.tracks[2].items[0].clip.html.variables.accent);
+    assert.equal(s.project.timeline.tracks[2].items[0].clip.type, 'pagx-clip');
+    assert.match(s.project.timeline.tracks[2].items[0].clip.pagx.xml, /#a4e0d2/);
     assert.equal(s.project.assets.length, 2);
     const audio = s.project.assets.find((a) => a.kind === 'audio');
     const picture = s.project.assets.find((a) => a.kind === 'image');
@@ -102,8 +103,8 @@ test('starter saves and reopens as a portable project with editable animation, r
   const saved = await client.saveProject(original.id, original.version, root);
   const fresh = await setup(t, { roots: [root] });
   const reopened = await fresh.client.openProject(saved.path);
-  const html = (s) => s.project.timeline.tracks[2].items[0].clip.html;
-  assert.deepEqual(html(reopened), html(original));
+  const pagx = (s) => s.project.timeline.tracks[2].items[0].clip.pagx;
+  assert.deepEqual(pagx(reopened), pagx(original));
   assert.equal(reopened.project.timeline.tracks[1].items[0].clip.text.template.id, 'flower-frost');
   for (const asset of original.project.assets) {
     const copied = reopened.project.assets.find((a) => a.kind === asset.kind);

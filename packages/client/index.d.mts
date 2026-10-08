@@ -26,7 +26,7 @@ export class VideoCutClient {
     /** @param {import('../core/types.js').Project} [project]
      * @returns {Promise<import('./types.js').Snapshot>} */
     createSession(project?: import("../core/types.js").Project): Promise<import("./types.js").Snapshot>;
-    /** Create a fresh editable starter with HTML animation, styled titles, narration and captions.
+    /** Create a fresh editable starter with PAGX animation, styled titles, narration and captions.
      * @param {{ locale?: 'zh' | 'en'; name?: string }} [options]
      * @returns {Promise<import('./types.js').Snapshot>} */
     initializeDemo(options?: {
@@ -161,6 +161,48 @@ export class VideoCutClient {
     importHtml(path: string, options?: Partial<import("../core/types.js").HtmlContent>): Promise<{
         name: string;
         html: import("../core/types.js").HtmlContent;
+    }>;
+    /** @param {string} path
+     * @param {{duration?:number,transparent?:boolean}} [options]
+     * @returns {Promise<{name:string,pagx:import('../core/types.js').PagxContent}>} */
+    importPagx(path: string, options?: {
+        duration?: number;
+        transparent?: boolean;
+    }): Promise<{
+        name: string;
+        pagx: import("../core/types.js").PagxContent;
+    }>;
+    /** Prepare HTML authoring for the timeline: PAGX first, explicit HTML fallback on conversion failure.
+     * @param {{html?:import('../core/types.js').HtmlContent,path?:string,name?:string,width?:number,height?:number,duration?:number,transparent?:boolean,renderer?:'pagx'|'html'}} options
+     * @returns {Promise<import('./types.js').PreparedAnimation>} */
+    prepareAnimation(options: {
+        html?: import("../core/types.js").HtmlContent;
+        path?: string;
+        name?: string;
+        width?: number;
+        height?: number;
+        duration?: number;
+        transparent?: boolean;
+        renderer?: "pagx" | "html";
+    }): Promise<import("./types.js").PreparedAnimation>;
+    /** Convert graphics into a finite PAGX timeline; this does not change the project.
+     * @param {{html?:import('../core/types.js').HtmlContent,path?:string,name?:string,width?:number,height?:number,duration?:number,transparent?:boolean}} options
+     * @returns {Promise<{name:string,pagx:import('../core/types.js').PagxContent,capturedAnimations:number,warnings:string[],diagnostics:unknown,conversion:unknown}>} */
+    convertHtmlToPagx(options: {
+        html?: import("../core/types.js").HtmlContent;
+        path?: string;
+        name?: string;
+        width?: number;
+        height?: number;
+        duration?: number;
+        transparent?: boolean;
+    }): Promise<{
+        name: string;
+        pagx: import("../core/types.js").PagxContent;
+        capturedAnimations: number;
+        warnings: string[];
+        diagnostics: unknown;
+        conversion: unknown;
     }>;
     /** @param {string} id
      * @param {number} version

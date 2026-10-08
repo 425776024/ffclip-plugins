@@ -29,10 +29,11 @@ export interface Item {
     };
     clip: {
         id: string;
-        type: AssetKind | 'text' | 'html-clip';
+        type: AssetKind | 'text' | 'html-clip' | 'pagx-clip';
         assetId: string;
         text?: TextContent;
         html?: HtmlContent;
+        pagx?: PagxContent;
         source: {
             begin: number;
             end: number;
@@ -247,4 +248,11 @@ export interface FrameLayer {
         role: 'from' | 'to';
         parameters: Record<string, number | string>;
     };
+}
+export interface PagxContent {
+    xml: string;
+    width: number;
+    height: number;
+    duration: number;
+    transparent: boolean;
 }

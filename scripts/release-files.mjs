@@ -1,16 +1,30 @@
+import { pagxAssetFiles, pagxNativeFiles } from './pagx-assets.mjs';
 import { textAssetFiles } from './text-assets.mjs';
 import { ttsAssetFiles } from './tts-assets.mjs';
 import { asrAssetFiles } from './asr-assets.mjs';
 import { createHash } from 'node:crypto';
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
 import { lstat, readdir, readFile } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 export const root = fileURLToPath(new URL('../', import.meta.url));
+function listSkillFiles(name, sub = '') {
+  return readdirSync(join(root, 'plugins/videocut-local/skills', name, sub), {
+    withFileTypes: true
+  }).flatMap((e) =>
+    e.isDirectory()
+      ? listSkillFiles(name, sub + e.name + '/')
+      : e.isFile()
+        ? ['skills/' + name + '/' + sub + e.name]
+        : []
+  );
+}
 export const pluginFiles = [
   '.codex-plugin/plugin.json',
   '.mcp.json',
+  ...listSkillFiles('pagx'),
+  'skills/motion-templates/references/pagx.md',
   'skills/video-editing/SKILL.md',
   'skills/initialize-demo/SKILL.md',
   'skills/visual-understanding/SKILL.md',
@@ -19,6 +33,11 @@ export const pluginFiles = [
   'skills/motion-templates/assets/gsap-lower-third.html'
 ];
 export const runtimeFiles = [
+  ...pagxNativeFiles.keys(),
+  'dist/licenses/xmldom-MIT.txt',
+  ...[...pagxAssetFiles.keys()].map((name) => 'dist/web/' + name),
+  'dist/core/pagx.d.mts',
+  'dist/pagx/templates.d.mts',
   'dist/gsap-runtime.js',
   'dist/licenses/GSAP.txt',
   'dist/licenses/Mediabunny-MPL-2.0.txt',
@@ -68,6 +87,23 @@ export async function listFiles(directory, prefix = '') {
 }
 
 export function assertArtifact(path, bytes) {
+  if (pagxNativeFiles.has(path)) {
+    const magic = bytes.subarray(0, 4).toString('hex');
+    if (
+      ![
+        '7f454c46',
+        'cffaedfe',
+        'feedfacf',
+        'cafebabe',
+        'bebafeca',
+        'cafebabf',
+        'bfbafeca'
+      ].includes(magic) &&
+      bytes.subarray(0, 2).toString() !== 'MZ'
+    )
+      throw new Error('Invalid PAGX native executable');
+    return;
+  }
   if (path === 'dist/web/starter/landscape.jpg') {
     if (bytes[0] !== 0xff || bytes[1] !== 0xd8 || bytes.at(-2) !== 0xff || bytes.at(-1) !== 0xd9)
       throw new Error(`Invalid starter picture: ${path}`);
@@ -83,7 +119,8 @@ export function assertArtifact(path, bytes) {
   if (textAssetFiles.has(path.replace(/^dist\/web\//, '')) && path.startsWith('dist/web/')) return;
   if (
     (ttsAssetFiles.has(path.replace(/^dist\/web\//, '')) ||
-      asrAssetFiles.has(path.replace(/^dist\/web\//, ''))) &&
+      asrAssetFiles.has(path.replace(/^dist\/web\//, '')) ||
+      pagxAssetFiles.has(path.replace(/^dist\/web\//, ''))) &&
     path.startsWith('dist/web/')
   ) {
     if (path.endsWith('.wasm')) {
@@ -99,15 +136,19 @@ export function assertArtifact(path, bytes) {
     if (!WebAssembly.validate(bytes)) throw new Error('Invalid text WASM runtime');
     return;
   }
-  if (/^dist\/web\/assets\/html-poster-[A-Za-z0-9_-]+\.png$/.test(path)) {
+  if (/^dist\/web\/assets\/(?:html|pagx)-poster-[A-Za-z0-9_-]+\.png$/.test(path)) {
     if (bytes.subarray(0, 8).toString('hex') !== '89504e470d0a1a0a')
       throw new Error(`Invalid animation poster: ${path}`);
     return;
   }
-  const contactImage = /^dist\/web\/assets\/(wechat-(?:official-)?qr)-[A-Za-z0-9_-]+\.jpg$/.exec(path);
+  const contactImage = /^dist\/web\/assets\/(wechat-(?:official-)?qr)-[A-Za-z0-9_-]+\.jpg$/.exec(
+    path
+  );
   if (contactImage) {
     // Keep the supplied QR bytes intact, including the original trailing metadata.
-    const original = readFileSync(join(root, 'src/editor/assets/contact', contactImage[1] + '.jpg'));
+    const original = readFileSync(
+      join(root, 'src/editor/assets/contact', contactImage[1] + '.jpg')
+    );
     if (bytes[0] !== 0xff || bytes[1] !== 0xd8 || digest(bytes) !== digest(original))
       throw new Error(`Invalid contact QR image: ${path}`);
     return;

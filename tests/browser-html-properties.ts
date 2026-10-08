@@ -106,7 +106,7 @@ run.onclick = async () => {
         selection: [selected.value],
         time: 0,
         disabled: disabled.value,
-        commitHtml: commit
+        commitContent: commit
       })
   });
   app = createApp(Root);

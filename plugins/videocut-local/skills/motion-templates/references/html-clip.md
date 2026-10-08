@@ -1,5 +1,12 @@
-# HTML animation authoring contract
+# Conversion-ready HTML animation authoring
 
+Read the official [HTML authoring advice](../../pagx/references/authoring-html.md), [HTML/CSS subset](../../pagx/spec/html_subset.md), and [conversion pipeline](../../pagx/references/pipeline.md) before implementing HTML. Use their explicit canvas, flex layout, editable text, SVG icons and self-contained assets recommendations.
+
+VideoCut adds stricter rules for deterministic animation: conversion is at most 30 seconds / 500 DOM elements and samples supported 2D transform, opacity and paint channels at 60 Hz. Prefer translation/rotation/scale/opacity; keep dimensions, layout, text content, SVG path data, gradients and clip paths static. Set a fixed-size progress bar and animate `scaleX`, not width. Use explicit 400/700 weights, test the actual face, and avoid typed glyphs as icons. Prefer solid fills or simple linear gradients; complex radial/conic gradients, filters and SVG strokes need visual review. Avoid 3D, canvas/WebGL, dynamic clip-path/path points, asynchronous tick and event-driven state.
+
+The official guide allows public font/image URLs and static canvas snapshots; **this local bridge blocks remote requests and animated canvas**. Embed assets as data URLs or import local authorized files. Use available system fonts; do not add Google Fonts/CDN links here. Body width/height must be explicit pixels matching the payload. The official guide's static end-state advice does not cover VideoCut's animation capture: use registered paused GSAP timelines or synchronous absolute-time tick.
+
+`add_html_clip` now attempts PAGX conversion by default. Success creates a `pagx-clip`; failure automatically creates the validated original `html-clip` and returns `conversion.fallback=true` with a reason. Report fallback and its screenshot-rendering cost. `renderer:"html"` forces the legacy representation when explicitly desired. The remainder documents the retained HTML source/fallback contract.
 ## Document and clock
 
 An authored item has `clip.type: "html-clip"`, `clip.assetId: ""` and the following `clip.html`:
@@ -31,20 +38,20 @@ timeline.to(".title", { opacity: 0, duration: 0.4 }, 4.6);
 window.__timelines.title = timeline;
 ```
 
-For 2D graphics, set `gsap.defaults({ force3D: false })` before creating tweens, as the starter does. Chromium's automatically promoted GPU layers can rasterize borders and shadows differently after an otherwise identical reverse seek. Prefer explicit 3D transforms only when the design needs them, and sample those scenes in both time directions.
+For 2D graphics, set `gsap.defaults({ force3D: false })` before creating tweens, as the starter does. Chromium's automatically promoted GPU layers can rasterize borders and shadows differently after an otherwise identical reverse seek. Do not use 3D for conversion-first artwork; it triggers HTML fallback.
 
 The renderer pauses and seeks registered timelines to source seconds on every frame, including backward seeks. CSS and Web Animations API animations are paused and their `currentTime` is set in milliseconds. These animations must be tied to absolute source time, not event-driven page interaction.
 
-For canvas, SVG or other direct state updates, define either `window.tick` or `window.__videocut.tick`:
+For direct 2D transform updates, define either `window.tick` or `window.__videocut.tick`:
 
 ```js
 window.tick = function (seconds, context) {
   const progress = Math.max(0, Math.min(1, seconds / context.duration));
-  document.querySelector(".progress").style.width = `${progress * 100}%`;
+  document.querySelector(".progress").style.transform = `scaleX(${progress})`;
 };
 ```
 
-`context` contains `{ width, height, duration, variables }`; its `duration` is in seconds. The callback runs after GSAP and CSS animation seeking and may return a Promise. Prefer one clock mechanism for a given property to prevent the callback from overriding its GSAP animation unintentionally.
+`context` contains `{ width, height, duration, variables }`; its `duration` is in seconds. The callback runs after GSAP and CSS animation seeking and must be synchronous for PAGX conversion. A Promise is supported only by the HTML fallback. Prefer one clock mechanism for a given property to prevent the callback from overriding its GSAP animation unintentionally.
 
 The runtime sets `window.__videocutVariables` before authored scripts and `window.__videocutTime` before each frame. Optional `window.__videocutReady` is a Promise the runtime awaits before capturing; use it for finite initialization of embedded assets. The runtime also waits for fonts and decoded images.
 
@@ -55,7 +62,7 @@ Every requested frame must depend on the requested absolute time and frozen vari
 With `transparent: true`, use transparent `html`, `body` and full-canvas containers. Add opaque panels only where the design needs them:
 
 ```css
-html, body { margin: 0; width: 100%; height: 100%; background: transparent; overflow: hidden; }
+html, body { margin: 0; width: 1920px; height: 1080px; background: transparent; overflow: hidden; }
 ```
 
 The alpha PNG enters the shared compositor, which applies the item’s position, scale, rotation, opacity, cropping, blend mode, effects and transitions. Alpha stays transparent until the graphic is composited over the project’s other layers. MP4/WebM then encode that completed canvas; this does not add an alpha channel to the whole exported video.
@@ -87,7 +94,7 @@ Local-file import example, with a real authorized absolute path:
 
 These are arguments to `add_html_clip`, not a shell command. Supply either `path` or a full `html` object. `html` object fields already hold the viewport, source duration, transparency and variables. `trackId` is optional and must reference an existing unlocked video track.
 
-For a batch, raw `edit_timeline` commands accept complete inline payloads:
+For an explicitly HTML batch, raw `edit_timeline` commands accept complete inline payloads and bypass conversion:
 
 ```js
 const payload = { html: generatedHTML, width: 1920, height: 1080,

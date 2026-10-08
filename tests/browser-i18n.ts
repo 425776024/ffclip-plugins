@@ -69,8 +69,24 @@ run.onclick = async () => {
     systemLanguage('en-US');
     await nextTick();
     const clip = document.querySelector<HTMLElement>('.timeline-clip')!;
-    clip.dispatchEvent(new PointerEvent('pointerdown', { bubbles: true, pointerId: 7, button: 0, clientX: 250, clientY: 500 }));
-    window.dispatchEvent(new PointerEvent('pointerup', { bubbles: true, pointerId: 7, button: 0, clientX: 250, clientY: 500 }));
+    clip.dispatchEvent(
+      new PointerEvent('pointerdown', {
+        bubbles: true,
+        pointerId: 7,
+        button: 0,
+        clientX: 250,
+        clientY: 500
+      })
+    );
+    window.dispatchEvent(
+      new PointerEvent('pointerup', {
+        bubbles: true,
+        pointerId: 7,
+        button: 0,
+        clientX: 250,
+        clientY: 500
+      })
+    );
     await nextTick();
     await click('.inspector-tabs button:first-child');
     const textField = document.querySelector<HTMLTextAreaElement>('[aria-label="Text content"]');
@@ -96,7 +112,7 @@ run.onclick = async () => {
       'Animation library'
     );
     assert(
-      !!document.querySelector('[aria-label="Add animation: Prism launch"]'),
+      !!document.querySelector('[aria-label="Add animation: Make noise"]'),
       'Animation accessibility label'
     );
     await click('.rail-main button:nth-child(4)');

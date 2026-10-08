@@ -1,3 +1,4 @@
+import { PagxFrameSource } from './pagx';
 import { duration, type Project } from '../core/project.mjs';
 import { sharedMediaEngine } from '../media/browser';
 import { createTemplatePlayer, ensureCanvasFonts, type TemplatePlayer } from './text';
@@ -95,6 +96,7 @@ export class SceneRenderer {
   private frames = 0;
   private graph = new SceneGraph();
   private html: HtmlFrameClient;
+  private pagx = new PagxFrameSource();
   private sourceCache = new ResidentSourceCache();
   private lastIdentity = '';
   private lastReport?: RenderReport;
@@ -442,6 +444,7 @@ export class SceneRenderer {
       )
     );
     this.html.retain(activeIds);
+    this.pagx.retain(activeIds);
     for (const [id, text] of this.text)
       if (!activeIds.has(id)) {
         text.player?.dispose();
@@ -488,7 +491,9 @@ export class SceneRenderer {
         if (!flight) {
           flight = (async () => {
             let data: any;
-            if (layer.item.clip.html)
+            if (layer.item.clip.pagx)
+              data = await this.pagx.frame(layer.item.id, layer.item.clip.pagx, layer.sourceTime, signal);
+            else if (layer.item.clip.html)
               data = await this.html.frame(
                 layer.item.id,
                 layer.item.clip.html,
@@ -542,8 +547,8 @@ export class SceneRenderer {
       const geometry = layerGeometry(
         project,
         layer.visual,
-        layer.item.clip.html?.width || layer.asset?.width || data.width,
-        layer.item.clip.html?.height || layer.asset?.height || data.height,
+        layer.item.clip.pagx?.width || layer.item.clip.html?.width || layer.asset?.width || data.width,
+        layer.item.clip.pagx?.height || layer.item.clip.html?.height || layer.asset?.height || data.height,
         width,
         height,
         !!layer.item.clip.text
@@ -614,7 +619,7 @@ export class SceneRenderer {
       };
       const uploadIdentity =
         cached?.uploadIdentity ||
-        (layer.item.clip.html ? renderIdentity(data.identity) : data.identity) ||
+        ((layer.item.clip.html || layer.item.clip.pagx) ? renderIdentity(data.identity) : data.identity) ||
         JSON.stringify([
           layer.asset.sourceIdentity || this.mediaUrl(layer.asset.id),
           layer.asset.kind === 'image' ? 'static' : data.timestamp,
@@ -867,6 +872,7 @@ export class SceneRenderer {
     this.readers.clear();
     this.sourceCache.clear();
     this.html.dispose();
+    this.pagx.dispose();
     this.gpu?.dispose();
   }
 }

@@ -26,9 +26,13 @@ test(
     const work = await temporary(t);
     const expected = await checkPackage();
     const expectedPosters = expected.files.filter(
-      (file) => file.path.startsWith('dist/web/assets/html-poster-') && file.path.endsWith('.png')
+      (file) => file.path.startsWith('dist/web/assets/pagx-poster-') && file.path.endsWith('.png')
     );
-    assert.ok(expectedPosters.length > 0);
+    assert.equal(expectedPosters.length, 20, 'Chinese and English PAGX posters');
+    assert.equal(
+      expected.files.some((file) => file.path.startsWith('dist/web/assets/html-poster-')),
+      false
+    );
     const { stdout } = await exec(
       'npm',
       ['pack', '--ignore-scripts', '--json', '--pack-destination', work],
@@ -96,7 +100,7 @@ test(
       const starter = await client.initializeDemo({ locale: 'en' });
       assert.equal(starter.example, 'starter');
       assert.equal(starter.project.timeline.tracks.length, 5);
-      assert.equal(starter.project.timeline.tracks[2].items[0].clip.html.duration, ticks(18));
+      assert.equal(starter.project.timeline.tracks[2].items[0].clip.pagx.duration, ticks(18));
       for (const asset of starter.project.assets)
         assert.equal((await fetch(client.mediaUrl(starter.id, asset.id))).status, 200);
       const session = await client.createSession();
@@ -123,7 +127,7 @@ test(
       assert.equal(unknownFont.status, 404);
       const { readdir } = await import('node:fs/promises');
       const webAssets = await readdir('node_modules/@ffclip-com/videocut/dist/web/assets');
-      const posters = webAssets.filter(name => /^html-poster-.*\.png$/.test(name));
+      const posters = webAssets.filter(name => /^pagx-poster-.*\.png$/.test(name));
       assert.equal(posters.length, ${expectedPosters.length});
       for (const name of posters) {
         const poster = await fetch(new URL('/assets/' + name, server.url));

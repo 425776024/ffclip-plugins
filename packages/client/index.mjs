@@ -138,7 +138,7 @@ export class VideoCutClient {
   createSession(project) {
     return this.request('/sessions', { method: 'POST', body: JSON.stringify({ project }) });
   }
-  /** Create a fresh editable starter with HTML animation, styled titles, narration and captions.
+  /** Create a fresh editable starter with PAGX animation, styled titles, narration and captions.
    * @param {{ locale?: 'zh' | 'en'; name?: string }} [options]
    * @returns {Promise<import('./types.js').Snapshot>} */
   initializeDemo(options = {}) {
@@ -341,6 +341,27 @@ export class VideoCutClient {
       method: 'POST',
       body: JSON.stringify({ ...options, path })
     });
+  }
+  /** @param {string} path
+   * @param {{duration?:number,transparent?:boolean}} [options]
+   * @returns {Promise<{name:string,pagx:import('../core/types.js').PagxContent}>} */
+  importPagx(path, options = {}) {
+    return this.request('/pagx/import', {
+      method: 'POST',
+      body: JSON.stringify({ ...options, path })
+    });
+  }
+  /** Prepare HTML authoring for the timeline: PAGX first, explicit HTML fallback on conversion failure.
+   * @param {{html?:import('../core/types.js').HtmlContent,path?:string,name?:string,width?:number,height?:number,duration?:number,transparent?:boolean,renderer?:'pagx'|'html'}} options
+   * @returns {Promise<import('./types.js').PreparedAnimation>} */
+  prepareAnimation(options) {
+    return this.request('/animations/prepare', { method: 'POST', body: JSON.stringify(options) });
+  }
+  /** Convert graphics into a finite PAGX timeline; this does not change the project.
+   * @param {{html?:import('../core/types.js').HtmlContent,path?:string,name?:string,width?:number,height?:number,duration?:number,transparent?:boolean}} options
+   * @returns {Promise<{name:string,pagx:import('../core/types.js').PagxContent,capturedAnimations:number,warnings:string[],diagnostics:unknown,conversion:unknown}>} */
+  convertHtmlToPagx(options) {
+    return this.request('/pagx/convert', { method: 'POST', body: JSON.stringify(options) });
   }
   /** @param {string} id
    * @param {number} version
