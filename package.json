@@ -1,6 +1,6 @@
 {
   "name": "@ffclip-com/videocut",
-  "version": "0.2.13",
+  "version": "0.2.14",
   "description": "Local video editing with agent tools, live browser previews and MP4/WebM export",
   "type": "module",
   "license": "MIT",
