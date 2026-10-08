@@ -1,4 +1,4 @@
-[中文](README-zh.md) · [Website](https://ffclip.com)
+[中文](README-zh.md) · [Website](https://ffclip.com) · [WeChat article (中文)](https://mp.weixin.qq.com/s/MKfMipfXc2xv_B3-mVYq6w)
 
 ## Quick Start
 

@@ -1,4 +1,4 @@
-[英文](README.md) · [官网](https://ffclip.com)
+[英文](README.md) · [官网](https://ffclip.com) · [微信公众号文章](https://mp.weixin.qq.com/s/MKfMipfXc2xv_B3-mVYq6w)
 
 ## 快速开始
 
